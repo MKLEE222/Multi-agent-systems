@@ -163,6 +163,14 @@ def operational_entropy(partition, n):
     return entropy_probs(len(b) / n for b in partition)
 
 
+def partition_identity(partition):
+    blocks = sorted(
+        [sorted(str(x) for x in block) for block in partition],
+        key=lambda block: (len(block), block),
+    )
+    return sha_obj(blocks)
+
+
 def analyze_contract_subset(state_ids, current_sig, outcome_matrix, action_ids):
     part = partition_from_signatures(
         state_ids,
@@ -181,6 +189,7 @@ def analyze_contract_subset(state_ids, current_sig, outcome_matrix, action_ids):
     return {
         "operational_blocks": len(part),
         "operational_entropy_bits": operational_entropy(part, len(state_ids)),
+        "operational_partition_sha256": partition_identity(part),
     }
 
 
@@ -416,6 +425,7 @@ def main():
     loo_rows = []
     full_blocks = len(op_partition)
     full_entropy = operational_entropy(op_partition, len(state_ids))
+    full_partition_sha = partition_identity(op_partition)
     for omitted in aids:
         subset = [a for a in aids if a != omitted]
         z = analyze_contract_subset(state_ids, current_sig, original_outcomes, subset)
@@ -423,8 +433,8 @@ def main():
             "omitted_action": omitted,
             "operational_blocks": z["operational_blocks"],
             "operational_entropy_bits": z["operational_entropy_bits"],
-            "full_partition_preserved_by_omission": z["operational_blocks"] == full_blocks
-            and abs(z["operational_entropy_bits"] - full_entropy) < 1e-12,
+            "operational_partition_sha256": z["operational_partition_sha256"],
+            "full_partition_preserved_by_omission": z["operational_partition_sha256"] == full_partition_sha,
         })
 
     before_records = len(candidates)
