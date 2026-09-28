@@ -142,25 +142,25 @@ Run a separately frozen completion over all 29 G2 tree-preserving candidates so 
 
 Then create matched non-divergent controls to measure whether ancestry/merge-base features over-refine the registered merge contract.
 
-### Gate L — serious learned positive carrier
-Use a pretrained learned parametric model with an exact or analytically justified functional symmetry.
+### Gate L/H — learned horizon separation
+Prioritize the existing official GRACE + SCOTUS carrier rather than inventing a new learned carrier merely to obtain a positive example.
 
-Target design:
-- construct two parameter states that implement the same current function by a native parameterization symmetry;
-- apply the same registered optimizer update / fine-tuning action;
-- test whether the post-update functions diverge;
-- distinguish global/current functional equivalence from optimizer-relative write equivalence.
-
-A positive result is interpreted through known reparameterization/optimization theory; the phenomenon itself is not assumed novel.
-
-### Gate H — horizon
-For carriers where actions compose cleanly, compute or approximate
+The next learned experiment should freeze a small action alphabet and compare
 
 \[
-\equiv_0 \supseteq \equiv_1 \supseteq \equiv_2 \supseteq \cdots
+\equiv_0,\;\equiv_1,\;\equiv_2
 \]
 
-and identify when candidate representations first under-refine the operation contract.
+on the same persistent-state bank.
+
+Primary target:
+- find or rule out a pair that is current-read matched and one-step operationally equivalent but two-step operationally nonequivalent;
+- preserve exact action ordering, branch RNG, legality/status, and observation contract;
+- report the first horizon at which the behavioral quotient refines.
+
+This directly tests the OACR horizon claim and uses the learned carrier where W1 already supplied a clean negative at horizon 1.
+
+A ReLU rescaling experiment is demoted to an optional **known-theory positive control**. Path-SGD (NeurIPS 2015) already establishes that rescaling-equivalent ReLU networks compute the same function while ordinary gradient descent is not rescaling invariant and can move the two networks to different functions after one update. Therefore that phenomenon cannot be an OACR novelty claim.
 
 ### Gate D — design intervention
 Choose at least one carrier where OACR yields an actionable repair:
@@ -181,7 +181,7 @@ The project has:
 But the mathematical core overlaps heavily with mature theories of behavioral equivalence and minimal sufficient state. The current package is therefore **not yet strong enough to rest on formal novelty alone**, and the learned-system evidence is not yet balanced.
 
 ### Strong main-track target
-A credible strong paper requires Gates T + G + L, with at least a partial H result.
+A credible strong paper requires Gate T + G and a convincing learned horizon result, plus at least one constructive or minimality result.
 
 The paper would then contribute:
 1. a disciplined cross-system adequacy framework;
@@ -218,3 +218,23 @@ Until Gate T is complete, do not claim:
 Until Gate L is complete, do not claim that OACR has established operational under-refinement in serious learned parametric representations.
 
 Until Gate D is complete, call OACR a framework/diagnostic theory, not a representation-construction method.
+
+
+## 9. Additional nearest-neighbor correction
+
+The mother-level quotient idea sits especially close to:
+
+- predictive state representations: state represented by multi-step action-conditional predictions of future observations;
+- computational mechanics causal states: histories grouped by equality of future conditional distributions, yielding minimal sufficient predictive states;
+- epsilon-transducers: minimal input-output process models with external inputs;
+- strong-preservation / complete-shell results: minimally refine an abstraction to preserve a specified language/operators;
+- bisimulation/state abstraction: behavior-preserving state aggregation.
+
+These are not peripheral citations. They define the strongest novelty boundary for OACR.
+
+The paper must therefore make its contribution at the level of:
+1. computational-representation adequacy rather than invention of behavioral state equivalence;
+2. heterogeneous **native operation contracts** including state-mutating writes/merge/revision and registered legality/cost;
+3. empirical diagnosis of implemented representations as under- or over-refined;
+4. cross-system evidence without imposing a common domain relation semantics;
+5. ideally, an intervention that changes representation design.
