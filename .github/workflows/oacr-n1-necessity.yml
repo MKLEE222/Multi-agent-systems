@@ -1,0 +1,58 @@
+name: OACR N1 Operational Necessity Audit
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  oacr-n1:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR N1 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download frozen OACR-W1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-w1-v1
+          path: artifacts/w1
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36376047412
+
+      - name: Download audit-complete OACR-R1 artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r1-v1
+          path: artifacts/r1
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36378905855
+
+      - name: Verify and run OACR-N1
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_n1/analyze_operational_necessity_v1.py
+          mkdir -p results/oacr_n1
+          python experiments/oacr_n1/analyze_operational_necessity_v1.py             --w1 artifacts/w1/oacr_w1_v1.json             --r1 artifacts/r1/oacr_r1_v1.json             --out results/oacr_n1/oacr_n1_v1.json
+          sha256sum results/oacr_n1/oacr_n1_v1.json | tee results/oacr_n1/oacr_n1_v1.sha256
+          cat results/oacr_n1/oacr_n1_v1.json
+
+      - name: Upload OACR-N1 audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-n1-v1
+          path: |
+            results/oacr_n1/oacr_n1_v1.json
+            results/oacr_n1/oacr_n1_v1.sha256
+          if-no-files-found: error
