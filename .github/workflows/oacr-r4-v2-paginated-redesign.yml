@@ -1,0 +1,90 @@
+name: OACR R4 V2 Paginated Relational Redesign
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  oacr-r4-v2:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R4 V2 RUN]'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - root: Q11173
+            label: chemical compound
+            slug: chemical_compound
+          - root: Q618123
+            label: geographical feature
+            slug: geographical_feature
+          - root: Q42889
+            label: vehicle
+            slug: vehicle
+          - root: Q41176
+            label: building
+            slug: building
+          - root: Q43229
+            label: organization
+            slug: organization
+    runs-on: ubuntu-latest
+    timeout-minutes: 480
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+          python - <<'PY'
+          import networkx as nx, requests
+          assert nx.__version__ == "3.2.1"
+          assert requests.__version__ == "2.32.5"
+          print("networkx", nx.__version__, "requests", requests.__version__)
+          PY
+
+      - name: Compile v2 producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/run_paginated_relational_redesign_v2.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2.py
+
+      - name: Run R4-v2 ${{ matrix.root }}
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_r4_v2/${{ matrix.slug }}/pages
+          python experiments/oacr_r4/run_paginated_relational_redesign_v2.py             --root "${{ matrix.root }}"             --label "${{ matrix.label }}"             --raw_dir results/oacr_r4_v2/${{ matrix.slug }}/pages             --combined_json results/oacr_r4_v2/${{ matrix.slug }}/combined.json             --out results/oacr_r4_v2/${{ matrix.slug }}/result.json             --page_size 2000             --max_pages 20             --timeout 120             --retries 4
+          sha256sum results/oacr_r4_v2/${{ matrix.slug }}/combined.json             | tee results/oacr_r4_v2/${{ matrix.slug }}/combined.sha256
+          sha256sum results/oacr_r4_v2/${{ matrix.slug }}/result.json             | tee results/oacr_r4_v2/${{ matrix.slug }}/result.sha256
+
+      - name: Independently verify R4-v2 ${{ matrix.root }}
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_r4/verify_paginated_relational_redesign_v2.py             --raw_dir results/oacr_r4_v2/${{ matrix.slug }}/pages             --combined_json results/oacr_r4_v2/${{ matrix.slug }}/combined.json             --result_json results/oacr_r4_v2/${{ matrix.slug }}/result.json             | tee results/oacr_r4_v2/${{ matrix.slug }}/verify.json
+
+      - name: Upload R4-v2 ${{ matrix.root }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-v2-${{ matrix.slug }}
+          path: |
+            results/oacr_r4_v2/${{ matrix.slug }}/pages
+            results/oacr_r4_v2/${{ matrix.slug }}/combined.json
+            results/oacr_r4_v2/${{ matrix.slug }}/combined.sha256
+            results/oacr_r4_v2/${{ matrix.slug }}/result.json
+            results/oacr_r4_v2/${{ matrix.slug }}/result.sha256
+            results/oacr_r4_v2/${{ matrix.slug }}/verify.json
+          if-no-files-found: error
