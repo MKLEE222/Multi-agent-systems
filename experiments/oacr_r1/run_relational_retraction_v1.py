@@ -70,7 +70,7 @@ def fetch_tsv(timeout: int, retries: int) -> bytes:
         try:
             r = requests.get(
                 WDQS,
-                params={"query": QUERY, "format": "text/tab-separated-values"},
+                params={"query": QUERY, "format": "tsv"},
                 headers=headers,
                 timeout=timeout,
             )
