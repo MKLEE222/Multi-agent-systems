@@ -4,6 +4,7 @@ from operational_partition import (
     nested_partition_check,
     refinement_relation,
     information_burden_bits,
+    directional_information_gap,
 )
 
 states=["a","b","c","d"]
@@ -26,3 +27,13 @@ stats=refinement_relation(parts[0],parts[1])
 assert stats["under_refinement_count"]>0
 assert information_burden_bits(parts[1])>information_burden_bits(parts[0])
 print("OACR M1 exact-partition self-test PASS")
+
+
+gap_coarse = directional_information_gap(parts[0], parts[1])
+assert gap_coarse["omission_U_bits"] > 0
+assert abs(gap_coarse["excess_E_bits"]) < 1e-12
+
+gap_exact = directional_information_gap(parts[1], parts[1])
+assert abs(gap_exact["omission_U_bits"]) < 1e-12
+assert abs(gap_exact["excess_E_bits"]) < 1e-12
+print("OACR M1 directional information-gap self-test PASS")
