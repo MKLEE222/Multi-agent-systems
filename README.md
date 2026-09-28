@@ -25,3 +25,12 @@ The previous working title **Computational Adequacy of Writable Representations*
 - `docs/OACR_R1_RELATIONAL_RETRACTION_PROTOCOL_V1.md` — exact relational/retraction audit on a Wikidata-derived subclass graph.
 
 Carrier selection rule: a new experiment must add a materially different operation or relation semantics, not merely another benchmark for the same mechanism.
+
+
+### Current exactness / necessity track
+
+- `docs/OACR_N1_OPERATIONAL_NECESSITY_V1.md` — distinguishes pairwise operational necessity from feature under/over-refinement.
+- `docs/OACR_NATIVE_CARRIER_AUDIT_V1.md` — native-first carrier selection after N1.
+- `docs/OACR_G1_GIT_HISTORY_PROTOCOL_V1.md` — exact Git tree/history congruence positive control.
+- `docs/OACR_G2_NATURAL_GIT_HISTORY_PROTOCOL_V1.md` — natural public-history witness search in `git/git`.
+- `docs/OACR_RELATION_SEMANTICS_DISCIPLINE_V1.md` — L0/L1/L2 semantics discipline; nearest theories provide tools, not carrier meaning.
