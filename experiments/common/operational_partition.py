@@ -167,3 +167,68 @@ def partitions_from_behavior_signatures(
         h: partition_from_signatures(sig.keys(), lambda s, sig=sig: sig[s])
         for h, sig in signatures_by_horizon.items()
     }
+
+
+
+def _entropy_probs(ps):
+    return -sum(p * math.log2(p) for p in ps if p > 0.0)
+
+
+def directional_information_gap(
+    representation_partition: Sequence[Sequence[Hashable]],
+    operational_partition: Sequence[Sequence[Hashable]],
+    weights: Mapping[Hashable, float] | None = None,
+) -> Dict[str, float]:
+    """Directional partition mismatch in bits.
+
+    U = H(O|R): operational information omitted by the representation partition.
+    E = H(R|O): representation-class information in excess of the operational partition.
+
+    The default distribution is uniform over registered items.
+    These are class-label information quantities, not physical storage sizes.
+    """
+    ri = block_index(representation_partition)
+    oi = block_index(operational_partition)
+    if set(ri) != set(oi):
+        raise ValueError("partitions must cover identical items")
+    items = sorted(ri, key=str)
+    if weights is None:
+        p = {x: 1.0 / len(items) for x in items}
+    else:
+        if set(weights) != set(items):
+            raise ValueError("weights must be specified for exactly the partition items")
+        total = sum(float(weights[x]) for x in items)
+        if total <= 0:
+            raise ValueError("weights must have positive total mass")
+        p = {x: float(weights[x]) / total for x in items}
+        if any(v < 0 for v in p.values()):
+            raise ValueError("weights must be nonnegative")
+
+    pr = defaultdict(float)
+    po = defaultdict(float)
+    joint = defaultdict(float)
+    for x in items:
+        w = p[x]
+        pr[ri[x]] += w
+        po[oi[x]] += w
+        joint[(ri[x], oi[x])] += w
+
+    h_r = _entropy_probs(pr.values())
+    h_o = _entropy_probs(po.values())
+    h_joint = _entropy_probs(joint.values())
+    h_o_given_r = h_joint - h_r
+    h_r_given_o = h_joint - h_o
+    mutual_information = h_r + h_o - h_joint
+    return {
+        "representation_entropy_bits": h_r,
+        "operational_entropy_bits": h_o,
+        "joint_entropy_bits": h_joint,
+        "mutual_information_bits": mutual_information,
+        "omission_U_bits": h_o_given_r,
+        "excess_E_bits": h_r_given_o,
+        "variation_of_information_bits": h_o_given_r + h_r_given_o,
+        "adequate_almost_surely": abs(h_o_given_r) < 1e-12,
+        "partition_match_almost_surely": (
+            abs(h_o_given_r) < 1e-12 and abs(h_r_given_o) < 1e-12
+        ),
+    }
