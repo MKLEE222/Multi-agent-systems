@@ -35,9 +35,9 @@ The project asks which distinctions in (X) must survive through (ho) so that th
 
 ## 2. Three axes that must not be conflated
 
-### 2.1 Knowledge semantics
+### 2.1 Candidate semantic dimensions
 
-What kind of commitment does a represented relation carry?
+These are diagnostic dimensions, not an ontology and not labels to impose on a carrier. They are non-exclusive, non-exhaustive, and revisable. A relation receives one of these descriptions only after its native/registered operational semantics has been established.
 
 1. **Extensional factual** — stored facts / tuples.
 2. **Logical / entailment** — relations imply other relations through inference rules.
@@ -195,9 +195,9 @@ W3C PROV gives explicit semantic objects for entities, activities, agents, deriv
 
 ## 6. Carrier selection rule
 
-OACR experiments must be selected by **semantic coverage**, not dataset availability.
+OACR experiments must be selected by an **unresolved adequacy question plus native carrier semantics**, not by dataset availability and not by a desire to fill a pre-existing theory category.
 
-A new carrier is justified only if it adds at least one operation semantics not already represented by the current portfolio.
+A new carrier is justified when its native observation/write structure can test a materially new adequacy condition. The semantic dimensions above are retrospective comparison lenses, not experiment-generating labels.
 
 ### Current portfolio map
 
@@ -205,9 +205,9 @@ A new carrier is justified only if it adds at least one operation semantics not 
 |---|---|---|---|---|
 | OACR-W1 | learned routed memory | label/behavior + routing | key/value/radius write | learned writable state |
 | OACR-R1 (next) | real relational knowledge graph | entailment + derivational support | edge deletion/retraction | exact relational semantics |
-| OACR-H1 | versioned/provenance system | history + derivation | commit/fork/merge/rollback | history-sensitive adequacy |
-| OACR-C1 | causal/hybrid system | intervention | do/mechanism change | probe/write causal adequacy |
-| OACR-I1 | provenance/authority system | attribution/delegation | revoke/reassign/delegate | institutional continuity |
+| Candidate H | to be selected from a real system | semantics to be recovered natively | history-sensitive operations if supported | tentative |
+| Candidate C | to be selected from a real system | semantics to be recovered natively | interventions only if native/registered | tentative |
+| Candidate I | to be selected from a real system | semantics to be recovered natively | authority/provenance operations only if supported | tentative |
 
 ## 7. First cross-system target: OACR-R1
 
@@ -269,3 +269,8 @@ This taxonomy does not assert that OACR has already unified all these system cla
 6. what computational constraints matter.
 
 A carrier that cannot answer those six questions is not yet an OACR experiment.
+
+
+## 10. Methodological constraint
+
+Relation semantics are governed by `docs/OACR_RELATION_SEMANTICS_DISCIPLINE_V1.md`. The taxonomy is a comparison aid only. Nearest theories may suggest probes and refinements but may not define a carrier's semantics.
