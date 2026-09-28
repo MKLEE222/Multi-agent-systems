@@ -1,0 +1,172 @@
+name: OACR W1 Operational Congruence
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "73"
+  TOKENIZERS_PARALLELISM: "false"
+  WANDB_MODE: "disabled"
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+  TRANSFORMERS_CACHE: ${{ github.workspace }}/.cache/huggingface/transformers
+  HF_DATASETS_CACHE: ${{ github.workspace }}/.cache/huggingface/datasets
+  HF_HUB_DISABLE_XET: "1"
+  PYTHONPATH: ${{ github.workspace }}/external/GRACE:${{ github.workspace }}/external/GRACE/grace:${{ github.workspace }}/experiments/r1_grace_scotus:${{ github.workspace }}/experiments/oacr_w1
+  R1_SCOTUS_MODEL_DIR: ${{ github.workspace }}/assets/scotus-bert
+  R1_SCOTUS_TOKENIZER_DIR: ${{ github.workspace }}/assets/bert-base-cased
+  R1_SCOTUS_TEST_PARQUET: ${{ github.workspace }}/assets/grace-scotus/test.parquet
+
+jobs:
+  oacr-w1:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR W1 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: Thartvigsen/GRACE
+          ref: f674183f17a995d109e10ee6140d4c3e6d016115
+          path: external/GRACE
+
+      - name: Verify official GRACE commit
+        run: |
+          test "$(git -C external/GRACE rev-parse HEAD)" = "f674183f17a995d109e10ee6140d4c3e6d016115"
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.9"
+          cache: pip
+          cache-dependency-path: requirements-r1.txt
+
+      - name: Restore immutable carrier assets
+        id: carrier-cache
+        uses: actions/cache@v4
+        with:
+          path: assets
+          key: r1-scotus-carrier-assets-v2
+
+      - name: Bootstrap immutable carrier assets
+        if: steps.carrier-cache.outputs.cache-hit != 'true'
+        run: |
+          set -euxo pipefail
+          python -m venv .hf-bootstrap
+          .hf-bootstrap/bin/python -m pip install --upgrade pip
+          .hf-bootstrap/bin/python -m pip install "huggingface_hub==0.27.1" "requests>=2.31"
+          mkdir -p assets/scotus-bert assets/bert-base-cased assets/grace-scotus
+          .hf-bootstrap/bin/python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          import requests
+          from huggingface_hub import HfApi, snapshot_download
+
+          root = Path("assets")
+          api = HfApi()
+          model_id = "tomh/scotus-bert"
+          tok_id = "google-bert/bert-base-cased"
+          model_sha = api.model_info(model_id).sha
+          tok_sha = api.model_info(tok_id).sha
+
+          snapshot_download(
+              repo_id=model_id, revision=model_sha,
+              local_dir=str(root / "scotus-bert"),
+              local_dir_use_symlinks=False,
+          )
+          snapshot_download(
+              repo_id=tok_id, revision=tok_sha,
+              local_dir=str(root / "bert-base-cased"),
+              local_dir_use_symlinks=False,
+          )
+
+          meta = requests.get(
+              "https://datasets-server.huggingface.co/parquet?dataset=tomh/grace-scotus",
+              timeout=60,
+          )
+          meta.raise_for_status()
+          tests = [x for x in meta.json()["parquet_files"] if x.get("split") == "test"]
+          if len(tests) != 1:
+              raise RuntimeError(f"Expected one SCOTUS test parquet, got {len(tests)}")
+          entry = tests[0]
+          resp = requests.get(entry["url"], stream=True, timeout=120)
+          resp.raise_for_status()
+          out = root / "grace-scotus" / "test.parquet"
+          h = hashlib.sha256()
+          size = 0
+          with out.open("wb") as fh:
+              for chunk in resp.iter_content(chunk_size=1024*1024):
+                  if chunk:
+                      fh.write(chunk)
+                      h.update(chunk)
+                      size += len(chunk)
+          manifest = {
+              "model_id": model_id,
+              "model_revision": model_sha,
+              "tokenizer_id": tok_id,
+              "tokenizer_revision": tok_sha,
+              "dataset_id": "tomh/grace-scotus",
+              "dataset_test_url": entry["url"],
+              "dataset_test_sha256": h.hexdigest(),
+              "dataset_test_size": size,
+          }
+          (root / "asset_manifest.json").write_text(json.dumps(manifest, indent=2))
+          print(json.dumps(manifest, indent=2))
+          PY
+          rm -rf .hf-bootstrap
+
+      - name: Install frozen runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.0.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements-r1.txt
+
+      - name: Preflight local assets and protocol
+        run: |
+          set -euxo pipefail
+          cat assets/asset_manifest.json
+          test -s "$R1_SCOTUS_MODEL_DIR/config.json"
+          test -s "$R1_SCOTUS_TEST_PARQUET"
+          python -m py_compile experiments/oacr_w1/run_operational_congruence_v1.py
+          python - <<'PY'
+          import os
+          import pyarrow.parquet as pq
+          from transformers import AutoConfig, AutoTokenizer
+
+          cfg = AutoConfig.from_pretrained(
+              os.environ["R1_SCOTUS_MODEL_DIR"], local_files_only=True
+          )
+          tok = AutoTokenizer.from_pretrained(
+              os.environ["R1_SCOTUS_TOKENIZER_DIR"], local_files_only=True
+          )
+          table = pq.read_table(
+              os.environ["R1_SCOTUS_TEST_PARQUET"], columns=["text", "label"]
+          )
+          print("model_type", cfg.model_type)
+          print("tokenizer", type(tok).__name__)
+          print("test_rows", table.num_rows)
+          assert cfg.model_type == "bert"
+          assert table.num_rows == 931
+          PY
+
+      - name: Run preregistered OACR-W1 v1
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/results/oacr_w1"
+          python experiments/oacr_w1/run_operational_congruence_v1.py             --repo external/GRACE             --out "$GITHUB_WORKSPACE/results/oacr_w1/oacr_w1_v1.json"             --seed_edits 4             --seed_scan_limit 512             --candidate_bank 48             --anchors_per_mode 1             --future_actions 8             --sentinel_reads 16             --seed 73             --device cpu
+          sha256sum "$GITHUB_WORKSPACE/results/oacr_w1/oacr_w1_v1.json"             | tee "$GITHUB_WORKSPACE/results/oacr_w1/oacr_w1_v1.sha256"
+          cp assets/asset_manifest.json "$GITHUB_WORKSPACE/results/oacr_w1/asset_manifest.json"
+          cat "$GITHUB_WORKSPACE/results/oacr_w1/oacr_w1_v1.json"             | python -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["summary"], indent=2))'
+
+      - name: Upload OACR-W1 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-w1-v1
+          path: |
+            results/oacr_w1/oacr_w1_v1.json
+            results/oacr_w1/oacr_w1_v1.sha256
+            results/oacr_w1/asset_manifest.json
+          if-no-files-found: error
