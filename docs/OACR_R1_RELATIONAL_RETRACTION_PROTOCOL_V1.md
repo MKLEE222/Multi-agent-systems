@@ -2,17 +2,18 @@
 
 **Date:** 2026-09-28  
 **Status:** preregistered first cross-system relational experiment  
-**Carrier:** Wikidata-derived RDFS-style subclass graph  
-**Relation:** `subclass of (P279)`  
-**Semantic rule:** transitive subclass entailment, following Wikidata's documented data model
+**Carrier:** graph derived from frozen Wikidata P279 assertions  
+**Relation token:** `P279`  
+**Registered L1 semantics:** transitive closure over the prepared finite graph; explicit-edge deletion as the registered write operator  
+**Boundary:** this protocol does not claim to model the full native semantics or edit policy of Wikidata or RDFS
 
 ## 1. Purpose
 
 OACR-W1 studies a learned routed-memory representation. OACR-R1 deliberately changes both the system form and the relation semantics.
 
-The carrier is a real relational knowledge system: a frozen subgraph derived from Wikidata `subclass of (P279)` statements. Wikidata documents P279 as transitive and maps it to the RDFS subclass relation.
+The raw carrier data are frozen Wikidata P279 assertions. The experiment then registers a deliberately narrower graph semantics: reachability/transitive closure for READ and explicit-edge deletion for WRITE. This registered semantics is the experimental object; broader Wikidata, Wikibase, and RDFS semantics are not silently imported.
 
-The experiment asks whether **complete current entailment equivalence** is sufficient for future retraction semantics.
+The experiment asks whether **complete current reachability/closure equivalence under this registered semantics** is sufficient for future retraction behavior.
 
 This is a cross-system realization / positive-control experiment, not a claim that database provenance or truth maintenance is new.
 
@@ -269,3 +270,8 @@ Those are explicit deepening stages rather than omissions to be silently ignored
 ### Transport correction (2026-09-28)
 
 The preregistered scientific query and graph semantics are unchanged. WDQS content negotiation returned XML under the initial TSV transport request, so the workflow was corrected before any analyzable carrier was produced to request SPARQL Results JSON explicitly. The raw response is still frozen and SHA256-hashed before graph construction.
+
+
+## 13. Relation-semantics discipline
+
+This protocol is governed by `docs/OACR_RELATION_SEMANTICS_DISCIPLINE_V1.md`. RDFS, truth-maintenance, view-maintenance, and provenance theories are comparators and sources of formal tools. They do not define the carrier's semantics. All v1 claims stay at the registered L1 graph semantics unless separately justified at L2.
