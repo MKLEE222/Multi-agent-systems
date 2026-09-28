@@ -139,7 +139,7 @@ jobs:
           mkdir -p results
           python experiments/r1_grace_scotus/predict_scotus_structural_hazard.py \
             --repo external/GRACE \
-            --out results/prediction.json \
+            --out "$GITHUB_WORKSPACE/results/prediction.json" \
             --seed_edits 4 \
             --candidate_bank 64 \
             --future_per_anchor 6 \
@@ -147,8 +147,8 @@ jobs:
             --seed_scan_limit 512 \
             --seed 42 \
             --device cpu
-          sha256sum results/prediction.json | tee results/prediction.sha256
-          cp assets/asset_manifest.json results/asset_manifest.json
+          sha256sum "$GITHUB_WORKSPACE/results/prediction.json" | tee "$GITHUB_WORKSPACE/results/prediction.sha256"
+          cp assets/asset_manifest.json "$GITHUB_WORKSPACE/results/asset_manifest.json"
       - name: Upload frozen prediction
         uses: actions/upload-artifact@v4
         with:
@@ -191,7 +191,7 @@ jobs:
           mkdir -p results
           python experiments/r1_grace_scotus/run_scotus_paired_closure.py \
             --repo external/GRACE \
-            --out results/actual.json \
+            --out "$GITHUB_WORKSPACE/results/actual.json" \
             --seed_edits 4 \
             --candidate_bank 64 \
             --future_per_anchor 6 \
@@ -199,7 +199,7 @@ jobs:
             --seed_scan_limit 512 \
             --seed 42 \
             --device cpu
-          sha256sum results/actual.json | tee results/actual.sha256
+          sha256sum "$GITHUB_WORKSPACE/results/actual.json" | tee "$GITHUB_WORKSPACE/results/actual.sha256"
           cp assets/asset_manifest.json results/asset_manifest.json
       - name: Upload execution results
         uses: actions/upload-artifact@v4
