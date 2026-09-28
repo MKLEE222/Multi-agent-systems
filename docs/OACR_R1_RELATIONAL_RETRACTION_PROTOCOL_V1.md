@@ -172,7 +172,7 @@ Before witness search, the raw response is frozen and hashed:
 
 - query text;
 - retrieval timestamp;
-- SHA256 of raw TSV;
+- SHA256 of raw SPARQL JSON response;
 - number of unique nodes and asserted edges.
 
 If the endpoint fails or returns fewer than 50 unique asserted edges, the run fails. There is no silent fallback to another dataset.
@@ -264,3 +264,8 @@ It does **not** yet model:
 - actual Wikibase backend edit policy.
 
 Those are explicit deepening stages rather than omissions to be silently ignored.
+
+
+### Transport correction (2026-09-28)
+
+The preregistered scientific query and graph semantics are unchanged. WDQS content negotiation returned XML under the initial TSV transport request, so the workflow was corrected before any analyzable carrier was produced to request SPARQL Results JSON explicitly. The raw response is still frozen and SHA256-hashed before graph construction.
