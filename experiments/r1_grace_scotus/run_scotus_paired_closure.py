@@ -87,12 +87,9 @@ def load_scotus_edit_dataset():
     if not parquet:
         from grace.dataset import SCOTUS
         return SCOTUS(split="edit")
-    from datasets import load_dataset
-    data = load_dataset(
-        "parquet",
-        data_files={"test": str(Path(parquet).resolve())},
-        split="test",
-    )
+    import pyarrow.parquet as pq
+    table = pq.read_table(str(Path(parquet).resolve()), columns=["text", "label"])
+    data = table.to_pydict()
     rows = [{"text": x, "labels": int(y)} for x, y in zip(data["text"], data["label"])]
     class LocalSCOTUS:
         def __len__(self):
