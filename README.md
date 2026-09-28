@@ -15,3 +15,13 @@ OACR asks what distinctions a computational representation must preserve in orde
 The current R1 target is official GRACE + SCOTUS/BERT, testing read-matched future-write divergence under a prediction -> execution -> blind validation protocol.
 
 The previous working title **Computational Adequacy of Writable Representations** is retired. Experimental protocol identifiers and historical file names are retained when changing them would damage auditability.
+
+
+## Active OACR program
+
+- `docs/OACR_NEAREST_NEIGHBOR_COVERAGE_V1.md` — theory-neighbor coverage audit.
+- `docs/OACR_SYSTEM_RELATION_TAXONOMY_V1.md` — system / relation / representation taxonomy used to select carriers by semantic coverage.
+- `docs/OACR_W1_OPERATIONAL_CONGRUENCE_PROTOCOL_V1.md` — learned routed-memory congruence audit.
+- `docs/OACR_R1_RELATIONAL_RETRACTION_PROTOCOL_V1.md` — exact relational/retraction audit on a Wikidata-derived subclass graph.
+
+Carrier selection rule: a new experiment must add a materially different operation or relation semantics, not merely another benchmark for the same mechanism.
