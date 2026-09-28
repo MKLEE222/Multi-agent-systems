@@ -1,0 +1,52 @@
+name: OACR G2 Natural Git History
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  oacr-g2:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR G2 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Clone real Git repository history
+        run: |
+          set -euxo pipefail
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git rev-parse HEAD
+          git -C external/git remote get-url origin
+
+      - name: Compile preregistered search
+        run: python -m py_compile experiments/oacr_g2/run_natural_git_history_v1.py
+
+      - name: Run OACR-G2 v1
+        run: |
+          mkdir -p results/oacr_g2
+          python experiments/oacr_g2/run_natural_git_history_v1.py             --repo external/git             --out results/oacr_g2/oacr_g2_v1.json             --max_merges 10000             --max_witnesses 16
+          sha256sum results/oacr_g2/oacr_g2_v1.json | tee results/oacr_g2/oacr_g2_v1.sha256
+          python - <<'PY'
+          import json
+          x=json.load(open("results/oacr_g2/oacr_g2_v1.json"))
+          print(json.dumps(x["source"], indent=2))
+          print(json.dumps(x["summary"], indent=2))
+          PY
+
+      - name: Upload OACR-G2 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-g2-v1
+          path: |
+            results/oacr_g2/oacr_g2_v1.json
+            results/oacr_g2/oacr_g2_v1.sha256
+          if-no-files-found: error
