@@ -1,85 +1,48 @@
-# OACR-R4 Protocol Amendment v1 — Retrieval Completeness and Compute Feasibility
+# OACR-R4 Protocol Amendment v1 — Non-Authoritative Duplicate Record
 
 **Date:** 2026-09-28  
-**Status:** frozen before any R4 carrier outcome is inspected  
-**Amends:** OACR_R4_FRESH_RELATIONAL_REDESIGN_PROTOCOL_V1.md  
-**Root list unchanged. Scientific state/action/redesign rules unchanged.**
+**Current status:** **SUPERSEDED / NON-AUTHORITATIVE**  
+**Historical commit:** 007ffb1773a26da2dce85f92f8f6ee92acca019b
 
-## 1. Reason
+This file was created after the authoritative R4-v2 paginated protocol had already been frozen at commit:
 
-The original R4 protocol used one ORDER BY query with LIMIT 2500 and treated a full page as TRUNCATED.
+6795a534415e4f7270f2b25aca3522b653e413d3
 
-Before any R4 carrier result was inspected, this was identified as an avoidable infrastructure bottleneck for broad frozen roots. A carrier should not be excluded merely because its deterministic query needs more than one result page.
+and after the first R4-v2 workflow trigger had begun.
 
-The amendment changes retrieval completeness and adds outcome-blind computational feasibility gates only.
+It proposed an alternative retrieval amendment using a different pagination schedule. That duplicate proposal must not govern any scientific execution.
 
-## 2. Deterministic pagination
+## Authoritative R4-v2 protocol
 
-For each frozen root, use the same three-level P279 UNION query and the same:
+The sole authority for R4-v2 fresh-carrier execution is:
 
-ORDER BY ?child ?parent
+docs/OACR_R4_V2_PAGINATED_REDESIGN_PROTOCOL.md
 
-Fetch pages with:
+at commit:
 
-- page size 2500;
-- OFFSET values 0, 2500, 5000, 7500;
-- at most four pages.
+6795a534415e4f7270f2b25aca3522b653e413d3
 
-Stop when a page contains fewer than 2500 bindings.
+It freezes:
 
-Freeze every raw JSON page byte-for-byte and record its SHA256.
+- the same five roots from R4-v1;
+- 2,000-row pages;
+- at most 20 pages;
+- 40,000-row truncation gate;
+- the original structural inclusion gates;
+- the original state-bank rule;
+- the R3 action-panel rule;
+- the contract-gated representation;
+- exact native replay;
+- frozen secondary singleton/pair/leave-one-out analyses.
 
-The carrier is classified as RETRIEVAL_COMPLETE when a page with fewer than 2500 bindings is observed.
+## Why this file is retained
 
-The carrier is classified as TRUNCATED_10000 only when all four pages contain exactly 2500 bindings.
+The repository keeps this file, rather than deleting it, to make the duplicate-protocol mistake auditable.
 
-A truncated carrier is retained in the audit record but excluded from primary R4 analysis without replacement.
+No result may cite this file as an operative preregistration or protocol amendment.
 
-## 3. Duplicate handling across pages
+The engineering correction after the first R4-v2 failure is separately recorded in:
 
-After all retrieved pages are frozen:
+docs/OACR_R4_V2_ENGINEERING_FAILURE_RECORD_2026-09-28.md
 
-- concatenate bindings in page order;
-- parse child-parent edges;
-- remove duplicate asserted edges and self-loops exactly as in R1;
-- continue with the original graph-hygiene protocol.
-
-Pagination does not alter the root, depth, relation, or semantic selection rule.
-
-## 4. Outcome-blind computational feasibility gates
-
-Before any augmented-state native deletion outcome is executed, additionally require:
-
-- prepared nodes <= 4000;
-- prepared asserted edges <= 6000;
-- complete base transitive-closure size <= 2,000,000.
-
-These are compute-feasibility gates, not scientific success criteria.
-
-A carrier exceeding a maximum gate is classified as COMPUTE_EXCLUDED and is not replaced.
-
-The original minimum structural gates remain unchanged:
-
-- prepared nodes >= 100;
-- prepared asserted edges >= 128;
-- redundant entailed-but-unasserted candidates >= 64;
-- at least 64 asserted edges for the shared action panel.
-
-## 5. Inclusion categories
-
-Every frozen root receives exactly one top-level status:
-
-- INCLUDED;
-- TRUNCATED_10000;
-- STRUCTURE_EXCLUDED;
-- COMPUTE_EXCLUDED;
-- RETRIEVAL_FAILED;
-- IMPLEMENTATION_INVALID.
-
-No status may trigger root replacement within R4 v1.
-
-## 6. Confirmatory requirement
-
-The primary R4 replication block still requires at least two INCLUDED roots.
-
-If fewer than two are INCLUDED, R4 v1 is reported as underpowered rather than modified after outcome inspection.
+That correction changes only the explicit query ordering required to make pagination order machine-checkable. It does not change the scientific protocol.
