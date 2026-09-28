@@ -75,14 +75,13 @@ def main():
     os.chdir(repo)
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
 
-    from grace.dataset import SCOTUS
     from grace.editors import GRACE
     from grace.models import Classifier
 
     cfg = R.load_config(repo, args.device)
     model = Classifier(cfg).to(args.device)
     editor = GRACE(cfg, model)
-    dataset = SCOTUS(split='edit')
+    dataset = R.load_scotus_edit_dataset()
 
     seed_rows, obligations, max_idx, seed_contract = R.build_contract_preserving_seed_state(
         editor, cfg, dataset, editor.tokenizer, args.device,
