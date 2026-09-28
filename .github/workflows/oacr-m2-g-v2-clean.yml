@@ -1,0 +1,74 @@
+name: OACR M2 G V2 Clean Runtime Rerun
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+  LC_ALL: "C.UTF-8"
+  LANG: "C.UTF-8"
+
+jobs:
+  oacr-m2-g-v2-clean:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR M2 G V2 CLEAN RUN]'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        split: [discovery, validation]
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Assert runner Git runtime
+        run: |
+          set -euxo pipefail
+          test "$(git --version)" = "git version 2.55.0"
+
+      - name: Clone frozen git/git under isolated read-only config
+        run: |
+          set -euxo pipefail
+          GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null             git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null             git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+          test "$(GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null git -C external/git --version)" = "git version 2.55.0"
+
+      - name: Compile frozen producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_m2/run_git_nested_contract_v2.py
+          python -m py_compile experiments/oacr_m2/verify_m2_v2_artifact.py
+
+      - name: Run M2-G v2 clean ${{ matrix.split }}
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_m2_v2_clean/g/${{ matrix.split }}
+          python experiments/oacr_m2/run_git_nested_contract_v2.py             --repo external/git             --split ${{ matrix.split }}             --out results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.json
+          sha256sum results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.json             | tee results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.sha256
+
+      - name: Independently verify clean artifact from embedded raw matrix
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_m2/verify_m2_v2_artifact.py             --artifact results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.json             | tee results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.verify.json
+
+      - name: Upload M2-G v2 clean ${{ matrix.split }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-m2-g-${{ matrix.split }}-v2-clean
+          path: |
+            results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.json
+            results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.sha256
+            results/oacr_m2_v2_clean/g/${{ matrix.split }}/oacr_m2_g_${{ matrix.split }}_v2_clean.verify.json
+          if-no-files-found: error
