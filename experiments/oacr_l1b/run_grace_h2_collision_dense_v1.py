@@ -52,6 +52,13 @@ def args():
     return p.parse_args()
 
 
+def write_artifact(path: str, obj: Dict[str, Any]) -> None:
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(obj, indent=2))
+    print(json.dumps(obj.get("summary", obj), indent=2))
+
+
 def meta_signature(x: Dict[str, Any]) -> Tuple[Any, ...]:
     return (
         x["status"],
@@ -238,18 +245,18 @@ def replay_equal(a, b, atol, rtol):
     )
 
 
-def replay_h1(editor, cfg, snap, action, protected_tokens, panel, seed):
+def replay_h1(editor, cfg, snap, action, protected_tokens, panel, seed, atol, rtol):
     x, _ = apply_action(editor, cfg, snap, action, protected_tokens, panel, seed)
     y, _ = apply_action(editor, cfg, snap, action, protected_tokens, panel, seed)
-    return replay_equal(x, y, 1e-6, 1e-5), x, y
+    return replay_equal(x, y, atol, rtol), x, y
 
 
-def replay_h2(editor, cfg, snap, action_a, action_b, protected_tokens, panel, seed1, seed2):
+def replay_h2(editor, cfg, snap, action_a, action_b, protected_tokens, panel, seed1, seed2, atol, rtol):
     x1, xs = apply_action(editor, cfg, snap, action_a, protected_tokens, panel, seed1)
     x2, _ = apply_action(editor, cfg, xs, action_b, protected_tokens, panel, seed2)
     y1, ys = apply_action(editor, cfg, snap, action_a, protected_tokens, panel, seed1)
     y2, _ = apply_action(editor, cfg, ys, action_b, protected_tokens, panel, seed2)
-    ok = replay_equal(x1, y1, 1e-6, 1e-5) and replay_equal(x2, y2, 1e-6, 1e-5)
+    ok = replay_equal(x1, y1, atol, rtol) and replay_equal(x2, y2, atol, rtol)
     return ok, {"first_a": x1, "first_b": y1, "second_a": x2, "second_b": y2}
 
 
@@ -271,16 +278,47 @@ def main():
     editor = GRACE(cfg, model)
     dataset = R.load_scotus_edit_dataset()
 
-    seed_rows, protected_tokens, max_idx, seed_contract = R.build_contract_preserving_seed_state(
-        editor,
-        cfg,
-        dataset,
-        editor.tokenizer,
-        a.device,
-        a.seed_edits,
-        a.seed_scan_limit,
-        a.seed,
-    )
+    try:
+        seed_rows, protected_tokens, max_idx, seed_contract = R.build_contract_preserving_seed_state(
+            editor,
+            cfg,
+            dataset,
+            editor.tokenizer,
+            a.device,
+            a.seed_edits,
+            a.seed_scan_limit,
+            a.seed,
+        )
+    except RuntimeError as exc:
+        msg = str(exc)
+        if not (
+            msg.startswith("Could only build ")
+            or msg == "Seed contract invalid after construction"
+        ):
+            raise
+        write_artifact(a.out, {
+            "protocol": "OACR_L1B_COLLISION_DENSE_GRACE_H2_V1",
+            "protocol_commit": "694d42e92a152c09208d23d211942664306b335d",
+            "official_grace_commit": "f674183f17a995d109e10ee6140d4c3e6d016115",
+            "seed": a.seed,
+            "status": "SEED_CONSTRUCTION_FAILURE",
+            "failure_stage": "base_persistent_state",
+            "failure_message": msg,
+            "registered_parameters": {
+                "seed_edits": a.seed_edits,
+                "seed_scan_limit": a.seed_scan_limit,
+                "candidate_bank": a.candidate_bank,
+                "anchor_candidates": a.anchor_candidates,
+                "future_actions": a.future_actions,
+                "max_states": a.max_states,
+            },
+            "summary": {
+                "seed": a.seed,
+                "status": "SEED_CONSTRUCTION_FAILURE",
+                "future_outcomes_executed": False,
+            },
+        })
+        return
     seed_ids = [int(x["idx"]) for x in seed_rows]
     base = snapshot_adapter(get_adapter(editor))
 
@@ -304,9 +342,37 @@ def main():
         enriched, anchor_ids, a.future_actions
     )
     if len(future) != a.future_actions:
-        raise RuntimeError(
-            f"expected {a.future_actions} future actions, got {len(future)}"
-        )
+        write_artifact(a.out, {
+            "protocol": "OACR_L1B_COLLISION_DENSE_GRACE_H2_V1",
+            "protocol_commit": "694d42e92a152c09208d23d211942664306b335d",
+            "official_grace_commit": "f674183f17a995d109e10ee6140d4c3e6d016115",
+            "seed": a.seed,
+            "status": "UNDERPOWERED_FUTURE_ACTIONS",
+            "seed_contract": seed_contract,
+            "candidate_route_census": route_census,
+            "anchor_selection": {
+                "phase_a_ids": anchor_phase_a,
+                "selected_ids": [int(x["idx"]) for x in anchor_candidates],
+                "selected_modes": [x["route"]["update_mode"] for x in anchor_candidates],
+            },
+            "future_selection": {
+                "phase_a_ids": future_phase_a,
+                "selected_ids": [int(x["idx"]) for x in future],
+                "selected_modes": [x["route"]["update_mode"] for x in future],
+                "required": a.future_actions,
+                "found": len(future),
+            },
+            "summary": {
+                "seed": a.seed,
+                "status": "UNDERPOWERED_FUTURE_ACTIONS",
+                "candidate_census_size": len(enriched),
+                "route_mode_census": route_census,
+                "future_actions_required": a.future_actions,
+                "future_actions_found": len(future),
+                "future_outcomes_executed": False,
+            },
+        })
+        return
     future_ids = {int(x["idx"]) for x in future}
 
     sent = W.collect_sentinels(
@@ -439,7 +505,51 @@ def main():
             retained_reads[sid] = root_reads
 
     if len(states) < 2:
-        raise RuntimeError("fewer than two H0-collision states survived L1b construction")
+        write_artifact(a.out, {
+            "protocol": "OACR_L1B_COLLISION_DENSE_GRACE_H2_V1",
+            "protocol_commit": "694d42e92a152c09208d23d211942664306b335d",
+            "official_grace_commit": "f674183f17a995d109e10ee6140d4c3e6d016115",
+            "seed": a.seed,
+            "status": "UNDERPOWERED_STATE_CONSTRUCTION",
+            "read_match": {"atol": a.read_atol, "rtol": a.read_rtol},
+            "seed_contract": seed_contract,
+            "candidate_route_census": route_census,
+            "anchor_selection": {
+                "phase_a_ids": anchor_phase_a,
+                "selected_ids": [int(x["idx"]) for x in anchor_candidates],
+                "selected_modes": [x["route"]["update_mode"] for x in anchor_candidates],
+            },
+            "future_selection": {
+                "phase_a_ids": future_phase_a,
+                "selected_ids": [int(x["idx"]) for x in future],
+                "selected_modes": [x["route"]["update_mode"] for x in future],
+            },
+            "panel_manifest": panel_manifest,
+            "anchor_attempts": attempts,
+            "states": [
+                {
+                    "state_id": st["state_id"],
+                    "kind": st["kind"],
+                    "anchor_id": st["anchor_id"],
+                    "anchor_mode": st["anchor_mode"],
+                    "state_hash": W.snapshot_hash(st["snapshot"]),
+                }
+                for st in states
+            ],
+            "summary": {
+                "seed": a.seed,
+                "status": "UNDERPOWERED_STATE_CONSTRUCTION",
+                "candidate_census_size": len(enriched),
+                "route_mode_census": route_census,
+                "anchor_candidates": len(anchor_candidates),
+                "anchor_attempts": len(attempts),
+                "anchor_eligible": sum(int(x["eligible"]) for x in attempts),
+                "anchor_retained": sum(int(x["retained"]) for x in attempts),
+                "states": len(states),
+                "future_outcomes_executed": False,
+            },
+        })
+        return
 
     # Audit H0 clique directly.
     state_ids = [x["state_id"] for x in states]
@@ -514,7 +624,7 @@ def main():
     seed1 = R.derive_seed(a.seed, "oacr_l1b_h1", aid0)
     base_h1_ok, _, _ = replay_h1(
         editor, cfg, runtime["base"]["snapshot"], action_map[aid0],
-        protected_tokens, panel_tokens, seed1
+        protected_tokens, panel_tokens, seed1, a.read_atol, a.read_rtol
     )
 
     nonbase = next((s for s in state_ids if s != "base"), None)
@@ -522,7 +632,7 @@ def main():
     if nonbase is not None:
         nonbase_h1_ok, _, _ = replay_h1(
             editor, cfg, runtime[nonbase]["snapshot"], action_map[aid0],
-            protected_tokens, panel_tokens, seed1
+            protected_tokens, panel_tokens, seed1, a.read_atol, a.read_rtol
         )
 
     bid0 = action_ids[0]
@@ -530,7 +640,7 @@ def main():
     base_h2_ok, _ = replay_h2(
         editor, cfg, runtime["base"]["snapshot"],
         action_map[aid0], action_map[bid0],
-        protected_tokens, panel_tokens, seed1, seed2
+        protected_tokens, panel_tokens, seed1, seed2, a.read_atol, a.read_rtol
     )
 
     if not base_h1_ok or nonbase_h1_ok is False or not base_h2_ok:
@@ -676,6 +786,7 @@ def main():
         "protocol_commit": "694d42e92a152c09208d23d211942664306b335d",
         "official_grace_commit": "f674183f17a995d109e10ee6140d4c3e6d016115",
         "seed": a.seed,
+        "status": "COMPLETE",
         "read_match": {"atol": a.read_atol, "rtol": a.read_rtol},
         "seed_contract": seed_contract,
         "candidate_route_census": route_census,
@@ -698,10 +809,7 @@ def main():
         "summary": summary,
     }
 
-    p = Path(a.out)
-    p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(out, indent=2))
-    print(json.dumps(summary, indent=2))
+    write_artifact(a.out, out)
 
 
 if __name__ == "__main__":
