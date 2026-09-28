@@ -65,7 +65,41 @@ def load_config(repo: Path, device: str):
     cfg.wandb = False
     cfg.re_init_model = False
     cfg.dropout = 0.0
+    # Bootstrap assets are downloaded with a modern Hub client, but the
+    # registered GRACE runtime remains pinned to transformers==4.20.1.
+    model_dir = os.environ.get("R1_SCOTUS_MODEL_DIR")
+    tokenizer_dir = os.environ.get("R1_SCOTUS_TOKENIZER_DIR")
+    if model_dir:
+        cfg.model.name = str(Path(model_dir).resolve())
+    if tokenizer_dir:
+        cfg.model.tokenizer_name = str(Path(tokenizer_dir).resolve())
     return cfg
+
+
+def load_scotus_edit_dataset():
+    """Load the official SCOTUS test split from a frozen local parquet when set.
+
+    This changes only transport, not examples or labels. It avoids legacy Hub
+    redirect behavior in datasets/transformers while leaving the GRACE runtime
+    and edit mechanism untouched.
+    """
+    parquet = os.environ.get("R1_SCOTUS_TEST_PARQUET")
+    if not parquet:
+        from grace.dataset import SCOTUS
+        return SCOTUS(split="edit")
+    from datasets import load_dataset
+    data = load_dataset(
+        "parquet",
+        data_files={"test": str(Path(parquet).resolve())},
+        split="test",
+    )
+    rows = [{"text": x, "labels": int(y)} for x, y in zip(data["text"], data["label"])]
+    class LocalSCOTUS:
+        def __len__(self):
+            return len(rows)
+        def __getitem__(self, idx):
+            return rows[idx]
+    return LocalSCOTUS()
 
 
 def tensor_tokens(batch, tokenizer, device):
@@ -405,14 +439,13 @@ def main() -> None:
     os.chdir(repo)
     random.seed(args.seed); np.random.seed(args.seed); torch.manual_seed(args.seed)
 
-    from grace.dataset import SCOTUS
     from grace.editors import GRACE
     from grace.models import Classifier
 
     cfg = load_config(repo, args.device)
     model = Classifier(cfg).to(args.device)
     editor = GRACE(cfg, model)
-    dataset = SCOTUS(split="edit")
+    dataset = load_scotus_edit_dataset()
 
     # Build a non-vacuous real persistent memory: every registered seed edit
     # remains satisfied after the whole seed sequence. Failed/interfering seed
