@@ -124,15 +124,15 @@ jobs:
           python - <<'PY'
           import os
           from transformers import AutoConfig, AutoTokenizer
-          from datasets import load_dataset
+          import pyarrow.parquet as pq
           cfg = AutoConfig.from_pretrained(os.environ["R1_SCOTUS_MODEL_DIR"], local_files_only=True)
           tok = AutoTokenizer.from_pretrained(os.environ["R1_SCOTUS_TOKENIZER_DIR"], local_files_only=True)
-          ds = load_dataset("parquet", data_files={"test": os.environ["R1_SCOTUS_TEST_PARQUET"]}, split="test")
+          table = pq.read_table(os.environ["R1_SCOTUS_TEST_PARQUET"], columns=["text", "label"])
           print("model_type", cfg.model_type)
           print("tokenizer", type(tok).__name__)
-          print("test_rows", len(ds), "columns", ds.column_names)
-          assert len(ds) == 931
-          assert "text" in ds.column_names and "label" in ds.column_names
+          print("test_rows", table.num_rows, "columns", table.column_names)
+          assert table.num_rows == 931
+          assert table.column_names == ["text", "label"]
           PY
       - name: Generate frozen structural prediction manifest
         run: |
