@@ -7,9 +7,7 @@ is not presented as a new database-theory result.
 from __future__ import annotations
 
 import argparse
-import csv
 import hashlib
-import io
 import json
 import os
 import time
@@ -49,7 +47,7 @@ LIMIT 1500
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--out", required=True)
-    p.add_argument("--raw_tsv", required=True)
+    p.add_argument("--raw_json", required=True)
     p.add_argument("--max_witnesses", type=int, default=64)
     p.add_argument("--timeout", type=int, default=120)
     p.add_argument("--retries", type=int, default=4)
@@ -60,9 +58,9 @@ def qid(uri: str) -> str:
     return uri.rsplit("/", 1)[-1].strip()
 
 
-def fetch_tsv(timeout: int, retries: int) -> bytes:
+def fetch_sparql_json(timeout: int, retries: int) -> bytes:
     headers = {
-        "Accept": "text/tab-separated-values",
+        "Accept": "application/sparql-results+json",
         "User-Agent": "OACR-research/1.0 (GitHub Actions; reproducibility audit)",
     }
     last = None
@@ -70,7 +68,7 @@ def fetch_tsv(timeout: int, retries: int) -> bytes:
         try:
             r = requests.get(
                 WDQS,
-                params={"query": QUERY, "format": "tsv"},
+                params={"query": QUERY, "format": "json"},
                 headers=headers,
                 timeout=timeout,
             )
@@ -83,20 +81,22 @@ def fetch_tsv(timeout: int, retries: int) -> bytes:
             last = exc
             if attempt + 1 < retries:
                 time.sleep(3 * (attempt + 1))
-    raise RuntimeError(f"WDQS fetch failed after {retries} attempts: {last}")
+    raise RuntimeError(f"WDQS JSON fetch failed after {retries} attempts: {last}")
 
 
 def parse_edges(raw: bytes) -> List[Tuple[str, str]]:
-    text = raw.decode("utf-8")
-    reader = csv.DictReader(io.StringIO(text), delimiter="\t")
-    if not reader.fieldnames:
-        raise RuntimeError("WDQS TSV response has no header")
-    fields = {name.lstrip("?"): name for name in reader.fieldnames}
-    if "child" not in fields or "parent" not in fields:
-        raise RuntimeError(f"Unexpected WDQS TSV header: {reader.fieldnames!r}")
+    try:
+        obj = json.loads(raw.decode("utf-8"))
+        bindings = obj["results"]["bindings"]
+    except Exception as exc:
+        prefix = raw[:300].decode("utf-8", errors="replace")
+        raise RuntimeError(f"Unexpected WDQS JSON response: {prefix!r}") from exc
     edges = set()
-    for row in reader:
-        c, p = qid(row[fields["child"]]), qid(row[fields["parent"]])
+    for row in bindings:
+        if "child" not in row or "parent" not in row:
+            continue
+        c = qid(row["child"]["value"])
+        p = qid(row["parent"]["value"])
         if c and p and c != p and c.startswith("Q") and p.startswith("Q"):
             edges.add((c, p))
     return sorted(edges)
@@ -189,12 +189,12 @@ def minimal_path_edge_sets(g: nx.DiGraph, u, v, cap: int = 64):
 def main():
     args = parse_args()
     out_path = Path(args.out).resolve()
-    raw_path = Path(args.raw_tsv).resolve()
+    raw_path = Path(args.raw_json).resolve()
     out_path.parent.mkdir(parents=True, exist_ok=True)
     raw_path.parent.mkdir(parents=True, exist_ok=True)
 
     retrieved_at = datetime.now(timezone.utc).isoformat()
-    raw = fetch_tsv(args.timeout, args.retries)
+    raw = fetch_sparql_json(args.timeout, args.retries)
     raw_path.write_bytes(raw)
     raw_sha = hashlib.sha256(raw).hexdigest()
 
@@ -301,7 +301,7 @@ def main():
 
     summary = {
         "root": ROOT,
-        "raw_tsv_sha256": raw_sha,
+        "raw_response_sha256": raw_sha,
         "unique_asserted_edges_raw": len(edges),
         "prepared_nodes": g.number_of_nodes(),
         "prepared_asserted_edges": g.number_of_edges(),
@@ -334,7 +334,7 @@ def main():
         "wdqs_endpoint": WDQS,
         "query": QUERY,
         "retrieved_at_utc": retrieved_at,
-        "raw_tsv_sha256": raw_sha,
+        "raw_response_sha256": raw_sha,
         "graph_hygiene": {
             "self_loops_removed": True,
             "duplicates_removed": True,
