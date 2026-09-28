@@ -2,6 +2,8 @@ name: R1 GRACE SCOTUS Blind
 
 on:
   workflow_dispatch:
+  issues:
+    types: [opened]
   push:
     branches: [main]
     paths:
@@ -23,6 +25,7 @@ env:
 
 jobs:
   prediction:
+    if: github.event_name != 'issues' || github.event.issue.title == '[R1 RUN] GRACE SCOTUS'
     name: Prediction only
     runs-on: ubuntu-latest
     timeout-minutes: 120
