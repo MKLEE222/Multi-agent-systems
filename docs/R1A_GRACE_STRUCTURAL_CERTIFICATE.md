@@ -1,5 +1,7 @@
-# R1a carrier proposition — structural certificates for GRACE selective writes
+# OACR / WRITE R1a carrier proposition — structural certificates for GRACE selective writes
 
+**Parent project:** **Operational Adequacy of Computational Representations (OACR)**.  
+**Module:** WRITE.  
 **Status:** carrier-level result for the registered GRACE-style native write program.  
 **Not:** a theorem about arbitrary model editors or representation-level impossibility.
 
