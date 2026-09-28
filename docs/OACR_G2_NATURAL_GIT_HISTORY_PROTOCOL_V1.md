@@ -64,7 +64,7 @@ Record:
 - merge-in-progress bit;
 - unmerged path set;
 - index tree where available;
-- working-tree tracked-file content hash.
+- SHA256 of the tracked working-tree binary diff relative to HEAD.
 
 A candidate is a valid G2 witness iff:
 
