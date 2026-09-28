@@ -47,6 +47,6 @@ jobs:
           path: |
             results/oacr_r1/oacr_r1_v1.json
             results/oacr_r1/oacr_r1_v1.sha256
-            results/oacr_r1/wikidata_p279_raw.tsv
+            results/oacr_r1/wikidata_p279_raw.json
             results/oacr_r1/wikidata_p279_raw.sha256
           if-no-files-found: error
