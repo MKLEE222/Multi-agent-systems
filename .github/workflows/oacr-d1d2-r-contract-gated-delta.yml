@@ -1,0 +1,83 @@
+name: OACR D1D2 R Contract Gated Delta
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  oacr-d1d2-r:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR D1D2 R RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download frozen R1 carrier
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r1-v1
+          path: artifacts/r1
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36378905855
+
+      - name: Download accepted M2-R raw outcome artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-m2-r-v2
+          path: artifacts/m2r
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36425222754
+
+      - name: Install exact symbolic runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1"
+          python - <<'PY'
+          import networkx as nx
+          assert nx.__version__ == "3.2.1", nx.__version__
+          print(nx.__version__)
+          PY
+
+      - name: Compile redesign and independent verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_d1d2/run_contract_gated_delta_v1.py
+          python -m py_compile experiments/oacr_d1d2/verify_contract_gated_delta_v1.py
+
+      - name: Run contract-gated representation redesign
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_d1d2_r
+          python experiments/oacr_d1d2/run_contract_gated_delta_v1.py             --raw_json artifacts/r1/wikidata_p279_raw.json             --m2_json artifacts/m2r/oacr_m2_r_v2.json             --out results/oacr_d1d2_r/oacr_d1d2_r_v1.json
+          sha256sum results/oacr_d1d2_r/oacr_d1d2_r_v1.json             | tee results/oacr_d1d2_r/oacr_d1d2_r_v1.sha256
+
+      - name: Independently verify classification and 17408 native replays
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_d1d2/verify_contract_gated_delta_v1.py             --raw_json artifacts/r1/wikidata_p279_raw.json             --m2_json artifacts/m2r/oacr_m2_r_v2.json             --redesign_json results/oacr_d1d2_r/oacr_d1d2_r_v1.json             | tee results/oacr_d1d2_r/oacr_d1d2_r_v1.verify.json
+
+      - name: Upload D1D2-R
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-d1d2-r-v1
+          path: |
+            results/oacr_d1d2_r/oacr_d1d2_r_v1.json
+            results/oacr_d1d2_r/oacr_d1d2_r_v1.sha256
+            results/oacr_d1d2_r/oacr_d1d2_r_v1.verify.json
+          if-no-files-found: error
