@@ -1,0 +1,75 @@
+name: OACR M2 R V2 Reproducible Ensemble
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  oacr-m2-r-v2:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR M2 R V2 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download frozen R1 carrier
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r1-v1
+          path: artifacts/r1
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36378905855
+
+      - name: Install exact symbolic runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1"
+          python --version
+          python - <<'PY'
+          import networkx as nx
+          assert nx.__version__ == "3.2.1", nx.__version__
+          print("networkx", nx.__version__)
+          PY
+
+      - name: Compile M2 v2 producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_m2/run_relational_nested_contract_v2.py
+          python -m py_compile experiments/oacr_m2/verify_m2_v2_artifact.py
+
+      - name: Run M2-R v2
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_m2_v2/r
+          python experiments/oacr_m2/run_relational_nested_contract_v2.py             --raw_json artifacts/r1/wikidata_p279_raw.json             --out results/oacr_m2_v2/r/oacr_m2_r_v2.json
+          sha256sum results/oacr_m2_v2/r/oacr_m2_r_v2.json             | tee results/oacr_m2_v2/r/oacr_m2_r_v2.sha256
+
+      - name: Independently verify artifact from embedded raw matrix
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_m2/verify_m2_v2_artifact.py             --artifact results/oacr_m2_v2/r/oacr_m2_r_v2.json             | tee results/oacr_m2_v2/r/oacr_m2_r_v2.verify.json
+
+      - name: Upload M2-R v2
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-m2-r-v2
+          path: |
+            results/oacr_m2_v2/r/oacr_m2_r_v2.json
+            results/oacr_m2_v2/r/oacr_m2_r_v2.sha256
+            results/oacr_m2_v2/r/oacr_m2_r_v2.verify.json
+          if-no-files-found: error
