@@ -1,0 +1,51 @@
+name: OACR R3 Shared Contract Relational
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  oacr-r3:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R3 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download frozen R1 carrier
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r1-v1
+          path: artifacts/r1
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36378905855
+
+      - name: Install exact runtime
+        run: python -m pip install "networkx==3.2.1"
+
+      - name: Run R3 shared-contract matrix
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r3/run_shared_contract_relational_v1.py
+          mkdir -p results/oacr_r3
+          python experiments/oacr_r3/run_shared_contract_relational_v1.py             --raw_json artifacts/r1/wikidata_p279_raw.json             --out results/oacr_r3/oacr_r3_v1.json             --actions 64
+          sha256sum results/oacr_r3/oacr_r3_v1.json | tee results/oacr_r3/oacr_r3_v1.sha256
+
+      - name: Upload R3
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r3-v1
+          path: |
+            results/oacr_r3/oacr_r3_v1.json
+            results/oacr_r3/oacr_r3_v1.sha256
+          if-no-files-found: error
