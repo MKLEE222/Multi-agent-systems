@@ -31,9 +31,9 @@ jobs:
       - name: Run OACR-R1 v1
         run: |
           mkdir -p results/oacr_r1
-          python experiments/oacr_r1/run_relational_retraction_v1.py             --out "$GITHUB_WORKSPACE/results/oacr_r1/oacr_r1_v1.json"             --raw_tsv "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.tsv"             --max_witnesses 64             --timeout 120             --retries 4
+          python experiments/oacr_r1/run_relational_retraction_v1.py             --out "$GITHUB_WORKSPACE/results/oacr_r1/oacr_r1_v1.json"             --raw_json "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.json"             --max_witnesses 64             --timeout 120             --retries 4
           sha256sum "$GITHUB_WORKSPACE/results/oacr_r1/oacr_r1_v1.json"             | tee "$GITHUB_WORKSPACE/results/oacr_r1/oacr_r1_v1.sha256"
-          sha256sum "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.tsv"             | tee "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.sha256"
+          sha256sum "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.json"             | tee "$GITHUB_WORKSPACE/results/oacr_r1/wikidata_p279_raw.sha256"
           python - <<'PY'
           import json
           x=json.load(open("results/oacr_r1/oacr_r1_v1.json"))
