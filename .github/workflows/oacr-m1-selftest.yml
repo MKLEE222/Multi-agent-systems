@@ -1,0 +1,25 @@
+name: OACR M1 Measurement Self Test
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  oacr-m1:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR M1 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Compile and test exact partition tooling
+        run: |
+          python -m py_compile experiments/common/operational_partition.py
+          cd experiments/common
+          python test_operational_partition.py
