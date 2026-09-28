@@ -58,7 +58,7 @@ def query_for(root: str, limit: int, offset: int) -> str:
     BIND(?mid AS ?parent)
   }}
 }}
-ORDER BY ?child ?parent
+ORDER BY STR(?child) STR(?parent)
 LIMIT {limit}
 OFFSET {offset}
 """
