@@ -89,9 +89,14 @@ def fetch_tsv(timeout: int, retries: int) -> bytes:
 def parse_edges(raw: bytes) -> List[Tuple[str, str]]:
     text = raw.decode("utf-8")
     reader = csv.DictReader(io.StringIO(text), delimiter="\t")
+    if not reader.fieldnames:
+        raise RuntimeError("WDQS TSV response has no header")
+    fields = {name.lstrip("?"): name for name in reader.fieldnames}
+    if "child" not in fields or "parent" not in fields:
+        raise RuntimeError(f"Unexpected WDQS TSV header: {reader.fieldnames!r}")
     edges = set()
     for row in reader:
-        c, p = qid(row["child"]), qid(row["parent"])
+        c, p = qid(row[fields["child"]]), qid(row[fields["parent"]])
         if c and p and c != p and c.startswith("Q") and p.startswith("Q"):
             edges.add((c, p))
     return sorted(edges)
