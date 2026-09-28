@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 import time
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -13,7 +14,10 @@ from typing import Dict, List, Tuple
 import networkx as nx
 import requests
 
-from experiments.common.operational_partition import (
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent / "common"))
+
+from operational_partition import (
     directional_information_gap,
     partition_from_signatures,
     refinement_relation,
