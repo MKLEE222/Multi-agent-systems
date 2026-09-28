@@ -1,0 +1,42 @@
+name: OACR G4 Natural Git Controls
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  oacr-g4:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR G4 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Clone frozen git/git
+        run: |
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+
+      - name: Run G4
+        run: |
+          python -m py_compile experiments/oacr_g4/run_natural_git_controls_v1.py
+          mkdir -p results/oacr_g4
+          python experiments/oacr_g4/run_natural_git_controls_v1.py             --repo external/git             --out results/oacr_g4/oacr_g4_v1.json             --max_commits 20000             --max_pairs 32
+          sha256sum results/oacr_g4/oacr_g4_v1.json | tee results/oacr_g4/oacr_g4_v1.sha256
+
+      - name: Upload G4
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-g4-v1
+          path: |
+            results/oacr_g4/oacr_g4_v1.json
+            results/oacr_g4/oacr_g4_v1.sha256
+          if-no-files-found: error
