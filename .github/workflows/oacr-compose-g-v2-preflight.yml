@@ -1,0 +1,86 @@
+name: OACR COMPOSE-G V2 Structural Preflight
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  preflight:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G V2 PREFLIGHT]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download accepted G5 held-out artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euxo pipefail
+          mkdir -p inputs/g5
+          gh run download 36385706858 \
+            --repo "${{ github.repository }}" \
+            --name oacr-g5-validation-v1 \
+            --dir inputs/g5
+          test -f inputs/g5/oacr_g5_validation_v1.json
+          test "$(sha256sum inputs/g5/oacr_g5_validation_v1.json | awk '{print $1}')" = "964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7"
+
+      - name: Clone pinned git/git
+        run: |
+          set -euxo pipefail
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+
+      - name: Compile preflight and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_g5/run_same_contract_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/run_depth2_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/preflight_depth2_git_v2.py
+          python -m py_compile experiments/oacr_compose_git/verify_preflight_depth2_git_v2.py
+
+      - name: Run structural preflight
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_compose_git_v2
+          python experiments/oacr_compose_git/preflight_depth2_git_v2.py \
+            --repo external/git \
+            --g5_json inputs/g5/oacr_g5_validation_v1.json \
+            --out results/oacr_compose_git_v2/preflight_v2.json \
+            | tee results/oacr_compose_git_v2/preflight_v2.log
+          sha256sum results/oacr_compose_git_v2/preflight_v2.json \
+            | tee results/oacr_compose_git_v2/preflight_v2.sha256
+
+      - name: Independently verify structural preflight
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_compose_git/verify_preflight_depth2_git_v2.py \
+            --repo external/git \
+            --g5_json inputs/g5/oacr_g5_validation_v1.json \
+            --preflight results/oacr_compose_git_v2/preflight_v2.json \
+            --out results/oacr_compose_git_v2/preflight_v2.verify.json
+
+      - name: Upload preflight
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g-v2-preflight
+          path: |
+            results/oacr_compose_git_v2/preflight_v2.json
+            results/oacr_compose_git_v2/preflight_v2.log
+            results/oacr_compose_git_v2/preflight_v2.sha256
+            results/oacr_compose_git_v2/preflight_v2.verify.json
+          if-no-files-found: error
