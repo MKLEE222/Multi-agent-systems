@@ -125,10 +125,25 @@ def main():
     if source_head != SOURCE_HEAD:
         raise RuntimeError(f"source head mismatch: {source_head}")
 
-    commits, discovery, validation, total_groups = natural_pair_banks(repo, 20000)
-    targets, target_scores = select_targets(repo, discovery, 12)
-    h1 = evaluate(repo, validation, targets)
-    rows = h1["pair_rows"]
+    if args.g5_json:
+        g5 = json.loads(Path(args.g5_json).read_text())
+        if g5.get("protocol") != "OACR_G5_SAME_CONTRACT_GIT_V1" or g5.get("split") != "validation":
+            raise RuntimeError("unexpected G5 artifact")
+        if g5["source"]["source_head"] != SOURCE_HEAD:
+            raise RuntimeError("G5 source head mismatch")
+        targets = [x["target"] for x in g5["action_selection"]["targets"]]
+        target_scores = g5["action_selection"]["targets"]
+        rows = g5["pair_rows"]
+        total_groups = g5["source"]["same_tree_groups_available"]
+        commits_count = g5["source"]["commits_enumerated"]
+        validation_count = g5["summary"]["pairs"]
+    else:
+        commits, discovery, validation, total_groups = natural_pair_banks(repo, 20000)
+        targets, target_scores = select_targets(repo, discovery, 12)
+        h1 = evaluate(repo, validation, targets)
+        rows = h1["pair_rows"]
+        commits_count = len(commits)
+        validation_count = len(validation)
 
     eligible = []
     for row in rows:
