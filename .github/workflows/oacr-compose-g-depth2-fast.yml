@@ -27,12 +27,12 @@ jobs:
 
       - name: Download accepted G5 held-out artifact
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euxo pipefail
           mkdir -p inputs/g5
           gh run download 36385706858 \
-            --repo "\${{ github.repository }}" \
+            --repo "${{ github.repository }}" \
             --name oacr-g5-validation-v1 \
             --dir inputs/g5
           test -f inputs/g5/oacr_g5_validation_v1.json
