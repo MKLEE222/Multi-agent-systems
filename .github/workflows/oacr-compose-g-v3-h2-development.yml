@@ -1,0 +1,118 @@
+name: OACR COMPOSE-G V3 H2 Endogenous Affordance Development
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  shard:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G V3 H2 DEVELOPMENT]'
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download parent H1 shard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euxo pipefail
+          mkdir -p inputs/h1
+          gh run download 36572270210 \
+            --repo "${{ github.repository }}" \
+            --name oacr-compose-g-v3-h1-shard-${{ matrix.shard }} \
+            --dir inputs/h1
+          test -f inputs/h1/shard_${{ matrix.shard }}.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path("inputs/h1/shard_${{ matrix.shard }}.json").read_text())
+          assert p["protocol"] == "OACR_COMPOSE_G_V3_ENDOGENOUS_AFFORDANCE_DEVELOPMENT_H1_PREFLIGHT"
+          assert p["protocol_commit"] == "93dfec441e1cf7927aa22771988c284d68b2ff26"
+          assert p["summary"]["H2_outcomes_executed"] == 0
+          PY
+
+      - name: Clone pinned git/git
+        run: |
+          set -euxo pipefail
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+
+      - name: Compile developmental H2 runner
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_g5/run_same_contract_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/run_depth2_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/develop_endogenous_affordance_h2_v3.py
+
+      - name: Run developmental H2 shard
+        run: |
+          set -euxo pipefail
+          mkdir -p results/v3_h2/shard_${{ matrix.shard }}
+          python experiments/oacr_compose_git/develop_endogenous_affordance_h2_v3.py \
+            --repo external/git \
+            --h1_shard inputs/h1/shard_${{ matrix.shard }}.json \
+            --out results/v3_h2/shard_${{ matrix.shard }}/h2_shard_${{ matrix.shard }}.json \
+            | tee results/v3_h2/shard_${{ matrix.shard }}/h2_shard_${{ matrix.shard }}.log
+
+      - name: Upload H2 shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g-v3-h2-shard-${{ matrix.shard }}
+          path: results/v3_h2/shard_${{ matrix.shard }}
+          if-no-files-found: error
+
+  aggregate:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G V3 H2 DEVELOPMENT]'
+    needs: shard
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download H2 shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: oacr-compose-g-v3-h2-shard-*
+          path: inputs/h2
+
+      - name: Aggregate developmental H2 result
+        run: |
+          set -euxo pipefail
+          mkdir -p results/v3_h2_aggregate
+          python experiments/oacr_compose_git/aggregate_endogenous_affordance_h2_v3.py \
+            --input_dir inputs/h2 \
+            --out results/v3_h2_aggregate/aggregate.json \
+            | tee results/v3_h2_aggregate/aggregate.log
+          sha256sum results/v3_h2_aggregate/aggregate.json \
+            | tee results/v3_h2_aggregate/aggregate.sha256
+
+      - name: Upload aggregate
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g-v3-h2-aggregate
+          path: results/v3_h2_aggregate
+          if-no-files-found: error
