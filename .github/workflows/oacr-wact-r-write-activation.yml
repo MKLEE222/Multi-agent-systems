@@ -1,0 +1,107 @@
+name: OACR WACT-R WRITE Activation Flip
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  wact-r:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR WACT R RUN]'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - root: Q7397
+            slug: software
+            label: software
+          - root: Q34379
+            slug: musical-instrument
+            label: musical instrument
+          - root: Q349
+            slug: sport
+            label: sport
+          - root: Q28640
+            slug: profession
+            label: profession
+          - root: Q11862829
+            slug: academic-discipline
+            label: academic discipline
+          - root: Q9143
+            slug: programming-language
+            label: programming language
+          - root: Q2095
+            slug: food
+            label: food
+          - root: Q12136
+            slug: disease
+            label: disease
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+
+      - name: Compile producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/run_paginated_relational_redesign_v2.py
+          python -m py_compile experiments/oacr_wact/run_write_activation_flip_v1.py
+          python -m py_compile experiments/oacr_wact/verify_write_activation_flip_v1.py
+
+      - name: Run WACT-R ${{ matrix.root }}
+        run: |
+          set -euxo pipefail
+          mkdir -p "results/oacr_wact/${{ matrix.slug }}/pages"
+          python experiments/oacr_wact/run_write_activation_flip_v1.py \
+            --root "${{ matrix.root }}" \
+            --label "${{ matrix.label }}" \
+            --raw_dir "results/oacr_wact/${{ matrix.slug }}/pages" \
+            --combined_json "results/oacr_wact/${{ matrix.slug }}/combined.json" \
+            --out "results/oacr_wact/${{ matrix.slug }}/result.json" \
+            --page_size 2000 \
+            --max_pages 20 \
+            --timeout 120 \
+            --retries 4
+          sha256sum "results/oacr_wact/${{ matrix.slug }}/combined.json" \
+            | tee "results/oacr_wact/${{ matrix.slug }}/combined.sha256"
+          sha256sum "results/oacr_wact/${{ matrix.slug }}/result.json" \
+            | tee "results/oacr_wact/${{ matrix.slug }}/result.sha256"
+
+      - name: Independently verify WACT-R ${{ matrix.root }}
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_wact/verify_write_activation_flip_v1.py \
+            --combined_json "results/oacr_wact/${{ matrix.slug }}/combined.json" \
+            --result_json "results/oacr_wact/${{ matrix.slug }}/result.json" \
+            | tee "results/oacr_wact/${{ matrix.slug }}/verify.json"
+
+      - name: Upload WACT-R ${{ matrix.root }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-wact-r-${{ matrix.slug }}
+          path: |
+            results/oacr_wact/${{ matrix.slug }}/pages
+            results/oacr_wact/${{ matrix.slug }}/combined.json
+            results/oacr_wact/${{ matrix.slug }}/combined.sha256
+            results/oacr_wact/${{ matrix.slug }}/result.json
+            results/oacr_wact/${{ matrix.slug }}/result.sha256
+            results/oacr_wact/${{ matrix.slug }}/verify.json
+          if-no-files-found: error
