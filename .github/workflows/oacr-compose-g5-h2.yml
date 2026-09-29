@@ -1,0 +1,72 @@
+name: OACR COMPOSE-G G5 H2
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  compose-g5-h2:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G5 H2 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Compile implementation
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_compose_git/run_g5_h2_v1.py
+          python -m py_compile experiments/oacr_compose_git/verify_g5_h2_v1.py
+
+      - name: Recover accepted G5 validation artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/g5
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10954788549/zip > frozen/g5/g5.zip
+          unzip -q frozen/g5/g5.zip -d frozen/g5/artifact
+          test -f frozen/g5/artifact/oacr_g5_validation_v1.json
+          sha256sum frozen/g5/artifact/oacr_g5_validation_v1.json
+
+      - name: Clone frozen git/git
+        run: |
+          set -euxo pipefail
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+
+      - name: Execute prospective H2 producer
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_compose_g5_h2
+          python experiments/oacr_compose_git/run_g5_h2_v1.py \
+            --repo external/git \
+            --g5_validation_json frozen/g5/artifact/oacr_g5_validation_v1.json \
+            --out results/oacr_compose_g5_h2/producer.json
+          sha256sum results/oacr_compose_g5_h2/producer.json | tee results/oacr_compose_g5_h2/producer.sha256
+
+      - name: Independently re-execute H2 verifier
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_compose_git/verify_g5_h2_v1.py \
+            --repo external/git \
+            --g5_validation_json frozen/g5/artifact/oacr_g5_validation_v1.json \
+            --producer_json results/oacr_compose_g5_h2/producer.json \
+            --out results/oacr_compose_g5_h2/verifier.json
+          sha256sum results/oacr_compose_g5_h2/verifier.json | tee results/oacr_compose_g5_h2/verifier.sha256
+
+      - name: Upload COMPOSE-G H2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g5-h2-v1
+          path: results/oacr_compose_g5_h2/
+          if-no-files-found: error
