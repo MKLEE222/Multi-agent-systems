@@ -89,6 +89,7 @@ jobs:
         run: |
           set -euxo pipefail
           python experiments/oacr_wact/verify_write_activation_flip_v1.py \
+            --raw_dir "results/oacr_wact/${{ matrix.slug }}/pages" \
             --combined_json "results/oacr_wact/${{ matrix.slug }}/combined.json" \
             --result_json "results/oacr_wact/${{ matrix.slug }}/result.json" \
             | tee "results/oacr_wact/${{ matrix.slug }}/verify.json"
