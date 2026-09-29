@@ -55,10 +55,11 @@ jobs:
           test "$(git -C external/carrier rev-parse HEAD)" = "${{ matrix.head }}"
           git -C external/carrier commit-graph write --reachable || true
 
-      - name: Compile preflight
+      - name: Compile preflight and verifier
         run: |
           set -euxo pipefail
           python -m py_compile experiments/oacr_wact_git/preflight_wact_git_v1.py
+          python -m py_compile experiments/oacr_wact_git/verify_preflight_wact_git_v1.py
 
       - name: Run outcome-blind preflight
         run: |
@@ -73,6 +74,15 @@ jobs:
           sha256sum "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json" \
             | tee "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.sha256"
 
+      - name: Independently verify outcome-blind preflight
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_wact_git/verify_preflight_wact_git_v1.py \
+            --repo external/carrier \
+            --preflight "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json" \
+            --expected_head "${{ matrix.head }}" \
+            | tee "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.verify.json"
+
       - name: Upload preflight
         uses: actions/upload-artifact@v4
         with:
@@ -81,4 +91,5 @@ jobs:
             results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json
             results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.log
             results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.sha256
+            results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.verify.json
           if-no-files-found: error
