@@ -252,10 +252,10 @@ def main():
 
     summary = {
         "source_head": source_head,
-        "commits_enumerated": len(commits),
+        "commits_enumerated": commits_count,
         "same_tree_groups_available": total_groups,
         "registered_targets": len(targets),
-        "validation_pairs": len(validation),
+        "validation_pairs": validation_count,
         "H1_equivalent_pairs": sum(not r["required_separation"] for r in rows),
         "H1_equivalent_mergebase_diff_pairs": len(eligible),
         "selected_pairs": len(selected),
