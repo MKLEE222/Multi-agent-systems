@@ -1,0 +1,104 @@
+name: OACR R4 Organization Split Stage
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  produce:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R4 ORG CLEAN RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+      - name: Compile frozen producer
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/run_paginated_relational_redesign_v2.py
+      - name: Run frozen Q43229 producer
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_r4_org_clean/pages
+          python experiments/oacr_r4/run_paginated_relational_redesign_v2.py \
+            --root Q43229 \
+            --label "organization" \
+            --raw_dir results/oacr_r4_org_clean/pages \
+            --combined_json results/oacr_r4_org_clean/combined.json \
+            --out results/oacr_r4_org_clean/result.json \
+            --page_size 2000 \
+            --max_pages 20 \
+            --timeout 120 \
+            --retries 4
+          sha256sum results/oacr_r4_org_clean/combined.json | tee results/oacr_r4_org_clean/combined.sha256
+          sha256sum results/oacr_r4_org_clean/result.json | tee results/oacr_r4_org_clean/result.sha256
+      - name: Upload producer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-org-clean-producer
+          path: |
+            results/oacr_r4_org_clean/pages
+            results/oacr_r4_org_clean/combined.json
+            results/oacr_r4_org_clean/combined.sha256
+            results/oacr_r4_org_clean/result.json
+            results/oacr_r4_org_clean/result.sha256
+          if-no-files-found: error
+
+  verify:
+    needs: produce
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+      - name: Download producer artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r4-org-clean-producer
+          path: results/oacr_r4_org_clean
+      - name: Compile frozen verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2.py
+      - name: Independently verify Q43229
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_r4/verify_paginated_relational_redesign_v2.py \
+            --raw_dir results/oacr_r4_org_clean/pages \
+            --combined_json results/oacr_r4_org_clean/combined.json \
+            --result_json results/oacr_r4_org_clean/result.json \
+            | tee results/oacr_r4_org_clean/verify.json
+      - name: Upload verified artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-v2-organization-clean
+          path: |
+            results/oacr_r4_org_clean/pages
+            results/oacr_r4_org_clean/combined.json
+            results/oacr_r4_org_clean/combined.sha256
+            results/oacr_r4_org_clean/result.json
+            results/oacr_r4_org_clean/result.sha256
+            results/oacr_r4_org_clean/verify.json
+          if-no-files-found: error
