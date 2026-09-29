@@ -64,8 +64,13 @@ def main():
         raise RuntimeError("bank mismatch")
     if prod["protocol"]!="OACR_COMPOSE_G_G5_H2_V1":
         raise RuntimeError("producer protocol mismatch")
-    if g(repo,"rev-parse","HEAD").stdout.strip()!=bank["source"]["source_head"]:
-        raise RuntimeError("source head mismatch")
+    source_head=bank["source"]["source_head"]
+    # Engineering normalization only: producer leaves the detached checkout at
+    # the last replayed pair head.  The verifier must start from the frozen
+    # source repository state, not require the caller's checkout position.
+    reset(repo,source_head)
+    if g(repo,"rev-parse","HEAD").stdout.strip()!=source_head:
+        raise RuntimeError("failed to normalize verifier checkout to frozen source head")
 
     prod_by={(p["A"],p["B"]):p for p in prod["pairs"]}
     total=divs=divpairs=h1bad=0
