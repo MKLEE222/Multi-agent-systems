@@ -76,7 +76,7 @@ jobs:
           mkdir -p results/oacr_l2b_fold0_replay
           python experiments/oacr_l2b/replay_fold0_positive_v1.py \
             --repo external/GRACE \
-            --out results/oacr_l2b_fold0_replay/replay.json \
+            --out "$GITHUB_WORKSPACE/results/oacr_l2b_fold0_replay/replay.json" \
             --device cpu \
             | tee results/oacr_l2b_fold0_replay/replay.log
           sha256sum results/oacr_l2b_fold0_replay/replay.json \
