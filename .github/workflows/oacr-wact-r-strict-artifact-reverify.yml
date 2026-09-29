@@ -1,0 +1,88 @@
+name: OACR WACT-R Strict Artifact Reverify
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  reverify:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR WACT R STRICT REVERIFY]'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - slug: profession
+            artifact: oacr-wact-r-profession
+          - slug: software
+            artifact: oacr-wact-r-software
+          - slug: musical-instrument
+            artifact: oacr-wact-r-musical-instrument
+          - slug: sport
+            artifact: oacr-wact-r-sport
+          - slug: academic-discipline
+            artifact: oacr-wact-r-academic-discipline
+          - slug: programming-language
+            artifact: oacr-wact-r-programming-language
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact verifier runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1"
+
+      - name: Compile strict verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_wact/verify_write_activation_flip_v1.py
+
+      - name: Download original frozen WACT-R artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: results/reverify/${{ matrix.slug }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 36526302297
+
+      - name: Strictly reverify original artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p results/reverify_out/${{ matrix.slug }}
+          python experiments/oacr_wact/verify_write_activation_flip_v1.py \
+            --raw_dir results/reverify/${{ matrix.slug }}/pages \
+            --combined_json results/reverify/${{ matrix.slug }}/combined.json \
+            --result_json results/reverify/${{ matrix.slug }}/result.json \
+            | tee results/reverify_out/${{ matrix.slug }}/strict_verify.json
+
+      - name: Hash strict verification output
+        run: |
+          set -euxo pipefail
+          sha256sum results/reverify_out/${{ matrix.slug }}/strict_verify.json \
+            | tee results/reverify_out/${{ matrix.slug }}/strict_verify.sha256
+
+      - name: Upload strict verification record
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-wact-r-strict-reverify-${{ matrix.slug }}
+          path: |
+            results/reverify_out/${{ matrix.slug }}/strict_verify.json
+            results/reverify_out/${{ matrix.slug }}/strict_verify.sha256
+          if-no-files-found: error
