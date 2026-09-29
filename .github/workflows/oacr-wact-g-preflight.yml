@@ -1,0 +1,84 @@
+name: OACR WACT-G Outcome-Blind Preflight
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  preflight:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR WACT G PREFLIGHT]'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - source: python/cpython
+            slug: cpython
+            head: 333071231d3a46cccc32d7f44b99328c3299d0b1
+          - source: curl/curl
+            slug: curl
+            head: 657d7f18cf45b9191d9b8efcccd773cfa73b521a
+          - source: numpy/numpy
+            slug: numpy
+            head: 0fbafa8fce925c199df8375e20db2596e0e8e1ac
+          - source: openssl/openssl
+            slug: openssl
+            head: 1e369089f47c6c80a4d00c14cbee3a1300abe9da
+          - source: systemd/systemd
+            slug: systemd
+            head: 583679fe4924e0afbf4dffa861f8b7c6b7be87eb
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Clone frozen history without blobs
+        run: |
+          set -euxo pipefail
+          mkdir -p external
+          git init external/carrier
+          git -C external/carrier remote add origin "https://github.com/${{ matrix.source }}.git"
+          git -C external/carrier -c protocol.version=2 fetch --filter=blob:none --no-tags origin "${{ matrix.head }}"
+          git -C external/carrier checkout --detach FETCH_HEAD
+          test "$(git -C external/carrier rev-parse HEAD)" = "${{ matrix.head }}"
+          git -C external/carrier commit-graph write --reachable || true
+
+      - name: Compile preflight
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_wact_git/preflight_wact_git_v1.py
+
+      - name: Run outcome-blind preflight
+        run: |
+          set -euxo pipefail
+          mkdir -p "results/oacr_wact_git_preflight/${{ matrix.slug }}"
+          python experiments/oacr_wact_git/preflight_wact_git_v1.py \
+            --repo external/carrier \
+            --expected_head "${{ matrix.head }}" \
+            --source "${{ matrix.source }}" \
+            --out "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json" \
+            | tee "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.log"
+          sha256sum "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json" \
+            | tee "results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.sha256"
+
+      - name: Upload preflight
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-wact-g-preflight-${{ matrix.slug }}
+          path: |
+            results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.json
+            results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.log
+            results/oacr_wact_git_preflight/${{ matrix.slug }}/preflight.sha256
+          if-no-files-found: error
