@@ -154,3 +154,44 @@ jobs:
             results/oacr_compose_git_v2/preflight_v2.sha256
             results/oacr_compose_git_v2/preflight_v2.verify.json
           if-no-files-found: error
+
+
+  compose-sqec-bridge:
+    if: github.event_name == 'issues' && github.event.issue.title == '[OACR SQEC COMPOSE BRIDGE]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Clone pinned SQEC snapshot
+        run: |
+          set -euxo pipefail
+          git clone --quiet --no-tags https://github.com/MKLEE222/qualification_opportunity_compiler.git external/sqec
+          git -C external/sqec checkout --detach 1111368c37b8e00d04ade5456e3d59070465c3ff
+          test "$(git -C external/sqec rev-parse HEAD)" = "1111368c37b8e00d04ade5456e3d59070465c3ff"
+
+      - name: Reproduce controlled depth-2 bridge
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_compose_sqec/verify_sqec_depth2_bridge_v1.py
+          mkdir -p results/oacr_compose_sqec
+          python experiments/oacr_compose_sqec/verify_sqec_depth2_bridge_v1.py \
+            --sqec_core external/sqec/02_core \
+            --out results/oacr_compose_sqec/sqec_depth2_bridge_v1.json \
+            | tee results/oacr_compose_sqec/sqec_depth2_bridge_v1.log
+          sha256sum results/oacr_compose_sqec/sqec_depth2_bridge_v1.json \
+            | tee results/oacr_compose_sqec/sqec_depth2_bridge_v1.sha256
+
+      - name: Upload SQEC bridge
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-sqec-compose-depth2-bridge-v1
+          path: |
+            results/oacr_compose_sqec/sqec_depth2_bridge_v1.json
+            results/oacr_compose_sqec/sqec_depth2_bridge_v1.log
+            results/oacr_compose_sqec/sqec_depth2_bridge_v1.sha256
+          if-no-files-found: error
