@@ -101,6 +101,7 @@ A target is **composition-eligible** iff:
 - both merges return exit code 0;
 - neither side has unmerged paths;
 - both sides produce a valid index tree;
+- both sides enter a real merge-in-progress state (`MERGE_HEAD` exists), so a native merge commit can be materialized;
 - the two index trees are identical;
 - the complete original G5 H1 signatures are identical.
 
