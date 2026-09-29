@@ -1,0 +1,45 @@
+name: OACR COMPOSE SQEC Bridge
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  verify:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE SQEC BRIDGE RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Compile independent checker
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_compose/verify_sqec_retained_route_bridge_v1.py
+
+      - name: Verify retained-route COMPOSE witness
+        run: |
+          set -euxo pipefail
+          mkdir -p artifacts/oacr-compose-sqec-bridge
+          python experiments/oacr_compose/verify_sqec_retained_route_bridge_v1.py \
+            --out artifacts/oacr-compose-sqec-bridge/result.json \
+            | tee artifacts/oacr-compose-sqec-bridge/summary.json
+
+      - name: Upload verifier artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-sqec-bridge-v1
+          path: artifacts/oacr-compose-sqec-bridge
+          if-no-files-found: error
