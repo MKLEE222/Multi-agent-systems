@@ -211,22 +211,11 @@ They remain bridge candidates rather than COMPOSE evidence.
 1. **D1+ exists across exact relational, natural Git, and learned parameter state.**
 2. **D1= exists naturally in Git under a finite panel.**
 3. **D2= exists prospectively in GRACE L1b.**
-4. **Dynamic qualification / legality can be action-conditioned in SQEC and can matter for downstream policy/replay.**
-5. **Depth-1 representation closure and constructive redesign are already demonstrated in relational carriers.**
+4. **SQEC stochastic multistep legality retrospectively instantiates a controlled D1= -> D2+ representation failure:** initial full/projected legality interfaces agree for all registered first steps, but after shared `commit-task`, `observe-semantics` is illegal in the full object and remains executable in the legality-projected object; full replay incurs the registered 46/5 regret consequence. This is controlled mechanism evidence, not a prospective natural OACR result.\n5. **Depth-1 representation closure and constructive redesign are already demonstrated in relational carriers.**
 
 ### Not yet established
 
-The project currently has **no accepted clean witness** of:
-
-\[
-\boxed{
-D1= \rightarrow D2+
-}
-\]
-
-under the new qualified-continuation definition.
-
-It also has no accepted clean:
+The project now has a **retrospectively recognized controlled** witness of:\n\n\[\n\boxed{\nD1= \rightarrow D2+\n}\n\]\n\nin the SQEC multistep-legality construction. It does **not** yet have a prospectively registered natural/native cross-carrier D2+ result under the new OACR-COMPOSE framing.\n\nIt also has no accepted clean:
 
 \[
 \boxed{
