@@ -161,6 +161,29 @@ def main():
         a, b = row["A"], row["B"]
         verified_t1 = 0
         verified_seq = 0
+
+        expected_t1_set = []
+        for candidate_t1 in targets:
+            ca_probe = merge_probe(repo, a, candidate_t1)
+            cb_probe = merge_probe(repo, b, candidate_t1)
+            candidate_ok = (
+                ca_probe["exit_code"] == 0 and cb_probe["exit_code"] == 0
+                and not ca_probe["unmerged_paths"] and not cb_probe["unmerged_paths"]
+                and ca_probe["merge_in_progress"] and cb_probe["merge_in_progress"]
+                and ca_probe["index_tree"] is not None
+                and ca_probe["index_tree"] == cb_probe["index_tree"]
+                and ca_probe["signature"] == cb_probe["signature"]
+            )
+            if candidate_ok:
+                ca1 = materialize(repo, a, candidate_t1)
+                cb1 = materialize(repo, b, candidate_t1)
+                if ca1 and cb1 and ca1["tree"] == cb1["tree"]:
+                    expected_t1_set.append(candidate_t1)
+
+        observed_t1_set = [item["t1"] for item in row["materialized_t1"]]
+        if observed_t1_set != expected_t1_set:
+            failures.append(f"materializable_t1_set_mismatch:{a}:{b}")
+
         for item in row["materialized_t1"]:
             t1 = item["t1"]
             ma = merge_probe(repo, a, t1)
