@@ -52,7 +52,7 @@ Map each commit to its exact tree object ID.
 For every tree represented by at least two distinct commits:
 - sort commit IDs lexically;
 - take the first two as one natural same-tree pair.
-Sort pairs by tree ID.
+Sort pairs by tree ID. Freeze the first 256 same-tree pairs as the preflight pair bank; if fewer than 256 exist, freeze all available pairs.
 
 ### 3.2 Target pool
 
