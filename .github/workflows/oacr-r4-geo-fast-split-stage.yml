@@ -1,0 +1,105 @@
+name: OACR R4 Geographical Fast Split Stage
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  produce:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R4 GEO FAST RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+      - name: Compile fast producer and frozen verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/run_paginated_relational_redesign_v2_fast.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2.py
+      - name: Run fast frozen-semantics Q618123 producer
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_r4_geo_fast/pages
+          python experiments/oacr_r4/run_paginated_relational_redesign_v2_fast.py \
+            --root Q618123 \
+            --label "geographical feature" \
+            --raw_dir results/oacr_r4_geo_fast/pages \
+            --combined_json results/oacr_r4_geo_fast/combined.json \
+            --out results/oacr_r4_geo_fast/result.json \
+            --page_size 2000 \
+            --max_pages 20 \
+            --timeout 120 \
+            --retries 4
+          sha256sum results/oacr_r4_geo_fast/combined.json | tee results/oacr_r4_geo_fast/combined.sha256
+          sha256sum results/oacr_r4_geo_fast/result.json | tee results/oacr_r4_geo_fast/result.sha256
+      - name: Upload fast producer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-geo-fast-producer
+          path: |
+            results/oacr_r4_geo_fast/pages
+            results/oacr_r4_geo_fast/combined.json
+            results/oacr_r4_geo_fast/combined.sha256
+            results/oacr_r4_geo_fast/result.json
+            results/oacr_r4_geo_fast/result.sha256
+          if-no-files-found: error
+
+  verify:
+    needs: produce
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install exact runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1" "requests==2.32.5"
+      - name: Download fast producer artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-r4-geo-fast-producer
+          path: results/oacr_r4_geo_fast
+      - name: Compile frozen verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2.py
+      - name: Independently verify Q618123 with frozen verifier
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_r4/verify_paginated_relational_redesign_v2.py \
+            --raw_dir results/oacr_r4_geo_fast/pages \
+            --combined_json results/oacr_r4_geo_fast/combined.json \
+            --result_json results/oacr_r4_geo_fast/result.json \
+            | tee results/oacr_r4_geo_fast/verify.json
+      - name: Upload verified fast artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-v2-geographical-feature-fast-clean
+          path: |
+            results/oacr_r4_geo_fast/pages
+            results/oacr_r4_geo_fast/combined.json
+            results/oacr_r4_geo_fast/combined.sha256
+            results/oacr_r4_geo_fast/result.json
+            results/oacr_r4_geo_fast/result.sha256
+            results/oacr_r4_geo_fast/verify.json
+          if-no-files-found: error
