@@ -87,6 +87,7 @@ def main():
     repo = Path(args.repo).resolve()
     result = json.loads(Path(args.result).read_text())
 
+    fresh(repo, SOURCE_HEAD)
     if run(repo, "git", "rev-parse", "HEAD").stdout.strip() != SOURCE_HEAD:
         raise RuntimeError("source head mismatch")
 
