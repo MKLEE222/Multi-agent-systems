@@ -1,0 +1,74 @@
+name: OACR WACT-R Strict Reverify
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  reverify:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR WACT R STRICT REVERIFY]'
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        slug:
+          - profession
+          - software
+          - musical-instrument
+          - sport
+          - academic-discipline
+          - programming-language
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact verifier runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install "networkx==3.2.1"
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_wact/verify_write_activation_flip_v1.py
+
+      - name: Download original WACT-R artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: oacr-wact-r-${{ matrix.slug }}
+          path: reverify/${{ matrix.slug }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36526302297
+
+      - name: Strict independent reverify
+        run: |
+          set -euxo pipefail
+          BASE="$(dirname "$(find "reverify/${{ matrix.slug }}" -name result.json -print -quit)")"
+          test -n "$BASE"
+          test -d "$BASE/pages"
+          test -s "$BASE/combined.json"
+          test -s "$BASE/result.json"
+          python experiments/oacr_wact/verify_write_activation_flip_v1.py \
+            --raw_dir "$BASE/pages" \
+            --combined_json "$BASE/combined.json" \
+            --result_json "$BASE/result.json" \
+            | tee "$BASE/strict_reverify.json"
+
+      - name: Upload strict reverify record
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-wact-r-strict-reverify-${{ matrix.slug }}
+          path: reverify/${{ matrix.slug }}
+          if-no-files-found: error
