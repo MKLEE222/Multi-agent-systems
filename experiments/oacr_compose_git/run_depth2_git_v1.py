@@ -118,6 +118,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--g5_json")
     args = ap.parse_args()
     repo = Path(args.repo).resolve()
 
