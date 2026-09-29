@@ -336,6 +336,7 @@ def reconstruct_once(repo: Path, device: str):
 def main():
     a = args()
     repo = Path(a.repo).resolve()
+    out_path = Path(a.out).resolve()
     sys.path.insert(0, str(repo))
     os.chdir(repo)
 
@@ -382,7 +383,7 @@ def main():
         "separating_actions": separating,
     }
 
-    p = Path(a.out)
+    p = out_path
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(out, indent=2))
     print(json.dumps({
