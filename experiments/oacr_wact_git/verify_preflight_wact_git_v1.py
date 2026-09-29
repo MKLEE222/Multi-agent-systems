@@ -51,11 +51,16 @@ def evenly_spaced(items, k):
 
 def commit_tree_map(repo: Path, commits):
     out = {}
-    for c in commits:
-        tree = git(repo, "show", "-s", "--format=%T", c).stdout.strip()
-        if not tree:
-            raise RuntimeError(f"missing tree for commit {c}")
-        out[c] = tree
+    lines = git(
+        repo, "log", "--format=%H %T", "--max-count=30000", "HEAD"
+    ).stdout.splitlines()
+    for line in lines:
+        parts = line.split()
+        if len(parts) == 2:
+            out[parts[0]] = parts[1]
+    missing = [c for c in commits if c not in out]
+    if missing:
+        raise RuntimeError(f"missing tree mapping for {len(missing)} commits")
     return out
 
 
