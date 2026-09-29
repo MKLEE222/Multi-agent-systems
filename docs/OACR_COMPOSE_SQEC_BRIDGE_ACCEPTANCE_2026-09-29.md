@@ -148,6 +148,61 @@ This supplies a representation/interface corollary:
 
 The projection corollary is supporting evidence; the primary bridge witness is the same-semantics state pair above.
 
+
+
+## 5a. Exact representation-gap consequence
+
+On the two-state bank \(\{X,Y\}\), define the implemented depth-1 representation
+
+\[
+R_1(S)=\Sigma_1(S).
+\]
+
+Because the verified one-step signatures are exactly equal,
+
+\[
+R_1(X)=R_1(Y),
+\]
+
+and the registered H1 operational partition also has one block. Therefore:
+
+\[
+U_1(R_1)=0,
+\qquad
+E_1(R_1)=0.
+\]
+
+At depth 2, the shared sequence
+
+\[
+\text{commit-task}\rightarrow\text{observe-semantics}
+\]
+
+separates the two states, so the depth-2 operational partition contains two singleton blocks while \(R_1\) still contains one block.
+
+Under the uniform distribution on \(\{X,Y\}\):
+
+\[
+\boxed{
+U_2(R_1)=1\text{ bit},
+\qquad
+E_2(R_1)=0.
+}
+\]
+
+Thus this controlled witness gives an exact minimal representation-closure failure:
+
+\[
+\boxed{
+U_1=0
+\quad\text{but}\quad
+U_2>0.
+}
+\]
+
+Adding the hidden observation-route qualification coordinate separates \(X\) and \(Y\) and removes the depth-2 omission on this two-state micro-world. This is a mechanism witness, not a universal minimality claim.
+
+
 ## 6. Scientific interpretation
 
 Accepted:
