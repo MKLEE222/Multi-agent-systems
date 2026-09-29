@@ -1,0 +1,118 @@
+name: OACR COMPOSE-G V2 H2
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: "UTC"
+
+jobs:
+  h2:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G V2 H2 RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Download accepted G5 held-out artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euxo pipefail
+          mkdir -p inputs/g5
+          gh run download 36385706858 \
+            --repo "${{ github.repository }}" \
+            --name oacr-g5-validation-v1 \
+            --dir inputs/g5
+          test -f inputs/g5/oacr_g5_validation_v1.json
+          test "$(sha256sum inputs/g5/oacr_g5_validation_v1.json | awk '{print $1}')" = "964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7"
+
+      - name: Download verified COMPOSE-G v2 preflight
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euxo pipefail
+          mkdir -p inputs/preflight
+          gh run download 36569506953 \
+            --repo "${{ github.repository }}" \
+            --name oacr-compose-g-v2-preflight \
+            --dir inputs/preflight
+          test -f inputs/preflight/preflight_v2.json
+          test -f inputs/preflight/preflight_v2.verify.json
+
+      - name: Hard authorization gate before H2
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path("inputs/preflight/preflight_v2.json").read_text())
+          v = json.loads(Path("inputs/preflight/preflight_v2.verify.json").read_text())
+          assert p["protocol"] == "OACR_COMPOSE_G_V2_STRUCTURAL_PREFLIGHT"
+          assert p["summary"]["second_merge_outcomes_executed"] == 0
+          assert v["pass"] is True and v["failure_count"] == 0
+          assert v["second_merge_outcomes_executed"] == 0
+          assert p["summary"]["passes_H2_gate"] is True
+          print(json.dumps(p["summary"], indent=2))
+          PY
+
+      - name: Clone pinned git/git
+        run: |
+          set -euxo pipefail
+          git clone --quiet --filter=blob:none --no-tags https://github.com/git/git.git external/git
+          git -C external/git checkout --detach 34f06850c16c7f7ac822b1adc71354f11b0f2ca3
+          test "$(git -C external/git rev-parse HEAD)" = "34f06850c16c7f7ac822b1adc71354f11b0f2ca3"
+
+      - name: Compile H2 runner and independent verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_g5/run_same_contract_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/run_depth2_git_v1.py
+          python -m py_compile experiments/oacr_compose_git/run_depth2_git_v2.py
+          python -m py_compile experiments/oacr_compose_git/verify_depth2_git_v2.py
+
+      - name: Execute frozen H2 protocol
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_compose_git_v2_h2
+          python experiments/oacr_compose_git/run_depth2_git_v2.py \
+            --repo external/git \
+            --g5_json inputs/g5/oacr_g5_validation_v1.json \
+            --preflight inputs/preflight/preflight_v2.json \
+            --preflight_verify inputs/preflight/preflight_v2.verify.json \
+            --out results/oacr_compose_git_v2_h2/h2_v2.json \
+            | tee results/oacr_compose_git_v2_h2/h2_v2.log
+          sha256sum results/oacr_compose_git_v2_h2/h2_v2.json \
+            | tee results/oacr_compose_git_v2_h2/h2_v2.sha256
+
+      - name: Independently replay selected H2 sequences
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_compose_git/verify_depth2_git_v2.py \
+            --repo external/git \
+            --g5_json inputs/g5/oacr_g5_validation_v1.json \
+            --preflight inputs/preflight/preflight_v2.json \
+            --result results/oacr_compose_git_v2_h2/h2_v2.json \
+            --out results/oacr_compose_git_v2_h2/h2_v2.verify.json
+
+      - name: Upload H2 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g-v2-h2
+          path: |
+            results/oacr_compose_git_v2_h2/h2_v2.json
+            results/oacr_compose_git_v2_h2/h2_v2.log
+            results/oacr_compose_git_v2_h2/h2_v2.sha256
+            results/oacr_compose_git_v2_h2/h2_v2.verify.json
+          if-no-files-found: error
