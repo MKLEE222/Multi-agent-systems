@@ -147,3 +147,36 @@ The first two fast failures occurred before any H2 scientific outcome.
 The third fast failure occurred after H2 execution, so only post-outcome engineering repair is allowed afterward.
 
 No scientific parameter or selection rule has been changed after H2 execution.
+
+
+## 7. Final verified v1 disposition
+
+Final clean run:
+
+- `36565553671`;
+- artifact `oacr-compose-g-depth2-v1-fast`;
+- artifact ID `11032161050`;
+- artifact digest `sha256:129b8e7439a350c39627070b013229a1e211e1de498a0e12945ee3f1cc5a55c6`.
+
+Verified summary:
+
+- G5 validation pairs: 48;
+- accepted H1-equivalent pairs: 46;
+- H1-equivalent pairs with merge-base differences: 39;
+- selected v1 pairs: 16;
+- `H1_NOT_COMPOSABLE`: 16;
+- H2-separated: 0;
+- H2-equivalent: 0;
+- **H2 outcomes executed: 0**.
+
+Independent verifier:
+
+- checked H2 pairs: 0;
+- failure count: 0;
+- pass: true.
+
+Scientific classification:
+
+> **COMPOSE-G v1 is a verified construction/preflight underpower result, not a COMPOSE negative.**
+
+The v1 restriction requiring the first action itself to come from the current merge-base-difference coordinates prevented all selected natural pairs from materializing a shared real first merge. The permitted successor is an outcome-blind structural preflight that broadens only first-action construction while preserving the same source, pair bank, and frozen target panel.
