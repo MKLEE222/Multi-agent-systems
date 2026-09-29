@@ -1,0 +1,118 @@
+name: OACR L2b Fold Diverse Parameter FT H2
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  TOKENIZERS_PARALLELISM: "false"
+  WANDB_MODE: "disabled"
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+  TRANSFORMERS_CACHE: ${{ github.workspace }}/.cache/huggingface/transformers
+  HF_DATASETS_CACHE: ${{ github.workspace }}/.cache/huggingface/datasets
+  HF_HUB_DISABLE_XET: "1"
+  PYTHONPATH: ${{ github.workspace }}/external/GRACE:${{ github.workspace }}/external/GRACE/grace:${{ github.workspace }}/experiments/r1_grace_scotus:${{ github.workspace }}/experiments/common:${{ github.workspace }}/experiments/oacr_l2b
+  R1_SCOTUS_MODEL_DIR: ${{ github.workspace }}/assets/scotus-bert
+  R1_SCOTUS_TOKENIZER_DIR: ${{ github.workspace }}/assets/bert-base-cased
+  R1_SCOTUS_TEST_PARQUET: ${{ github.workspace }}/assets/grace-scotus/test.parquet
+
+jobs:
+  oacr-l2b:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR L2B RUN]'
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        fold: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 720
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: Thartvigsen/GRACE
+          ref: f674183f17a995d109e10ee6140d4c3e6d016115
+          path: external/GRACE
+
+      - name: Verify official GRACE commit
+        run: test "$(git -C external/GRACE rev-parse HEAD)" = "f674183f17a995d109e10ee6140d4c3e6d016115"
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.9"
+          cache: pip
+          cache-dependency-path: requirements-r1.txt
+
+      - name: Restore immutable carrier assets
+        id: carrier-cache
+        uses: actions/cache@v4
+        with:
+          path: assets
+          key: r1-scotus-carrier-assets-v2
+
+      - name: Require frozen carrier cache
+        if: steps.carrier-cache.outputs.cache-hit != 'true'
+        run: |
+          echo "Frozen SCOTUS carrier cache missing; refusing to bootstrap independently in L2b."
+          exit 1
+
+      - name: Install frozen runtime
+        run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.0.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements-r1.txt
+
+      - name: Compile L2b producer and verifier
+        run: |
+          set -euxo pipefail
+          cat assets/asset_manifest.json
+          test -s "$R1_SCOTUS_MODEL_DIR/config.json"
+          test -s "$R1_SCOTUS_TEST_PARQUET"
+          python -m py_compile experiments/oacr_l2b/run_fold_diverse_ft_h2_v1.py
+          python -m py_compile experiments/oacr_l2b/verify_fold_diverse_ft_h2_v1.py
+
+      - name: Run L2b fold ${{ matrix.fold }}
+        env:
+          PYTHONHASHSEED: "0"
+        run: |
+          set -euxo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}"
+          python experiments/oacr_l2b/run_fold_diverse_ft_h2_v1.py \
+            --repo external/GRACE \
+            --out "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.json" \
+            --fold ${{ matrix.fold }} \
+            --seed_edits 4 \
+            --seed_scan_limit 1024 \
+            --candidate_bank 512 \
+            --future_actions 3 \
+            --sentinel_reads 24 \
+            --max_states 6 \
+            --read_atol 1e-6 \
+            --read_rtol 1e-5 \
+            --device cpu
+          sha256sum "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.json" \
+            | tee "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.sha256"
+
+      - name: Verify L2b artifact ${{ matrix.fold }}
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_l2b/verify_fold_diverse_ft_h2_v1.py \
+            --artifact "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.json" \
+            | tee "$GITHUB_WORKSPACE/results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.verify.json"
+
+      - name: Upload L2b fold ${{ matrix.fold }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-l2b-fold-${{ matrix.fold }}
+          path: |
+            results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.json
+            results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.sha256
+            results/oacr_l2b/fold_${{ matrix.fold }}/oacr_l2b_fold_${{ matrix.fold }}.verify.json
+          if-no-files-found: error
