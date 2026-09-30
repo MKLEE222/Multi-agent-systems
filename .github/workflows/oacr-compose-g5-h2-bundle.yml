@@ -1,0 +1,133 @@
+name: OACR COMPOSE-G G5 H2 From Frozen Bundle
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  compose-g5-h2-bundle:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR COMPOSE G5 H2 BUNDLE RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Compile mapped producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_compose_git/run_g5_h2_v1.py
+          python -m py_compile experiments/oacr_compose_git/verify_g5_h2_v1.py
+
+      - name: Recover accepted original G5 validation artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/g5
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10954788549/zip > frozen/g5/g5.zip
+          unzip -q frozen/g5/g5.zip -d frozen/g5/original
+          test -f frozen/g5/original/oacr_g5_validation_v1.json
+          test "$(sha256sum frozen/g5/original/oacr_g5_validation_v1.json | awk '{print $1}')" = "964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7"
+
+      - name: Discover newest frozen carrier artifact
+        id: carrier
+        run: |
+          set -euxo pipefail
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=oacr-g5-executable-carrier-v1&per_page=100" > frozen/g5/carrier_artifacts.json
+          ARTIFACT_ID="$(python - <<'PY'
+          import json
+          d=json.load(open('frozen/g5/carrier_artifacts.json'))
+          xs=[x for x in d.get('artifacts',[]) if not x.get('expired')]
+          if not xs:
+              raise SystemExit('no nonexpired carrier artifact')
+          xs.sort(key=lambda x:x.get('created_at',''))
+          print(xs[-1]['id'])
+          PY
+          )"
+          echo "artifact_id=$ARTIFACT_ID" >> "$GITHUB_OUTPUT"
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${ARTIFACT_ID}/zip" > frozen/g5/carrier.zip
+          mkdir -p frozen/g5/carrier
+          unzip -q frozen/g5/carrier.zip -d frozen/g5/carrier
+
+      - name: Fail-closed validate carrier acceptance
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import hashlib, json, pathlib
+          p=pathlib.Path('frozen/g5/carrier')
+          report=json.load(open(p/'recovery_report.json'))
+          assert report['protocol']=='OACR_G5_CARRIER_RECOVERY_V1'
+          assert report['source_artifact_id']==10954788549
+          assert report['source_bank_sha256']=='964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7'
+          assert report['required_manifest_sha256']=='2f6289cc26d4d6c9c43891dcc9d8a8dbe7d09e431e6dd2dd4f254d37f4b39d8e'
+          h=report['h1_validation']
+          assert h['cells_expected']==1152
+          assert h['cells_replayed']==1152
+          assert h['complete'] is True
+          assert h['mismatch_count']==0
+          assert h['accepted'] is True
+          b=report['bundle']
+          assert b['created'] is True
+          bundle=p/'g5_executable_carrier.bundle'
+          mapping=p/'original_to_reconstructed.json'
+          assert bundle.is_file() and mapping.is_file()
+          got=hashlib.sha256(bundle.read_bytes()).hexdigest()
+          assert got==b['sha256']
+          print(json.dumps({'carrier_accepted':True,'bundle_sha256':got,'bundle_size':bundle.stat().st_size},indent=2))
+          PY
+
+      - name: Instantiate frozen executable carrier
+        run: |
+          set -euxo pipefail
+          mkdir -p external/git
+          git -C external/git init -q
+          git -C external/git config --local user.name "OACR COMPOSE"
+          git -C external/git config --local user.email "oacr-compose@example.invalid"
+          git -C external/git fetch -q "$GITHUB_WORKSPACE/frozen/g5/carrier/g5_executable_carrier.bundle"             'refs/oacr/g5/*:refs/oacr/g5/*'
+          python - <<'PY'
+          import json, subprocess
+          bank=json.load(open('frozen/g5/original/oacr_g5_validation_v1.json'))
+          mapping=json.load(open('frozen/g5/carrier/original_to_reconstructed.json'))
+          src=bank['source']['source_head']
+          ex=mapping.get(src,src)
+          subprocess.run(['git','-C','external/git','checkout','-q','--detach',ex],check=True)
+          print({'original_source_head':src,'execution_source_head':ex})
+          PY
+
+      - name: Execute mapped prospective H2 producer
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_compose_g5_h2_bundle
+          python experiments/oacr_compose_git/run_g5_h2_v1.py             --repo external/git             --g5_validation_json frozen/g5/original/oacr_g5_validation_v1.json             --mapping_json frozen/g5/carrier/original_to_reconstructed.json             --out results/oacr_compose_g5_h2_bundle/producer.json
+          sha256sum results/oacr_compose_g5_h2_bundle/producer.json             | tee results/oacr_compose_g5_h2_bundle/producer.sha256
+
+      - name: Independently replay mapped H2 matrix
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_compose_git/verify_g5_h2_v1.py             --repo external/git             --g5_validation_json frozen/g5/original/oacr_g5_validation_v1.json             --mapping_json frozen/g5/carrier/original_to_reconstructed.json             --producer_json results/oacr_compose_g5_h2_bundle/producer.json             --out results/oacr_compose_g5_h2_bundle/verifier.json
+          sha256sum results/oacr_compose_g5_h2_bundle/verifier.json             | tee results/oacr_compose_g5_h2_bundle/verifier.sha256
+
+      - name: Persist carrier identity
+        run: |
+          set -euxo pipefail
+          cp frozen/g5/carrier/recovery_report.json results/oacr_compose_g5_h2_bundle/carrier_recovery_report.json
+          cp frozen/g5/carrier/original_to_reconstructed.json results/oacr_compose_g5_h2_bundle/original_to_reconstructed.json
+          echo "${{ steps.carrier.outputs.artifact_id }}" > results/oacr_compose_g5_h2_bundle/carrier_artifact_id.txt
+
+      - name: Upload bundle-backed H2 acceptance artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-compose-g5-h2-bundle-v1
+          path: results/oacr_compose_g5_h2_bundle/
+          if-no-files-found: warn
