@@ -66,3 +66,32 @@ No scientific selection rule changed after the zero outcome was exposed.
 The producer zero is not accepted until an independent clean verifier recomputes the frozen matrix and agrees exactly.
 
 A clean rerun may reproduce the producer under the unchanged protocol solely to regenerate the artifact and execute the repaired verifier.
+
+
+## Second verifier engineering correction
+
+Clean rerun \`36592660033\` reproduced the producer output exactly, including the same producer SHA-256:
+
+\`08e42fec19f7ae9e39e1d5d0937ae0fa8cfa45dbf8f1fb3a2a8c3eeb4f500045\`.
+
+The verifier then advanced past source-head normalization but failed on its first native \`git merge --no-commit --no-ff\` because Git 2.55 required an explicit committer identity in the clean runner environment.
+
+This failure occurred before any independent H2 comparison.
+
+Engineering correction commit:
+
+\`7522889a3ae1347120161a59b62b41c43f7257b2\`.
+
+Correction:
+
+- set repository-local \`user.name\` and \`user.email\` to the same already-frozen deterministic identity used by the persisted merge construction.
+
+Again unchanged:
+
+- all scientific banks and action rules;
+- H1 gate;
+- H2 outcome contract;
+- divergence criterion;
+- producer code and exposed zero result.
+
+A further clean rerun is permitted solely to complete independent replay.
