@@ -271,7 +271,7 @@ def main():
         + [r["A"] for r in bank["pair_rows"]]
         + [r["B"] for r in bank["pair_rows"]]
     ))
-    if len(required) != 104:
+    if len(required) != 108:
         raise RuntimeError(f"required SHA count changed: {len(required)}")
 
     api = GitHubAPI(os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN"))
