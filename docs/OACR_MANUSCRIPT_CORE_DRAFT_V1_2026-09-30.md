@@ -224,6 +224,44 @@ E_\mu(R;\mathcal C)=0.
 
 This definition is deliberately symmetric. Evaluating only omission encourages the trivial solution of retaining complete internal state. Evaluating only compression risks collapsing distinctions that later operations require. The operational target is instead the contract-relative quotient itself.
 
+### Proposition 0 — exactness of the directional information gaps
+
+Let \(X_f\subset X\) be a finite registered state bank and let \(\mu\) have full support on \(X_f\). Let \(R\) and \(O_{\mathcal C}\) denote the random variables induced by the representation partition and operational partition on \(X_f\).
+
+Then:
+
+\[
+U_\mu(R;\mathcal C)=0
+\]
+
+if and only if \(O_{\mathcal C}\) is a deterministic function of \(R\) on \(X_f\), equivalently the representation partition is at least as fine as the operational partition.
+
+Likewise,
+
+\[
+E_\mu(R;\mathcal C)=0
+\]
+
+if and only if \(R\) is a deterministic function of \(O_{\mathcal C}\), equivalently the representation partition is no finer than the operational partition.
+
+Therefore, under full support,
+
+\[
+U_\mu(R;\mathcal C)=E_\mu(R;\mathcal C)=0
+\]
+
+if and only if the two partitions are identical on the registered bank:
+
+\[
+P_R=O_{\mathcal C}.
+\]
+
+In all finite-bank experiments in this paper, \(\mu\) is the empirical uniform distribution and therefore has full support.
+
+**Proof.** Conditional entropy \(H(Y\mid X)=0\) on a finite full-support space if and only if \(Y\) is a deterministic function of \(X\). Apply this once in each direction. Mutual functional determination is equivalent to equality of the induced equivalence classes. \(\square\)
+
+
+
 ---
 
 ## 2.3 Current state, operational state, and full identity
