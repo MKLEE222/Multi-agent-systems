@@ -14,6 +14,8 @@ from pathlib import Path
 
 PROTOCOL = "OACR_G5_CARRIER_RECOVERY_V1"
 SOURCE_ARTIFACT_ID = 10954788549
+SOURCE_BANK_SHA256 = "964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7"
+REQUIRED_MANIFEST_SHA256 = "2f6289cc26d4d6c9c43891dcc9d8a8dbe7d09e431e6dd2dd4f254d37f4b39d8e"
 MAX_RECOVERED_COMMITS = 5000
 FIXED_NAME = "OACR Carrier Recovery"
 FIXED_EMAIL = "oacr-carrier@example.invalid"
@@ -347,8 +349,15 @@ def main():
         + [r["A"] for r in bank["pair_rows"]]
         + [r["B"] for r in bank["pair_rows"]]
     ))
-    if len(required) != 108:
-        raise RuntimeError(f"required SHA count changed: {len(required)}")
+    bank_sha = sha256_file(bank_path)
+    if bank_sha != SOURCE_BANK_SHA256:
+        raise RuntimeError(f"accepted bank digest mismatch: {bank_sha}")
+    manifest_bytes = ("\n".join(required) + "\n").encode()
+    manifest_sha = hashlib.sha256(manifest_bytes).hexdigest()
+    if manifest_sha != REQUIRED_MANIFEST_SHA256:
+        raise RuntimeError(
+            f"required SHA manifest changed: count={len(required)} sha256={manifest_sha}"
+        )
 
     api = GitHubAPI(os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN"))
     stats = {
@@ -428,7 +437,8 @@ def main():
     report = {
         "protocol": PROTOCOL,
         "source_artifact_id": SOURCE_ARTIFACT_ID,
-        "source_bank_sha256": sha256_file(bank_path),
+        "source_bank_sha256": bank_sha,
+        "required_manifest_sha256": manifest_sha,
         "source_head": bank["source"]["source_head"],
         "stats": {**stats, "github_api_requests": api.requests},
         "required_original_commits": required,
