@@ -66,6 +66,57 @@ Use for:
 - representation languages evaluated by supported queries and transformations;
 - succinctness vs operational capability tradeoffs.
 
+
+## Repair / refinement neighbors
+
+### Clarke et al. — CEGAR
+
+Edmund M. Clarke, Orna Grumberg, Somesh Jha, Yuan Lu, Helmut Veith.  
+**Counterexample-Guided Abstraction Refinement.**  
+In *Computer Aided Verification — CAV 2000*, LNCS 1855, pp. 154–169, 2000.  
+DOI: \`10.1007/10722167_15\`.
+
+Use for:
+
+- the mature loop
+  \[
+  \text{abstract model}
+  \rightarrow
+  \text{spurious counterexample}
+  \rightarrow
+  \text{precision refinement}
+  \rightarrow
+  \text{reverification};
+  \]
+- the explicit boundary against claiming generic audit/refine/reverify structure as OACR novelty.
+
+OACR distinction to state:
+
+- target of intervention is the implemented persistent representation, not a verifier's abstract model;
+- both under- and over-refinement are audited;
+- native executor/contract remains fixed;
+- correction may add or remove representation distinctions.
+
+### Le Goues et al. — automated program repair
+
+Claire Le Goues, Michael Dewey-Vogt, Stephanie Forrest, Westley Weimer.  
+**A Systematic Study of Automated Program Repair: Fixing 55 out of 105 Bugs for $8 Each.**  
+In *34th International Conference on Software Engineering (ICSE 2012)*, pp. 3–13, 2012.  
+DOI: \`10.1109/ICSE.2012.6227211\`.
+
+Use for:
+
+- the mature specification/failure -> candidate modification -> execution/test-validation repair paradigm;
+- the boundary against presenting generic repair-and-test as the paper contribution.
+
+OACR distinction to state:
+
+- representation state is repaired rather than program code;
+- continuation contract and native executor remain unchanged;
+- repair is certificate-constrained by the registered contract;
+- same-size sham repair controls distinguish relevant structure from arbitrary added precision.
+
+
 ## Learned editing boundary
 
 ### Li & Chu — sequential knowledge attenuation
@@ -126,10 +177,14 @@ Related Work should distinguish:
    - knowledge compilation;
 3. **carrier literature**
    - model editing, version history, dynamic qualification;
-4. **OACR paper contribution**
+4. **repair/refinement neighbors**
+   - CEGAR;
+   - automated program repair;
+5. **OACR paper contribution**
    - implemented-representation audit under prospectively registered native mutation contracts;
    - directional under/over-refinement;
-   - same-contract causal discipline;
-   - audit-to-repair native replay in multiple substrates.
+   - certificate-constrained bidirectional representation correction;
+   - fixed native semantics with matched sham repair controls;
+   - independent native closure verification.
 
 Do not use any citation to imply that the predecessor is weaker than it actually is.
