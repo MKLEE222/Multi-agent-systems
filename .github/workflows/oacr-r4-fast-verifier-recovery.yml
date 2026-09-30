@@ -1,0 +1,112 @@
+name: OACR R4 Fast Verifier Recovery
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: UTC
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  building_regression:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R4 FAST VERIFIER RECOVERY]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: python -m pip install --disable-pip-version-check "networkx==3.2.1"
+
+      - name: Recover accepted building artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/building
+          gh api repos/MKLEE222/Multi-agent-systems/actions/artifacts/11003190307/zip > frozen/building.zip
+          unzip -q frozen/building.zip -d frozen/building
+          test -f frozen/building/result.json
+          test -f frozen/building/combined.json
+          test -d frozen/building/pages
+
+      - name: Compile fast independent verifier
+        run: |
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2_fast.py
+
+      - name: Regression against accepted building
+        run: |
+          set -euxo pipefail
+          mkdir -p results/building
+          python experiments/oacr_r4/verify_paginated_relational_redesign_v2_fast.py \
+            --raw_dir frozen/building/pages \
+            --combined_json frozen/building/combined.json \
+            --result_json frozen/building/result.json \
+            | tee results/building/verify.json
+          grep -q '"status": "PASS"' results/building/verify.json
+          sha256sum results/building/verify.json | tee results/building/verify.sha256
+
+      - name: Upload building regression
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-fast-verifier-building-regression
+          path: results/building/
+          if-no-files-found: error
+
+  organization_verify:
+    needs: building_regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: python -m pip install --disable-pip-version-check "networkx==3.2.1"
+
+      - name: Recover frozen organization producer artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/organization
+          gh api repos/MKLEE222/Multi-agent-systems/actions/artifacts/11087142257/zip > frozen/organization.zip
+          unzip -q frozen/organization.zip -d frozen/organization
+          test -f frozen/organization/result.json
+          test -f frozen/organization/combined.json
+          test -d frozen/organization/pages
+
+      - name: Compile unchanged fast verifier
+        run: |
+          python -m py_compile experiments/common/operational_partition.py
+          python -m py_compile experiments/oacr_r4/verify_paginated_relational_redesign_v2_fast.py
+
+      - name: Independently verify Q43229
+        run: |
+          set -euxo pipefail
+          mkdir -p results/organization
+          python experiments/oacr_r4/verify_paginated_relational_redesign_v2_fast.py \
+            --raw_dir frozen/organization/pages \
+            --combined_json frozen/organization/combined.json \
+            --result_json frozen/organization/result.json \
+            | tee results/organization/verify.json
+          grep -q '"status": "PASS"' results/organization/verify.json
+          sha256sum results/organization/verify.json | tee results/organization/verify.sha256
+
+      - name: Upload organization verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-v2-organization-fast-verified
+          path: results/organization/
+          if-no-files-found: error
