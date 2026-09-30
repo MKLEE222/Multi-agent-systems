@@ -22,7 +22,11 @@ This document is the sole acceptance gate for further OACR development. New work
 - **I5: PASS.** On frozen R4, an outcome-oracle constructor and the contract-predictive constructor both achieve U=E=0 with 22 retained records, while a same-cost structurally inactive sham also uses 22 records and 23 representation blocks but yields U=E=0.7556880439. Independent CI run 36734635683 verified the full reconstruction with error_count=0.
 
 ### Natural Evidence Gate
-- **N1-N5: NOT STARTED in this upgrade round.** No new learned-system experiment is authorized until the parallel task/head is clear and the theory object is stable.
+- **N1: STRUCTURAL PASS.** RippleEdits is frozen as the primary benchmark at commit 54f3b88..., with MQuAKE-CF-3k-v2 frozen as a secondary confirmation source.
+- **N2: STRUCTURAL PASS.** The six RippleEdits criterion families define the shared continuation schema; constructor-visible condition prompts are separated from verification-only held-out test prompts.
+- **N3: MANIFEST PASS / execution pending.** A deterministic 128-unit development bank and 512-unit evaluation bank are frozen with zero overlap. The evaluation bank contains 4,212 held-out future prompts across 27 edit relations.
+- **N4: OPEN.** GRACE adaptor representation repair and same-cost sham are specified but not yet executed.
+- **N5: GOVERNANCE FROZEN / outcome pending.** Evaluation-tuned rescue is prohibited; a frozen negative repair result will be retained as a boundary.
 
 ### Frozen-theory audits completed
 - R4: the contract-coverage formula matches **64/64 singleton**, **2016/2016 pair**, and **64/64 leave-one-out** registered subcontract results.
