@@ -282,11 +282,73 @@ def validate_structure(carrier_repo: Path, bank: dict, mapping: dict):
     }
 
 
-def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
-    mod = load_module(
-        repo_root / "experiments/oacr_g5/run_same_contract_git_v1.py",
-        "oacr_g5_original",
+def execute_merge_binary_safe(repo: Path, head: str, target: str):
+    """Exact G5 payload contract with raw-byte hashing for git diff output.
+
+    Historical G5 used text=True and then sha256(diff.encode()). For every
+    UTF-8-decodable diff this is byte-identical to hashing raw stdout. Raw-byte
+    hashing additionally permits replay of paths/content containing non-UTF-8
+    bytes without changing the registered payload fields or signature schema.
+    """
+    def raw_git(*args: str, check: bool = True):
+        env={**os.environ, "GIT_CONFIG_NOSYSTEM":"1"}
+        p=subprocess.run(
+            ["git", *args],
+            cwd=repo,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            env=env,
+        )
+        if check and p.returncode != 0:
+            raise RuntimeError(
+                f"command failed ({p.returncode}): git {' '.join(args)}\n"
+                + p.stdout.decode("utf-8", "replace")
+            )
+        return p
+
+    # Fresh checkout using the recovery module's byte-safe wrapper.
+    git(repo, "merge", "--abort", check=False)
+    git(repo, "reset", "--hard", "-q", head)
+    git(repo, "clean", "-fdq")
+    git(repo, "checkout", "-q", "--detach", head)
+
+    status=raw_git("status","--porcelain").stdout.decode("utf-8","surrogateescape")
+    if status.strip():
+        raise RuntimeError(f"dirty checkout at {head}")
+
+    mp=raw_git("merge","--no-commit","--no-ff",target,check=False)
+    output=mp.stdout.decode("utf-8","surrogateescape")
+    up=raw_git("diff","--name-only","--diff-filter=U",check=False)
+    unmerged=sorted(
+        x for x in up.stdout.decode("utf-8","surrogateescape").splitlines() if x
     )
+    diff_bytes=raw_git("diff","--binary","--no-ext-diff","HEAD",check=False).stdout
+    delta_sha=hashlib.sha256(diff_bytes).hexdigest()
+    wt=raw_git("write-tree",check=False)
+    index_tree=wt.stdout.decode("ascii","strict").strip() if wt.returncode==0 else None
+    payload={
+        "exit_code":mp.returncode,
+        "already_up_to_date":"Already up to date." in output,
+        "merge_in_progress":(repo/".git"/"MERGE_HEAD").exists(),
+        "unmerged_paths":unmerged,
+        "index_tree":index_tree,
+        "tracked_delta_sha256":delta_sha,
+    }
+    sig=hashlib.sha256(
+        json.dumps(payload,sort_keys=True,separators=(",",":")).encode(
+            "utf-8","surrogateescape"
+        )
+    ).hexdigest()
+
+    raw_git("merge","--abort",check=False)
+    raw_git("reset","--hard","-q",head)
+    raw_git("clean","-fdq")
+    return {"signature":sig,"output":output,**payload}
+
+
+def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
+    # Keep repo_root argument for interface stability; replay uses the historical
+    # payload schema with a byte-safe executor defined above.
     targets = [x["target"] for x in bank["action_selection"]["targets"]]
     mismatch_count = 0
     mismatch_sample = []
@@ -299,7 +361,7 @@ def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
             mc = mapping[c]
             for ti, t in enumerate(targets):
                 mt = mapping[t]
-                observed = mod.execute_merge(carrier_repo, mc, mt)
+                observed = execute_merge_binary_safe(carrier_repo, mc, mt)
                 cells += 1
                 if cells % 96 == 0:
                     print(json.dumps({
