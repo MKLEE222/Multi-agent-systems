@@ -96,3 +96,60 @@ Local execution hashes from this audit:
 - result SHA256: 22836b591b9879b67bc537d0ce866d6191e0045efe2cb1c4cc2ac562b7462e8e.
 
 The repository version of the script may have formatting/comment cleanup and should receive a new canonical hash once a workflow-based verifier is added.
+
+
+## Independent CI verification
+
+Workflow:
+
+- name: OACR R4 Noncircular Leakage Verification;
+- successful run: 36734635683;
+- head commit: 2c4938dc376f1e96a8d09152b1522a78624d9d6f;
+- artifact ID: 11106427052;
+- artifact digest:
+  sha256:918a0e121d5923c28445cc6d582147f034d3b5070acf85b5644700b14bcd3d12.
+
+The independent verifier reconstructed the graph, contract-predictive active set, outcome-oracle set, same-cost inactive sham, representation partitions, and both directional information gaps.
+
+Verifier result:
+
+- verified: true;
+- error_count: 0;
+- oracle_equals_predictive: true;
+- predictive_equals_frozen_active_ids: true;
+- sham_overlap_with_predictive: 0.
+
+Recomputed outputs:
+
+\[
+A0_{\rm oracle}: U=E=0;
+\]
+
+\[
+A2_{\rm predictive}: U=E=0;
+\]
+
+\[
+A2_{\rm sham}: U=E=0.7556880438822081.
+\]
+
+All three use 22 retained records; all three induce 23 representation blocks.
+
+Canonical CI output hashes:
+
+- producer.json:
+  93531353e80cf4c70844e9cc673a41d49a1c736c461c3be5dedf76f8bb0afda9;
+- verifier.json:
+  00fc8ba6aacda65d45f899f2a739d7de1f15d9313fa1f6e1f62a5b75fd5c7bf9.
+
+The first CI attempt failed before scientific execution because the workflow passed a literal escaped repository variable to the GitHub artifact endpoint. Only workflow interpolation and runtime-version alignment were corrected; the scientific producer, verifier logic, and frozen result were not tuned in response to scientific outputs.
+
+### I5 verdict
+
+\[
+\boxed{\text{PASS}}
+\]
+
+This is an executable methodological leakage demonstration with independent verification.
+
+It remains retrospective with respect to the original R4-building discovery/acceptance and must not be described as a prospectively registered sham result.
