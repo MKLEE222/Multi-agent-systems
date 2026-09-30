@@ -4,6 +4,8 @@ Date: 2026-10-01
 
 Status: **FROZEN BEFORE ANY NEW NATURAL-LEARNED MODEL/EDITOR OUTCOME**
 
+Pre-outcome structural correction: the first N0 run revealed that the repository README example misspells the first criterion as `Relation_Specifity`, while the released JSON loader and `src/benchmark.py` use `Relation_Specificity`. This schema correction was made before any model/editor execution and changes no sampling, eligibility, split, authority, repair, or evaluation rule.
+
 Purpose: open the Natural Evidence Gate without rescuing or retuning the frozen COMPOSE-L recovery experiment.
 
 ## 1. Prior learned boundary
@@ -89,14 +91,14 @@ Therefore N0 cannot create model-outcome leakage into the later evaluation split
 
 The six frozen criterion names are:
 
-- Relation_Specifity;
+- Relation_Specificity;
 - Logical_Generalization;
 - Subject_Aliasing;
 - Compositionality_I;
 - Compositionality_II;
 - Forgetfulness.
 
-The spelling Relation_Specifity follows the released benchmark schema and is not corrected by OACR.
+The spelling `Relation_Specificity` follows the released benchmark JSON and `src/benchmark.py`. The README example contains the typo `Relation_Specifity`; OACR follows executable source/data rather than the example typo.
 
 For every candidate edit, N0 records only structural counts.
 
