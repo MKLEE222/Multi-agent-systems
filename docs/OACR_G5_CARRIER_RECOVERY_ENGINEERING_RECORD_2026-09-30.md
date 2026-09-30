@@ -81,3 +81,45 @@ Repair only:
 - carry those values into the structural/final reports.
 
 No reconstruction rule, structural criterion, H1 replay rule, or H2 scientific rule changed.
+
+
+## Third recovery run
+
+Run: \`36664072593\`.
+
+The run successfully completed:
+
+- accepted G5 artifact recovery;
+- full current \`git/git\` object-cache clone;
+- original-to-reconstructed commit mapping;
+- structural validation.
+
+It then entered the 1152-cell H1 native replay and failed inside the historical G5 helper before producing a signature comparison:
+
+\`UnicodeDecodeError: 'utf-8' codec can't decode byte ...\`
+
+The historical helper executed:
+
+\`git diff --binary --no-ext-diff HEAD\`
+
+through \`subprocess.run(..., text=True)\`, then computed:
+
+\`sha256(diff.encode())\`.
+
+A replay cell emitted non-UTF-8 diff bytes, so Python's text decoder raised before the registered \`tracked_delta_sha256\` or H1 signature could be computed.
+
+No H1 signature mismatch was observed before the exception.
+
+Engineering repair commit:
+
+\`3ebfb907eee70f2685486aa3196b9fbd884d3981\`.
+
+Repair:
+
+- reproduce the exact historical payload schema;
+- hash \`git diff --binary\` stdout as raw bytes;
+- decode only human-readable/status fields with surrogate-safe handling.
+
+For every historical UTF-8-decodable diff, raw-byte SHA-256 is identical to the historical \`sha256(diff.encode())\` computation. The repair therefore extends the executor to byte-arbitrary Git content without changing the registered signature fields, source bank, action panel, or H1 acceptance criterion.
+
+Carrier acceptance still requires 1152/1152 H1 cells and zero signature mismatches before bundle creation.
