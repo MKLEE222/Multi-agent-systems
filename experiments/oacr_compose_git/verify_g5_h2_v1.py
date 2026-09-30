@@ -64,6 +64,11 @@ def main():
         raise RuntimeError("bank mismatch")
     if prod["protocol"]!="OACR_COMPOSE_G_G5_H2_V1":
         raise RuntimeError("producer protocol mismatch")
+    # Engineering normalization only: make native merge invocations independent
+    # of runner-global Git identity.  These values are already frozen for the
+    # deterministic persisted merge commits in the protocol.
+    g(repo,"config","--local","user.name",FIXED_NAME)
+    g(repo,"config","--local","user.email",FIXED_EMAIL)
     source_head=bank["source"]["source_head"]
     # Engineering normalization only: producer leaves the detached checkout at
     # the last replayed pair head.  The verifier must start from the frozen
