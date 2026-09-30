@@ -1,0 +1,66 @@
+name: OACR G5 Executable Carrier Recovery
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  recover-g5-carrier:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR G5 CARRIER RECOVERY RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Compile recovery implementation
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_compose_git/recover_g5_carrier_v1.py
+          python -m py_compile experiments/oacr_compose_git/run_g5_h2_v1.py
+
+      - name: Recover accepted G5 validation artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/g5
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10954788549/zip > frozen/g5/g5.zip
+          unzip -q frozen/g5/g5.zip -d frozen/g5/artifact
+          test -f frozen/g5/artifact/oacr_g5_validation_v1.json
+          sha256sum frozen/g5/artifact/oacr_g5_validation_v1.json
+
+      - name: Clone current git/git object cache
+        run: |
+          set -euxo pipefail
+          git clone --quiet --no-tags https://github.com/git/git.git external/git
+          git -C external/git config --local user.name "OACR Carrier Recovery"
+          git -C external/git config --local user.email "oacr-carrier@example.invalid"
+          git -C external/git count-objects -vH
+
+      - name: Recover frozen executable carrier and validate all H1 cells
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_g5_carrier_recovery
+          python experiments/oacr_compose_git/recover_g5_carrier_v1.py             --repo external/git             --bank frozen/g5/artifact/oacr_g5_validation_v1.json             --repo_root "$GITHUB_WORKSPACE"             --out_dir results/oacr_g5_carrier_recovery
+          cat results/oacr_g5_carrier_recovery/recovery_report.json
+          test -s results/oacr_g5_carrier_recovery/g5_executable_carrier.bundle
+          git -C external/git bundle verify             "$GITHUB_WORKSPACE/results/oacr_g5_carrier_recovery/g5_executable_carrier.bundle"
+
+      - name: Upload executable G5 carrier
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-g5-executable-carrier-v1
+          path: results/oacr_g5_carrier_recovery/
+          if-no-files-found: error
+          compression-level: 0
