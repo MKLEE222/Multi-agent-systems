@@ -46,7 +46,7 @@ The required bank is the union of:
 - all validation B commits;
 - all 12 frozen targets.
 
-The current accepted artifact yields 104 unique required original commit SHAs.
+The current accepted artifact yields 108 unique required original commit SHAs.
 
 ## 4. Exact object recovery
 
