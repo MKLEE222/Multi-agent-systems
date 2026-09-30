@@ -284,8 +284,9 @@ def main():
     }
 
     mapping, meta = recover_commit_mapping(carrier, api, required, stats)
-    if set(mapping) != set(required):
-        raise RuntimeError("mapping does not cover required SHA set")
+    if not set(required).issubset(mapping):
+        missing = sorted(set(required) - set(mapping))
+        raise RuntimeError(f"mapping does not cover required SHA set: {missing[:20]}")
 
     # Dedicated archival refs.
     for orig in required:
