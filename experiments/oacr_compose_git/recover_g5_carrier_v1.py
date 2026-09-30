@@ -301,6 +301,12 @@ def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
                 mt = mapping[t]
                 observed = mod.execute_merge(carrier_repo, mc, mt)
                 cells += 1
+                if cells % 96 == 0:
+                    print(json.dumps({
+                        "phase": "h1_replay_progress",
+                        "cells_replayed": cells,
+                        "mismatches_so_far": mismatch_count,
+                    }), flush=True)
                 if observed["signature"] != expected[ti]:
                     mismatch_count += 1
                     if len(mismatch_sample) < 50:
@@ -395,6 +401,14 @@ def main():
     (out_dir / "structural_report.sha256").write_text(
         sha256_file(out_dir / "structural_report.json") + "  structural_report.json\n"
     )
+    print(json.dumps({
+        "phase": "structural_validation",
+        "tree_mismatches": structure["tree_mismatch_count"],
+        "ancestry_mismatches": structure["ancestry_mismatch_count"],
+        "mergebase_mismatches": structure["mergebase_mismatch_count"],
+        "missing_commit_objects": stats["missing_commit_objects"],
+        "synthetic_commits_created": stats["synthetic_commits_created"],
+    }), flush=True)
     structural_ok = (
         structure["tree_mismatch_count"] == 0
         and structure["ancestry_mismatch_count"] == 0
