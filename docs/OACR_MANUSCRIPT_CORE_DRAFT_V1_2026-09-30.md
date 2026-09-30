@@ -54,7 +54,7 @@ We call the resulting experimental program **Operational Adequacy of Computation
 1. register a native continuation contract independently of the result;
 2. audit an implemented representation for both under- and over-refinement;
 3. identify operation-relative distinctions under same-contract and outcome-blind controls;
-4. where possible, convert the audit into a representation transformation and validate the transformed representation by native replay.
+4. where possible, combine the audited deficit with a contract-derived repair certificate, transform the representation without changing native semantics, and accept the repair only after native continuation replay.
 
 Across exact relational, natural version-history, and learned parametric carriers, we find that present-state equality alone does not determine representational necessity. In exact relational carriers, currently redundant state distinctions split into two classes under a shared deletion contract: some are required by future operations, while others remain operationally irrelevant. Full identity therefore stores too much, while current closure stores too little.
 
@@ -406,6 +406,173 @@ Strong-preservation results in abstract interpretation already show that an abst
 Our contribution is instead operational and representational. We use registered **native transformation contracts** to audit already implemented computational representations in materially different carriers, quantify both omission and excess relative to the induced operational quotient, separate scientific negatives from construction/runtime failures under prospective controls, and use the resulting diagnosis to alter a representation whose behavior is then checked by native replay. The empirical unit is not an abstract transition system alone, but a concrete representation paired with the native operations it is expected to support.
 
 This distinction is important because the same internal difference can be necessary under one contract and irrelevant under another. Representation adequacy is therefore not treated as an intrinsic property of a state encoding. It is indexed by the continuation the representation is required to preserve.
+
+
+
+## 2.7 Certificate-constrained representation repair
+
+An adequacy audit and a representation repair are related but distinct objects.
+
+Let the audit operator return a directional deficit record
+
+\[
+\mathsf{Audit}_{\mathcal C,\mu}(R)
+=
+D
+=
+(
+U_\mu(R;\mathcal C),
+E_\mu(R;\mathcal C),
+\mathcal W_U,
+\mathcal W_E
+),
+\]
+
+where \(\mathcal W_U\) and \(\mathcal W_E\) denote registered under- and over-refinement witnesses when available.
+
+The audit does not by itself synthesize a repair. Instead, repair construction is constrained by a frozen information boundary
+
+\[
+\mathcal I_{\rm repair},
+\]
+
+which specifies exactly which carrier structure, contract metadata, static dependency information, and audit diagnostics may be used.
+
+A carrier-native repair certificate is
+
+\[
+\kappa
+\in
+\mathcal K(
+\mathcal C,
+D,
+\mathcal I_{\rm repair}
+).
+\]
+
+The representation intervention is then written
+
+\[
+\Phi_{\mathcal C,\kappa}:R\mapsto R'.
+\]
+
+This notation deliberately separates three stages:
+
+\[
+(R,\mathcal C)
+\xrightarrow{\rm audit}
+D,
+\]
+
+\[
+(\mathcal C,D,\mathcal I_{\rm repair})
+\xrightarrow{\rm certificate}
+\kappa,
+\]
+
+and
+
+\[
+(R,\kappa)
+\xrightarrow{\Phi}
+R'.
+\]
+
+A repair is accepted only after the same registered native continuation contract is replayed on \(R'\).
+
+### Repair obligations
+
+For the finite exact-repair setting used in the main constructive results, four obligations apply.
+
+**O1 — closure.**
+
+\[
+U_\mu(R';\mathcal C)=0.
+\]
+
+The repaired representation contains every distinction required by the registered continuation.
+
+**O2 — no excess.**
+
+When exact finite repair is claimed,
+
+\[
+E_\mu(R';\mathcal C)=0.
+\]
+
+If exactness is not achieved, the residual directional error must be reported rather than hidden behind the word "repair."
+
+**O3 — native-semantics invariance.**
+
+The concrete executor and registered continuation contract remain fixed:
+
+\[
+\mathcal C'=\mathcal C.
+\]
+
+Only the representation or the representation object consumed by a fixed interpreter may change.
+
+**O4 — frozen information boundary.**
+
+The repair constructor may use only information declared in
+
+\[
+\mathcal I_{\rm repair}.
+\]
+
+Held-out native outcomes prohibited by the protocol may not be inspected to choose \(\kappa\).
+
+These obligations distinguish representation correction from changing the task until the representation passes.
+
+### Bidirectional correction
+
+Repair is not synonymous with refinement.
+
+If
+
+\[
+R_{\rm current}
+\prec
+O_{\mathcal C}
+\prec
+R_{\rm full},
+\]
+
+then the same contract can induce two representation corrections:
+
+\[
+\Phi_{\mathcal C,\kappa}^{+}
+:
+R_{\rm current}
+\mapsto
+R',
+\]
+
+which adds missing distinctions, and
+
+\[
+\Phi_{\mathcal C,\kappa}^{-}
+:
+R_{\rm full}
+\mapsto
+R',
+\]
+
+which removes distinctions the contract does not justify.
+
+The strongest finite-bank result is therefore not merely "more precision":
+
+\[
+\boxed{
+\Phi_{\mathcal C,\kappa}^{+}(R_{\rm current})
+=
+\Phi_{\mathcal C,\kappa}^{-}(R_{\rm full})
+=
+O_{\mathcal C}.
+}
+\]
+
+We call this **bidirectional contract repair**.
 
 
 ---
@@ -1032,7 +1199,81 @@ This is the constructive step that separates OACR from a collision catalogue. Th
 
 ---
 
-## 5.6 Why full state is not the default solution
+
+## 5.6 Bidirectional contract repair on the fresh carrier
+
+The accepted R4-building artifact allows the same target representation to be reached from opposite representation errors.
+
+The frozen active-delta certificate contains exactly 22 augmented states. The remaining 249 augmented deltas are contract-inactive.
+
+Starting from the current-closure representation, no per-state delta identity is retained. The additive correction is
+
+\[
+\Phi_{\mathcal C,\kappa}^{+}(R_{\rm current})
+=
+R_{\rm gate},
+\]
+
+implemented by adding exactly the 22 contract-active per-state deltas:
+
+\[
+0
+\rightarrow
+22
+\text{ retained delta records}.
+\]
+
+Starting from full asserted identity, all 271 augmented deltas are retained. The subtractive correction is
+
+\[
+\Phi_{\mathcal C,\kappa}^{-}(R_{\rm full})
+=
+R_{\rm gate},
+\]
+
+implemented by removing the 249 contract-inactive deltas:
+
+\[
+271
+\rightarrow
+22
+\text{ retained delta records}.
+\]
+
+Both interventions therefore terminate at the same representation:
+
+\[
+\boxed{
+\Phi_{\mathcal C,\kappa}^{+}(R_{\rm current})
+=
+\Phi_{\mathcal C,\kappa}^{-}(R_{\rm full})
+=
+R_{\rm gate}
+=
+O_{\mathcal C}.
+}
+\]
+
+The common target has 23 blocks and satisfies
+
+\[
+U_\mu=E_\mu=0.
+\]
+
+The accepted original and compressed outcome matrices have the same SHA-256 identity, and all
+
+\[
+17{,}408
+\]
+
+registered native state-action cells replay with zero mismatch.
+
+The exact repair manifest is frozen independently of manuscript prose and identifies the 22 additive deltas, the 249-delta subtractive complement, the source artifact, and the registered state/action manifests.
+
+This bidirectional result is important for positioning. OACR does not assume that representation improvement means monotonically adding precision. The same continuation contract can require adding distinctions to a coarse representation and deleting distinctions from an over-specified one.
+
+
+## 5.7 Why full state is not the default solution
 
 One possible response to a continuation failure is to retain all internal state. That strategy guarantees that no internal distinction has been lost, but it answers a different question.
 
@@ -1066,7 +1307,7 @@ This intermediate representation is the empirical object of interest. It preserv
 
 ---
 
-## 5.7 Limits of the constructive result
+## 5.8 Limits of the constructive result
 
 The exactness demonstrated here is finite and contract-specific.
 
