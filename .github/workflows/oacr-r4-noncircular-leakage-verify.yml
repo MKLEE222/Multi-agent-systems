@@ -1,0 +1,69 @@
+name: OACR R4 Noncircular Leakage Verification
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR R4 NONCIRCULAR LEAKAGE VERIFY]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: \${{ github.token }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: python -m pip install --disable-pip-version-check networkx==3.5
+
+      - name: Compile producer and independent verifier
+        run: |
+          python -m py_compile experiments/oacr_identification/r4_noncircular_leakage_demo_v1.py
+          python -m py_compile experiments/oacr_identification/verify_r4_noncircular_leakage_demo_v1.py
+
+      - name: Recover frozen R4 artifact
+        run: |
+          set -euxo pipefail
+          mkdir -p frozen/r4
+          gh api repos/\${GITHUB_REPOSITORY}/actions/artifacts/11003190307/zip > frozen/r4/building.zip
+          unzip -q frozen/r4/building.zip -d frozen/r4/building
+          test -f frozen/r4/building/result.json
+          test -f frozen/r4/building/combined.json
+
+      - name: Reproduce leakage demonstration
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_r4_noncircular
+          python experiments/oacr_identification/r4_noncircular_leakage_demo_v1.py \
+            --artifact-dir frozen/r4/building \
+            --out results/oacr_r4_noncircular/producer.json
+
+      - name: Independently verify constructors and gaps
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_identification/verify_r4_noncircular_leakage_demo_v1.py \
+            --artifact-dir frozen/r4/building \
+            --producer-result results/oacr_r4_noncircular/producer.json \
+            --out results/oacr_r4_noncircular/verifier.json
+          sha256sum \
+            results/oacr_r4_noncircular/producer.json \
+            results/oacr_r4_noncircular/verifier.json \
+            | tee results/oacr_r4_noncircular/SHA256SUMS
+
+      - name: Upload verification artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-r4-noncircular-leakage-verify-v1
+          path: results/oacr_r4_noncircular/
+          if-no-files-found: error
