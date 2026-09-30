@@ -1,6 +1,6 @@
 # OACR Manuscript Core Draft v1
 
-**Working title:** *From Static Fidelity to Continuation Closure in Computational Representations*  
+**Working title:** *Native-Contract Adequacy Auditing and Bidirectional Repair of Persistent Computational Representations*  
 **Status:** manuscript prose draft; Sections 2 and 5 are intentionally written before the final Introduction and COMPOSE disposition  
 **Date:** 2026-09-30
 
@@ -72,13 +72,13 @@ and reproduces all
 
 registered native outcomes while retaining only 22 of 271 declared per-state deltas.
 
-We then ask when one-step adequacy remains adequate under composition. The answer is not "whenever the horizon becomes longer." In two exact relational deletion carriers, every distinction is either activated at depth one or remains inert under the entire frozen action universe. In a learned GRACE control, 224 current collisions remain equivalent through the complete registered depth-two panel. By contrast, a prospectively frozen dynamic-qualification family preserves the complete one-step interface yet produces eight depth-two mismatches when a common first transformation closes a later observation guard. Reattaching one preregistered canonical guard rule repairs the complete depth-two continuation matrix with zero mismatches under independent verification. This motivates a continuation-interface view in which operations may alter the semantics, qualification, or response of later operations.
+We then ask when one-step adequacy remains adequate under composition. The answer is not "whenever the horizon becomes longer." In two exact relational deletion carriers, every distinction is either activated at depth one or remains inert under the entire frozen action universe. In a learned GRACE control, 224 current collisions remain equivalent through the complete registered depth-two panel. By contrast, a fresh prospectively frozen dynamic-qualification family holds the transition skeleton, compiler, and native executor fixed while varying only an explicit continuation-representation object. Removing the route guard preserves the complete one-step interface but produces 12 depth-two mismatches. A one-rule contract-relevant representation repairs all 12 mismatches, whereas a same-size sham rule leaves all 12 intact. This motivates a continuation-interface view in which operations may alter the semantics, qualification, or response of later operations.
 
 The paper makes four contributions:
 
 1. **A native-contract adequacy audit for implemented representations.** We formalize and measure directional under- and over-refinement relative to a registered continuation contract, while explicitly inheriting behavioral-equivalence and strong-preservation theory.
 2. **Cross-carrier evidence that representational necessity is operation-relative.** Exact relational, natural version-history, and learned-state carriers provide positive and negative boundaries under same-contract native operations.
-3. **Constructive audit-to-repair results in two substrates.** A contract-derived structural gate reaches the exact registered operational quotient on relational carriers, while a prospectively frozen state-dependent guard repair restores complete depth-two continuation closure in a dynamic-qualification carrier; both survive independent native replay.
+3. **Certificate-constrained bidirectional representation repair.** On the relational carrier, the same contract-derived certificate adds 22 missing deltas to a coarse representation or removes 249 unjustified deltas from full identity, with both directions reaching the same exact 23-block operational quotient. In a fresh dynamic-qualification carrier, a fixed interpreter consumes matched representation objects: full and shared contract-relevant repairs close the registered depth-two continuation, while a same-size sham repair does not.
 4. **A bounded composition result.** Increasing action depth alone does not force new representational demand in the audited fixed-domain controls; delayed demand emerges when an earlier transformation changes the continuation interface of a later one.
 
 The scope is deliberately finite and contract-relative. We do not claim a universal minimal state representation, universal provenance necessity, or a new theory of behavioral equivalence. The target is narrower: determine what an implemented representation must preserve to keep supporting the transformations it is actually required to perform.
@@ -1471,58 +1471,128 @@ Its role is diagnostic:
 
 This is qualitatively different from merely accumulating more fixed-domain operations.
 
-## 6.5 Prospective second-substrate repair
+## 6.5 Fixed-interpreter matched representation repair
 
-We prospectively froze an eight-variant SQEC family with internal positive and negative controls.
+The first SQEC confirmation established delayed guard necessity and successful repair, but a stricter question remains: was the intervention genuinely a representation repair, or did it modify the transition semantics directly?
 
-The comparison contains three representations:
+We therefore froze a new 12-variant family before execution and separated the transition skeleton from an explicit continuation-representation object.
 
-- FULL native dynamic legality;
-- PROJECTED semantics with observation guards removed;
-- GUARD-REPAIRED semantics that add back one frozen canonical state-dependent guard rule.
+For every variant, the following remain fixed:
 
-The complete registered contract enumerates every event sequence of length one and two over four native events.
+- typed state model;
+- state-transition skeleton;
+- event alphabet;
+- complete sequence bank of lengths one and two;
+- one representation compiler;
+- the native executor
+  \[
+  \texttt{apply\_qualification\_event}.
+  \]
 
-Across all eight variants, FULL and PROJECTED are identical under the complete one-step contract:
+The skeleton itself contains no observation preconditions.
+
+Only an immutable representation object varies. The fixed compiler maps that representation into native event preconditions before execution.
+
+We compare five representation forms.
+
+**FULL** stores two separate route-guard rules, one for each observation outcome.
+
+**B0** stores no observation guard.
+
+**B1** restores the two separate rules.
+
+**B2** stores one shared canonical route guard applying to both observation outcomes.
+
+**B3** stores one same-size sham rule applying to both observations but allowing every status of an irrelevant task coordinate.
+
+Thus:
+
+\[
+cost(B2)=cost(B3)=1.
+\]
+
+Across the complete one-step contract, every baseline remains equivalent to FULL:
+
+\[
+mismatch_1(FULL,B_i)=0
+\]
+
+for all
+
+\[
+i\in\{0,1,2,3\}.
+\]
+
+At depth two, the preregistered outcomes are:
 
 \[
 \boxed{
-mismatch_1(FULL,PROJECTED)=0.
+mismatch_2(FULL,B0)=12,
 }
 \]
-
-At depth two, the projected representation fails exactly in the predeclared guard-closing control family, producing eight registered mismatches in total:
 
 \[
 \boxed{
-mismatch_2(FULL,PROJECTED)=8.
+mismatch_{\le2}(FULL,B1)=0,
 }
 \]
-
-The no-divergence controls produce no unexpected mismatch.
-
-The repair adds one canonical rule:
-
-\[
-G_{\rm obs}
-=
-(
-\texttt{s::observation-route},
-\{ACTION\_OPEN,SATISFIED\}
-).
-\]
-
-After recompiling that frozen guard into the projected event interface, the complete registered continuation matrix matches FULL exactly:
 
 \[
 \boxed{
-mismatch_{\le2}(FULL,GUARD\text{-}REPAIRED)=0.
+mismatch_{\le2}(FULL,B2)=0,
 }
 \]
 
-An independent verifier reconstructs all eight variants and recomputes every sequence signature, returning zero verifier mismatches.
+and:
 
-This supplies a second-substrate constructive confirmation of the OACR repair logic. The relational carrier repairs a state partition under native deletion; the qualification carrier repairs delayed continuation closure under a state-dependent legality rule.
+\[
+\boxed{
+mismatch_2(FULL,B3)=12.
+}
+\]
+
+The six preregistered delayed-guard positive variants account for the 12 B0/B3 mismatches; six no-divergence controls produce none.
+
+An independent verifier reconstructs all 12 variants, all five representation objects, all 20 registered sequences per variant, and every native signature. It reports zero verifier mismatches and zero producer/verifier matrix mismatches.
+
+The comparison isolates the representation-level cause.
+
+Adding arbitrary representation structure is insufficient:
+
+\[
+B3\not\equiv_{\le2}FULL.
+\]
+
+Adding the contract-relevant continuation coordinate is sufficient:
+
+\[
+B2\equiv_{\le2}FULL.
+\]
+
+Because B2 and B3 have equal stored-rule cardinality, the result cannot be explained by representation size alone.
+
+Together with the relational result, this gives the paper's constructive workflow:
+
+\[
+(R,\mathcal C)
+\xrightarrow{\rm audit}
+D
+\]
+
+\[
+(\mathcal C,D,\mathcal I_{\rm repair})
+\xrightarrow{\rm certificate}
+\kappa
+\]
+
+\[
+(R,\kappa)
+\xrightarrow{\Phi}
+R'
+\]
+
+followed by independent replay under the unchanged native contract.
+
 
 ## 6.6 Natural Git boundary
 
@@ -1705,7 +1775,63 @@ The COMPOSE question is representational: when a first transformation changes th
 
 The controlled SQEC carrier makes this mechanism explicit: deleting an event guard preserves the registered immediate interface but fails after a shared action changes the guarded coordinate. The fresh repair experiment asks whether restoring only the frozen state-dependent guard coordinate is sufficient to recover the complete registered depth-two continuation matrix.
 
-## 7.8 Positioning summary
+
+## 7.8 CEGAR and automated repair
+
+The surface structure
+
+\[
+\text{audit}
+\rightarrow
+\text{repair}
+\rightarrow
+\text{verification}
+\]
+
+is not novel.
+
+Counterexample-guided abstraction refinement iteratively analyzes spurious counterexamples, increases abstraction precision, and reruns verification. Automated program repair similarly modifies program artifacts in response to a failure/specification and validates candidate changes by execution or tests.
+
+OACR therefore does not claim novelty for a generic failure-refinement loop.
+
+The intervention target and acceptance object are different.
+
+First, the object changed by OACR is an implemented **persistent state representation**, not the verifier's internal abstract model and not program code.
+
+Second, the registered native operation contract and concrete executor remain fixed.
+
+Third, the adequacy error is directional:
+
+\[
+U_\mu(R;\mathcal C)
+\]
+
+captures missing distinctions, while
+
+\[
+E_\mu(R;\mathcal C)
+\]
+
+captures distinctions that the registered continuation does not justify.
+
+Consequently, correction is not monotone precision refinement. On the accepted R4 carrier,
+
+\[
+\Phi^+_{\mathcal C,\kappa}
+\]
+
+adds distinctions to the coarse current representation, while
+
+\[
+\Phi^-_{\mathcal C,\kappa}
+\]
+
+removes distinctions from full identity; both terminate at the same registered quotient.
+
+Finally, the dynamic-qualification experiment includes a same-size sham representation. The relevant one-rule repair closes the native continuation, while the irrelevant one-rule representation does not. The constructive claim is therefore about contract-relevant representation structure rather than arbitrary precision or generic patch-and-test.
+
+
+## 7.9 Positioning summary
 
 The paper's claim is intentionally narrower than its theoretical neighbors and broader than any one carrier literature.
 
@@ -1718,11 +1844,9 @@ It contributes an empirical and constructive program for **implemented persisten
 \rightarrow
 \text{directional adequacy audit}
 \rightarrow
-\text{operation-relative certificate}
+\text{certificate-constrained bidirectional repair}
 \rightarrow
-\text{representation intervention}
-\rightarrow
-\text{native replay}.
+\text{native closure verification}.
 \]
 
 The cross-carrier experiments test how far that program survives when the relevant continuation semantics are relational, historical, learned, or qualification-dependent.
@@ -1774,11 +1898,11 @@ R_{\rm full}.
 
 More importantly, the audit changes representation design. A contract-derived gate retains only currently redundant deltas whose redundancy can be broken by a registered deletion. On the prospectively frozen building carrier, the transform moves from one current block and 272 full-identity blocks to the exact 23-class operational quotient, reproduces all 17,408 native outcomes, and retains 22 of 271 declared deltas.
 
-The continuation view also clarifies what composition adds. Longer action sequences do not automatically expose more hidden state: the registered relational deletion carriers and learned GRACE control provide direct counterexamples. New representational demand can instead arise when a transformation changes the continuation interface governing later transformations. In a prospectively frozen dynamic-qualification family, removing a dormant observation guard produces no one-step mismatch but eight depth-two mismatches; reinstating one canonical state-dependent guard restores the complete registered depth-two matrix.
+The continuation view also clarifies what composition adds. Longer action sequences do not automatically expose more hidden state: the registered relational deletion carriers and learned GRACE control provide direct counterexamples. New representational demand can instead arise when a transformation changes the continuation interface governing later transformations. In a fresh prospectively frozen dynamic-qualification family, five representation forms are interpreted by the same compiler and native executor. Removing the route guard produces no one-step mismatch but 12 depth-two mismatches. A one-rule contract-relevant repair restores the complete matrix, while a same-size sham rule leaves all 12 mismatches intact.
 
 These results suggest a practical criterion for persistent computational representations:
 
 > **Preserve the distinctions required to keep the registered continuation closed, and no more than the contract can justify.**
 
-The criterion inherits its formal substrate from behavioral equivalence, strong preservation, and representation independence. OACR contributes the empirical and constructive workflow needed to apply that substrate to implemented state representations under native transformations: register the continuation contract, audit omission and excess, derive an operation-relative certificate, repair the representation where possible, and replay the native continuation.
+The criterion inherits its formal substrate from behavioral equivalence, strong preservation, and representation independence. OACR contributes the empirical and constructive workflow needed to apply that substrate to implemented state representations under native transformations: register the continuation contract, audit omission and excess, derive a certificate within a frozen information boundary, add or remove representation structure while leaving native semantics fixed, and accept the correction only after independent native closure verification.
 
