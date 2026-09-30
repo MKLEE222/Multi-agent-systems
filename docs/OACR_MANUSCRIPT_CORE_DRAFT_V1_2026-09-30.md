@@ -1047,6 +1047,253 @@ The result establishes a narrower but actionable principle:
 The COMPOSE experiments ask the next question: when the continuation interface itself changes under transformation, what additional distinctions are required to keep the representation closed?
 
 
+
+---
+
+# 6. When composition creates new representational demand
+
+## 6.1 Longer horizon is not the mechanism
+
+A natural hypothesis is that hidden distinctions become more likely to matter simply because a representation is exposed to longer operation sequences.
+
+The registered evidence rejects that explanation as a general account.
+
+In the developmental R3 relational deletion carrier, every redundant distinction has one of two registered-action cut depths:
+
+\[
+d_A(e)=1
+\]
+
+or
+
+\[
+d_A(e)=\infty.
+\]
+
+One hundred distinctions are activated by at least one single registered deletion; 171 remain redundant even after removing the entire frozen 64-action universe.
+
+The prospectively frozen R4-building carrier has the same qualitative structure:
+
+- 22 distinctions with \(d_A=1\);
+- 249 distinctions with \(d_A=\infty\);
+- no distinction with \(d_A=2\).
+
+Thus, in these carriers, composing registered deletions does not create a new layer of representational demand beyond WRITE.
+
+The learned GRACE L1b control gives a separate negative boundary. Across 224 current collision pairs, no registered separation appears at depth one or under the complete registered depth-two panel.
+
+Together these results motivate a stricter COMPOSE question:
+
+> What must change between the first and second transformation for a distinction that is irrelevant to every registered immediate continuation to become necessary later?
+
+## 6.2 Continuation interfaces
+
+We represent the carrier-specific continuation interface at state \(x\) as
+
+\[
+\Gamma_x(a).
+\]
+
+Depending on the carrier, \(\Gamma_x(a)\) may contain:
+
+- legality or qualification;
+- enabledness or materializability;
+- registered outcome semantics;
+- invariant obligations;
+- viability or recoverability;
+- update-response behavior.
+
+An operation acts on both the persistent state and the interface governing future operations:
+
+\[
+(x,\Gamma_x)
+\xrightarrow{a}
+(x',\Gamma_{x'}).
+\]
+
+The important distinction is therefore between:
+
+1. composing more operations from a fixed domain whose semantics do not change; and
+2. applying an operation that changes how later operations are qualified or interpreted.
+
+A representation may be exact for the first step while failing to carry enough information to update \(\Gamma\).
+
+## 6.3 Controlled delayed legality failure
+
+The existing SQEC multistep-legality audit provides a controlled example.
+
+FULL retains state-dependent observation preconditions.
+
+PROJECTED removes only those preconditions while preserving:
+
+- the root state;
+- action transitions;
+- observation transitions;
+- costs;
+- outcome probabilities;
+- horizon.
+
+At the root, the guarded observation route is open. FULL and PROJECTED therefore expose the same immediate registered event set, and every common first-step event has the same immediate transition semantics:
+
+\[
+\Gamma_1^{FULL}(x_0)
+=
+\Gamma_1^{PROJECTED}(x_0).
+\]
+
+Now execute the shared action
+
+\[
+a_1=\texttt{commit-task}.
+\]
+
+In both systems, the action closes the observation-route coordinate.
+
+The difference appears only when the later observation is considered. FULL retained the rule that the observation is legal only while the route is ACTION_OPEN or SATISFIED. PROJECTED omitted that rule.
+
+Hence:
+
+\[
+\Gamma_2^{FULL}(x_0)
+\neq
+\Gamma_2^{PROJECTED}(x_0).
+\]
+
+The omitted distinction is dormant under the immediate interface and becomes necessary only after the first transformation changes the guarded state coordinate.
+
+The original SQEC decision audit also supplies a consequential replay: the projected policy commits before observation, then encounters an illegal observation when replayed in the full system, producing the registered failure-loss consequence. We treat that result as retrospective controlled mechanism evidence rather than a prospective OACR discovery.
+
+## 6.4 Guard-latency interpretation
+
+The controlled example can be summarized by a simple condition.
+
+Suppose two representations agree on:
+
+- which registered first actions are enabled;
+- the immediate outcome of every registered first action.
+
+Let a common first action \(a_1\) take both systems to corresponding successor states.
+
+If a later action \(a_2\) has different qualification after that shared transition,
+
+\[
+g_F(T_F(x,a_1),a_2)
+\neq
+g_P(T_P(x,a_1),a_2),
+\]
+
+then one-step adequacy does not imply depth-two adequacy.
+
+The mathematical fact itself is elementary and is not claimed as a novel theorem.
+
+Its role is diagnostic:
+
+> a representation can preserve the present continuation interface while omitting the rule needed to update that interface after transformation.
+
+This is qualitatively different from merely accumulating more fixed-domain operations.
+
+## 6.5 Prospective second-substrate repair
+
+**Pending accepted run.**
+
+A fresh eight-variant SQEC family has been prospectively frozen with internal positive and negative controls.
+
+It compares:
+
+- FULL native dynamic legality;
+- PROJECTED semantics with observation guards removed;
+- GUARD-REPAIRED semantics that add back one frozen canonical state-dependent guard rule.
+
+The complete registered contract enumerates every event sequence of length one and two.
+
+Promotion requires:
+
+\[
+mismatch_1(FULL,PROJECTED)=0
+\]
+
+for all variants,
+
+delayed depth-two divergence only in the predeclared guard-closing controls, and
+
+\[
+mismatch_{\le2}(FULL,GUARD\text{-}REPAIRED)=0
+\]
+
+for the complete family.
+
+This experiment tests whether the audit-to-repair logic established in the relational carrier survives a qualification-bearing substrate.
+
+No result is inserted here until producer and independent verifier both pass.
+
+## 6.6 Natural Git boundary
+
+**Pending independent carrier acceptance for the depth-two result.**
+
+The G5 held-out validation bank contains 46 same-tree pairs that are equivalent under the complete frozen 12-target H1 merge panel.
+
+A prospectively frozen H2 producer persisted a common first merge and tested later merges only when:
+
+- the first-step operational signatures matched;
+- both sides had valid successor states;
+- the successor tracked trees matched.
+
+Across 176 eligible two-step sequences, the producer observed zero divergence and reproduced the original H1 signatures exactly.
+
+However, the original G5 artifact froze commit identifiers rather than a complete executable Git object closure. Independent replay therefore requires carrier reconstruction before the H2 zero can be promoted.
+
+Until that bundle-backed replay passes, the natural Git H2 result remains supporting but unaccepted.
+
+## 6.7 Learned recovery hysteresis
+
+**Pending prospective 8-fold disposition.**
+
+The learned experiment asks a stronger restoration question.
+
+Starting from the same frozen base model, a native forward edit is followed by a native counter-edit. A candidate recovered state is retained only when the complete frozen current task READ returns to the base relation while the target parameter state remains different.
+
+Only after the recovery-state bank is fixed are base and recovered states exposed to the same frozen future writes.
+
+The target positive is:
+
+\[
+R_{\rm now}(X_{\rm base})
+=
+R_{\rm now}(X_{\rm recovered})
+\]
+
+but
+
+\[
+R_{\rm now}(W_w(X_{\rm base}))
+\neq
+R_{\rm now}(W_w(X_{\rm recovered})).
+\]
+
+A headline learned result additionally requires diagnostic-logit recovery under the preregistered tolerance and fresh targeted replay.
+
+A well-powered zero is also accepted: it would show that present recovery plus parameter difference is not sufficient for delayed continuation divergence under the frozen learned contract.
+
+No outcome is inserted until the frozen aggregate disposition resolves.
+
+## 6.8 Composition conclusion
+
+The evidence supports a bounded mechanism claim rather than a general depth law.
+
+So far:
+
+- fixed-domain relational composition does not create delayed demand;
+- a learned fixed-panel control remains equivalent through depth two;
+- controlled dynamic qualification provides an exact delayed failure when a first action changes a later guard;
+- fresh repair and learned-recovery experiments test how far that mechanism generalizes.
+
+The appropriate paper-level statement is therefore:
+
+> **Increasing action depth does not by itself force additional representational distinctions. New demand can arise when transformations change the continuation interface that governs later transformations.**
+
+We do not claim that dynamic qualification is necessary for every possible COMPOSE effect.
+
+
 ---
 
 # 7. Related work and theory inheritance
