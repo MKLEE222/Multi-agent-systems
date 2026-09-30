@@ -753,3 +753,126 @@ Close that gap with:
 4. bidirectional R4 formulation.
 
 If these are completed, the paper identity becomes substantially harder to collapse into either strong-preservation refinement, CEGAR, or generic program repair.
+
+
+---
+
+## 13. Closure addendum — 2026-09-30
+
+**Cold-start acceptance status: CLOSED / PASS for mandatory Gates A–D.**
+
+Authoritative acceptance record:
+
+\`docs/OACR_AUDIT_TO_REPAIR_ACCEPTANCE_RECORD_2026-09-30.md\`
+
+### Gate A
+
+PASS.
+
+The manuscript now contains:
+
+- directional audit deficit \(D\);
+- repair certificate \(\kappa\);
+- repair information boundary \(\mathcal I_{\rm repair}\);
+- repair operator \(\Phi_{\mathcal C,\kappa}\);
+- O1–O4 repair obligations;
+- explicit additive/subtractive bidirectional correction.
+
+### Gate B
+
+PASS.
+
+Independent run:
+
+\`36680594535\`
+
+verified:
+
+\[
+0\rightarrow22
+\]
+
+additive delta repair and:
+
+\[
+271\rightarrow22
+\]
+
+subtractive repair by deleting 249 inactive deltas, both reaching the same 23-block target with:
+
+\[
+U_\mu=E_\mu=0
+\]
+
+and:
+
+\[
+17{,}408/17{,}408
+\]
+
+native replay cells exact.
+
+### Gate C
+
+PASS.
+
+Fresh SQEC v2 uses:
+
+- fixed transition skeleton;
+- fixed compiler;
+- fixed vendored native executor;
+- explicit baseline-varying \`ContinuationRepresentation\` only.
+
+Acceptance run:
+
+\`36680880190\`.
+
+### Gate D
+
+PASS.
+
+Matched baseline result:
+
+\[
+B0:\ H1=0,\ H2=12,\ cost=0
+\]
+
+\[
+B1:\ H1=0,\ H2=0,\ cost=2
+\]
+
+\[
+B2:\ H1=0,\ H2=0,\ cost=1
+\]
+
+\[
+B3:\ H1=0,\ H2=12,\ cost=1.
+\]
+
+Independent verifier:
+
+- verified = true;
+- matrix mismatch count = 0;
+- verifier mismatch count = 0.
+
+The equal-cost B2/B3 contrast establishes that arbitrary added representation structure is insufficient; the contract-relevant continuation coordinate is required.
+
+### Gate E
+
+Not required for A–D acceptance and remains optional.
+
+Do not claim generic repair synthesis.
+
+### Accepted paper identity
+
+\[
+\boxed{
+\textbf{native-contract adequacy audit}
+\rightarrow
+\textbf{certificate-constrained bidirectional representation repair}
+\rightarrow
+\textbf{native closure verification}
+}
+\]
+
+The causal/mechanistic identity gap identified by this cold-start review is therefore closed under its own mandatory acceptance standard.
