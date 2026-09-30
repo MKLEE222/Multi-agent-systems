@@ -21,7 +21,7 @@ All of those are either too narrow or substantially covered by mature neighborin
 
 The paper's stable identity is:
 
-> **Computational representations should be evaluated by whether they preserve the registered continuation they are required to support. Static/current fidelity can under-refine that continuation, full internal identity can over-refine it, and operation-derived distinctions can repair both errors while preserving native execution.**
+> **Native-contract adequacy auditing and certificate-constrained bidirectional repair of persistent computational representations. Computational representations should preserve the distinctions required by their registered continuation, but not distinctions the contract cannot justify; accepted repair changes representation structure while leaving native semantics fixed and is validated by independent native closure replay.**
 
 WRITE is the dominant first-order experimental layer.
 
@@ -126,9 +126,9 @@ Main evidence:
 
 Do not force all carriers to share the same semantic relation.
 
-### C3 — Constructive representation redesign
+### C3 — Certificate-constrained bidirectional representation repair
 
-This is the strongest already accepted constructive result.
+This is the strongest accepted constructive identity.
 
 R3:
 
@@ -164,9 +164,27 @@ Fresh R4-building:
 - 17,408/17,408 exact native replay;
 - declared delta records reduced by 91.88%.
 
-This should be presented as:
+Accepted bidirectional formulation:
 
-> **the audit changes representation design**, not merely diagnoses a collision.
+\[
+\Phi^+_{\mathcal C,\kappa}(R_{\rm current})
+=
+\Phi^-_{\mathcal C,\kappa}(R_{\rm full})
+=
+R_{\rm gate}
+=
+O_{\mathcal C}.
+\]
+
+On R4-building:
+
+- additive correction: 0→22 per-state deltas;
+- subtractive correction: 271→22 by removing 249 inactive deltas;
+- both reach the same 23-block target;
+- \(U_\mu=E_\mu=0\);
+- 17,408/17,408 native replay cells exact.
+
+The representation-repair identity is independently verified in run 36680594535.
 
 ### C4 — Continuation depth / COMPOSE mechanism contrast
 
@@ -194,7 +212,20 @@ Interpretation:
 
 > **action depth alone does not generate representational demand. A scientifically meaningful COMPOSE effect requires a mechanism by which earlier transformations alter later continuation semantics.**
 
-Prospective natural/learned evidence determines whether this becomes a headline contribution or remains a mechanism section.
+Fresh fixed-interpreter repair confirmation:
+
+- 12 variants;
+- one fixed transition skeleton, compiler, and native executor;
+- FULL/B0/B1/B2/B3 differ only in explicit continuation-representation objects;
+- B0: H1=0, H2=12;
+- B1 full restore: exact;
+- B2 one-rule contract-relevant repair: exact;
+- B3 equal-cost sham rule: H1=0, H2=12;
+- independent verifier mismatch count: 0.
+
+Thus the paper can claim representation-level causal repair under fixed semantics, not merely guard restoration.
+
+Prospective learned evidence now changes headline emphasis rather than the core repair identity.
 
 ---
 
@@ -633,6 +664,26 @@ Defense:
 - no universal carrier law;
 - explicit finite-contract boundaries.
 
+### Risk 7 — "This is just CEGAR / abstraction refinement"
+
+Defense:
+
+- concede the generic refine-and-reverify loop;
+- OACR repairs the deployed persistent representation, not the verifier's abstraction;
+- \(U_\mu/E_\mu\) make correction bidirectional rather than monotone precision addition;
+- native executor and contract remain fixed;
+- R4 verifies both additive and subtractive correction to the same quotient.
+
+### Risk 8 — "SQEC just adds the known guard back"
+
+Defense:
+
+- v2 separates fixed transition skeleton from explicit representation object;
+- one compiler and one native executor interpret every baseline;
+- B2 and B3 have equal representation cost;
+- only the contract-relevant B2 rule repairs H2;
+- independent verifier reconstructs all matrices.
+
 ---
 
 ## 12. Writing order
@@ -662,8 +713,11 @@ Do not freeze final title yet.
 ### Stronger
 **From Static Fidelity to Continuation Closure in Computational Representations**
 
-### Constructive emphasis
-**What Must a Representation Preserve to Keep Working? Operational Quotients and Contract-Gated Redesign**
+### Accepted identity emphasis
+**Native-Contract Adequacy Auditing and Bidirectional Repair of Persistent Computational Representations**
+
+### Constructive alternative
+**What Must a Representation Preserve to Keep Working? Contract-Relative Audit and Repair**
 
 Final title depends on whether COMPOSE becomes a headline result.
 
