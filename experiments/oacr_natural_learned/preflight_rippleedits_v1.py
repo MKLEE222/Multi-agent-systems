@@ -12,7 +12,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 CRITERIA = (
-    "Relation_Specifity",
+    "Relation_Specificity",
     "Logical_Generalization",
     "Subject_Aliasing",
     "Compositionality_I",
