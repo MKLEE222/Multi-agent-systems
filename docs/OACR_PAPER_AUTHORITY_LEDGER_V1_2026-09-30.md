@@ -225,6 +225,44 @@ Manuscript rule:
 - call it retrospective controlled mechanism evidence;
 - not a prospective natural OACR discovery.
 
+### SQEC prospective continuation repair
+
+Status: **ACCEPTED prospective second-substrate constructive confirmation**
+
+Authority:
+
+- run: 36666758877
+- artifact: oacr-sqec-vendored-continuation-repair-v1
+- artifact ID: 11076199541
+- artifact ZIP digest:
+  \`sha256:90c3abe986174eec1b183764bc2a01f7db9944d95b6e4b54f36364fb825417b4\`
+- producer JSON SHA256:
+  \`ed07b826465cfff7e29413637b9cf62b5a5864fffe6a398b41f01786126eb474\`
+- verifier JSON SHA256:
+  \`2ba322724934d1e1e094d07b575b451e2488fc32433eded9dcb305718b8caaf0\`
+
+Frozen family:
+
+- variants: 8
+- positive controls: 0/2/4/6
+- negative controls: 1/3/5/7
+- event alphabet: 4
+- complete sequence contract: all lengths 1 and 2
+
+Result:
+
+- PROJECTED H1 mismatches: 0
+- PROJECTED H2 mismatches: 8
+- GUARD-REPAIRED depth<=2 mismatches: 0
+- independent verifier mismatch count: 0
+- verifier: PASS
+
+Main-text use:
+
+- prospective dynamic-qualification COMPOSE positive;
+- second-substrate audit -> repair confirmation;
+- do not claim guard novelty or universal minimality.
+
 ### Learned recovery hysteresis
 
 Status: **PENDING prospective run**
