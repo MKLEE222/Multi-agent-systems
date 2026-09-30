@@ -17,8 +17,8 @@ This document is the sole acceptance gate for further OACR development. New work
 - **T5: OPEN.** AIR / strong preservation / CEGAR / Verifix / summary-repair source-level positioning remains to be completed before manuscript promotion.
 
 ### Identification Gate
-- **I1-I3: THEORY SPECIFIED, empirical promotion pending.** Non-anticipation is now defined as provenance/freeze separation: realized evaluation outcomes may not adapt the current constructor. It is not statistical independence from predictable outcomes.
-- **I4: PARTIAL.** Existing protocol devices are now unified under an authority/provenance framework; carrier-specific ledgers remain to be reconstructed.
+- **I1-I3: WORKING PASS; manuscript integration pending.** Non-anticipation is defined as provenance/freeze separation, the audit/constructor narrative is separated, and carrier-specific authority histories have been reconstructed for R4, SQEC, and Git G5. Realized evaluation outcomes may not adapt the current constructor; this is not statistical independence from predictable outcomes.
+- **I4: WORKING PASS; manuscript integration pending.** Same-contract evaluation, freeze-before-outcome, forbidden reads, fixed interpreters, producer/verifier separation, independent replay, matched sham controls, authority levels, and promotion/downgrade rules are unified in one provenance framework and carrier ledger.
 - **I5: PASS.** On frozen R4, an outcome-oracle constructor and the contract-predictive constructor both achieve U=E=0 with 22 retained records, while a same-cost structurally inactive sham also uses 22 records and 23 representation blocks but yields U=E=0.7556880439. Independent CI run 36734635683 verified the full reconstruction with error_count=0.
 
 ### Natural Evidence Gate
