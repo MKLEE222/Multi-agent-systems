@@ -49,3 +49,35 @@ Repairs:
 The producer now validates both the accepted JSON digest and exact required-SHA manifest digest rather than relying on a hand-counted cardinality.
 
 Scientific G5/H2 rules remain unchanged.
+
+
+## Second recovery run
+
+Run: \`36662958763\`.
+
+The run completed:
+
+- accepted artifact recovery;
+- current full \`git/git\` clone;
+- original-to-reconstructed commit mapping;
+- structural validation invocation.
+
+It then failed while constructing the structural report because the implementation referenced \`bank_sha\` and \`manifest_sha\` before initializing those variables in \`main\`.
+
+The failure occurred **before** the 1152-cell H1 replay at \`validate_h1(...)\`.
+
+Therefore the run did not expose a new H1 scientific result and did not establish carrier acceptance.
+
+An intermediate mapping artifact was uploaded only because the workflow's artifact-upload step was unconditional; it is not an accepted executable carrier.
+
+Engineering fix commit:
+
+\`f18d06c1fc5080321e903ab89b77427c68da7948\`.
+
+Repair only:
+
+- initialize and validate the accepted-bank SHA-256;
+- initialize and validate the exact required-SHA manifest SHA-256;
+- carry those values into the structural/final reports.
+
+No reconstruction rule, structural criterion, H1 replay rule, or H2 scientific rule changed.
