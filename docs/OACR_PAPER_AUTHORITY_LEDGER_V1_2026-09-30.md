@@ -85,7 +85,24 @@ Action anisotropy:
 
 Main-text use:
 - Figure 2 primary fresh example;
-- Table 2 constructive confirmation.
+- Table 2 constructive confirmation;
+- accepted bidirectional repair:
+  \
+  \[
+  \Phi^+_{\mathcal C,\kappa}(R_{\rm current})
+  =
+  \Phi^-_{\mathcal C,\kappa}(R_{\rm full})
+  =
+  R_{\rm gate}
+  =
+  O_{\mathcal C}.
+  \]
+- additive repair: 0→22 delta records;
+- subtractive repair: 271→22 by removing 249 inactive deltas;
+- independent Gate-B verifier run 36680594535;
+- artifact ID 11081722005;
+- verifier artifact digest: sha256:49e2aa93bbae11f798b2ae88e89d73bdabefca49c9a5c45759c2f1b60c68e988;
+- verifier mismatch count: 0.
 
 ## B. Learned first-order evidence
 
@@ -247,43 +264,76 @@ Manuscript rule:
 - call it retrospective controlled mechanism evidence;
 - not a prospective natural OACR discovery.
 
-### SQEC prospective continuation repair
+### SQEC fixed-interpreter matched representation repair
 
-Status: **ACCEPTED prospective second-substrate constructive confirmation**
+Status: **ACCEPTED prospective Gate-C/Gate-D confirmation**
 
 Authority:
 
-- run: 36666758877
-- artifact: oacr-sqec-vendored-continuation-repair-v1
-- artifact ID: 11076199541
+- protocol: docs/OACR_SQEC_FIXED_INTERPRETER_REPAIR_PROTOCOL_V2_2026-09-30.md
+- protocol commit: 3b030fed64a44e018d527568ec2ee55084958d91
+- run: 36680880190
+- artifact: oacr-sqec-fixed-interpreter-repair-v2
+- artifact ID: 11081444063
 - artifact ZIP digest:
-  \`sha256:90c3abe986174eec1b183764bc2a01f7db9944d95b6e4b54f36364fb825417b4\`
+  sha256:e3b7478923befdb6430f81b07248df04389438ba1eb71caa2793ee8bec2fed0d
 - producer JSON SHA256:
-  \`ed07b826465cfff7e29413637b9cf62b5a5864fffe6a398b41f01786126eb474\`
+  ece037172d4b67647f06800f893eafc39ed9d4e3424dc1e30c24f7c1c710b9ec
 - verifier JSON SHA256:
-  \`2ba322724934d1e1e094d07b575b451e2488fc32433eded9dcb305718b8caaf0\`
+  18b2ccabe042606ec2571cdb54d921540e1d69ee8592c7b572a6160b8f7cae9b
 
-Frozen family:
+Fixed architecture:
 
-- variants: 8
-- positive controls: 0/2/4/6
-- negative controls: 1/3/5/7
+- fresh variants: 12
+- positive controls: 0/2/4/6/8/10
+- negative controls: 1/3/5/7/9/11
 - event alphabet: 4
-- complete sequence contract: all lengths 1 and 2
+- complete sequence contract: 20 sequences/variant
+- one fixed transition skeleton/variant
+- one fixed representation compiler
+- one fixed native executor:
+  dynamic_qualification_frontier.apply_qualification_event
+- baseline-varying input: explicit ContinuationRepresentation only
 
-Result:
+Matched baselines:
 
-- PROJECTED H1 mismatches: 0
-- PROJECTED H2 mismatches: 8
-- GUARD-REPAIRED depth<=2 mismatches: 0
-- independent verifier mismatch count: 0
-- verifier: PASS
+\[
+B0:\quad H1=0,\ H2=12,\ cost=0
+\]
+
+\[
+B1:\quad H1=0,\ H2=0,\ cost=2
+\]
+
+\[
+B2:\quad H1=0,\ H2=0,\ cost=1
+\]
+
+\[
+B3:\quad H1=0,\ H2=12,\ cost=1
+\]
+
+Thus:
+
+\[
+cost(B2)=cost(B3)
+\]
+
+but only the contract-relevant B2 repair closes continuation.
+
+Independent verification:
+
+- verified: true
+- verifier mismatch count: 0
+- producer/verifier matrix mismatch count: 0
 
 Main-text use:
 
-- prospective dynamic-qualification COMPOSE positive;
-- second-substrate audit -> repair confirmation;
-- do not claim guard novelty or universal minimality.
+- representation-level causal repair under fixed semantics;
+- same-size sham control against arbitrary added precision;
+- second-substrate constructive confirmation;
+- do not claim generic repair synthesis or global minimality.
+
 
 ### Learned recovery hysteresis
 
@@ -332,7 +382,11 @@ Safe now:
 
 Safe now:
 
-> On exact relational carriers, a contract-derived representation can remove both forms of mismatch and reproduce every registered native outcome.
+> On the accepted relational carrier, a contract-derived certificate supports bidirectional repair: adding 22 missing deltas to the coarse representation or deleting 249 unjustified deltas from full identity reaches the same exact operational quotient with 17,408/17,408 native replay cells preserved.
+
+Safe now:
+
+> Under a fixed SQEC transition skeleton, compiler, and native executor, a one-rule contract-relevant representation closes all 12 delayed H2 mismatches while an equal-cost sham representation leaves all 12 intact.
 
 Safe now:
 
