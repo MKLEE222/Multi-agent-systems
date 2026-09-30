@@ -1045,3 +1045,139 @@ The result establishes a narrower but actionable principle:
 > representation mismatch can be converted into a contract-derived structural repair, and that repair can be validated by exhaustive native execution on a finite registered carrier.
 
 The COMPOSE experiments ask the next question: when the continuation interface itself changes under transformation, what additional distinctions are required to keep the representation closed?
+
+
+---
+
+# 7. Related work and theory inheritance
+
+## 7.1 Strong preservation and abstract interpretation
+
+The closest formal predecessor is strong preservation in abstract interpretation.
+
+Strong-preservation results characterize abstractions for which satisfaction of a chosen specification language is preserved exactly, and show how an abstract domain can be minimally refined until it becomes complete for the relevant logical or semantic operators. Behavioral equivalences such as bisimulation, simulation, and stuttering equivalence can be characterized through this lens.
+
+OACR therefore does not claim novelty for the existence of an operator-relative quotient, for minimal refinement as a mathematical problem, or for strong preservation itself.
+
+The difference lies in the empirical starting point and intervention target. OACR begins from an implemented representation already present in a persistent computational system and from a prospectively registered family of native mutations. The audit asks which distinctions that representation omits or unnecessarily preserves relative to the native continuation contract, then tests whether the diagnosis can be turned into a representation transformation that survives native execution.
+
+The constructive graph result should therefore be read as a carrier-level realization of an inherited preservation idea under prospective empirical controls, not as a new general refinement theorem.
+
+## 7.2 Representation independence
+
+Representation-independence results study when two implementations of an abstract data type remain indistinguishable to clients because an appropriate relation between their internal representations is preserved by the permitted operations.
+
+State-dependent representation independence further allows the representation relation to depend on mutable local state.
+
+These results are direct conceptual ancestors of OACR's operation-relative viewpoint. OACR does not introduce the idea that internal representation differences can be irrelevant when client-observable operations preserve an abstraction relation.
+
+Our question is complementary. Rather than proving contextual equivalence of two implementations under a fixed abstract interface, we audit the distinctions stored by a concrete persistent representation against the transformations that the system is expected to support. The empirical object includes both missing distinctions and unnecessary distinctions:
+
+\[
+U_\mu(R;\mathcal C)
+\quad\text{and}\quad
+E_\mu(R;\mathcal C).
+\]
+
+## 7.3 Knowledge compilation and transformation support
+
+Knowledge compilation compares representation languages by properties including succinctness and support for classes of queries and transformations.
+
+This establishes a mature precedent for judging representations by what operations they support rather than by syntax alone.
+
+OACR differs in level of analysis. The target is not primarily a representation language such as CNF, OBDD, or another compilation target, but a persistent state representation paired with native mutation semantics. The operation contract may itself expose historical, learned, or qualification-bearing distinctions that are invisible in the current representation.
+
+The constructive goal is correspondingly local: identify which distinctions must be added or removed from the implemented state representation to preserve the registered continuation.
+
+## 7.4 Behavioral equivalence, bisimulation, and state abstraction
+
+Automata theory, process semantics, coalgebra, contextual equivalence, predictive-state representations, causal-state constructions, and state abstraction all provide mature answers to variants of the question:
+
+> when may two states be treated as equivalent with respect to future behavior?
+
+We inherit that mathematical vocabulary.
+
+The OACR contribution is not a new equivalence definition. The contribution is the audited relationship among three concrete objects:
+
+\[
+R_{\rm implemented},
+\qquad
+O_{\mathcal C},
+\qquad
+R_{\rm full},
+\]
+
+together with experimental controls that prevent the evaluator from selecting operations post hoc to manufacture necessity.
+
+## 7.5 Model editing, sequential interference, and reversibility
+
+Model editing provides a non-symbolic persistent-state carrier in which native updates directly change learned parameters.
+
+Prior work already establishes that sequential edits can interfere, that knowledge can attenuate under repeated editing, and that edited models can exhibit collapse or locality degradation. More recent work explicitly studies behavioral reversibility under edit-then-revert procedures, including recovery of the edited fact, paraphrastic behavior, locality, and global model stability.
+
+OACR therefore does not claim novelty for:
+
+- sequential-edit interference;
+- optimizer/path dependence;
+- edit reversal;
+- behavioral recovery without exact parameter recovery.
+
+The learned continuation experiment asks a stricter representation-closure question.
+
+Condition on a recovered state satisfying a preregistered current-equivalence contract:
+
+\[
+R_{\rm now}(X_{\rm base})
+=
+R_{\rm now}(X_{\rm recovered}).
+\]
+
+Then expose both states to the same independently frozen future native update \(w\). A learned COMPOSE positive requires:
+
+\[
+R_{\rm now}(W_w(X_{\rm base}))
+\neq
+R_{\rm now}(W_w(X_{\rm recovered})).
+\]
+
+Thus the novelty target is not that rollback is imperfect, but that a representation sufficient to certify the recovered present may remain insufficient to predict future update response.
+
+## 7.6 Version control and history-sensitive state
+
+Version-control systems natively distinguish current content from ancestry and merge history. The fact that equal trees can have different future merge behavior is therefore not, by itself, a novel observation.
+
+Git serves a different role in this paper: it provides a natural native-operation carrier in which history can be tested under a frozen same-contract merge panel. The G5 result shows both directions needed by OACR: a small subset of same-tree histories require separation under the panel, while many distinct histories remain behaviorally equivalent.
+
+The paper therefore uses Git to demonstrate contract-relative historical relevance, not to claim that content and history are fundamentally distinct objects.
+
+## 7.7 Dynamic legality, qualification, and action availability
+
+Planning, access-control, typestate, session-type, capability, and transition-system literatures all contain mechanisms in which currently admissible operations depend on state.
+
+OACR does not claim novelty for state-dependent enabledness or legality.
+
+The COMPOSE question is representational: when a first transformation changes the continuation interface of later transformations, which distinction must the representation preserve so that the resulting dynamics remain closed?
+
+The controlled SQEC carrier makes this mechanism explicit: deleting an event guard preserves the registered immediate interface but fails after a shared action changes the guarded coordinate. The fresh repair experiment asks whether restoring only the frozen state-dependent guard coordinate is sufficient to recover the complete registered depth-two continuation matrix.
+
+## 7.8 Positioning summary
+
+The paper's claim is intentionally narrower than its theoretical neighbors and broader than any one carrier literature.
+
+It does not introduce behavioral equivalence, minimal abstraction, representation independence, transformation-aware representation languages, dynamic legality, or edit reversibility.
+
+It contributes an empirical and constructive program for **implemented persistent representations**:
+
+\[
+\text{native contract registration}
+\rightarrow
+\text{directional adequacy audit}
+\rightarrow
+\text{operation-relative certificate}
+\rightarrow
+\text{representation intervention}
+\rightarrow
+\text{native replay}.
+\]
+
+The cross-carrier experiments test how far that program survives when the relevant continuation semantics are relational, historical, learned, or qualification-dependent.
