@@ -125,21 +125,43 @@ Main-text use:
 
 ### WACT-R
 
-Status: **MAIN GATE PASSED; exact final root ledger must use latest verified counts**
+Status: **STRICT REVERIFY ACCEPTED**
 
-Established at minimum:
+Strict reverify run:
 
-- 5 INCLUDED roots in original prospective run
-- 16 witnesses/root
-- 80/80 original prospective witnesses PASS
-- strict verification had already passed at least 3 INCLUDED roots / 48 witnesses in the dated acceptance snapshot
-- programming-language root structurally excluded
+- run: 36552116448
+- all six strict jobs completed successfully
+
+Five INCLUDED roots each pass strict verification with 16/16 witnesses, 0 native causal failures, and 16 exact representation flips:
+
+- musical instrument — Q34379 — PASS_STRICT
+- profession — Q28640 — PASS_STRICT
+- software — Q7397 — PASS_STRICT
+- sport — Q349 — PASS_STRICT
+- academic discipline — Q11862829 — PASS_STRICT
+
+Aggregate accepted positive witnesses:
+
+[
+5\times16=80.
+]
+
+Thus:
+
+- strict positive witnesses: 80/80
+- aggregate native causal failures: 0
+- aggregate exact representation flips: 80
+
+Programming language — Q9143:
+
+- PASS_STRUCTURAL_EXCLUSION
+- exclusion reason: redundant_candidates_lt_64
 
 Manuscript rule:
 
-- do not write "80/80 strict pass" unless latest strict acceptance record confirms it;
-- main text can use the verified family result without enumerating every root;
-- full root ledger belongs in supplement/table after final acceptance refresh.
+- 80/80 strict pass is now safe for the five INCLUDED roots;
+- programming-language must be reported as a structural exclusion, not a negative witness family;
+- food/disease producer cancellations do not alter the strict accepted five-root ledger.
 
 ## D. Natural Git first-order evidence
 
