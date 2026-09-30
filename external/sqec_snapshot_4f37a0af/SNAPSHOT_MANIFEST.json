@@ -1,0 +1,47 @@
+{
+  "source_repository": "MKLEE222/qualification_opportunity_compiler",
+  "source_commit": "4f37a0af1c2cb44b2eb7eb1b187d96a2ebd34295",
+  "protocol_commit": "83091035685b8d11fc1b293051285835d9c1feb7",
+  "files": [
+    [
+      "02_core/qualification_route_stage_contract.py",
+      "4146da8a8f6228e9417c9df0d84c24a083a64791"
+    ],
+    [
+      "02_core/qualification_window_compiler.py",
+      "79ad06c9e0b552ea14f786e488e0b79f76fde7fe"
+    ],
+    [
+      "02_core/event_window_opportunity.py",
+      "5b3738f144642e4ea4d146b42950e424c2461186"
+    ],
+    [
+      "02_core/opportunity_circuit_baseline.py",
+      "7aac4782c0629087650a37e9de59bbbade42fba8"
+    ],
+    [
+      "02_core/dynamic_qualification_frontier.py",
+      "0ff2fb8e3d1f532998bceb673b1ab9ef1402b408"
+    ],
+    [
+      "02_core/multistep_observation_legality.py",
+      "fd965cb171d178806075ad0ce5292a87e09d4e08"
+    ],
+    [
+      "02_core/stochastic_multistep_legality.py",
+      "97612b3b82ddab6860b166fd656321b1106f0404"
+    ],
+    [
+      "02_core/oacr_sqec_continuation_repair_v1.py",
+      "891177069016ca02350c080a2a8d45497298b516"
+    ],
+    [
+      "02_core/verify_oacr_sqec_continuation_repair_v1.py",
+      "a995e373fdcf97111e3d39f21f668805a9aa47d1"
+    ],
+    [
+      "01_protocol/OACR_SQEC_CONTINUATION_REPAIR_PROTOCOL_V1_20260930.md",
+      "1e9b18e2b1e715d296948d1cb51fccbec9574679"
+    ]
+  ]
+}
