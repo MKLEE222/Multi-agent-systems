@@ -48,14 +48,28 @@ O_{\mathcal C}
 R_{\rm full}.
 \]
 
-Under the operational quotient, add the constructive arrow:
+Under the operational quotient, add the constructive pipeline:
 
 \[
-\mathcal C
-\rightarrow
-\text{certificate}
-\rightarrow
-R_{\rm gate}.
+(R,\mathcal C)
+\xrightarrow{\rm audit}
+D
+\xrightarrow{\rm certificate}
+\kappa
+\xrightarrow{\Phi}
+R'
+\xrightarrow{\rm native\ replay}
+\text{closure}.
+\]
+
+Show two arrows into the repaired target:
+
+\[
+R_{\rm current}
+\xrightarrow{\Phi^+}
+R'
+\xleftarrow{\Phi^-}
+R_{\rm full}.
 \]
 
 ### Required annotation
@@ -144,23 +158,31 @@ Secondary label:
 
 ### Bottom repair strip
 
-Show:
+Show both correction directions:
 
 \[
-271\text{ declared deltas}
-\rightarrow
-22\text{ retained deltas}
+R_{\rm current}:
+0\rightarrow22
+\text{ per-state deltas}
+\]
+
+and:
+
+\[
+R_{\rm full}:
+271\rightarrow22
+\text{ per-state deltas}
 \]
 
 with:
 
-\[
-91.88\%\text{ record reduction}
-\]
+- additive edits: 22;
+- subtractive edits: 249;
+- common target: 23 blocks;
+- \(U_\mu=E_\mu=0\);
+- 17,408/17,408 native replay cells exact.
 
-and the qualification:
-
-> under the declared shared-base + per-state-delta encoding.
+Keep the 91.88% full-to-gated record reduction as secondary accounting, qualified as carrier-specific.
 
 ### Main caption claim
 
@@ -251,36 +273,56 @@ GRACE L1b:
 H0\to H1=0,\qquad H1\to H2=0.
 \]
 
-### Panel C — dynamic qualification
+### Panel C — fixed-interpreter matched repair
 
-Root:
+Visualize one fixed skeleton/compiler/executor feeding five representation objects.
 
-\[
-\Gamma_1^{FULL}
-=
-\Gamma_1^{PROJECTED}.
-\]
-
-After common first action:
+Reference FULL:
 
 \[
-\Gamma_2^{FULL}
-\neq
-\Gamma_2^{PROJECTED}.
+cost=2,\qquad H1=0,\ H2=0.
 \]
 
-Visualize:
+B0 — no guard:
 
 \[
-\text{commit}
-\rightarrow
-\text{route CLOSED}
-\rightarrow
-\begin{cases}
-FULL:\ observation\ illegal\\
-PROJECTED:\ observation\ legal
-\end{cases}
+cost=0,\qquad H1=0,\ H2=12.
 \]
+
+B1 — full restore:
+
+\[
+cost=2,\qquad H1=0,\ H2=0.
+\]
+
+B2 — shared contract-relevant rule:
+
+\[
+cost=1,\qquad H1=0,\ H2=0.
+\]
+
+B3 — same-size sham rule:
+
+\[
+cost=1,\qquad H1=0,\ H2=12.
+\]
+
+Central visual claim:
+
+\[
+cost(B2)=cost(B3)
+\]
+
+but:
+
+\[
+closure(B2)\neq closure(B3).
+\]
+
+Caption:
+
+> Under a fixed transition skeleton, compiler, and native executor, only the contract-relevant representation rule closes the delayed continuation deficit; equal-size sham precision does not.
+
 
 ### Panel D — pending learned recovery disposition
 
