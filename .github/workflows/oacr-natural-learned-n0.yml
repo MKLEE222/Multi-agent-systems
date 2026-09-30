@@ -1,0 +1,92 @@
+name: OACR Natural Learned N0 Structural Preflight
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  TZ: UTC
+
+jobs:
+  structural-preflight:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR NATURAL LEARNED N0]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: edenbiran/RippleEdits
+          ref: 54f3b88af4895a3aacb580ec63ce7ae857185040
+          path: external/RippleEdits
+
+      - uses: actions/checkout@v5
+        with:
+          repository: princeton-nlp/MQuAKE
+          ref: fb43dadc2d8cd19d08ce81c63d957b59deb3f3cd
+          path: external/MQuAKE
+
+      - name: Verify frozen benchmark commits
+        run: |
+          set -euxo pipefail
+          test "$(git -C external/RippleEdits rev-parse HEAD)" = "54f3b88af4895a3aacb580ec63ce7ae857185040"
+          test "$(git -C external/MQuAKE rev-parse HEAD)" = "fb43dadc2d8cd19d08ce81c63d957b59deb3f3cd"
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Compile structural-only preflight
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_natural_learned/preflight_rippleedits_v1.py
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          p=Path("experiments/oacr_natural_learned/preflight_rippleedits_v1.py")
+          tree=ast.parse(p.read_text())
+          banned={"torch","transformers","datasets","grace","easyeditor","easyedit"}
+          imports=set()
+          for n in ast.walk(tree):
+              if isinstance(n,ast.Import):
+                  imports.update(a.name.split(".")[0].lower() for a in n.names)
+              elif isinstance(n,ast.ImportFrom) and n.module:
+                  imports.add(n.module.split(".")[0].lower())
+          bad=sorted(imports & banned)
+          if bad:
+              raise SystemExit(f"model/editor imports forbidden in N0: {bad}")
+          print("N0 import audit PASS")
+          PY
+
+      - name: Run frozen structural preflight
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_natural_learned_n0
+          set +e
+          python experiments/oacr_natural_learned/preflight_rippleedits_v1.py \
+            --ripple_dir external/RippleEdits \
+            --mquake_dir external/MQuAKE \
+            --out_dir results/oacr_natural_learned_n0 \
+            | tee results/oacr_natural_learned_n0/stdout.txt
+          rc=\${PIPESTATUS[0]}
+          set -e
+          sha256sum \
+            results/oacr_natural_learned_n0/preflight.json \
+            results/oacr_natural_learned_n0/selected_units_structural.json \
+            | tee results/oacr_natural_learned_n0/SHA256SUMS
+          exit "$rc"
+
+      - name: Upload structural preflight artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-natural-learned-n0-v1
+          path: results/oacr_natural_learned_n0/
+          if-no-files-found: error
