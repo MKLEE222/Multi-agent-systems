@@ -225,6 +225,9 @@ def validate_structure(carrier_repo: Path, bank: dict, mapping: dict):
     tree_mismatches = []
     ancestry_mismatches = []
     mergebase_mismatches = []
+    tree_mismatch_count = 0
+    ancestry_mismatch_count = 0
+    mergebase_mismatch_count = 0
     for pi, row in enumerate(bank["pair_rows"]):
         for side, c, expected_anc, expected_mb in (
             ("A", row["A"], row["ancestry_vector_A"], row["mergebase_vector_A"]),
@@ -232,37 +235,46 @@ def validate_structure(carrier_repo: Path, bank: dict, mapping: dict):
         ):
             mc = mapping[c]
             actual_tree = git(carrier_repo, "rev-parse", f"{mc}^{{tree}}").stdout.decode().strip()
-            if actual_tree != row["tree"] and len(tree_mismatches) < 50:
-                tree_mismatches.append({
+            if actual_tree != row["tree"]:
+                tree_mismatch_count += 1
+                if len(tree_mismatches) < 50:
+                    tree_mismatches.append({
                     "pair_index": pi, "side": side, "commit": c,
                     "mapped_commit": mc, "expected_tree": row["tree"],
                     "observed_tree": actual_tree,
-                })
+                    })
             for ti, t in enumerate(targets):
                 mt = mapping[t]
                 anc = git(carrier_repo, "merge-base", "--is-ancestor", mt, mc, check=False).returncode == 0
-                if anc != bool(expected_anc[ti]) and len(ancestry_mismatches) < 50:
-                    ancestry_mismatches.append({
+                if anc != bool(expected_anc[ti]):
+                    ancestry_mismatch_count += 1
+                    if len(ancestry_mismatches) < 50:
+                        ancestry_mismatches.append({
                         "pair_index": pi, "side": side, "target_index": ti,
                         "commit": c, "target": t, "expected": bool(expected_anc[ti]),
                         "observed": anc,
-                    })
+                        })
                 p = git(carrier_repo, "merge-base", mc, mt, check=False)
                 actual_mb = p.stdout.decode().strip() if p.returncode == 0 else None
                 expected_mapped = map_sha(mapping, expected_mb[ti])
-                if actual_mb != expected_mapped and len(mergebase_mismatches) < 50:
-                    mergebase_mismatches.append({
+                if actual_mb != expected_mapped:
+                    mergebase_mismatch_count += 1
+                    if len(mergebase_mismatches) < 50:
+                        mergebase_mismatches.append({
                         "pair_index": pi, "side": side, "target_index": ti,
                         "commit": c, "target": t,
                         "expected_original": expected_mb[ti],
                         "expected_mapped": expected_mapped,
                         "observed": actual_mb,
-                    })
+                        })
     return {
+        "tree_mismatch_count": tree_mismatch_count,
         "tree_mismatch_count_sampled": len(tree_mismatches),
         "tree_mismatch_sample": tree_mismatches,
+        "ancestry_mismatch_count": ancestry_mismatch_count,
         "ancestry_mismatch_count_sampled": len(ancestry_mismatches),
         "ancestry_mismatch_sample": ancestry_mismatches,
+        "mergebase_mismatch_count": mergebase_mismatch_count,
         "mergebase_mismatch_count_sampled": len(mergebase_mismatches),
         "mergebase_mismatch_sample": mergebase_mismatches,
     }
@@ -357,13 +369,43 @@ def main():
         git(carrier, "update-ref", f"refs/oacr/g5/{orig}", mapping[orig])
 
     structure = validate_structure(carrier, bank, mapping)
+
+    mapping_path = out_dir / "original_to_reconstructed.json"
+    mapping_path.write_text(json.dumps(mapping, indent=2, sort_keys=True))
+    structural_report = {
+        "protocol": PROTOCOL,
+        "source_artifact_id": SOURCE_ARTIFACT_ID,
+        "source_bank_sha256": sha256_file(bank_path),
+        "source_head": bank["source"]["source_head"],
+        "stats": {**stats, "github_api_requests": api.requests},
+        "required_original_commits": required,
+        "structural_validation": structure,
+    }
+    (out_dir / "structural_report.json").write_text(json.dumps(structural_report, indent=2))
+    (out_dir / "structural_report.sha256").write_text(
+        sha256_file(out_dir / "structural_report.json") + "  structural_report.json\n"
+    )
+    structural_ok = (
+        structure["tree_mismatch_count"] == 0
+        and structure["ancestry_mismatch_count"] == 0
+        and structure["mergebase_mismatch_count"] == 0
+    )
+    if not structural_ok:
+        print(json.dumps({
+            "status": "STRUCTURAL_RECOVERY_MISMATCH",
+            "stats": structural_report["stats"],
+            "structural_validation": {
+                "tree_mismatch_count": structure["tree_mismatch_count"],
+                "ancestry_mismatch_count": structure["ancestry_mismatch_count"],
+                "mergebase_mismatch_count": structure["mergebase_mismatch_count"],
+            },
+        }, indent=2))
+        raise SystemExit(3)
+
     cells, mismatch_count, mismatch_sample = validate_h1(carrier, bank, mapping, repo_root)
     expected_cells = len(bank["pair_rows"]) * 2 * 12
     complete_h1 = cells == expected_cells
     h1_ok = complete_h1 and mismatch_count == 0
-
-    mapping_path = out_dir / "original_to_reconstructed.json"
-    mapping_path.write_text(json.dumps(mapping, indent=2, sort_keys=True))
 
     refs = [
         x.decode().strip()
