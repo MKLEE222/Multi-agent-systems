@@ -1,0 +1,78 @@
+name: OACR SQEC Fixed Interpreter Repair v2
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  confirm:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR SQEC FIXED INTERPRETER REPAIR V2]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: ${{ github.workspace }}/external/sqec_snapshot_4f37a0af/02_core
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact vendored SQEC native semantics
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json, pathlib, subprocess
+          root=pathlib.Path('external/sqec_snapshot_4f37a0af')
+          manifest=json.load(open(root/'SNAPSHOT_MANIFEST.json'))
+          assert manifest['source_commit']=='4f37a0af1c2cb44b2eb7eb1b187d96a2ebd34295'
+          for rel, expected in manifest['files']:
+              p=root/rel
+              assert p.is_file(), rel
+              got=subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
+              if got!=expected:
+                  raise SystemExit(f'blob mismatch {rel}: {got} != {expected}')
+          executor=dict(manifest['files'])['02_core/dynamic_qualification_frontier.py']
+          assert executor=='0ff2fb8e3d1f532998bceb673b1ab9ef1402b408'
+          print({'snapshot_verified':True,'files':len(manifest['files']),'executor_blob':executor})
+          PY
+
+      - name: Compile producer and independent verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_sqec_repair_v2/run_fixed_interpreter_repair_v2.py
+          python -m py_compile experiments/oacr_sqec_repair_v2/verify_fixed_interpreter_repair_v2.py
+
+      - name: Execute frozen matched repair family
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_sqec_fixed_interpreter_v2
+          python experiments/oacr_sqec_repair_v2/run_fixed_interpreter_repair_v2.py             --out results/oacr_sqec_fixed_interpreter_v2/producer.json
+          sha256sum results/oacr_sqec_fixed_interpreter_v2/producer.json             | tee results/oacr_sqec_fixed_interpreter_v2/producer.sha256
+
+      - name: Independently reconstruct complete matrices
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_sqec_repair_v2/verify_fixed_interpreter_repair_v2.py             --artifact results/oacr_sqec_fixed_interpreter_v2/producer.json             --out results/oacr_sqec_fixed_interpreter_v2/verifier.json
+          sha256sum results/oacr_sqec_fixed_interpreter_v2/verifier.json             | tee results/oacr_sqec_fixed_interpreter_v2/verifier.sha256
+
+      - name: Persist protocol and acceptance gate
+        run: |
+          set -euxo pipefail
+          cp docs/OACR_SQEC_FIXED_INTERPRETER_REPAIR_PROTOCOL_V2_2026-09-30.md             results/oacr_sqec_fixed_interpreter_v2/protocol.md
+          cp docs/OACR_AUDIT_TO_REPAIR_ACCEPTANCE_GATE_V1_2026-09-30.md             results/oacr_sqec_fixed_interpreter_v2/acceptance_gate.md
+          cp external/sqec_snapshot_4f37a0af/SNAPSHOT_MANIFEST.json             results/oacr_sqec_fixed_interpreter_v2/SNAPSHOT_MANIFEST.json
+
+      - name: Upload acceptance artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-sqec-fixed-interpreter-repair-v2
+          path: results/oacr_sqec_fixed_interpreter_v2/
+          if-no-files-found: warn
