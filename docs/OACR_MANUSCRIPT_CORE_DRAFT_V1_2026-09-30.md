@@ -84,21 +84,23 @@ B_{\mathcal C}(x)\neq B_{\mathcal C}(y),
 
 then \(R\) merges states that the registered continuation contract requires us to distinguish. We call this **under-refinement**.
 
-We quantify the residual operational demand by
+Let \(\mu\) be a reference distribution over the registered state bank. We quantify the residual operational demand by
 
 \[
-U(R;\mathcal C)
+U_\mu(R;\mathcal C)
 =
-H(O_{\mathcal C}\mid R).
+H_\mu(O_{\mathcal C}\mid R).
 \]
 
 When
 
 \[
-U>0,
+U_\mu>0,
 \]
 
 the representation omits distinctions required by the contract.
+
+Unless otherwise stated, all finite-bank experiments use the empirical uniform measure over the frozen registered states. We additionally report pairwise under-refinement counts so that the existence of omitted distinctions does not depend on the entropy weighting chosen by \(\mu\).
 
 ### Over-refinement
 
@@ -119,25 +121,27 @@ then the representation preserves distinctions that are unnecessary under the re
 We quantify the excess distinction by
 
 \[
-E(R;\mathcal C)
+E_\mu(R;\mathcal C)
 =
-H(R\mid O_{\mathcal C}).
+H_\mu(R\mid O_{\mathcal C}).
 \]
 
 When
 
 \[
-E>0,
+E_\mu>0,
 \]
 
 the representation distinguishes states that the contract treats as operationally equivalent.
 
+As with under-refinement, we also report pairwise over-refinement counts.
+
 A representation is exact on a finite registered bank when
 
 \[
-U(R;\mathcal C)=0
+U_\mu(R;\mathcal C)=0
 \qquad\text{and}\qquad
-E(R;\mathcal C)=0.
+E_\mu(R;\mathcal C)=0.
 \]
 
 This definition is deliberately symmetric. Evaluating only omission encourages the trivial solution of retaining complete internal state. Evaluating only compression risks collapsing distinctions that later operations require. The operational target is instead the contract-relative quotient itself.
@@ -146,7 +150,15 @@ This definition is deliberately symmetric. Evaluating only omission encourages t
 
 ## 2.3 Current state, operational state, and full identity
 
-The key empirical configuration studied in this paper is
+For two partitions \(P,Q\) over the same registered state bank, write
+
+\[
+P\preceq Q
+\]
+
+when \(P\) is **coarser than or equal to** \(Q\): every block of \(Q\) is contained in a block of \(P\). Write \(P\prec Q\) for strict coarsening.
+
+The key empirical configuration studied in this paper is therefore
 
 \[
 R_{\rm current}
@@ -273,7 +285,9 @@ In particular, this paper does **not** claim to introduce:
 
 These theories provide the mathematical language that makes OACR possible.
 
-Our contribution is instead operational and representational. We use registered native transformation contracts to audit implemented computational representations in materially different carriers, quantify both omission and excess relative to the induced operational quotient, and use the resulting diagnosis to alter the representation itself. The empirical unit is not an abstract transition system alone, but a concrete representation paired with the native operations it is expected to support.
+Strong-preservation results in abstract interpretation already show that an abstraction can be minimally refined until it is complete for a chosen specification language or family of semantic operators. Representation-independence results likewise study relations between internal representations that are preserved by the operations of an abstract interface. Knowledge-compilation work compares representation languages by the queries and transformations they support. We therefore treat all three as direct theoretical predecessors rather than weaker analogies.
+
+Our contribution is instead operational and representational. We use registered **native transformation contracts** to audit already implemented computational representations in materially different carriers, quantify both omission and excess relative to the induced operational quotient, separate scientific negatives from construction/runtime failures under prospective controls, and use the resulting diagnosis to alter a representation whose behavior is then checked by native replay. The empirical unit is not an abstract transition system alone, but a concrete representation paired with the native operations it is expected to support.
 
 This distinction is important because the same internal difference can be necessary under one contract and irrelevant under another. Representation adequacy is therefore not treated as an intrinsic property of a state encoding. It is indexed by the continuation the representation is required to preserve.
 
@@ -525,6 +539,45 @@ e,&\alpha_A(e)=1,\\
 \]
 
 The construction uses the base graph, the declared action panel, and the current delta endpoint. It does not require selecting features from the augmented-state post-deletion outcome matrix.
+
+
+### Proposition 1 — soundness of one-step contract gating
+
+Consider a shared base graph \(G\), a currently redundant augmented edge \(e=(u,v)\) with \((u,v)\in TC(G)\), and a registered singleton-deletion contract \(A\subseteq E(G)\).
+
+For the augmented state \(G+e\), define
+
+\[
+\alpha_A(e)
+=
+\mathbf 1[
+\exists f\in A:
+(u,v)\notin TC(G-f)
+].
+\]
+
+Then:
+
+1. if \(\alpha_A(e)=0\), for every registered deletion \(f\in A\),
+   \[
+   TC(G-f)=TC((G+e)-f);
+   \]
+2. if \(\alpha_A(e)=1\), there exists a registered deletion \(f\in A\) such that
+   \[
+   TC(G-f)\neq TC((G+e)-f).
+   \]
+
+**Proof sketch.** If \(\alpha_A(e)=0\), then after every registered deletion \(f\), the base graph still contains a path \(u\leadsto v\). Adding the direct edge \(e=(u,v)\) therefore introduces no new reachability relation beyond those already implied transitively; the two closures are equal. If \(\alpha_A(e)=1\), choose \(f\) for which \(u\not\leadsto v\) in \(G-f\). In \((G+e)-f\), the asserted edge \(e\) remains and directly restores \(u\leadsto v\), so the closures differ. \(\square\)
+
+The proposition proves that the gate is **sound for deciding whether an individual redundant edge is operationally necessary under the frozen singleton-deletion contract**.
+
+It does **not** prove that two distinct active augmented states must remain behaviorally distinct from each other. Exact equality
+
+\[
+R_{\rm gate}=O_A
+\]
+
+therefore remains an empirical result of R3/R4 native replay rather than a general graph theorem. This boundary is important: the structural certificate predicts which current deltas may be safely omitted, while the observed quotient exactness tests whether the retained active deltas over-refine one another.
 
 ---
 
