@@ -19,7 +19,7 @@ This document is the sole acceptance gate for further OACR development. New work
 ### Identification Gate
 - **I1-I3: THEORY SPECIFIED, empirical promotion pending.** Non-anticipation is now defined as provenance/freeze separation: realized evaluation outcomes may not adapt the current constructor. It is not statistical independence from predictable outcomes.
 - **I4: PARTIAL.** Existing protocol devices are now unified under an authority/provenance framework; carrier-specific ledgers remain to be reconstructed.
-- **I5: WORKING PASS.** On frozen R4, an outcome-oracle constructor and the contract-predictive constructor both achieve U=E=0 with 22 retained records, while a same-cost structurally inactive sham also uses 22 records and 23 representation blocks but yields U=E=0.7556880439. Workflow-based independent rerun remains to be added.
+- **I5: PASS.** On frozen R4, an outcome-oracle constructor and the contract-predictive constructor both achieve U=E=0 with 22 retained records, while a same-cost structurally inactive sham also uses 22 records and 23 representation blocks but yields U=E=0.7556880439. Independent CI run 36734635683 verified the full reconstruction with error_count=0.
 
 ### Natural Evidence Gate
 - **N1-N5: NOT STARTED in this upgrade round.** No new learned-system experiment is authorized until the parallel task/head is clear and the theory object is stable.
