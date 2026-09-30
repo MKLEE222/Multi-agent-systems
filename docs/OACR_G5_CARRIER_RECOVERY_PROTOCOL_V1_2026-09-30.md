@@ -3,6 +3,7 @@
 **Date:** 2026-09-30  
 **Status:** engineering/reproducibility protocol; scientific G5/H2 rules unchanged  
 **Source artifact:** accepted G5 validation artifact ID 10954788549  
+**Accepted validation JSON SHA-256:** `964a3ea6161705721cd3442ceb2c6401c490e69129158ce29fdf2f6151d2fdd7`  
 **Purpose:** convert frozen Git commit identifiers into a self-contained executable carrier
 
 ## 1. Problem
