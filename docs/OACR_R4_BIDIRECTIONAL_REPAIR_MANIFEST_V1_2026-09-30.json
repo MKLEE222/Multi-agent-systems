@@ -1,0 +1,62 @@
+{
+  "protocol": "OACR_R4_BIDIRECTIONAL_REPAIR_MANIFEST_V1",
+  "source_run": 36438278451,
+  "source_artifact_id": 11003190307,
+  "source_result_sha256": "84f5e7a109b95d279fa69ba77f33f26abd84f4e382c7a3ebc09f9dbc16ebf666",
+  "root": {
+    "qid": "Q41176",
+    "label": "building"
+  },
+  "state_manifest_sha256": "ae7f6d657af1d2835eb485ee67845922623dcdae6dac0053f2b2b266d83e433b",
+  "action_manifest_sha256": "8b63d37159ff3bcb72f695a9ea1a8f6b0221c47fb6e86d07df8dac606bfe188a",
+  "active_state_ids": [
+    "add:Q101405693>Q11755880",
+    "add:Q109016509>Q11755880",
+    "add:Q11322634>Q11755880",
+    "add:Q12315056>Q11755880",
+    "add:Q1341387>Q294422",
+    "add:Q1362233>Q11755880",
+    "add:Q141185631>Q11755880",
+    "add:Q1607523>Q11755880",
+    "add:Q1689156>Q41176",
+    "add:Q17087359>Q11755880",
+    "add:Q17175682>Q11755880",
+    "add:Q2038454>Q10480682",
+    "add:Q23583477>Q11755880",
+    "add:Q23835508>Q11755880",
+    "add:Q24906026>Q11755880",
+    "add:Q3128641>Q11755880",
+    "add:Q4200548>Q11755880",
+    "add:Q6025468>Q11755880",
+    "add:Q6754461>Q11755880",
+    "add:Q6865097>Q11755880",
+    "add:Q7644625>Q11755880",
+    "add:Q7853548>Q11755880"
+  ],
+  "active_state_ids_sha256": "2ca98e21594c91d2e9c1e5bcc8f0f4e84576cc26045b6074a0829741e2774c64",
+  "inactive_state_ids_count": 249,
+  "inactive_state_ids_sha256": "911583b09cbed6c58a8c50d06a310ec2dbc43bf8ae2bd382d1c1a81f088c5384",
+  "additive_repair": {
+    "source": "R0_current_closure",
+    "source_delta_records": 0,
+    "operation": "add exactly active_state_ids as per-state deltas",
+    "delta_edits": 22,
+    "target": "Rgate_contract_gated_delta"
+  },
+  "subtractive_repair": {
+    "source": "Rfull_asserted_identity",
+    "source_delta_records": 271,
+    "operation": "remove every registered augmented delta not in active_state_ids",
+    "delta_edits": 249,
+    "target": "Rgate_contract_gated_delta"
+  },
+  "target": {
+    "representation_blocks": 23,
+    "U_bits": 0,
+    "E_bits": 0,
+    "native_replay_cells": 17408,
+    "native_replay_mismatches": 0,
+    "original_outcome_matrix_sha256": "3e3fc97407f81e2f51ac6526c3c0c6217117a0991e0d2491e5cee87eeb9d57c8",
+    "compressed_outcome_matrix_sha256": "3e3fc97407f81e2f51ac6526c3c0c6217117a0991e0d2491e5cee87eeb9d57c8"
+  }
+}
