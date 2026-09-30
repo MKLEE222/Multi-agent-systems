@@ -63,5 +63,5 @@ jobs:
         with:
           name: oacr-g5-executable-carrier-v1
           path: results/oacr_g5_carrier_recovery/
-          if-no-files-found: error
+          if-no-files-found: warn
           compression-level: 0
