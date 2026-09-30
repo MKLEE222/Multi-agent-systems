@@ -1,0 +1,76 @@
+name: OACR SQEC Vendored Continuation Repair
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  confirm:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR SQEC VENDORED REPAIR RUN]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONHASHSEED: "0"
+      PYTHONPATH: ${{ github.workspace }}/external/sqec_snapshot_4f37a0af/02_core
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Verify exact SQEC source snapshot
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json, pathlib, subprocess
+          root=pathlib.Path('external/sqec_snapshot_4f37a0af')
+          manifest=json.load(open(root/'SNAPSHOT_MANIFEST.json'))
+          assert manifest['source_commit']=='4f37a0af1c2cb44b2eb7eb1b187d96a2ebd34295'
+          assert manifest['protocol_commit']=='83091035685b8d11fc1b293051285835d9c1feb7'
+          for rel, expected in manifest['files']:
+              p=root/rel
+              assert p.is_file(), rel
+              got=subprocess.check_output(['git','hash-object',str(p)],text=True).strip()
+              if got!=expected:
+                  raise SystemExit(f'blob mismatch {rel}: {got} != {expected}')
+          print({'snapshot_verified':True,'files':len(manifest['files'])})
+          PY
+
+      - name: Compile frozen producer and verifier
+        run: |
+          set -euxo pipefail
+          python -m py_compile external/sqec_snapshot_4f37a0af/02_core/oacr_sqec_continuation_repair_v1.py
+          python -m py_compile external/sqec_snapshot_4f37a0af/02_core/verify_oacr_sqec_continuation_repair_v1.py
+
+      - name: Execute prospective continuation-repair family
+        run: |
+          set -euxo pipefail
+          mkdir -p results/oacr_sqec_repair
+          python external/sqec_snapshot_4f37a0af/02_core/oacr_sqec_continuation_repair_v1.py             --out results/oacr_sqec_repair/producer.json
+          sha256sum results/oacr_sqec_repair/producer.json             | tee results/oacr_sqec_repair/producer.sha256
+
+      - name: Independently verify complete depth <= 2 matrix
+        run: |
+          set -euxo pipefail
+          python external/sqec_snapshot_4f37a0af/02_core/verify_oacr_sqec_continuation_repair_v1.py             --artifact results/oacr_sqec_repair/producer.json             --out results/oacr_sqec_repair/verifier.json
+          sha256sum results/oacr_sqec_repair/verifier.json             | tee results/oacr_sqec_repair/verifier.sha256
+
+      - name: Persist provenance
+        run: |
+          set -euxo pipefail
+          cp external/sqec_snapshot_4f37a0af/SNAPSHOT_MANIFEST.json results/oacr_sqec_repair/SNAPSHOT_MANIFEST.json
+          cp external/sqec_snapshot_4f37a0af/01_protocol/OACR_SQEC_CONTINUATION_REPAIR_PROTOCOL_V1_20260930.md             results/oacr_sqec_repair/protocol.md
+
+      - name: Upload acceptance artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-sqec-vendored-continuation-repair-v1
+          path: results/oacr_sqec_repair/
+          if-no-files-found: warn
