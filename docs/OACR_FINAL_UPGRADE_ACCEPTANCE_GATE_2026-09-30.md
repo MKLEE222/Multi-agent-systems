@@ -6,6 +6,30 @@ Status: **FROZEN UPGRADE GATE**
 
 This document is the sole acceptance gate for further OACR development. New work must close at least one of the three gates below. Work that does not contribute to Theory, Identification, or Natural Evidence is out of scope.
 
+
+## Progress snapshot — 2026-09-30
+
+### Theory Gate
+- **T1: WORKING PASS.** Contract-relative exact repair is now formalized with coarse/fine endpoints and an explicit admissible repair family.
+- **T2: PARTIAL PASS.** A theorem family now gives uniqueness inside the identity-gated representation family, edit-minimal contract updates, and path independence under contract evolution. Generic minimum-feature NP-hardness was rejected as non-novel prior art.
+- **T3: CANDIDATE PASS, proof/prior-art audit pending.** The one-delta DAG carrier admits an exact theorem: contract-active redundant deltas form singleton operational classes; inactive deltas collapse with base; the contract gate exactly realizes the quotient.
+- **T4: CANDIDATE PASS, proof/prior-art audit pending.** The same certificate yields additive and subtractive repair to one common target, with minimum Hamming record edits and path-independent updates as the contract expands or contracts. A four-node multi-delta counterexample proves the local rule does not extend universally.
+- **T5: OPEN.** AIR / strong preservation / CEGAR / Verifix / summary-repair source-level positioning remains to be completed before manuscript promotion.
+
+### Identification Gate
+- **I1-I3: THEORY SPECIFIED, empirical promotion pending.** Non-anticipation is now defined as provenance/freeze separation: realized evaluation outcomes may not adapt the current constructor. It is not statistical independence from predictable outcomes.
+- **I4-I5: OPEN.** Existing protocol devices still need to be unified into one formal identification framework and paired with an executable leakage counterexample.
+
+### Natural Evidence Gate
+- **N1-N5: NOT STARTED in this upgrade round.** No new learned-system experiment is authorized until the parallel task/head is clear and the theory object is stable.
+
+### Frozen-theory audits completed
+- R4: the contract-coverage formula matches **64/64 singleton**, **2016/2016 pair**, and **64/64 leave-one-out** registered subcontract results.
+- R4: only **5/64** actions activate any candidate delta; the largest activates **19/22**, yielding 20 of 23 operational classes alone.
+- R4 exploratory contract basis: unique minimum basis of **4** actions on the already frozen activation matrix.
+- R3/R4 closed-form directional-gap equations reproduce the frozen reported \(U/E\) values to floating-point precision.
+
+
 ## Gate T — Theory
 
 ### T1. Contract-Adequate Representation Repair
