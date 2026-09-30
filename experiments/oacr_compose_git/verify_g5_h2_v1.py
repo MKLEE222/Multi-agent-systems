@@ -17,6 +17,17 @@ def cmd(cwd,*xs,ok=(0,),env=None):
 def g(cwd,*xs,ok=(0,),env=None):
     return cmd(cwd,"git",*xs,ok=ok,env=env)
 
+def load_mapping(path):
+    if path is None:
+        return {}
+    d=json.loads(Path(path).read_text())
+    if not isinstance(d,dict):
+        raise RuntimeError("mapping JSON must be an object")
+    return d
+
+def map_sha(mapping,sha):
+    return mapping.get(sha,sha)
+
 def reset(repo,rev):
     g(repo,"merge","--abort",ok=(0,1,128))
     g(repo,"reset","--hard","-q",rev)
@@ -52,12 +63,14 @@ def main():
     ap.add_argument("--repo",required=True)
     ap.add_argument("--g5_validation_json",required=True)
     ap.add_argument("--producer_json",required=True)
+    ap.add_argument("--mapping_json")
     ap.add_argument("--out",required=True)
     a=ap.parse_args()
 
     repo=Path(a.repo).resolve()
     bank=json.load(open(a.g5_validation_json))
     prod=json.load(open(a.producer_json))
+    mapping=load_mapping(a.mapping_json)
     targets=[x["target"] for x in bank["action_selection"]["targets"]]
     rows=[r for r in bank["pair_rows"] if not r["required_separation"]]
     if len(rows)!=46 or len(targets)!=12:
@@ -69,7 +82,7 @@ def main():
     # deterministic persisted merge commits in the protocol.
     g(repo,"config","--local","user.name",FIXED_NAME)
     g(repo,"config","--local","user.email",FIXED_EMAIL)
-    source_head=bank["source"]["source_head"]
+    source_head=map_sha(mapping,bank["source"]["source_head"])
     # Engineering normalization only: producer leaves the detached checkout at
     # the last replayed pair head.  The verifier must start from the frozen
     # source repository state, not require the caller's checkout position.
@@ -90,7 +103,7 @@ def main():
         for side,c,expected in (("A",A,row["outcome_signatures_A"]),("B",B,row["outcome_signatures_B"])):
             first[side]={}
             for i,t in enumerate(targets):
-                sig,succ,tree=observe(repo,c,t,True)
+                sig,succ,tree=observe(repo,map_sha(mapping,c),map_sha(mapping,t),True)
                 h1bad+=int(sig!=expected[i])
                 first[side][t]=(sig,succ,tree)
 
@@ -106,8 +119,8 @@ def main():
                 if t2==t1:
                     continue
                 total+=1
-                xa,_,_=observe(repo,ca,t2,False)
-                xb,_,_=observe(repo,cb,t2,False)
+                xa,_,_=observe(repo,ca,map_sha(mapping,t2),False)
+                xb,_,_=observe(repo,cb,map_sha(mapping,t2),False)
                 dv=xa!=xb
                 divs+=int(dv)
                 pairdiv+=int(dv)
