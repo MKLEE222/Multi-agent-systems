@@ -375,7 +375,8 @@ def main():
     structural_report = {
         "protocol": PROTOCOL,
         "source_artifact_id": SOURCE_ARTIFACT_ID,
-        "source_bank_sha256": sha256_file(bank_path),
+        "source_bank_sha256": bank_sha,
+        "required_manifest_sha256": manifest_sha,
         "source_head": bank["source"]["source_head"],
         "stats": {**stats, "github_api_requests": api.requests},
         "required_original_commits": required,
