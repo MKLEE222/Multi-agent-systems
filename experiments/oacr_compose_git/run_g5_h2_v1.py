@@ -55,6 +55,17 @@ def merge_payload(repo,head,target,persist=False):
     git(repo,"clean","-fdq")
     return payload,successor,successor_tree
 
+def load_mapping(path):
+    if path is None:
+        return {}
+    d=json.loads(path.read_text())
+    if not isinstance(d,dict):
+        raise RuntimeError("mapping JSON must be an object")
+    return d
+
+def map_sha(mapping,sha):
+    return mapping.get(sha,sha)
+
 def load_bank(path):
     d=json.loads(path.read_text())
     if d.get("protocol")!="OACR_G5_SAME_CONTRACT_GIT_V1" or d.get("split")!="validation":
@@ -65,11 +76,14 @@ def load_bank(path):
         raise RuntimeError(f"frozen bank mismatch targets={len(targets)} pairs={len(rows)}")
     return d,targets,rows
 
-def evaluate(repo,bank_path):
+def evaluate(repo,bank_path,mapping_path=None):
     d,targets,rows=load_bank(bank_path)
+    mapping=load_mapping(mapping_path)
     source_head=d["source"]["source_head"]
-    if git(repo,"rev-parse","HEAD").stdout.strip()!=source_head:
-        raise RuntimeError("source HEAD mismatch")
+    execution_source_head=map_sha(mapping,source_head)
+    fresh(repo,execution_source_head)
+    if git(repo,"rev-parse","HEAD").stdout.strip()!=execution_source_head:
+        raise RuntimeError("execution source HEAD normalization failed")
     pair_outputs=[]
     total_eligible=total_div=divergent_pairs=h1_repro_mismatch=0
     for pi,row in enumerate(rows):
@@ -77,8 +91,10 @@ def evaluate(repo,bank_path):
         first={}
         for side,c,expected in (("A",a,row["outcome_signatures_A"]),("B",b,row["outcome_signatures_B"])):
             first[side]={}
+            ec=map_sha(mapping,c)
             for ti,t1 in enumerate(targets):
-                p,succ,tree=merge_payload(repo,c,t1,persist=True)
+                et1=map_sha(mapping,t1)
+                p,succ,tree=merge_payload(repo,ec,et1,persist=True)
                 if p["signature"]!=expected[ti]:
                     h1_repro_mismatch+=1
                 first[side][t1]={"payload":p,"successor":succ,"tree":tree}
@@ -93,26 +109,29 @@ def evaluate(repo,bank_path):
                 if t2==t1:
                     continue
                 total_eligible+=1
-                pa,_,_=merge_payload(repo,fa["successor"],t2,persist=False)
-                pb,_,_=merge_payload(repo,fb["successor"],t2,persist=False)
+                et2=map_sha(mapping,t2)
+                pa,_,_=merge_payload(repo,fa["successor"],et2,persist=False)
+                pb,_,_=merge_payload(repo,fb["successor"],et2,persist=False)
                 div=pa["signature"]!=pb["signature"]
                 total_div+=int(div)
                 pair_div+=int(div)
                 seq_rows.append({"t1":t1,"t2":t2,"h1_successor_tree":fa["tree"],"h2_signature_A":pa["signature"],"h2_signature_B":pb["signature"],"divergent":div,"h2_A":pa,"h2_B":pb})
         divergent_pairs+=int(pair_div>0)
         pair_outputs.append({"pair_index":pi,"tree":row["tree"],"A":a,"B":b,"eligible_sequences":len(seq_rows),"divergent_sequences":pair_div,"sequences":seq_rows})
-    return {"protocol":"OACR_COMPOSE_G_G5_H2_V1","source_g5_artifact":str(bank_path),"source_head":source_head,"summary":{"source_pairs":46,"targets":12,"registered_ordered_sequences_per_pair":132,"eligible_sequences":total_eligible,"divergent_sequences":total_div,"pairs_with_divergence":divergent_pairs,"h1_reproduction_mismatches":h1_repro_mismatch},"pairs":pair_outputs}
+    return {"protocol":"OACR_COMPOSE_G_G5_H2_V1","source_g5_artifact":str(bank_path),"source_head":source_head,"execution_source_head":execution_source_head,"mapping_entries":len(mapping),"summary":{"source_pairs":46,"targets":12,"registered_ordered_sequences_per_pair":132,"eligible_sequences":total_eligible,"divergent_sequences":total_div,"pairs_with_divergence":divergent_pairs,"h1_reproduction_mismatches":h1_repro_mismatch},"pairs":pair_outputs}
 
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--repo",required=True)
     ap.add_argument("--g5_validation_json",required=True)
+    ap.add_argument("--mapping_json")
     ap.add_argument("--out",required=True)
     args=ap.parse_args()
     repo=Path(args.repo).resolve()
     git(repo,"config","--local","rerere.enabled","false")
     git(repo,"config","--local","merge.conflictStyle","merge")
-    out=evaluate(repo,Path(args.g5_validation_json).resolve())
+    mapping_path=Path(args.mapping_json).resolve() if args.mapping_json else None
+    out=evaluate(repo,Path(args.g5_validation_json).resolve(),mapping_path)
     p=Path(args.out)
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(out,indent=2))
