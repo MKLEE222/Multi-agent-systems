@@ -58,6 +58,7 @@ jobs:
           git -C external/git bundle verify             "$GITHUB_WORKSPACE/results/oacr_g5_carrier_recovery/g5_executable_carrier.bundle"
 
       - name: Upload executable G5 carrier
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: oacr-g5-executable-carrier-v1
