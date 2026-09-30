@@ -6,6 +6,84 @@
 
 ---
 
+
+# 1. Introduction
+
+Persistent computational objects are rarely required only to represent what is true **now**. They are expected to continue: to be edited, merged, deleted from, revised, fine-tuned, audited, rolled back, or otherwise transformed. A representation can therefore be perfectly adequate for the present and still be inadequate for the object's registered future operations. Conversely, two internally distinct states can remain interchangeable under every transformation the system is expected to support.
+
+This creates a representation-design problem that is easy to miss if adequacy is evaluated only by static fidelity:
+
+> **Which distinctions must a persistent computational representation preserve so that the object can continue to support its registered future operations?**
+
+The underlying mathematics of behavioral equivalence is mature. Strong-preservation results show how abstractions can be refined until they preserve a chosen language or operator family; representation-independence results characterize when different internal representations remain indistinguishable under an abstract interface; knowledge-compilation work compares representation languages by the queries and transformations they support. Our contribution is not to reintroduce those ideas under new terminology.
+
+We study a different empirical starting point: an **implemented representation** already used by a persistent computational system, paired with a prospectively registered set of **native state-changing operations**. We ask whether the distinctions stored by the representation match the distinctions required by that continuation contract.
+
+Let \(R\) be the partition induced by an implemented representation and \(O_{\mathcal C}\) the partition induced by native behavior under a registered continuation contract \(\mathcal C\). Two directional failures are possible.
+
+A representation **under-refines** the contract when it merges states whose registered continuation differs. It **over-refines** when it preserves internal distinctions that make no difference to the registered continuation. On a frozen state bank with reference measure \(\mu\), we quantify these directions by
+
+\[
+U_\mu(R;\mathcal C)
+=
+H_\mu(O_{\mathcal C}\mid R)
+\]
+
+and
+
+\[
+E_\mu(R;\mathcal C)
+=
+H_\mu(R\mid O_{\mathcal C}).
+\]
+
+The empirical configuration of interest is therefore not merely a collision. It is the strict intermediate structure
+
+\[
+R_{\rm current}
+\prec
+O_{\mathcal C}
+\prec
+R_{\rm full},
+\]
+
+where the current representation is too coarse, full internal identity is too fine, and the continuation contract selects an intermediate set of distinctions.
+
+We call the resulting experimental program **Operational Adequacy of Computational Representations (OACR)**. OACR combines four steps:
+
+1. register a native continuation contract independently of the result;
+2. audit an implemented representation for both under- and over-refinement;
+3. identify operation-relative distinctions under same-contract and outcome-blind controls;
+4. where possible, convert the audit into a representation transformation and validate the transformed representation by native replay.
+
+Across exact relational, natural version-history, and learned parametric carriers, we find that present-state equality alone does not determine representational necessity. In exact relational carriers, currently redundant state distinctions split into two classes under a shared deletion contract: some are required by future operations, while others remain operationally irrelevant. Full identity therefore stores too much, while current closure stores too little.
+
+The strongest result is constructive. From the registered deletion contract, without inspecting the augmented-state post-deletion outcome matrix, we derive a gate that retains only redundant edges whose redundancy can be broken by a registered action. On a developmental carrier and a prospectively frozen fresh carrier, the resulting representation matches the complete registered operational quotient exactly. On the fresh building carrier, the partition changes from one current block and 272 full-identity blocks to 23 operational blocks; the gated representation yields
+
+\[
+U_\mu=E_\mu=0
+\]
+
+and reproduces all
+
+\[
+17{,}408/17{,}408
+\]
+
+registered native outcomes while retaining only 22 of 271 declared per-state deltas.
+
+We then ask when one-step adequacy remains adequate under composition. The answer is not "whenever the horizon becomes longer." In two exact relational deletion carriers, every distinction is either activated at depth one or remains inert under the entire frozen action universe. In a learned GRACE control, 224 current collisions remain equivalent through the complete registered depth-two panel. By contrast, a controlled dynamic-qualification system provides an exact mechanism in which the immediate continuation interface is preserved but a shared first transformation changes the legality of a later operation. This motivates a continuation-interface view in which operations may alter the semantics, qualification, or response of later operations.
+
+The paper makes four contributions:
+
+1. **A native-contract adequacy audit for implemented representations.** We formalize and measure directional under- and over-refinement relative to a registered continuation contract, while explicitly inheriting behavioral-equivalence and strong-preservation theory.
+2. **Cross-carrier evidence that representational necessity is operation-relative.** Exact relational, natural version-history, and learned-state carriers provide positive and negative boundaries under same-contract native operations.
+3. **A constructive audit-to-repair result.** A contract-derived structural gate reaches the exact registered operational quotient on relational carriers and survives exhaustive native replay, including a prospectively frozen fresh carrier.
+4. **A bounded composition result.** Increasing action depth alone does not force new representational demand in the audited fixed-domain controls; delayed demand emerges in a controlled mechanism when an earlier transformation changes the continuation interface of a later one.
+
+The scope is deliberately finite and contract-relative. We do not claim a universal minimal state representation, universal provenance necessity, or a new theory of behavioral equivalence. The target is narrower: determine what an implemented representation must preserve to keep supporting the transformations it is actually required to perform.
+
+
 # 2. Operational adequacy under continuation contracts
 
 ## 2.1 Representations of persistent computational objects
@@ -457,6 +535,133 @@ empirically meaningful.
 The same contract must be specified independently enough that an observed mismatch is evidence about the representation, rather than an artifact of how the evaluator constructed the test.
 
 ---
+
+
+# 4. First-order WRITE evidence: when current equality is not enough
+
+## 4.1 WRITE as a controlled first-order test
+
+The simplest continuation failure occurs when two states are equivalent under the registered present interface but a common future transformation makes their difference operational.
+
+For a latent distinction \(d=(x,y)\) and registered write \(a\), define
+
+\[
+M(d,a)
+=
+\mathbf 1[
+B(x;a)\neq B(y;a)
+].
+\]
+
+The same latent distinction may be inert under one write and active under another. This makes WRITE useful experimentally: it turns representational necessity into a state-by-action question rather than an intrinsic property of hidden state.
+
+However, hidden-state difference alone is not evidence of necessity. A valid WRITE experiment must expose the compared states to the same registered operation contract or freeze the action selection independently of the observed separation.
+
+## 4.2 Exact relational shared-contract evidence
+
+The R3 relational bank contains 272 states that share the same current transitive closure. One state is the base graph; 271 states add a currently redundant asserted edge.
+
+All states face the same 64 registered base-edge deletions.
+
+The current closure representation therefore places all 272 states in one block. Yet the native deletion outcomes induce 101 operational classes. Relative to the frozen empirical uniform measure,
+
+\[
+U_\mu(R_{\rm current})=3.3914424817,
+\qquad
+E_\mu(R_{\rm current})=0.
+\]
+
+Full asserted-edge identity creates 272 blocks and moves the error in the opposite direction:
+
+\[
+U_\mu(R_{\rm full})=0,
+\qquad
+E_\mu(R_{\rm full})=4.6960203596.
+\]
+
+The same current graph semantics therefore support both conclusions:
+
+- some currently redundant distinctions must be retained for future operations;
+- many other currently redundant distinctions remain unnecessary under the same operation contract.
+
+This is the first exact instance of
+
+\[
+R_{\rm current}
+\prec
+O_{\mathcal C}
+\prec
+R_{\rm full}.
+\]
+
+The prospectively frozen R4-building carrier reproduces the same qualitative pattern with substantially different operational geometry: 272 states collapse into 23 operational classes, with only 22 augmented states required by the registered deletion contract.
+
+## 4.3 Action-specific activation
+
+The relational WACT experiments ask a sharper question: for a fixed latent redundant-edge distinction, which registered writes actually make it matter?
+
+The design separates the latent distinction from the action choice. Candidate states and action rules are frozen before the native outcomes used for acceptance. The resulting evidence shows that representational necessity is not determined by the existence of hidden provenance/support structure alone. It is indexed by the future operations that can make the distinction behaviorally consequential.
+
+This motivates the contract-relative formulation used throughout the paper:
+
+\[
+\text{state difference}
+\not\Rightarrow
+\text{representational necessity}.
+\]
+
+Necessity requires a registered continuation in which the distinction changes native behavior.
+
+## 4.4 Natural version-history evidence
+
+Git provides a carrier in which current content and historical state are natively separated.
+
+In the accepted G5 validation bank, 48 natural commit pairs have identical current trees and face the same 12-target merge panel. Two pairs require separation under at least one registered merge; 46 remain behaviorally equivalent under the complete panel.
+
+A target-ancestry representation exactly matches this finite one-step partition.
+
+The result supplies two boundaries at once.
+
+First, equal current content does not guarantee equal future merge behavior.
+
+Second, different histories do not automatically require distinct representations: most registered same-tree pairs in the held-out bank remain equivalent under the frozen merge contract.
+
+We therefore use Git as natural evidence for **contract-relative historical relevance**, not for the stronger claim that history is intrinsically part of computational identity.
+
+The prospective depth-two Git extension is reported only if its executable-carrier reconstruction and independent replay complete successfully; it is not required for the first-order claim.
+
+## 4.5 Learned persistent-state evidence
+
+The learned carrier supplies an important negative control before a positive witness.
+
+In GRACE L1b, 64 learned states produce 224 pairs that collide under the registered current interface. The complete frozen panel contains four first-step actions and all 16 ordered second-step action pairs.
+
+No pair separates at depth one, and no pair separates at depth two:
+
+\[
+H0\to H1=0,
+\qquad
+H1\to H2=0.
+\]
+
+Thus different learned parameter states do not become operationally relevant merely because the horizon is extended.
+
+A separate Finetune fold-0 witness supplies the complementary positive. Two states are equal under the registered current task relation but separate under each of three frozen future edits (dataset IDs 51, 29, and 73). Two fresh reconstructions reproduce both the root collision and the action-level separations.
+
+We treat this as a serious learned first-order witness, not a prevalence result. Because every tested future action separates the pair, it does not by itself establish selective or delayed compositional activation.
+
+## 4.6 First-order conclusion
+
+Across the three carrier types, the same principle survives while the native semantics differ:
+
+\[
+\boxed{
+\text{representational necessity is indexed by registered continuation, not by hidden difference alone.}
+}
+\]
+
+The relational carrier then allows the stronger constructive question: can the operation contract itself tell us which distinctions to keep?
+
 
 # 5. From diagnosis to contract-gated representation redesign
 
