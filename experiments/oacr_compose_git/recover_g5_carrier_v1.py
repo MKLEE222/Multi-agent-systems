@@ -206,19 +206,76 @@ def recover_commit_mapping(repo: Path, api: GitHubAPI, required: list[str], stat
     return mapping, meta
 
 
-def load_h2_module(repo_root: Path):
-    path = repo_root / "experiments/oacr_compose_git/run_g5_h2_v1.py"
-    spec = importlib.util.spec_from_file_location("oacr_g5_h2", path)
+def load_module(path: Path, name: str):
+    spec = importlib.util.spec_from_file_location(name, path)
     mod = importlib.util.module_from_spec(spec)
     assert spec and spec.loader
     spec.loader.exec_module(mod)
     return mod
 
 
-def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
-    mod = load_h2_module(repo_root)
+def map_sha(mapping: dict, sha: str | None):
+    if sha is None:
+        return None
+    return mapping.get(sha, sha)
+
+
+def validate_structure(carrier_repo: Path, bank: dict, mapping: dict):
     targets = [x["target"] for x in bank["action_selection"]["targets"]]
-    mismatches = []
+    tree_mismatches = []
+    ancestry_mismatches = []
+    mergebase_mismatches = []
+    for pi, row in enumerate(bank["pair_rows"]):
+        for side, c, expected_anc, expected_mb in (
+            ("A", row["A"], row["ancestry_vector_A"], row["mergebase_vector_A"]),
+            ("B", row["B"], row["ancestry_vector_B"], row["mergebase_vector_B"]),
+        ):
+            mc = mapping[c]
+            actual_tree = git(carrier_repo, "rev-parse", f"{mc}^{{tree}}").stdout.decode().strip()
+            if actual_tree != row["tree"] and len(tree_mismatches) < 50:
+                tree_mismatches.append({
+                    "pair_index": pi, "side": side, "commit": c,
+                    "mapped_commit": mc, "expected_tree": row["tree"],
+                    "observed_tree": actual_tree,
+                })
+            for ti, t in enumerate(targets):
+                mt = mapping[t]
+                anc = git(carrier_repo, "merge-base", "--is-ancestor", mt, mc, check=False).returncode == 0
+                if anc != bool(expected_anc[ti]) and len(ancestry_mismatches) < 50:
+                    ancestry_mismatches.append({
+                        "pair_index": pi, "side": side, "target_index": ti,
+                        "commit": c, "target": t, "expected": bool(expected_anc[ti]),
+                        "observed": anc,
+                    })
+                p = git(carrier_repo, "merge-base", mc, mt, check=False)
+                actual_mb = p.stdout.decode().strip() if p.returncode == 0 else None
+                expected_mapped = map_sha(mapping, expected_mb[ti])
+                if actual_mb != expected_mapped and len(mergebase_mismatches) < 50:
+                    mergebase_mismatches.append({
+                        "pair_index": pi, "side": side, "target_index": ti,
+                        "commit": c, "target": t,
+                        "expected_original": expected_mb[ti],
+                        "expected_mapped": expected_mapped,
+                        "observed": actual_mb,
+                    })
+    return {
+        "tree_mismatch_count_sampled": len(tree_mismatches),
+        "tree_mismatch_sample": tree_mismatches,
+        "ancestry_mismatch_count_sampled": len(ancestry_mismatches),
+        "ancestry_mismatch_sample": ancestry_mismatches,
+        "mergebase_mismatch_count_sampled": len(mergebase_mismatches),
+        "mergebase_mismatch_sample": mergebase_mismatches,
+    }
+
+
+def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
+    mod = load_module(
+        repo_root / "experiments/oacr_g5/run_same_contract_git_v1.py",
+        "oacr_g5_original",
+    )
+    targets = [x["target"] for x in bank["action_selection"]["targets"]]
+    mismatch_count = 0
+    mismatch_sample = []
     cells = 0
     for pi, row in enumerate(bank["pair_rows"]):
         for side, c, expected in (
@@ -228,23 +285,30 @@ def validate_h1(carrier_repo: Path, bank: dict, mapping: dict, repo_root: Path):
             mc = mapping[c]
             for ti, t in enumerate(targets):
                 mt = mapping[t]
-                payload, _, _ = mod.merge_payload(carrier_repo, mc, mt, persist=False)
+                observed = mod.execute_merge(carrier_repo, mc, mt)
                 cells += 1
-                if payload["signature"] != expected[ti]:
-                    mismatches.append({
-                        "pair_index": pi,
-                        "side": side,
-                        "commit": c,
-                        "mapped_commit": mc,
-                        "target": t,
-                        "mapped_target": mt,
-                        "target_index": ti,
-                        "expected": expected[ti],
-                        "observed": payload["signature"],
-                    })
-                    if len(mismatches) >= 50:
-                        return cells, mismatches
-    return cells, mismatches
+                if observed["signature"] != expected[ti]:
+                    mismatch_count += 1
+                    if len(mismatch_sample) < 50:
+                        mismatch_sample.append({
+                            "pair_index": pi,
+                            "side": side,
+                            "commit": c,
+                            "mapped_commit": mc,
+                            "target": t,
+                            "mapped_target": mt,
+                            "target_index": ti,
+                            "expected": expected[ti],
+                            "observed": observed["signature"],
+                            "observed_payload": {
+                                k: observed[k] for k in (
+                                    "exit_code", "already_up_to_date",
+                                    "merge_in_progress", "unmerged_paths",
+                                    "index_tree", "tracked_delta_sha256",
+                                )
+                            },
+                        })
+    return cells, mismatch_count, mismatch_sample
 
 
 def main():
@@ -292,10 +356,11 @@ def main():
     for orig in required:
         git(carrier, "update-ref", f"refs/oacr/g5/{orig}", mapping[orig])
 
-    cells, mismatches = validate_h1(carrier, bank, mapping, repo_root)
-    if cells != len(bank["pair_rows"]) * 2 * 12:
-        raise RuntimeError(f"incomplete H1 replay cells={cells}")
-    h1_ok = len(mismatches) == 0
+    structure = validate_structure(carrier, bank, mapping)
+    cells, mismatch_count, mismatch_sample = validate_h1(carrier, bank, mapping, repo_root)
+    expected_cells = len(bank["pair_rows"]) * 2 * 12
+    complete_h1 = cells == expected_cells
+    h1_ok = complete_h1 and mismatch_count == 0
 
     mapping_path = out_dir / "original_to_reconstructed.json"
     mapping_path.write_text(json.dumps(mapping, indent=2, sort_keys=True))
@@ -325,10 +390,13 @@ def main():
         "stats": {**stats, "github_api_requests": api.requests},
         "required_original_commits": required,
         "missing_commit_metadata": meta,
+        "structural_validation": structure,
         "h1_validation": {
+            "cells_expected": expected_cells,
             "cells_replayed": cells,
-            "mismatch_count": len(mismatches),
-            "mismatch_sample": mismatches[:50],
+            "complete": complete_h1,
+            "mismatch_count": mismatch_count,
+            "mismatch_sample": mismatch_sample,
             "accepted": h1_ok,
         },
         "bundle": {
@@ -356,7 +424,10 @@ def main():
         "blobs_recovered": stats["blobs_recovered"],
         "github_api_requests": api.requests,
         "h1_cells_replayed": cells,
-        "h1_mismatches": len(mismatches),
+        "h1_mismatches": mismatch_count,
+        "structural_tree_mismatch_sampled": structure["tree_mismatch_count_sampled"],
+        "structural_ancestry_mismatch_sampled": structure["ancestry_mismatch_count_sampled"],
+        "structural_mergebase_mismatch_sampled": structure["mergebase_mismatch_count_sampled"],
         "bundle_created": h1_ok,
         "bundle_sha256": bundle_sha,
         "bundle_size_bytes": bundle_size,
