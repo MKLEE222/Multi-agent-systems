@@ -1,0 +1,42 @@
+name: OACR One-Delta DAG Theorem Sanity
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+
+jobs:
+  sanity:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR ONE DELTA DAG SANITY]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install exact runtime
+        run: python -m pip install --disable-pip-version-check networkx==3.2.1
+
+      - name: Run exhaustive finite theorem sanity check
+        run: |
+          set -euxo pipefail
+          python -m py_compile experiments/oacr_theory/check_one_delta_dag_exactness_v1.py
+          mkdir -p results/oacr_theory
+          python experiments/oacr_theory/check_one_delta_dag_exactness_v1.py \
+            --out results/oacr_theory/one_delta_dag_sanity_v1.json
+          sha256sum results/oacr_theory/one_delta_dag_sanity_v1.json \
+            | tee results/oacr_theory/one_delta_dag_sanity_v1.sha256
+
+      - name: Upload theorem sanity artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oacr-one-delta-dag-sanity-v1
+          path: results/oacr_theory/
+          if-no-files-found: error
