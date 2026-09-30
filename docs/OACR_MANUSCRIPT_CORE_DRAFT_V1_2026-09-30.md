@@ -277,6 +277,171 @@ Our contribution is instead operational and representational. We use registered 
 
 This distinction is important because the same internal difference can be necessary under one contract and irrelevant under another. Representation adequacy is therefore not treated as an intrinsic property of a state encoding. It is indexed by the continuation the representation is required to preserve.
 
+
+---
+
+# 3. Experimental discipline under native operation contracts
+
+## 3.1 Same-contract evaluation
+
+A recurring source of false representational necessity is action selection that depends on the state pair being evaluated. If each pair is tested only with an operation chosen because it is known to expose that pair, then the experiment conflates two questions:
+
+1. whether the representation omits an operationally relevant distinction;
+2. whether the evaluator selected an operation specifically to make that distinction relevant.
+
+We therefore separate **state construction** from the **registered operation contract** wherever possible. A same-contract experiment applies the same frozen action family to every state in the registered bank.
+
+For a finite action set
+
+\[
+A=\{a_1,\ldots,a_m\},
+\]
+
+each state receives the same operational probe
+
+\[
+B_A(x)
+=
+\bigl(
+B(x,a_1),\ldots,B(x,a_m)
+\bigr).
+\]
+
+The induced quotient is therefore determined by a shared contract rather than pair-specific action selection.
+
+This discipline is central to the R3/R4 relational studies and the G5 natural Git study.
+
+---
+
+## 3.2 Freeze before outcome
+
+Every confirmatory experiment distinguishes quantities that may be chosen before outcome from quantities that are measured after outcome.
+
+Examples of pre-outcome frozen objects include:
+
+- carrier and source snapshot;
+- state bank;
+- operation family;
+- observation signature;
+- collision criterion;
+- witness selection rule;
+- stopping rule;
+- success and underpower thresholds.
+
+A result is not promoted from developmental to confirmatory status merely because the same code is rerun on a new machine. The carrier or selection rule must have been fixed before the relevant outcome was observed.
+
+This distinction is especially important for representation redesign. A representation feature chosen after inspecting the full operational partition may reproduce the partition without demonstrating that the feature can be derived from the contract itself.
+
+The contract-gated relational representation is therefore constructed from the base graph, the registered action set, and the current delta endpoint rather than from the augmented-state outcome table.
+
+---
+
+## 3.3 Native execution rather than surrogate labels
+
+Whenever possible, operational equivalence is determined by the carrier's native transformation mechanism.
+
+Examples include:
+
+- graph deletion followed by exact transitive-closure recomputation;
+- native Git merge execution;
+- official Finetune editing of the declared model parameter;
+- typed legality and transition execution in the controlled SQEC carrier.
+
+Structural certificates may predict an outcome, but the accepted empirical result requires the native operation itself to agree with the certificate.
+
+This prevents a circular evaluation in which the same abstraction both defines and verifies the claimed behavior.
+
+---
+
+## 3.4 Independent verification
+
+A producer and a verifier answer different questions.
+
+The producer constructs the registered states, executes the frozen contract, and records outcomes.
+
+The verifier reconstructs the claim from an independently specified input boundary and checks:
+
+- carrier identity;
+- state/action registration;
+- representation classification;
+- native replay;
+- operational signatures;
+- \(U/E\) bookkeeping.
+
+For consequential positive claims, a verifier should not merely hash or re-read producer output. It should recompute the relevant structure or replay the native operation from the frozen inputs.
+
+We additionally distinguish:
+
+- **artifact verification**, which checks a frozen run without revisiting mutable external sources;
+- **fresh targeted replay**, which reinitializes the carrier and reconstructs a promoted witness independently.
+
+---
+
+## 3.5 Scientific negatives and engineering failures
+
+A zero result is scientifically informative only when the registered experiment was actually executed with sufficient coverage.
+
+We therefore distinguish three outcomes.
+
+### Scientific negative
+
+The registered carrier and action bank execute successfully, the preregistered power/coverage gate is met, and no qualifying separation is observed.
+
+Example: GRACE L1b executes the full registered H2 panel over 224 H0 collision pairs and observes no separation.
+
+### Structural or construction underpower
+
+The experiment does not instantiate enough eligible states/actions to test the intended phenomenon.
+
+Example: a Git target-construction protocol can fail because too few natural pairs admit both required action classes. This is not evidence that the phenomenon is absent.
+
+### Engineering failure
+
+The scientific contract is not reached because of runtime, path, artifact, repository-object, or verifier plumbing.
+
+Engineering failures are repaired without changing the frozen scientific selection rules. If an outcome was already exposed before the failure, the repair record explicitly states which scientific quantities are now fixed and may no longer be altered.
+
+This separation is necessary for the negative evidence in the paper to be interpretable.
+
+---
+
+## 3.6 Outcome-blind witness selection
+
+When a contract contains many potential witnesses, promotion rules are defined before the relevant outcomes are inspected.
+
+Typical deterministic rules include:
+
+- lexical first eligible witness;
+- evenly spaced selection over a frozen eligible list;
+- lowest fold, then lowest anchor ID, then lowest action ID.
+
+The purpose is not statistical randomization. It is to prevent choosing the witness with the most visually dramatic effect after observing the result matrix.
+
+Full result matrices are retained even when only one witness is promoted for targeted replay.
+
+---
+
+## 3.7 Why this discipline is part of the scientific contribution
+
+The paper's core object is contract-relative representation adequacy. That object is unusually vulnerable to definitional circularity:
+
+- operations can be chosen to make a distinction matter;
+- representations can be redesigned after inspecting the desired partition;
+- hidden-state features can be declared necessary merely because they differ;
+- external carriers can drift between discovery and verification.
+
+The experimental discipline above is therefore not ancillary infrastructure. It is what makes the comparison
+
+\[
+P_R
+\quad\text{vs.}\quad
+O_{\mathcal C}
+\]
+
+empirically meaningful.
+
+The same contract must be specified independently enough that an observed mismatch is evidence about the representation, rather than an artifact of how the evaluator constructed the test.
+
 ---
 
 # 5. From diagnosis to contract-gated representation redesign
