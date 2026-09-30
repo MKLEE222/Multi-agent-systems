@@ -95,3 +95,41 @@ Again unchanged:
 - producer code and exposed zero result.
 
 A further clean rerun is permitted solely to complete independent replay.
+
+
+## Third verifier engineering correction
+
+Third clean rerun:
+
+- run \`36656689670\`;
+- producer completed successfully;
+- producer result reproduced exactly for the third time:
+  - source pairs: 46;
+  - H2-eligible sequences: 176;
+  - divergent sequences: 0;
+  - pairs with divergence: 0;
+  - H1 reproduction mismatches: 0;
+- producer SHA-256 again:
+  \`08e42fec19f7ae9e39e1d5d0937ae0fa8cfa45dbf8f1fb3a2a8c3eeb4f500045\`.
+
+The independent verifier progressed into native replay and then failed on a Git partial-clone/promisor object fetch:
+
+\`fatal: remote error: upload-pack: not our ref ...\`
+
+followed by:
+
+\`fatal: could not fetch ... from promisor remote\`.
+
+The failure occurred during native \`git merge\` replay because the workflow cloned \`git/git\` with \`--filter=blob:none\`, leaving verification dependent on lazy object retrieval from the promisor remote.
+
+No verifier-produced scientific mismatch was observed before the infrastructure failure.
+
+Engineering-only repair:
+
+- workflow commit \`53db77c9df3eca6b520437c5530b44dae419c71a\`;
+- replace the partial clone with a full \`git clone --no-tags\`;
+- producer, verifier, pair bank, target panel, H1 gate, persisted-merge construction, H2 signature, and divergence rule remain unchanged.
+
+The exposed producer zero remains frozen and cannot justify any scientific rule change.
+
+A further clean rerun is authorized solely to complete the independent replay with all repository objects locally available.
