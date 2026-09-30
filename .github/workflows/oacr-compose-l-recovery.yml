@@ -11,14 +11,14 @@ permissions:
 env:
   TOKENIZERS_PARALLELISM: "false"
   WANDB_MODE: "disabled"
-  HF_HOME: \${{ github.workspace }}/.cache/huggingface
-  TRANSFORMERS_CACHE: \${{ github.workspace }}/.cache/huggingface/transformers
-  HF_DATASETS_CACHE: \${{ github.workspace }}/.cache/huggingface/datasets
+  HF_HOME: ${{ github.workspace }}/.cache/huggingface
+  TRANSFORMERS_CACHE: ${{ github.workspace }}/.cache/huggingface/transformers
+  HF_DATASETS_CACHE: ${{ github.workspace }}/.cache/huggingface/datasets
   HF_HUB_DISABLE_XET: "1"
-  PYTHONPATH: \${{ github.workspace }}/external/GRACE:\${{ github.workspace }}/external/GRACE/grace:\${{ github.workspace }}/experiments/r1_grace_scotus:\${{ github.workspace }}/experiments/oacr_compose_learned
-  R1_SCOTUS_MODEL_DIR: \${{ github.workspace }}/assets/scotus-bert
-  R1_SCOTUS_TOKENIZER_DIR: \${{ github.workspace }}/assets/bert-base-cased
-  R1_SCOTUS_TEST_PARQUET: \${{ github.workspace }}/assets/grace-scotus/test.parquet
+  PYTHONPATH: ${{ github.workspace }}/external/GRACE:${{ github.workspace }}/external/GRACE/grace:${{ github.workspace }}/experiments/r1_grace_scotus:${{ github.workspace }}/experiments/oacr_compose_learned
+  R1_SCOTUS_MODEL_DIR: ${{ github.workspace }}/assets/scotus-bert
+  R1_SCOTUS_TOKENIZER_DIR: ${{ github.workspace }}/assets/bert-base-cased
+  R1_SCOTUS_TEST_PARQUET: ${{ github.workspace }}/assets/grace-scotus/test.parquet
 
 jobs:
   recovery-hysteresis:
@@ -78,15 +78,15 @@ jobs:
           python -m py_compile experiments/oacr_compose_learned/run_recovery_hysteresis_v1.py
           python -m py_compile experiments/oacr_compose_learned/verify_recovery_hysteresis_v1.py
 
-      - name: Run recovery hysteresis fold \${{ matrix.fold }}
+      - name: Run recovery hysteresis fold ${{ matrix.fold }}
         env:
           PYTHONHASHSEED: "0"
         run: |
           set -euxo pipefail
-          mkdir -p "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}"
+          mkdir -p "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}"
           python experiments/oacr_compose_learned/run_recovery_hysteresis_v1.py \
             --repo external/GRACE \
-            --fold \${{ matrix.fold }} \
+            --fold ${{ matrix.fold }} \
             --future_bank 512 \
             --anchor_bank 256 \
             --future_actions 3 \
@@ -95,20 +95,20 @@ jobs:
             --read_atol 1e-6 \
             --read_rtol 1e-5 \
             --device cpu \
-            --out "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/producer.json"
-          sha256sum "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/producer.json" \
-            | tee "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/producer.sha256"
+            --out "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/producer.json"
+          sha256sum "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/producer.json" \
+            | tee "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/producer.sha256"
 
-      - name: Verify artifact fold \${{ matrix.fold }}
+      - name: Verify artifact fold ${{ matrix.fold }}
         run: |
           set -euxo pipefail
           python experiments/oacr_compose_learned/verify_recovery_hysteresis_v1.py \
-            --artifact "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/producer.json" \
-            | tee "results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/verify.json"
+            --artifact "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/producer.json" \
+            | tee "results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/verify.json"
 
       - name: Upload fold artifact
         uses: actions/upload-artifact@v4
         with:
-          name: oacr-compose-l-recovery-fold-\${{ matrix.fold }}
-          path: results/oacr_compose_l_recovery/fold_\${{ matrix.fold }}/
+          name: oacr-compose-l-recovery-fold-${{ matrix.fold }}
+          path: results/oacr_compose_l_recovery/fold_${{ matrix.fold }}/
           if-no-files-found: error
