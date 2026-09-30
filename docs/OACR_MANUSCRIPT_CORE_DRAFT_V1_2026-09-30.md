@@ -1194,37 +1194,56 @@ This is qualitatively different from merely accumulating more fixed-domain opera
 
 ## 6.5 Prospective second-substrate repair
 
-**Pending accepted run.**
+We prospectively froze an eight-variant SQEC family with internal positive and negative controls.
 
-A fresh eight-variant SQEC family has been prospectively frozen with internal positive and negative controls.
-
-It compares:
+The comparison contains three representations:
 
 - FULL native dynamic legality;
 - PROJECTED semantics with observation guards removed;
 - GUARD-REPAIRED semantics that add back one frozen canonical state-dependent guard rule.
 
-The complete registered contract enumerates every event sequence of length one and two.
+The complete registered contract enumerates every event sequence of length one and two over four native events.
 
-Promotion requires:
-
-\[
-mismatch_1(FULL,PROJECTED)=0
-\]
-
-for all variants,
-
-delayed depth-two divergence only in the predeclared guard-closing controls, and
+Across all eight variants, FULL and PROJECTED are identical under the complete one-step contract:
 
 \[
-mismatch_{\le2}(FULL,GUARD\text{-}REPAIRED)=0
+\boxed{
+mismatch_1(FULL,PROJECTED)=0.
+}
 \]
 
-for the complete family.
+At depth two, the projected representation fails exactly in the predeclared guard-closing control family, producing eight registered mismatches in total:
 
-This experiment tests whether the audit-to-repair logic established in the relational carrier survives a qualification-bearing substrate.
+\[
+\boxed{
+mismatch_2(FULL,PROJECTED)=8.
+}
+\]
 
-No result is inserted here until producer and independent verifier both pass.
+The no-divergence controls produce no unexpected mismatch.
+
+The repair adds one canonical rule:
+
+\[
+G_{\rm obs}
+=
+(
+\texttt{s::observation-route},
+\{ACTION\_OPEN,SATISFIED\}
+).
+\]
+
+After recompiling that frozen guard into the projected event interface, the complete registered continuation matrix matches FULL exactly:
+
+\[
+\boxed{
+mismatch_{\le2}(FULL,GUARD\text{-}REPAIRED)=0.
+}
+\]
+
+An independent verifier reconstructs all eight variants and recomputes every sequence signature, returning zero verifier mismatches.
+
+This supplies a second-substrate constructive confirmation of the OACR repair logic. The relational carrier repairs a state partition under native deletion; the qualification carrier repairs delayed continuation closure under a state-dependent legality rule.
 
 ## 6.6 Natural Git boundary
 
