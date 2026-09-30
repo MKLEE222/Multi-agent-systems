@@ -75,7 +75,7 @@ jobs:
             --mquake_dir external/MQuAKE \
             --out_dir results/oacr_natural_learned_n0 \
             | tee results/oacr_natural_learned_n0/stdout.txt
-          rc=\${PIPESTATUS[0]}
+          rc=${PIPESTATUS[0]}
           set -e
           sha256sum \
             results/oacr_natural_learned_n0/preflight.json \
