@@ -72,14 +72,14 @@ and reproduces all
 
 registered native outcomes while retaining only 22 of 271 declared per-state deltas.
 
-We then ask when one-step adequacy remains adequate under composition. The answer is not "whenever the horizon becomes longer." In two exact relational deletion carriers, every distinction is either activated at depth one or remains inert under the entire frozen action universe. In a learned GRACE control, 224 current collisions remain equivalent through the complete registered depth-two panel. By contrast, a controlled dynamic-qualification system provides an exact mechanism in which the immediate continuation interface is preserved but a shared first transformation changes the legality of a later operation. This motivates a continuation-interface view in which operations may alter the semantics, qualification, or response of later operations.
+We then ask when one-step adequacy remains adequate under composition. The answer is not "whenever the horizon becomes longer." In two exact relational deletion carriers, every distinction is either activated at depth one or remains inert under the entire frozen action universe. In a learned GRACE control, 224 current collisions remain equivalent through the complete registered depth-two panel. By contrast, a prospectively frozen dynamic-qualification family preserves the complete one-step interface yet produces eight depth-two mismatches when a common first transformation closes a later observation guard. Reattaching one preregistered canonical guard rule repairs the complete depth-two continuation matrix with zero mismatches under independent verification. This motivates a continuation-interface view in which operations may alter the semantics, qualification, or response of later operations.
 
 The paper makes four contributions:
 
 1. **A native-contract adequacy audit for implemented representations.** We formalize and measure directional under- and over-refinement relative to a registered continuation contract, while explicitly inheriting behavioral-equivalence and strong-preservation theory.
 2. **Cross-carrier evidence that representational necessity is operation-relative.** Exact relational, natural version-history, and learned-state carriers provide positive and negative boundaries under same-contract native operations.
-3. **A constructive audit-to-repair result.** A contract-derived structural gate reaches the exact registered operational quotient on relational carriers and survives exhaustive native replay, including a prospectively frozen fresh carrier.
-4. **A bounded composition result.** Increasing action depth alone does not force new representational demand in the audited fixed-domain controls; delayed demand emerges in a controlled mechanism when an earlier transformation changes the continuation interface of a later one.
+3. **Constructive audit-to-repair results in two substrates.** A contract-derived structural gate reaches the exact registered operational quotient on relational carriers, while a prospectively frozen state-dependent guard repair restores complete depth-two continuation closure in a dynamic-qualification carrier; both survive independent native replay.
+4. **A bounded composition result.** Increasing action depth alone does not force new representational demand in the audited fixed-domain controls; delayed demand emerges when an earlier transformation changes the continuation interface of a later one.
 
 The scope is deliberately finite and contract-relative. We do not claim a universal minimal state representation, universal provenance necessity, or a new theory of behavioral equivalence. The target is narrower: determine what an implemented representation must preserve to keep supporting the transformations it is actually required to perform.
 
@@ -1485,3 +1485,59 @@ It contributes an empirical and constructive program for **implemented persisten
 \]
 
 The cross-carrier experiments test how far that program survives when the relevant continuation semantics are relational, historical, learned, or qualification-dependent.
+
+
+---
+
+# 8. Limits and scope
+
+OACR is a contract-relative audit framework, not a claim that one representation is intrinsically correct independent of its use.
+
+First, every empirical quotient in this paper is finite and registered. The operational partition \(O_{\mathcal C}\) is induced by a declared observation/action/horizon contract on a frozen state bank. A representation that is exact for one contract may under-refine a richer future contract or over-refine a narrower one. We therefore do not interpret \(U_\mu=E_\mu=0\) as universal state minimality.
+
+Second, the constructive graph result is structurally specific. Proposition 1 establishes when an individual currently redundant edge can be omitted safely under a singleton-deletion contract. The observed equality
+
+\[
+R_{\rm gate}=O_{\mathcal C}
+\]
+
+on R3 and R4 additionally requires the empirical fact that the retained active deltas do not over-refine one another. We do not promote that empirical exactness into a general graph theorem.
+
+Third, cross-carrier evidence is intentionally heterogeneous. The relational carrier supports complete finite operational partitions and exact \(U_\mu/E_\mu\) accounting. The Git and learned carriers supply natural or high-cost native witnesses under smaller registered banks. The common claim is therefore a shared **audit object**, not equal statistical coverage or an identical state ontology across domains.
+
+Fourth, the dynamic-qualification repair is controlled. It prospectively confirms delayed continuation failure and repair under a typed state-dependent guard, but it does not establish natural prevalence of such failures. The earlier stochastic SQEC result supplies a decision consequence; the fresh repair family supplies confirmatory continuation closure. Neither should be read as evidence that qualification is the only mechanism capable of producing COMPOSE effects.
+
+Fifth, learned evidence remains contract- and model-specific. Sequential editing, path dependence, and reversibility are established research topics. The learned experiment in this paper is used only to test whether a preregistered present-recovery relation is closed under a later common native update. No claim is made about universal edit irreversibility, machine unlearning, or model-wide memory.
+
+Sixth, version-history evidence depends on reproducible carrier archival. The accepted G5 H1 result remains part of the first-order evidence. The prospective H2 zero is promoted only if the frozen executable Git carrier passes complete H1 reconstruction and independent bundle-backed H2 replay.
+
+Finally, the broader research program motivating OACR concerns persistent participants whose history, authority, membership, or identity may change under copy, merge, rollback, and related transformations. The present paper establishes a computational representation methodology. It does not by itself establish cultural, institutional, or personal continuity criteria.
+
+---
+
+# 9. Conclusion
+
+A representation of a persistent computational object is not only a description of what the object is now. It is also a state from which the object must continue.
+
+This paper operationalizes that requirement through registered native continuation contracts. Relative to such a contract, an implemented representation can fail in two directions: it can omit distinctions that future operations require, or preserve internal distinctions that never affect the registered continuation. The resulting target is neither static fidelity nor complete internal identity, but the intermediate operational quotient required by the contract.
+
+The exact relational carriers make this structure explicit:
+
+\[
+R_{\rm current}
+\prec
+O_{\mathcal C}
+\prec
+R_{\rm full}.
+\]
+
+More importantly, the audit changes representation design. A contract-derived gate retains only currently redundant deltas whose redundancy can be broken by a registered deletion. On the prospectively frozen building carrier, the transform moves from one current block and 272 full-identity blocks to the exact 23-class operational quotient, reproduces all 17,408 native outcomes, and retains 22 of 271 declared deltas.
+
+The continuation view also clarifies what composition adds. Longer action sequences do not automatically expose more hidden state: the registered relational deletion carriers and learned GRACE control provide direct counterexamples. New representational demand can instead arise when a transformation changes the continuation interface governing later transformations. In a prospectively frozen dynamic-qualification family, removing a dormant observation guard produces no one-step mismatch but eight depth-two mismatches; reinstating one canonical state-dependent guard restores the complete registered depth-two matrix.
+
+These results suggest a practical criterion for persistent computational representations:
+
+> **Preserve the distinctions required to keep the registered continuation closed, and no more than the contract can justify.**
+
+The criterion inherits its formal substrate from behavioral equivalence, strong preservation, and representation independence. OACR contributes the empirical and constructive workflow needed to apply that substrate to implemented state representations under native transformations: register the continuation contract, audit omission and excess, derive an operation-relative certificate, repair the representation where possible, and replay the native continuation.
+
