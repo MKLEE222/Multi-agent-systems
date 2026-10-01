@@ -9,8 +9,9 @@ Sole acceptance gate: `OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md` at that
 The one-delta budgeted deletion construction survives this fresh-reading proof
 audit under its stated assumptions. The prior finite audit was reproduced with
 identical JSON content. This does not close the nontrivial theory/novelty gate.
-Natural learned evidence remains absent from the inherited N1 run: it failed
-during checkpoint loading before any factual edit or variant outcome.
+The inherited N1 run failed during checkpoint loading before any factual edit
+or variant outcome. Recovery run `36824729008` subsequently completed all eight
+dev units, with no predictive/sham improvement; see the recorded recovery verdict.
 
 This audit was performed by the same assistant, without a proof assistant or a
 second reviewer. Neither rereading nor a different algorithm creates independent
@@ -163,3 +164,29 @@ strongest existing construction on the same mathematical input. Any surviving
 contribution must identify a result that this reduction does not already give.
 Until then, T2/T5 stay open and manuscript promotion remains blocked by the
 upgrade gate, even if N1 runs successfully.
+
+## 7. Completed recovery verdict
+
+Run `36824729008`, source `1cecafd7aea00fac34c9e44f88df90fe11593b25`,
+completed successfully at 2026-10-01 06:28 UTC. The official-GRACE/tiny-T5
+interface check, pinned checkpoint staging, evaluation-seal check and matched
+auxiliary-key-count check passed. All 8 requested units were complete and all
+8 immediate edits succeeded. No evaluation unit was loaded.
+
+Across the same 66 future-query rows, B1 and B2 produced exactly the B0 predictions,
+not merely equal mean scores. B1/B2 each added two keys per unit. Therefore D1
+representation-change passed, while D2 future improvement and D3 sham separation
+did not pass. A0 changed 16 predictions and gained one correct query, with no
+loss; it remains a two-key test-prompt heuristic, not an optimized oracle ceiling.
+
+Record: `OACR_N1_DEV_RECOVERY_VERDICT_2026-10-01.md`. Immutable raw report and
+snapshot provenance are retained under
+`results/oacr_natural_learned_n1/recovery_36824729008/`.
+
+This localizes a failure of the current predictive constructor on these eight
+dev units. No activation/routing telemetry was recorded, so equal predictions
+do not prove that auxiliary keys never routed internally. Routing coverage and
+copied-value adequacy remain distinct diagnostic hypotheses. Any observer-only
+replay of these outcomes is retrospective development analysis. A changed
+constructor must be frozen as a new dev round; neither the smoke success nor
+the A0 gain unlocks the 512-unit evaluation bank.
