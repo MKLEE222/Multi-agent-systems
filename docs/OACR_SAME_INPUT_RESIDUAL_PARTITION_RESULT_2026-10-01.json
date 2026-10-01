@@ -1,0 +1,31 @@
+{
+  "baseline": "native observations + deterministic Moore partition refinement + quotient update table",
+  "baseline_authority": "retrospective observation oracle, not a predictive constructor",
+  "compiler": "unchanged restricted-mincut compiler and stored-representation updater",
+  "conclusion": "same residual partition and executable commuting updates on every enumerated contract",
+  "counts": {
+    "baseline_commuting_transitions": 13703208,
+    "candidate_bank_preparation_closures": 1098,
+    "compiler_commuting_transitions": 13703208,
+    "contracts": 182104,
+    "expanded_states": 6234453,
+    "graph_action_banks": 42284,
+    "graphs_with_candidates": 692,
+    "max_expanded_states_per_contract": 1024,
+    "max_refinement_rounds": 6,
+    "native_observation_calls": 6234453,
+    "order_respecting_dags": 1098,
+    "quotient_blocks": 5262435,
+    "refinement_rounds_including_stability_check": 323359,
+    "residual_contexts": 2441430,
+    "same_context_partition_pairs": 11761605
+  },
+  "inherited_compiler_sha256": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+  "input": "(ordered DAG G, redundant single-edge candidates D=TC(G)-G plus no-addition, deletable A, budget h)",
+  "max_nodes": 5,
+  "novelty_status": "semantic object and quotient updates are realized by a standard finite-state baseline; succinct implementation novelty remains unproved",
+  "protocol": "OACR_SAME_INPUT_RESIDUAL_PARTITION_BASELINE_V1",
+  "scope": "synthetic exhaustive semantic comparison; no held-out or natural evidence",
+  "source_sha256": "0eea92c13921fb09e0d221130a9070469067a4955b817109548b471085e2d06f",
+  "verified": true
+}

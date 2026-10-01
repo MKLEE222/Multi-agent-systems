@@ -38,7 +38,8 @@ Core reference:
 - T3 WORKING CANDIDATE: original one-delta static exactness is preserved with its
   stated assumptions. A budgeted-deletion extension now supplies a restricted-cut
   compiler, an explicit decoder, and a residual-budget update with a no-resurrection
-  proof. Cold proof review and same-input comparison remain open.
+  proof. The same-input semantic baseline has now executed; cold proof review
+  and independent-result/efficiency comparison remain open.
 - T5 REOPENED: a checklist of different ingredients is not a novelty clearance.
   Include complete extensions AND restrictions (JACM 2000), observational
   completeness, automata/state abstraction, and fault-tolerant reachability.
@@ -133,6 +134,27 @@ not a formal proof assistant certificate, not a new natural replication, and not
 millions of independent samples. General proof and novelty review remain open.
 
 ## Gate T — Theory (original substantive requirements retained)
+
+### 2026-10-01 follow-up execution; thresholds unchanged
+
+- Same-input comparison: standard residual-state partition refinement reproduces
+  the compiler's partition on all 182,104 inherited contracts, with 11,761,605
+  pair checks and 13,703,208 commuting transitions per implementation. This
+  closes the missing implemented semantic baseline, **not T2/T5**. See
+  `docs/OACR_SAME_INPUT_NEIGHBOR_COMPARISON_2026-10-01.md`.
+- T3 extension candidate: conditioning each edge cut on the other persistent
+  additions yields a least-subset compiler and residual updater in acyclic,
+  base-edge-failure, full-reachability carriers. 940 multi-addition contracts
+  passed synthetic checks; same-assistant proof and code, cold review open.
+  Classical transitive reduction/mincut is load-bearing. See
+  `docs/OACR_MULTI_DELTA_CONDITIONAL_CUT_CANDIDATE_2026-10-01.md`.
+- N1 localization: exact observer replay found B1/sham gate activation 0/66;
+  forced all-key gates changed all layer outputs and increased correctness from
+  3/66 to 7/66, but all variants were identical, with gains and losses. This is
+  retrospective task-performance diagnosis, with no semantic key advantage or
+  quotient evidence. See `docs/OACR_N1_ROUTING_AND_GATE_VERDICT_2026-10-01.md`.
+- Evaluation seal: unchanged at 512 units. Next constructor development is
+  separately specified in `docs/OACR_NEXT_DEVELOPMENT_PROTOCOL_2026-10-01.md`.
 
 ### T1. Contract-Adequate Representation Repair
 

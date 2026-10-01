@@ -4,6 +4,19 @@ Date: 2026-09-30
 
 Status: **CLAIM BOUNDARY — graph-theoretic novelty must remain conservative**
 
+2026-10-01 correction: the representation-adequacy consequence below is a useful
+specialization, not an independently cleared theoretical object. The same-input
+standard residual partition baseline reproduces it and its executable updater;
+see `docs/OACR_SAME_INPUT_NEIGHBOR_COMPARISON_2026-10-01.md`. The Hamming formula in
+Section 4 is a source-backed design distance in the declared feature family. It
+does not imply reversible recovery from a lossy stored state: expansion requires
+retained/reacquired per-state witnesses and their cost. The old multi-delta
+counterexample remains valid against independent base-only gates; a conditioned
+multi-addition candidate now resolves that witness under narrower explicit
+assumptions in `docs/OACR_MULTI_DELTA_CONDITIONAL_CUT_CANDIDATE_2026-10-01.md`.
+T2/T5 remain open. Dynamic transitive reduction (Goranci et al., ICALP 2025) also
+belongs in the maintenance comparison: https://arxiv.org/abs/2504.18161.
+
 The one-delta DAG carrier gives OACR an exact tractable theorem class. This does not imply that its underlying reachability facts are new graph theory.
 
 ## 1. Classical transitive reduction

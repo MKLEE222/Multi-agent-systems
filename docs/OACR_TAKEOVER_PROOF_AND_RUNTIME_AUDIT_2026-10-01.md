@@ -13,6 +13,10 @@ The inherited N1 run failed during checkpoint loading before any factual edit
 or variant outcome. Recovery run `36824729008` subsequently completed all eight
 dev units, with no predictive/sham improvement; see the recorded recovery verdict.
 
+Later follow-up in Section 8 supplies the same-input baseline, actual routing
+localization and a multi-addition candidate. It supersedes the open diagnostic
+priorities in the earlier sections without upgrading novelty or evaluation.
+
 This audit was performed by the same assistant, without a proof assistant or a
 second reviewer. Neither rereading nor a different algorithm creates independent
 human review, statistical replication, or prospective empirical authority.
@@ -190,3 +194,32 @@ copied-value adequacy remain distinct diagnostic hypotheses. Any observer-only
 replay of these outcomes is retrospective development analysis. A changed
 constructor must be frozen as a new dev round; neither the smoke success nor
 the A0 gain unlocks the 512-unit evaluation bank.
+
+## 8. Completed same-input and failure-localization follow-up
+
+The standard residual-state partition baseline matches all 182,104 inherited
+budgeted contracts, with 11,761,605 partition-pair checks and 13,703,208 commuting
+transition checks per implementation. Record:
+`OACR_SAME_INPUT_NEIGHBOR_COMPARISON_2026-10-01.md`. It demonstrates that the
+semantic quotient and executable updates have an existing finite-state
+realization; T2/T5 remain open rather than gaining a working pass.
+
+Observer run 36827221730 byte-reproduces the original report and records zero
+gate activation and layer-output change for B1/sham on all 66 queries. All-key
+gate-ablation run 36828185349 again reproduces the original report; forced gates
+change all layer outputs and yield 7/66 correct for every variant, with identical
+predictions, 6 gains and 2 losses against B0. This establishes a common base-value
+pathway effect, not auxiliary-key superiority. Record:
+`OACR_N1_ROUTING_AND_GATE_VERDICT_2026-10-01.md`.
+
+The new multi-addition candidate conditions each addition's cut on all other
+persistent additions. Classical DAG transitive reduction gives its least-subset,
+exact-partition and residual-update proof. 940 synthetic contracts pass; the old
+interaction witness now maps to one common stored subset. Record:
+`OACR_MULTI_DELTA_CONDITIONAL_CUT_CANDIDATE_2026-10-01.md`. General cold review and
+prior-art comparison are outstanding; no independent confirmation is claimed.
+
+The next radius/geometry development protocol is explicit in
+`OACR_NEXT_DEVELOPMENT_PROTOCOL_2026-10-01.md`. It has not yet executed. It includes
+a duplicate-base-key control so broader gating cannot be mistaken for useful
+condition-key semantics. All 512 evaluation units remain sealed.

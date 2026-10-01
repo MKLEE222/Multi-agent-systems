@@ -1,0 +1,33 @@
+{
+  "assumptions": [
+    "acyclic augmented graph",
+    "only base edges are deletable",
+    "all subsets of deletable base edges up to h are legal",
+    "persistent additions",
+    "full reachability observation",
+    "statewise addition witness available at initial compilation"
+  ],
+  "constructor": "per-addition restricted mincut conditioned on every other persistent addition",
+  "counts": {
+    "commuting_residual_updates": 11762,
+    "compiler_idempotence_checks": 2368,
+    "contracts": 940,
+    "exact_partitions": 940,
+    "graphs_with_candidates": 25,
+    "native_decoder_checks": 9708,
+    "order_respecting_dags": 74,
+    "residual_no_resurrection_checks": 9708,
+    "state_partition_checks": 2368,
+    "subset_minimality_checks": 4404
+  },
+  "cyclic_input_rejected": true,
+  "existing_interaction_witness_resolved": true,
+  "inherited_flow_source_sha256": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+  "max_nodes": 4,
+  "novelty_status": "classical transitive-reduction/mincut specialization; T2/T5 remain open",
+  "protocol": "OACR_MULTI_DELTA_CONDITIONAL_CUT_AUDIT_V1",
+  "scope": "same-author synthetic proof debugging, not independent or natural confirmation",
+  "source_sha256": "7837c3cfc2d840dca2014bf14712ef80e58f4aa961b81e63e7c3244b33923ce7",
+  "verified": true,
+  "verifier": "Warshall reachability + every legal failure set + every stored subset"
+}

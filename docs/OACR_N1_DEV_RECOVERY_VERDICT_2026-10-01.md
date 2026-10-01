@@ -45,6 +45,12 @@ about GRACE, learned representations or representation repair follows.
 
 ## What the failure identifies
 
+Follow-up completed: exact observer replay found zero B1/sham gate activation,
+and a frozen all-key gate ablation found a common base-value effect with no
+auxiliary-key separation. The uncertainty and proposed priority below describe
+the recovery run before those diagnoses. Current localization and raw evidence:
+`docs/OACR_N1_ROUTING_AND_GATE_VERDICT_2026-10-01.md`.
+
 The current rule copies the first edited value into at most two condition-prompt
 keys, at the inherited radius. On this panel it produced no output change.
 The missing diagnostic is whether those keys cover the future queries internally,

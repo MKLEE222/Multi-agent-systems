@@ -2,7 +2,15 @@
 
 Date: 2026-09-30
 
-Status: **T5 WORKING PASS — manuscript integration and citation polishing pending**
+Status: **HISTORICAL ARGUMENT SUPERSEDED; T5 REOPENED on 2026-10-01**
+
+The following 2026-09-30 ingredient-based argument is retained as history, not
+current novelty authority. Complete extensions AND restrictions and observational
+completeness invalidate its claimed separation by bidirectionality/native futures
+alone. A same-input residual-state reduction and executed standard partition
+baseline now reproduce the budgeted quotient and executable updates. See
+`docs/OACR_SAME_INPUT_NEIGHBOR_COMPARISON_2026-10-01.md` and the sole final acceptance
+gate. No “working pass” statement in the historical body promotes T5.
 
 This audit asks whether the current OACR theory object survives direct comparison with the strongest adjacent abstraction/refinement/repair lines.
 
