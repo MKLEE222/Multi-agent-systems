@@ -1,0 +1,62 @@
+{
+  "checks": {
+    "budgeted_contracts": 182104,
+    "commuting_update_squares": 1453876,
+    "exact_quotients": 182104,
+    "graph_action_banks": 42284,
+    "graphs_with_candidates": 692,
+    "labelled_dags_enumerated": 1098,
+    "mincut_vs_bruteforce_pairs": 72364,
+    "native_decode_replays": 6234453,
+    "residual_no_resurrection_checks": 6234453
+  },
+  "constructor": "restricted min-cut, classical max-flow; no augmented native outcome input",
+  "counterexamples": [
+    {
+      "counterexample_verified": true,
+      "id": "A1_LOST_DISTINCTION",
+      "result": "coarse-only repair impossible; statewise witness restores feasibility"
+    },
+    {
+      "counterexample_verified": true,
+      "id": "A2_DECODER_NOT_CERTIFIED_BY_PARTITION",
+      "native_replay_mismatches": 2,
+      "partition_U_E": [0, 0]
+    },
+    {
+      "E_bits": 1,
+      "U_bits": 1,
+      "counterexample_verified": true,
+      "id": "A3_INCOMPARABLE_PARTITIONS"
+    },
+    {
+      "counterexample_verified": true,
+      "id": "A4_HORIZON_RESET",
+      "result": "H equivalence maps to residual H-1, not automatically to H"
+    },
+    {
+      "accuracy": [0.5, 0.5],
+      "counterexample_verified": true,
+      "id": "A5_ACCURACY_IS_NOT_BEHAVIOR_QUOTIENT"
+    },
+    {
+      "counterexample_verified": true,
+      "id": "A6_FREEZE_IS_NOT_ALGORITHM_NOVELTY",
+      "result": "no stored-outcome access alone does not rule out full simulation"
+    },
+    {
+      "counterexample_verified": true,
+      "id": "A7_CONTRACT_EXPANSION_NEEDS_REACQUISITION",
+      "lambda": 2,
+      "required_at_H2": [0, 3],
+      "stored_at_H1": null
+    }
+  ],
+  "factorization_cases": 256,
+  "max_nodes": 5,
+  "protocol": "OACR_CORE_BUDGET_AND_REPAIRABILITY_AUDIT_V1",
+  "scope": "synthetic exhaustive proof debugging, NOT natural or held-out evidence",
+  "source_sha256": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+  "verified": true,
+  "verifier": "failure-set enumeration + independent BFS reachability"
+}
