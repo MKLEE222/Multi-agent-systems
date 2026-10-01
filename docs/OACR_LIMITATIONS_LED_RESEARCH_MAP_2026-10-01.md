@@ -20,6 +20,8 @@
 | [TrustMem](https://arxiv.org/html/2606.25161v1)，预印本，Limitations | 明确提出多模态证据和 vision-language memory agents | 图片或文档版本改变后，怎样更新依赖它的跨模态记忆？ | MMA、MemLens、SMMBench、H2HMem；仅“多模态记忆”已有直接近邻 |
 | [Composable Interventions](https://proceedings.iclr.cc/paper_files/paper/2025/file/7f5f9a88c6516469c83d074c6f2976fb-Paper-Conference.pdf)，ICLR 2025，Appendix A | 明确希望解释具体方法的兼容机制，并改善方法；规模外推未确定 | 压缩和后续编辑为何冲突？怎样在相同内存与计算预算下改善？ | 混合精度、QZO、MobiEdit；“压缩妨碍编辑”不能再当新现象 |
 | [MobiEdit](https://proceedings.iclr.cc/paper_files/paper/2026/file/2b35d186908df6fa14a51ba1cae9dc4e-Paper-Conference.pdf)，ICLR 2026，§2.4、§3.3 | 明确讨论旧前缀激活与量化误差共同影响编辑质量；刷新依赖损失变化 | 缓存复用会不会改变零阶编辑所优化的目标，怎样用更少完整前向调用纠正？ | 因果依赖缓存、CacheReforge、multi-fidelity derivative-free optimization |
+| [On Adaptivity in Zeroth-Order Optimization](https://arxiv.org/html/2605.03869v1)，2026-05 预印本，§4.2、Appendix F、§6 | 分组 ZO 已复用未扰动上游激活；未来工作包括子空间和块结构 | 真实允许操作会影响哪些缓存，而精确复用之后还有什么成本障碍？ | 安全上游复用是既有方法；本轮不把其 token 边界实例当新算法 |
+| [Wall-Clock Complexity for Zeroth-Order Optimization with Tunable Oracle Fidelity](https://arxiv.org/html/2605.31346v1)，2026-05 预印本，§7 | 明确假设精度切换零成本，切换罚项未建模 | 有历史的缓存重建成本会怎样影响评估精度与维护时机？ | 在线缓存、切换成本控制、多保真优化；作者未建模不等于领域空白 |
 | [CacheReforge](https://arxiv.org/html/2609.30884v1)，2026-09-25 预印本，Methodology | 已有混合版本缓存、漂移敏感的自适应修复；范围推断：主对象是适配器更新后的推理保真，不是训练中的双侧扰动损失差 | 编辑优化器的缓存误差与推理缓存误差是否需要不同的控制信号？ | 必须与其合理适配、精确因果复用及普通刷新比较；不能把“自适应刷新”独占 |
 | [Collaborative Memory](https://arxiv.org/html/2505.18279v1)，预印本，§6 | 明确未充分探索频繁并发、快速角色变化和大规模场景 | 压缩写入与权限撤销并发时，如何避免旧版本重新进入可读记忆，并保留仍合法的共享信息？ | MVCC、版本检查、信息流控制、真值维护；MAP-Graph 已有祖先检查和撤销门控 |
 | [OneRetrieval](https://arxiv.org/pdf/2606.13533v1)，预印本，Conclusion | 明确提出从流量自动激活 reserved slots、多模态 SID；保留槽位支持部署后绑定 | 有限槽位预算下，怎样在线分配、回收和重绑定，兼顾召回与干预可靠性？ | 在线缓存、字典版本化、动态生成式检索；不能把可编辑 SID 本身称为新贡献 |
@@ -40,6 +42,8 @@
 强基线至少包括：每次完整 fresh 双侧前向；精确因果依赖复用；MobiEdit 的原刷新规则；同成本固定频率和随机刷新；常规 multi-fidelity 校正；适用时的 CacheReforge 适配。QZO、AGZO、ZO-Act、AIM-ZO 用于检查优化器改进能否独立解释收益，不机械地混成同一算子。
 
 潜在贡献须是实际可用的误差控制/计算分配机制及其独立任务收益。有限差分误差的三角不等式、缓存可能过时和旧 OACR 等价关系都不作为新理论。
+
+**已执行后的路线变化：** [原生缓存机制探索](OACR_CACHE_RESPONSE_MECHANISM_EXPLORATION_2026-10-01.md)支持覆盖编辑位点的冻结前缀切断后缀损失响应；精确因果边界修正消除结构性问题，预训练数值差异由 fresh 的矩阵分块复现。当前没有学习刷新必要性或精确复用后资源障碍的证据，暂停该固定输入、定权重、单 token 场景的方法主张。A 保留为机制筛查，不能凭重复这个反例升级论文。若继续 A，先核对完整入口和真实改变依赖的操作，再测标准失效/精确重算的全成本。
 
 ### B：并发共享记忆——检验来源与提交算子的交互
 
@@ -63,4 +67,4 @@
 4. 在开发成本与效应大小可估计后，预先确定确认性样本、分组单位、主要对比和停止条件。旧 512 单位评估不充当新问题的便利测试集。
 5. 方法与独立证据成立后再按真实贡献选 AI 方法/系统或数据系统方向的投稿渠道。当前不继承旧 JLAMP 路线，也不保证某会某刊录用。
 
-本记录包含近邻来源地图、后续工作追查和 A 的静态代码定位，并按共同母问题重新组织载体。没有执行新的模型实验，也没有宣布 A/B/C 已有新颖性或性能优势。下一步按底层接口执行 [缓存与零阶编辑预检](OACR_CACHE_ZO_CANDIDATE_PREFLIGHT_2026-10-01.md)。
+本记录包含近邻地图、底层接口及 A 的局部原生执行结果。A 的固定输入学习型刷新主张暂停，B/C 尚未执行，没有宣布三者具备新颖性或性能优势。下一项义务是检验标准精确维护之后是否仍有实际成本障碍；未证明这个障碍之前不设计新控制器。

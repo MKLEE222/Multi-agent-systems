@@ -1,0 +1,31 @@
+{
+  "protocol": "OACR_CACHE_ZO_NATIVE_MECHANISM_PREFLIGHT_V1",
+  "authority": "development mechanism fixtures, not independent natural-task evidence",
+  "source_commit": "5a07b7906baa5457c15bd86cc012b1993ef6d3c6",
+  "source_blob": "defdad8cd04a5366016b5b6185b014af24d1784f",
+  "runtime": {"torch": "2.5.1+cpu", "transformers": "4.44.2", "numpy": "1.26.4"},
+  "model": {"vocab_size": 67, "hidden_size": 32, "intermediate_size": 64, "num_hidden_layers": 3, "num_attention_heads": 4, "num_key_value_heads": 2, "max_position_embeddings": 64},
+  "attention": "official ModifiedSelfAttention through eager branch",
+  "model_seeds": [1729, 1730],
+  "input_seed": 417,
+  "direction_seeds": [901, 902, 903, 904],
+  "batch_size": 2,
+  "sequence_length": 16,
+  "prefix": 10,
+  "edit_layers": [0, 1, 2],
+  "edit_positions": [2, 9, 10, 12],
+  "epsilon": 0.001,
+  "objective": "mean final-position cross-entropy with fixed synthetic labels [7, 11]",
+  "variants": ["fresh", "official_cache", "exact_causal_reuse"],
+  "exact_causal_rule": "prefix 10 through the edited layer; min(10, edit_position) at later attention layers",
+  "predictions": [
+    "Official cached and fresh execution agree when edit_position >= prefix.",
+    "At earlier edit layers with edit_position < prefix, cached suffix loss can be independent of delta because cached downstream QKV block its propagation; fresh execution can respond.",
+    "The dependency-aware prefix rule agrees with fresh execution in every fixture.",
+    "Editing an earlier position at the last layer is a structural suffix null control.",
+    "With the same warmed center anchor and no refresh, minus/plus evaluation order leaves cache and the secant unchanged."
+  ],
+  "auxiliary_checks": ["cold prefix-0 then prefix-10", "native update_prefix keyword", "native sdpa interface"],
+  "limitations": ["random weights", "synthetic token IDs", "no tokenizer", "no quantization", "no full ZOTrainer", "no factual edit efficacy", "no mobile hardware"],
+  "evaluation_units_loaded": 0
+}
