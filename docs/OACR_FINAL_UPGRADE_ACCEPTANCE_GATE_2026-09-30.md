@@ -139,6 +139,16 @@ millions of independent samples. General proof and novelty review remain open.
 
 ### 2026-10-01 follow-up execution; thresholds unchanged
 
+- Common-task competition: EC², EffECXtive and class information gain each use
+  460 source queries on the same 138 exposed development worlds, matching the
+  exact expected-optimal control and a simple structural short-span order. The
+  new one-step selector uses 464 queries, versus 568/536 for the inherited orders.
+  All nine methods return the same native physical representations and pass
+  residual maintenance. Explicit model computation is legal and charged; cold
+  implementation counts do not establish intrinsic or production cost superiority.
+  The source-acquisition gain is not unique. Native public-task competition is
+  specified but not yet run; T2/T5 and natural evidence remain open. See
+  `docs/OACR_COMMON_ARENA_AND_PAPER_DIRECTION_2026-10-01.md`.
 - Anti-circular algorithm extraction: a working multi-addition source-fiber and
   stopping-condition derivation now supports joint authorized acquisition and
   compilation. In 7,392 paired synthetic development configurations, adaptive

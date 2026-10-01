@@ -1,0 +1,786 @@
+{
+  "budget_completion_curves": {
+    "class_information_gain": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 80,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "exact_expected_optimal": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 80,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "full_source_rebuild": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 10,
+      "1_requests": 138,
+      "2_completed": 24,
+      "2_requests": 136,
+      "3_completed": 32,
+      "3_requests": 128,
+      "4_completed": 64,
+      "4_requests": 128,
+      "5_completed": 64,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "published_ec2": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 80,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "published_effecxtive": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 80,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "structural_lex": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 16,
+      "1_requests": 138,
+      "2_completed": 32,
+      "2_requests": 136,
+      "3_completed": 48,
+      "3_requests": 128,
+      "4_completed": 64,
+      "4_requests": 128,
+      "5_completed": 64,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "structural_one_step": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 76,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "structural_reverse": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 24,
+      "1_requests": 138,
+      "2_completed": 48,
+      "2_requests": 136,
+      "3_completed": 56,
+      "3_requests": 128,
+      "4_completed": 64,
+      "4_requests": 128,
+      "5_completed": 64,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    },
+    "structural_span": {
+      "0_completed": 4,
+      "0_requests": 138,
+      "1_completed": 26,
+      "1_requests": 138,
+      "2_completed": 52,
+      "2_requests": 136,
+      "3_completed": 66,
+      "3_requests": 128,
+      "4_completed": 80,
+      "4_requests": 128,
+      "5_completed": 108,
+      "5_requests": 128,
+      "6_completed": 128,
+      "6_requests": 128
+    }
+  },
+  "case_ledger": {
+    "file": "OACR_COMMON_ARENA_RESULT_2026-10-01.cases.json.gz",
+    "sha256": "2efe67ebcd6750979837c828180d71fe426927762ce705e10c58678ee13f9375"
+  },
+  "common_initialization": {
+    "old_fiber_cut_requests": 56,
+    "source_backed_initializations": 138
+  },
+  "cost_scope": "Fresh constructor per request: no cross-request caches or free verifier memoization. Separately record membership queries, demand/selection/final-encoding cut calls and misses, model simulations, scoring/DP work, serialized policy storage, and local CPU. Source latency/storage fees, physical RSS and production costs are unmeasured and cannot be replaced by a scalar synthetic total.",
+  "fixtures": [
+    {
+      "fixture": "support_interaction",
+      "methods": {
+        "class_information_gain": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 3,
+          "final_compile_input_edges": 3,
+          "model_hypothesis_states": 16,
+          "online_score_evaluations": 10,
+          "policy_compile_simulated_native_calls": 32,
+          "policy_serialized_bytes": 380,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        },
+        "exact_expected_optimal": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 3,
+          "dp_score_evaluations": 20,
+          "dp_states": 36,
+          "final_compile_input_edges": 3,
+          "model_hypothesis_states": 16,
+          "policy_compile_simulated_native_calls": 32,
+          "policy_serialized_bytes": 664,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        },
+        "full_source_rebuild": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 8
+        },
+        "published_ec2": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 3,
+          "final_compile_input_edges": 3,
+          "model_hypothesis_states": 16,
+          "online_score_evaluations": 10,
+          "policy_compile_simulated_native_calls": 32,
+          "policy_serialized_bytes": 380,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        },
+        "published_effecxtive": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 3,
+          "final_compile_input_edges": 3,
+          "model_hypothesis_states": 16,
+          "online_score_evaluations": 10,
+          "policy_compile_simulated_native_calls": 32,
+          "policy_serialized_bytes": 380,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        },
+        "structural_lex": {
+          "all_cut_requests": 15,
+          "cut_cache_misses": 10,
+          "demand_cut_requests": 12,
+          "final_compile_input_edges": 3,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        },
+        "structural_one_step": {
+          "all_cut_requests": 23,
+          "cut_cache_misses": 16,
+          "demand_cut_requests": 20,
+          "final_compile_input_edges": 3,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "selection_cut_requests": 8,
+          "source_queries": 6
+        },
+        "structural_reverse": {
+          "all_cut_requests": 16,
+          "cut_cache_misses": 11,
+          "demand_cut_requests": 12,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 8
+        },
+        "structural_span": {
+          "all_cut_requests": 15,
+          "cut_cache_misses": 10,
+          "demand_cut_requests": 12,
+          "final_compile_input_edges": 3,
+          "requests": 4,
+          "retained_output_edge_records": 3,
+          "source_queries": 6
+        }
+      },
+      "worlds": 4
+    },
+    {
+      "fixture": "chain_budget_expansion",
+      "methods": {
+        "class_information_gain": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 4096,
+          "online_score_evaluations": 1244,
+          "policy_compile_simulated_native_calls": 20480,
+          "policy_serialized_bytes": 26368,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 316
+        },
+        "exact_expected_optimal": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "dp_score_evaluations": 89920,
+          "dp_states": 46656,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 4096,
+          "policy_compile_simulated_native_calls": 20480,
+          "policy_serialized_bytes": 944512,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 316
+        },
+        "full_source_rebuild": {
+          "all_cut_requests": 192,
+          "cut_cache_misses": 192,
+          "final_compile_input_edges": 192,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 384
+        },
+        "published_ec2": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 4096,
+          "online_score_evaluations": 1244,
+          "policy_compile_simulated_native_calls": 20480,
+          "policy_serialized_bytes": 26368,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 316
+        },
+        "published_effecxtive": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 4096,
+          "online_score_evaluations": 1244,
+          "policy_compile_simulated_native_calls": 20480,
+          "policy_serialized_bytes": 26368,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 316
+        },
+        "structural_lex": {
+          "all_cut_requests": 1536,
+          "cut_cache_misses": 993,
+          "demand_cut_requests": 1344,
+          "final_compile_input_edges": 192,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 384
+        },
+        "structural_one_step": {
+          "all_cut_requests": 5760,
+          "cut_cache_misses": 3464,
+          "demand_cut_requests": 5600,
+          "final_compile_input_edges": 160,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "selection_cut_requests": 4284,
+          "source_queries": 320
+        },
+        "structural_reverse": {
+          "all_cut_requests": 1536,
+          "cut_cache_misses": 993,
+          "demand_cut_requests": 1344,
+          "final_compile_input_edges": 192,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 384
+        },
+        "structural_span": {
+          "all_cut_requests": 1470,
+          "cut_cache_misses": 943,
+          "demand_cut_requests": 1312,
+          "final_compile_input_edges": 158,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 316
+        }
+      },
+      "worlds": 64
+    },
+    {
+      "fixture": "chain_action_expansion",
+      "methods": {
+        "class_information_gain": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 696,
+          "online_score_evaluations": 356,
+          "policy_compile_simulated_native_calls": 3480,
+          "policy_serialized_bytes": 8072,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 136
+        },
+        "exact_expected_optimal": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "dp_score_evaluations": 3200,
+          "dp_states": 3144,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 696,
+          "policy_compile_simulated_native_calls": 3480,
+          "policy_serialized_bytes": 38104,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 136
+        },
+        "full_source_rebuild": {
+          "all_cut_requests": 192,
+          "cut_cache_misses": 192,
+          "final_compile_input_edges": 192,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 204
+        },
+        "published_ec2": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 696,
+          "online_score_evaluations": 356,
+          "policy_compile_simulated_native_calls": 3480,
+          "policy_serialized_bytes": 8072,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 136
+        },
+        "published_effecxtive": {
+          "all_cut_requests": 158,
+          "cut_cache_misses": 158,
+          "final_compile_input_edges": 158,
+          "model_hypothesis_states": 696,
+          "online_score_evaluations": 356,
+          "policy_compile_simulated_native_calls": 3480,
+          "policy_serialized_bytes": 8072,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 136
+        },
+        "structural_lex": {
+          "all_cut_requests": 634,
+          "cut_cache_misses": 456,
+          "demand_cut_requests": 456,
+          "final_compile_input_edges": 178,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 176
+        },
+        "structural_one_step": {
+          "all_cut_requests": 1174,
+          "cut_cache_misses": 778,
+          "demand_cut_requests": 1016,
+          "final_compile_input_edges": 158,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "selection_cut_requests": 592,
+          "source_queries": 136
+        },
+        "structural_reverse": {
+          "all_cut_requests": 589,
+          "cut_cache_misses": 425,
+          "demand_cut_requests": 428,
+          "final_compile_input_edges": 161,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 142
+        },
+        "structural_span": {
+          "all_cut_requests": 582,
+          "cut_cache_misses": 420,
+          "demand_cut_requests": 424,
+          "final_compile_input_edges": 158,
+          "requests": 64,
+          "retained_output_edge_records": 158,
+          "source_queries": 136
+        }
+      },
+      "worlds": 64
+    },
+    {
+      "fixture": "diamond_budget_expansion",
+      "methods": {
+        "class_information_gain": {
+          "all_cut_requests": 1,
+          "cut_cache_misses": 1,
+          "final_compile_input_edges": 1,
+          "model_hypothesis_states": 4,
+          "online_score_evaluations": 2,
+          "policy_compile_simulated_native_calls": 44,
+          "policy_serialized_bytes": 162,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "exact_expected_optimal": {
+          "all_cut_requests": 1,
+          "cut_cache_misses": 1,
+          "dp_score_evaluations": 2,
+          "dp_states": 6,
+          "final_compile_input_edges": 1,
+          "model_hypothesis_states": 4,
+          "policy_compile_simulated_native_calls": 44,
+          "policy_serialized_bytes": 208,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "full_source_rebuild": {
+          "all_cut_requests": 1,
+          "cut_cache_misses": 1,
+          "final_compile_input_edges": 1,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "published_ec2": {
+          "all_cut_requests": 1,
+          "cut_cache_misses": 1,
+          "final_compile_input_edges": 1,
+          "model_hypothesis_states": 4,
+          "online_score_evaluations": 2,
+          "policy_compile_simulated_native_calls": 44,
+          "policy_serialized_bytes": 162,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "published_effecxtive": {
+          "all_cut_requests": 1,
+          "cut_cache_misses": 1,
+          "final_compile_input_edges": 1,
+          "model_hypothesis_states": 4,
+          "online_score_evaluations": 2,
+          "policy_compile_simulated_native_calls": 44,
+          "policy_serialized_bytes": 162,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "structural_lex": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 2,
+          "demand_cut_requests": 2,
+          "final_compile_input_edges": 1,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "structural_one_step": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 2,
+          "demand_cut_requests": 2,
+          "final_compile_input_edges": 1,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "selection_cut_requests": 0,
+          "source_queries": 2
+        },
+        "structural_reverse": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 2,
+          "demand_cut_requests": 2,
+          "final_compile_input_edges": 1,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        },
+        "structural_span": {
+          "all_cut_requests": 3,
+          "cut_cache_misses": 2,
+          "demand_cut_requests": 2,
+          "final_compile_input_edges": 1,
+          "requests": 2,
+          "retained_output_edge_records": 1,
+          "source_queries": 2
+        }
+      },
+      "worlds": 2
+    },
+    {
+      "fixture": "contract_contraction",
+      "methods": {
+        "class_information_gain": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "final_compile_input_edges": 4,
+          "model_hypothesis_states": 4,
+          "policy_compile_simulated_native_calls": 4,
+          "policy_serialized_bytes": 292,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "exact_expected_optimal": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "dp_states": 4,
+          "final_compile_input_edges": 4,
+          "model_hypothesis_states": 4,
+          "policy_compile_simulated_native_calls": 4,
+          "policy_serialized_bytes": 324,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "full_source_rebuild": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "published_ec2": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "final_compile_input_edges": 4,
+          "model_hypothesis_states": 4,
+          "policy_compile_simulated_native_calls": 4,
+          "policy_serialized_bytes": 292,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "published_effecxtive": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "final_compile_input_edges": 4,
+          "model_hypothesis_states": 4,
+          "policy_compile_simulated_native_calls": 4,
+          "policy_serialized_bytes": 292,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "structural_lex": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "demand_cut_requests": 0,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "structural_one_step": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "demand_cut_requests": 0,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "structural_reverse": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "demand_cut_requests": 0,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        },
+        "structural_span": {
+          "all_cut_requests": 4,
+          "cut_cache_misses": 4,
+          "demand_cut_requests": 0,
+          "final_compile_input_edges": 4,
+          "requests": 4,
+          "retained_output_edge_records": 0,
+          "source_queries": 0
+        }
+      },
+      "worlds": 4
+    }
+  ],
+  "input_sha256": {
+    "adaptive_source_compile_v1.json": "e6106c1eca32438b90421a3793a3b6960fd8ef6b8622405b6a805bc6e49f8214",
+    "adaptive_source_compile_v1.py": "9348cc89b1e297e6c758051bcd274953824ac8d804bc38021573ff4c03bd6965",
+    "available_source_repair_v1.py": "7826a1717aa11f52fe9ba388031b446201a3de11401a960fbbdeeb35246a9a8d",
+    "common_arena_v1.json": "8d539e826e51e60a20ef99fc1207aa0f9dd9927735f01e0ce213edcb728d85d8",
+    "common_arena_v1.py": "aae7bcc10af7e3cd46c768bbc72f0de7617f6c50efc35b728d74f95245d06871",
+    "contract_budget_audit_v1.py": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+    "multi_delta_budget_audit_v1.py": "7837c3cfc2d840dca2014bf14712ef80e58f4aa961b81e63e7c3244b33923ce7",
+    "optimal_source_policy_control_v1.py": "9e562ceeaf31914a7d0333e18010731affe4f2645bbf963e0177c7ca9991e740"
+  },
+  "local_producer_seconds": {
+    "class_information_gain": 0.15039548100503453,
+    "exact_expected_optimal": 0.8329769069923714,
+    "full_source_rebuild": 0.004593730001943186,
+    "published_ec2": 0.1597056460022941,
+    "published_effecxtive": 0.16745750200243492,
+    "structural_lex": 0.012501878000875877,
+    "structural_one_step": 0.038644750003186346,
+    "structural_reverse": 0.011621534996265837,
+    "structural_span": 0.011712980000993412
+  },
+  "methods": {
+    "class_information_gain": {
+      "all_cut_requests": 324,
+      "cut_cache_misses": 324,
+      "final_compile_input_edges": 324,
+      "model_hypothesis_states": 4816,
+      "online_score_evaluations": 1612,
+      "policy_compile_simulated_native_calls": 24040,
+      "policy_serialized_bytes": 35274,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 460
+    },
+    "exact_expected_optimal": {
+      "all_cut_requests": 324,
+      "cut_cache_misses": 324,
+      "dp_score_evaluations": 93142,
+      "dp_states": 49846,
+      "final_compile_input_edges": 324,
+      "model_hypothesis_states": 4816,
+      "policy_compile_simulated_native_calls": 24040,
+      "policy_serialized_bytes": 983812,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 460
+    },
+    "full_source_rebuild": {
+      "all_cut_requests": 393,
+      "cut_cache_misses": 393,
+      "final_compile_input_edges": 393,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 598
+    },
+    "published_ec2": {
+      "all_cut_requests": 324,
+      "cut_cache_misses": 324,
+      "final_compile_input_edges": 324,
+      "model_hypothesis_states": 4816,
+      "online_score_evaluations": 1612,
+      "policy_compile_simulated_native_calls": 24040,
+      "policy_serialized_bytes": 35274,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 460
+    },
+    "published_effecxtive": {
+      "all_cut_requests": 324,
+      "cut_cache_misses": 324,
+      "final_compile_input_edges": 324,
+      "model_hypothesis_states": 4816,
+      "online_score_evaluations": 1612,
+      "policy_compile_simulated_native_calls": 24040,
+      "policy_serialized_bytes": 35274,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 460
+    },
+    "structural_lex": {
+      "all_cut_requests": 2192,
+      "cut_cache_misses": 1465,
+      "demand_cut_requests": 1814,
+      "final_compile_input_edges": 378,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 568
+    },
+    "structural_one_step": {
+      "all_cut_requests": 6964,
+      "cut_cache_misses": 4264,
+      "demand_cut_requests": 6638,
+      "final_compile_input_edges": 326,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "selection_cut_requests": 4884,
+      "source_queries": 464
+    },
+    "structural_reverse": {
+      "all_cut_requests": 2148,
+      "cut_cache_misses": 1435,
+      "demand_cut_requests": 1786,
+      "final_compile_input_edges": 362,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 536
+    },
+    "structural_span": {
+      "all_cut_requests": 2074,
+      "cut_cache_misses": 1379,
+      "demand_cut_requests": 1750,
+      "final_compile_input_edges": 324,
+      "requests": 138,
+      "retained_output_edge_records": 320,
+      "source_queries": 460
+    }
+  },
+  "native_correctness_scope": "all methods recover the same correct physical representation on all 138 development worlds and pass residual replay",
+  "native_mismatches_or_unauthorized_calls": 0,
+  "novelty_status": "no novel algorithm advantage or external benchmark claim; same-input developmental competition with published-method implementations",
+  "physical_outputs_identical_across_methods": true,
+  "protocol_id": "OACR_COMMON_ARENA_V1",
+  "verification": {
+    "distinct_physical_rep_checks": 138,
+    "ec2_literal_edge_score_checks": 2370,
+    "native_least_subset_checks": 1479,
+    "old_source_fiber_checks": 16,
+    "residual_state_checks": 6066,
+    "residual_transition_checks": 4932,
+    "successful_native_outputs": 1242,
+    "verifier_native_closure_calls": 46598
+  }
+}
