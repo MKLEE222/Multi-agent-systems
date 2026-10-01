@@ -92,7 +92,7 @@ jobs:
           set -euxo pipefail
           python -m pip install --upgrade pip
           python -m pip install torch==2.0.0 --index-url https://download.pytorch.org/whl/cpu
-          python -m pip install transformers==4.20.1 hydra-core==1.2.0 omegaconf==2.2.3 sentencepiece==0.1.97 numpy==1.24.3
+          python -m pip install transformers==4.20.1 hydra-core==1.2.0 omegaconf==2.2.3 sentencepiece==0.1.97 numpy==1.24.3 wandb==0.13.2
 
       - name: Confirm evaluation seal and compile
         run: |
