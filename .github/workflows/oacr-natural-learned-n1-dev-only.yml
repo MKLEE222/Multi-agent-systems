@@ -1,0 +1,28 @@
+name: OACR Natural Learned N1 Dev Only
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dev-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Confirm evaluation seal
+        run: |
+          set -euxo pipefail
+          echo "N1 is dev-only. Evaluation manifest loading is forbidden."
+          test ! -e manifests/evaluation_manifest.json
+
+      - name: Compile scaffold
+        run: |
+          python -m py_compile experiments/oacr_natural_learned/run_n1_dev_only.py
+
+      - name: Await frozen GRACE implementation
+        run: |
+          echo "Constructor implementation pending. No model execution started."
