@@ -1,5 +1,10 @@
 # Next development round
 
+> 2026-10-01 research reset: this unexecuted radius-expansion protocol is paused
+> following the user's instruction to regenerate directions from neighboring
+> limitations and future work. It is retained as historical development planning,
+> not the active default. See `OACR_LIMITATIONS_LED_RESEARCH_MAP_2026-10-01.md`.
+
 Date: 2026-10-01. Status: concrete protocol before additional development outcomes;
 not an evaluation release or an executed new-constructor result.
 
