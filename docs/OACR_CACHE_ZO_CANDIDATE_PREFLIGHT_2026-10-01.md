@@ -4,6 +4,8 @@
 
 ## 研究对象与继承边界
 
+本候选是共同母问题的一个载体。先从缓存块、编辑注入、前向调用、来源获取与重算算子定义需求和成本；公共接口与上层数学见 [算子出发的基础规格](OACR_OPERATOR_FIRST_FOUNDATION_2026-10-01.md)。下列近邻提供可检验的机制与强基线，不决定我们的维护器定义。
+
 考察优化过程中的实际损失差，而非当前回答的等价类。允许控制器查询训练输入的 fresh/cached 损失，但查询、刷新和任何额外存储必须全部计入成本。任务评估答案不参与刷新策略设计。
 
 [MobiEdit，ICLR 2026](https://proceedings.iclr.cc/paper_files/paper/2026/file/2b35d186908df6fa14a51ba1cae9dc4e-Paper-Conference.pdf) §2.4/§3.3 是具体问题入口。[CacheReforge](https://arxiv.org/html/2609.30884v1) 已研究演化适配器的自适应推理缓存修复，不独占自适应刷新。[Certified Multi-Fidelity Zeroth-Order Optimization](https://arxiv.org/abs/2308.00978) 已研究不同成本/精度的函数评估与认证；一般多保真优化不属于本候选的新贡献。[QZO](https://arxiv.org/html/2505.13430v2)、[AGZO](https://openreview.net/forum?id=zfVxpXEZti)、[ZO-Act](https://arxiv.org/html/2607.01125v1)、[AIM-ZO](https://arxiv.org/html/2609.35257) 是优化侧必须追查的近邻，适用的计算算子和更新参数要分别核对。
