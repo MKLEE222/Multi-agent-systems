@@ -1,0 +1,174 @@
+{
+  "case_ledger": {
+    "file": "OACR_ADAPTIVE_SOURCE_COMPILE_RESULT_2026-10-01.cases.json.gz",
+    "sha256": "be471524ad4d36fdecaf81d9510770c04b1f6caff4f16c9da420f2f9493c044c"
+  },
+  "comparisons": {
+    "adaptive_only_exact": 78,
+    "both_exact": 1328,
+    "both_exact_adaptive_queries": 3282,
+    "both_exact_static_queries": 3544,
+    "full_budget_adaptive_queries": 1104,
+    "full_budget_pairs": 276,
+    "full_budget_static_queries": 1140,
+    "paired_cases": 7392
+  },
+  "cost_scope": "Membership calls, cut requests/misses, compilation, source-backed initialization, shared metadata, stored representation and verifier work are separate. Fewer membership calls are not a total runtime/cost superiority claim.",
+  "counts": {
+    "adaptive_genuine_ambiguity_checks": 5986,
+    "contraction_source_free_checks": 192,
+    "demand_cut_requests": 99424,
+    "distinct_repaired_world_checks": 138,
+    "exact_native_checks": 2734,
+    "final_compile_calls": 2734,
+    "final_compile_input_edges": 6915,
+    "full_permission_budget_completion_checks": 552,
+    "native_least_subset_checks": 1479,
+    "old_fiber_characterization_checks": 16,
+    "old_fiber_cut_requests": 56,
+    "old_partition_bank_checks": 5,
+    "residual_state_checks": 674,
+    "residual_transition_checks": 548,
+    "source_backed_initializations": 138,
+    "static_avoidable_abstentions": 54,
+    "verifier_native_closure_calls": 24778
+  },
+  "fixtures": [
+    {
+      "fixture": "support_interaction",
+      "methods": {
+        "adaptive_cut": {
+          "cases": 96,
+          "cut_cache_hits": 40,
+          "cut_cache_misses": 217,
+          "demand_cut_requests": 240,
+          "exact": 18,
+          "membership_queries": 54,
+          "unresolved": 78
+        },
+        "static_initial_demand": {
+          "cases": 96,
+          "cut_cache_hits": 4,
+          "cut_cache_misses": 196,
+          "demand_cut_requests": 192,
+          "exact": 8,
+          "membership_queries": 56,
+          "unresolved": 88
+        }
+      },
+      "old_classes": 1,
+      "source_worlds": 4
+    },
+    {
+      "fixture": "chain_budget_expansion",
+      "methods": {
+        "adaptive_cut": {
+          "cases": 3584,
+          "cut_cache_hits": 13054,
+          "cut_cache_misses": 34690,
+          "demand_cut_requests": 47360,
+          "exact": 128,
+          "membership_queries": 7168,
+          "unresolved": 3456
+        },
+        "static_initial_demand": {
+          "cases": 3584,
+          "cut_cache_hits": 12,
+          "cut_cache_misses": 21876,
+          "demand_cut_requests": 21504,
+          "exact": 128,
+          "membership_queries": 7168,
+          "unresolved": 3456
+        }
+      },
+      "old_classes": 1,
+      "source_worlds": 64
+    },
+    {
+      "fixture": "chain_action_expansion",
+      "methods": {
+        "adaptive_cut": {
+          "cases": 3584,
+          "cut_cache_hits": 4528,
+          "cut_cache_misses": 17106,
+          "demand_cut_requests": 18640,
+          "exact": 1156,
+          "membership_queries": 4068,
+          "unresolved": 2428
+        },
+        "static_initial_demand": {
+          "cases": 3584,
+          "cut_cache_hits": 448,
+          "cut_cache_misses": 13904,
+          "demand_cut_requests": 11424,
+          "exact": 1088,
+          "membership_queries": 4384,
+          "unresolved": 2496
+        }
+      },
+      "old_classes": 9,
+      "source_worlds": 64
+    },
+    {
+      "fixture": "diamond_budget_expansion",
+      "methods": {
+        "adaptive_cut": {
+          "cases": 32,
+          "cut_cache_hits": 4,
+          "cut_cache_misses": 32,
+          "demand_cut_requests": 32,
+          "exact": 8,
+          "membership_queries": 8,
+          "unresolved": 24
+        },
+        "static_initial_demand": {
+          "cases": 32,
+          "cut_cache_hits": 4,
+          "cut_cache_misses": 32,
+          "demand_cut_requests": 32,
+          "exact": 8,
+          "membership_queries": 8,
+          "unresolved": 24
+        }
+      },
+      "old_classes": 1,
+      "source_worlds": 2
+    },
+    {
+      "fixture": "contract_contraction",
+      "methods": {
+        "adaptive_cut": {
+          "cases": 96,
+          "cut_cache_hits": 0,
+          "cut_cache_misses": 96,
+          "demand_cut_requests": 0,
+          "exact": 96,
+          "membership_queries": 0
+        },
+        "static_initial_demand": {
+          "cases": 96,
+          "cut_cache_hits": 0,
+          "cut_cache_misses": 96,
+          "demand_cut_requests": 0,
+          "exact": 96,
+          "membership_queries": 0
+        }
+      },
+      "old_classes": 4,
+      "source_worlds": 4
+    }
+  ],
+  "input_sha256": {
+    "adaptive_source_compile_v1.json": "e6106c1eca32438b90421a3793a3b6960fd8ef6b8622405b6a805bc6e49f8214",
+    "adaptive_source_compile_v1.py": "9348cc89b1e297e6c758051bcd274953824ac8d804bc38021573ff4c03bd6965",
+    "available_source_repair_v1.py": "7826a1717aa11f52fe9ba388031b446201a3de11401a960fbbdeeb35246a9a8d",
+    "contract_budget_audit_v1.py": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+    "multi_delta_budget_audit_v1.py": "7837c3cfc2d840dca2014bf14712ef80e58f4aa961b81e63e7c3244b33923ce7"
+  },
+  "native_or_false_exact_mismatches": 0,
+  "novelty_status": "working structural specialization; no optimal query policy, total cost superiority, independent review or T2/T5 closure",
+  "producer_native_outcome_calls": 0,
+  "protocol_id": "OACR_ADAPTIVE_SOURCE_COMPILE_V1",
+  "unauthorized_or_overbudget_source_calls": 0,
+  "wall_seconds": 1.0916864559994792
+}

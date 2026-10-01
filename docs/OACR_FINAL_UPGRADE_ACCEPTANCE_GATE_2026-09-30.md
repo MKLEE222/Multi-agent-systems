@@ -139,6 +139,16 @@ millions of independent samples. General proof and novelty review remain open.
 
 ### 2026-10-01 follow-up execution; thresholds unchanged
 
+- Anti-circular algorithm extraction: a working multi-addition source-fiber and
+  stopping-condition derivation now supports joint authorized acquisition and
+  compilation. In 7,392 paired synthetic development configurations, adaptive
+  acquisition completed 1,406 vs 1,328 for a static-demand ablation; all successful
+  native and residual checks passed. A separately declared same-information
+  optimal query-policy control uses 460 queries over 138 full-budget worlds,
+  versus 568/536 for the fixed greedy orders. Public simulation is allowed and
+  charged, not leakage. Query optimality, total-cost advantage and T2/T5 remain
+  open; SBFE/SSSC must enter the nearest-neighbor comparison. See
+  `docs/OACR_ANTICIRCULAR_ALGORITHM_PROMOTION_REVIEW_2026-10-01.md`.
 - Available-source interface: 1,664 frozen development configurations using only
   an old exact label, public contracts and an authorized singleton membership
   source produced 938 exact repairs and 726 genuinely ambiguous unresolved

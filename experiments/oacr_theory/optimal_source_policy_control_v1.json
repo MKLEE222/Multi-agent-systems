@@ -1,0 +1,12 @@
+{
+  "protocol_id": "OACR_OPTIMAL_SOURCE_POLICY_CONTROL_V1",
+  "date": "2026-10-01",
+  "scope": "post-preflight development control; no independent confirmation",
+  "fixture_protocol": "adaptive_source_compile_v1.json",
+  "inputs": "Same public G,D,old/new contracts and old canonical R; no stored verifier outcome table. Each constructor gets matching full-permission membership source with budget |D|.",
+  "baseline": "Enumerate the old source fiber from public structural inputs, simulate possible-source native reachability using a separate BFS implementation, then build an exact expected-query-optimal decision tree by dynamic programming.",
+  "prior": "Artificial uniform distribution within each compatible source fiber. Report sums over the frozen fixture worlds as a development diagnostic, not a natural data distribution.",
+  "greedy_orders": ["lexicographic", "reverse_lexicographic"],
+  "cost_accounting": "Optimal tree charges hypothesis enumeration, simulated native calls, policy DP states and membership queries. Greedy charges cut requests and membership queries. No wall-clock or total-cost superiority claim.",
+  "freeze": "All original fixtures and source worlds retained. Control defined after the adaptive preflight and before its own execution. Adaptive policies unchanged; no policy tuned on the control outputs. Public simulation is permitted and explicitly charged, not treated as leakage."
+}
