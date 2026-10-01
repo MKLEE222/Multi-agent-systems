@@ -24,6 +24,8 @@ Core reference:
 - docs/OACR_CORE_REPAIRABILITY_EXECUTION_UPGRADE_2026-10-01.md
 - experiments/oacr_theory/contract_budget_audit_v1.py
 - docs/OACR_CORE_BUDGET_AUDIT_RESULT_2026-10-01.json
+- docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md
+- experiments/oacr_theory/available_source_repair_v1.py
 
 ## Current promotion status
 
@@ -137,6 +139,14 @@ millions of independent samples. General proof and novelty review remain open.
 
 ### 2026-10-01 follow-up execution; thresholds unchanged
 
+- Available-source interface: 1,664 frozen development configurations using only
+  an old exact label, public contracts and an authorized singleton membership
+  source produced 938 exact repairs and 726 genuinely ambiguous unresolved
+  branches. Native decoding and residual checks passed; no unauthorized, stale
+  or over-budget producer queries. This executes an R1/R3/R4 reference interface,
+  not T2/T5 or natural evidence. Initial source retention remains an explicit,
+  unmeasured external prerequisite. See
+  `docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md`.
 - Same-input comparison: standard residual-state partition refinement reproduces
   the compiler's partition on all 182,104 inherited contracts, with 11,761,605
   pair checks and 13,703,208 commuting transitions per implementation. This

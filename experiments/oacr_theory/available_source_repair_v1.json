@@ -1,0 +1,29 @@
+{
+  "protocol_id": "OACR_AVAILABLE_SOURCE_REPAIR_V1",
+  "date": "2026-10-01",
+  "status": "development interface audit; not a new theorem or natural replication",
+  "prior_commit": "4bd799f5723084b436ab5053bb0bdeb1ad4a9ce6",
+  "acceptance_gate": "docs/OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md",
+  "state_family": "fixed public DAG plus zero or one candidate persistent addition",
+  "old_representation_promise": "the stored label is the exact old restricted-cut encoding of the same frozen source state",
+  "producer_inputs": ["stored old label", "public base graph and candidate universe", "old and new deletion contracts", "source snapshot epoch", "authorized singleton membership API and query budget"],
+  "forbidden_producer_inputs": ["raw hidden delta", "enumerated behavior vectors", "verifier results", "old 512-unit evaluation bank"],
+  "constructor": "Use public restricted cuts to compute K = active(new) minus active(old). An explicit stored delta requires no source query. A bottom label queries K in sorted order, skipping unauthorized candidates, stopping at the first positive or when all candidates are negative. Missing permission, stale source, or exhausted budget returns UNRESOLVED when ambiguity remains.",
+  "source_interface": "Each unit-cost query tests whether the unique hidden addition equals one named candidate. The API enforces permissions, snapshot epoch and query budget. Initial source retention, raw-ID acquisition and public compilation costs are separate.",
+  "fixtures": [
+    {"id": "diamond_budget_expansion", "n": 4, "edges": [[0,1],[0,2],[1,3],[2,3]], "candidates": [[0,3]], "old_actions": [[0,1],[0,2],[1,3],[2,3]], "old_budget": 1, "new_actions": [[0,1],[0,2],[1,3],[2,3]], "new_budget": 2},
+    {"id": "chain_budget_expansion", "n": 5, "edges": [[0,1],[1,2],[2,3],[3,4]], "candidates": [[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions": [[0,1],[1,2],[2,3],[3,4]], "old_budget": 0, "new_actions": [[0,1],[1,2],[2,3],[3,4]], "new_budget": 1},
+    {"id": "chain_budget_contraction", "n": 5, "edges": [[0,1],[1,2],[2,3],[3,4]], "candidates": [[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions": [[0,1],[1,2],[2,3],[3,4]], "old_budget": 1, "new_actions": [[0,1],[1,2],[2,3],[3,4]], "new_budget": 0},
+    {"id": "diamond_action_expansion", "n": 4, "edges": [[0,1],[0,2],[1,3],[2,3]], "candidates": [[0,3]], "old_actions": [[0,1],[1,3]], "old_budget": 1, "new_actions": [[0,1],[0,2],[1,3],[2,3]], "new_budget": 2},
+    {"id": "diamond_budget_contraction", "n": 4, "edges": [[0,1],[0,2],[1,3],[2,3]], "candidates": [[0,3]], "old_actions": [[0,1],[0,2],[1,3],[2,3]], "old_budget": 2, "new_actions": [[0,1],[0,2],[1,3],[2,3]], "new_budget": 1},
+    {"id": "chain_action_expansion", "n": 5, "edges": [[0,1],[1,2],[2,3],[3,4]], "candidates": [[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions": [], "old_budget": 0, "new_actions": [[0,1],[1,2],[2,3],[3,4]], "new_budget": 1},
+    {"id": "chain_unchanged_contract", "n": 5, "edges": [[0,1],[1,2],[2,3],[3,4]], "candidates": [[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions": [[0,1],[1,2],[2,3],[3,4]], "old_budget": 1, "new_actions": [[0,1],[1,2],[2,3],[3,4]], "new_budget": 1}
+  ],
+  "permission_modes": ["all", "none", "omit_first", "alternating"],
+  "query_budgets": "all integers from zero through candidate count",
+  "source_epochs": ["matching", "stale"],
+  "worlds": "base plus each single candidate addition; every world for every fixture",
+  "verifier": "After repair, independently enumerate legal failure sets and execute bitset transitive closure. Check successful native decoding and residual updates, and verify unresolved branches contain two compatible worlds with different native continuation behavior. Behavior enumeration is verifier-only.",
+  "required_checks": ["zero successful native mismatches", "zero false exact responses", "all unresolved responses genuinely ambiguous", "zero unauthorized, stale or over-budget producer queries", "zero source queries for known explicit states or no newly active hidden candidates", "all repaired states commute under legal budget-consuming deletions", "base negative branch reads all K under a fully authorized sufficient budget"],
+  "claim_boundary": "The singleton-query lower bound is elementary and interface-specific. This audit executes R1/R3/R4 obligations; it does not close T2/T5, establish efficiency against mature graph algorithms, justify a new source oracle, or establish a natural phenomenon. No adaptive fixture changes after execution."
+}

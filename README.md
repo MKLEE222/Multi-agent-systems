@@ -12,13 +12,19 @@ OACR asks what distinctions a computational representation must preserve in orde
 - **COMPOSE** — preservation of operation semantics across translation, merge, fork, rollback, and related representation changes;
 - **COMPUTE** — preservation under resource-bounded access and execution.
 
-The current R1 target is official GRACE + SCOTUS/BERT, testing read-matched future-write divergence under a prediction -> execution -> blind validation protocol.
+OACR directly continues the BRFP line. Current work preserves the source-backed
+graph, component-interaction and residual-update results, and upgrades them to
+executable maintenance under explicit source, permission, version and cost
+constraints. The learned GRACE branch remains ancillary; its original R1 target
+was official GRACE + SCOTUS/BERT with prediction -> execution -> blind validation.
 
 The previous working title **Computational Adequacy of Writable Representations** is retired. Experimental protocol identifiers and historical file names are retained when changing them would damage auditability.
 
 
 ## Active OACR program
 
+- `docs/OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md` — sole acceptance gate; T2/T5 and natural maintenance evidence remain open.
+- `docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md` — BRFP manuscript comparison, preserved OACR results and executed authorized-source repair interface.
 - `docs/OACR_NEAREST_NEIGHBOR_COVERAGE_V1.md` — theory-neighbor coverage audit.
 - `docs/OACR_SYSTEM_RELATION_TAXONOMY_V1.md` — system / relation / representation taxonomy used to select carriers by semantic coverage.
 - `docs/OACR_W1_OPERATIONAL_CONGRUENCE_PROTOCOL_V1.md` — learned routed-memory congruence audit.
