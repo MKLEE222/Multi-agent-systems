@@ -1,0 +1,132 @@
+{
+  "boundary_attacks": {
+    "cyclic_full_observation": {
+      "single_coordinate_sensitive_set_size": 0,
+      "zero_query_certificate_impossible": true
+    },
+    "partial_observation": {
+      "minimum_certificate_size_at_this_world": 1,
+      "single_coordinate_sensitive_set_size": 0
+    }
+  },
+  "case_ledger": {
+    "file": "OACR_ORDERED_SOURCE_COMPILE_RESULT_2026-10-01.cases.json.gz",
+    "sha256": "2b8f7a62aed8f7f551a206f5b7ad0205601dcab50b6a83ae31260bf6d726c624"
+  },
+  "exhaustive": {
+    "case_order": "n/coloring/h/subsets in fixed lexicographic order",
+    "contracts": 34581,
+    "requests": 93643,
+    "streamed_case_sha256": "e19a68ea5d838ca42436e50bed5e2f5dbd128e83cc2ac57251f170dd463b9636"
+  },
+  "exhaustive_producer": {
+    "augmentations": 79023,
+    "bounded_flow_requests": 257043,
+    "receipt_serialized_bytes": 25250424,
+    "requests": 93643,
+    "retained_edge_records": 137584,
+    "source_queries": 137584
+  },
+  "input_sha256": {
+    "OACR_COMMON_ARENA_RESULT_2026-10-01.cases.json.gz": "2efe67ebcd6750979837c828180d71fe426927762ce705e10c58678ee13f9375",
+    "adaptive_source_compile_v1.json": "e6106c1eca32438b90421a3793a3b6960fd8ef6b8622405b6a805bc6e49f8214",
+    "adaptive_source_compile_v1.py": "9348cc89b1e297e6c758051bcd274953824ac8d804bc38021573ff4c03bd6965",
+    "available_source_repair_v1.py": "7826a1717aa11f52fe9ba388031b446201a3de11401a960fbbdeeb35246a9a8d",
+    "contract_budget_audit_v1.py": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+    "multi_delta_budget_audit_v1.py": "7837c3cfc2d840dca2014bf14712ef80e58f4aa961b81e63e7c3244b33923ce7",
+    "ordered_source_compile_audit_v1.py": "295e08c3fb55c1daeb530d67646b9908894ea79cc8436f62e1c60c3de2510e83",
+    "ordered_source_compile_v1.json": "7fa7f2e6477764de8ccc6af52d758e161501f2f868eb5fcaf26aad8555955e5c",
+    "ordered_source_compile_v1.py": "30f379986fb08a2c57bbe91aba41702e496c72041ed1905fb21eb2fa013763ad"
+  },
+  "old_fixture_control": {
+    "bounded": {
+      "configurations": 3696,
+      "exact": 818,
+      "source_queries": 3074,
+      "unresolved": 2878
+    },
+    "fixtures": [
+      {
+        "counts": {
+          "augmentations": 8,
+          "bounded_flow_requests": 8,
+          "receipt_serialized_bytes": 811,
+          "requests": 4,
+          "retained_edge_records": 3,
+          "source_queries": 6
+        },
+        "fixture": "support_interaction"
+      },
+      {
+        "counts": {
+          "augmentations": 440,
+          "bounded_flow_requests": 384,
+          "receipt_serialized_bytes": 38026,
+          "requests": 64,
+          "retained_edge_records": 158,
+          "source_queries": 316
+        },
+        "fixture": "chain_budget_expansion"
+      },
+      {
+        "counts": {
+          "augmentations": 350,
+          "bounded_flow_requests": 294,
+          "receipt_serialized_bytes": 29296,
+          "requests": 64,
+          "retained_edge_records": 158,
+          "source_queries": 136
+        },
+        "fixture": "chain_action_expansion"
+      },
+      {
+        "counts": {
+          "augmentations": 4,
+          "bounded_flow_requests": 2,
+          "receipt_serialized_bytes": 193,
+          "requests": 2,
+          "retained_edge_records": 1,
+          "source_queries": 2
+        },
+        "fixture": "diamond_budget_expansion"
+      },
+      {
+        "counts": {
+          "augmentations": 4,
+          "bounded_flow_requests": 4,
+          "receipt_serialized_bytes": 417,
+          "requests": 4,
+          "retained_edge_records": 0,
+          "source_queries": 0
+        },
+        "fixture": "contract_contraction"
+      }
+    ],
+    "full": {
+      "augmentations": 806,
+      "bounded_flow_requests": 692,
+      "receipt_serialized_bytes": 68743,
+      "requests": 138,
+      "retained_edge_records": 320,
+      "source_queries": 460
+    }
+  },
+  "protocol_id": "OACR_ORDERED_SOURCE_COMPILE_V1",
+  "status": "same-author proof debugging passed; independent proof review, novelty and natural task evidence open",
+  "verification": {
+    "bounded_feasibility_checks": 3696,
+    "corrupted_proofs_rejected": 266799,
+    "cut_proofs": 214966,
+    "cyclic_inputs_rejected": 1,
+    "physical_least_subset_checks": 93781,
+    "pointwise_sensitive_set_checks": 93781,
+    "proof_checks": 266799,
+    "residual_certificate_transports": 23005,
+    "robust_path_proofs": 51833,
+    "same_task_baseline_checks": 138,
+    "stale_sources_rejected": 1,
+    "transcript_certificate_checks": 93781,
+    "verifier_native_calls": 460139,
+    "vertex_relabeling_checks": 138
+  }
+}

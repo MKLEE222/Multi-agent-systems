@@ -139,6 +139,18 @@ millions of independent samples. General proof and novelty review remain open.
 
 ### 2026-10-01 follow-up execution; thresholds unchanged
 
+- Operator lifting: a certified one-pass compiler now combines source acquisition
+  and least physical output. A working DAG/full-reachability/source-cube proof
+  gives pointwise singleton-query optimality, with 93,643 small state configurations
+  passing native flip/output checks. On the same 138 exposed worlds it retains
+  460 queries and 320 output edges, using 692 bounded-flow requests versus 2,074
+  inherited structural cut requests. Certificates cost storage; no full-cost win
+  is claimed. Residual path-proof transport is implemented for persistent support;
+  partial observations and cycles provide counterexamples to the single-coordinate
+  certificate property. Convex geometry/unique-generation neighbors and a working
+  AND/OR support hardness reduction now enter review. Same-author proof debugging
+  does not close independent T2/T5 or natural evidence. See
+  `docs/OACR_OPERATOR_LIFTING_DESIGN_2026-10-01.md`.
 - Common-task competition: EC², EffECXtive and class information gain each use
   460 source queries on the same 138 exposed development worlds, matching the
   exact expected-optimal control and a simple structural short-span order. The

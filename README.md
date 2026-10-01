@@ -27,6 +27,7 @@ The previous working title **Computational Adequacy of Writable Representations*
 - `docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md` — BRFP manuscript comparison, preserved OACR results and executed authorized-source repair interface.
 - `docs/OACR_ANTICIRCULAR_ALGORITHM_PROMOTION_REVIEW_2026-10-01.md` — extraction of the predictive compiler, joint source acquisition candidate and same-information optimal-query control.
 - `docs/OACR_COMMON_ARENA_AND_PAPER_DIRECTION_2026-10-01.md` — same-input EC²/EffECXtive/IG competition, structural baseline tie and native public-task direction; no unique query advantage established.
+- `docs/OACR_OPERATOR_LIFTING_DESIGN_2026-10-01.md` — certified one-pass source compilation, working pointwise query theorem, residual proof transport and native operator boundaries; independent/novelty review open.
 - `docs/OACR_NEAREST_NEIGHBOR_COVERAGE_V1.md` — theory-neighbor coverage audit.
 - `docs/OACR_SYSTEM_RELATION_TAXONOMY_V1.md` — system / relation / representation taxonomy used to select carriers by semantic coverage.
 - `docs/OACR_W1_OPERATIONAL_CONGRUENCE_PROTOCOL_V1.md` — learned routed-memory congruence audit.
