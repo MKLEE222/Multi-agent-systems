@@ -2,27 +2,142 @@ name: OACR Natural Learned N1 Dev Only
 
 on:
   workflow_dispatch:
+  issues:
+    types: [opened]
 
 permissions:
   contents: read
 
+env:
+  TOKENIZERS_PARALLELISM: "false"
+  WANDB_MODE: "disabled"
+  HF_HUB_DISABLE_XET: "1"
+  PYTHONHASHSEED: "1729"
+
 jobs:
-  dev-only:
+  prepare-dev:
+    if: github.event_name != 'issues' || github.event.issue.title == '[OACR NATURAL LEARNED N1 DEV RUN]'
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 30
+
     steps:
       - uses: actions/checkout@v5
 
-      - name: Confirm evaluation seal
+      - uses: actions/checkout@v5
+        with:
+          repository: edenbiran/RippleEdits
+          ref: 54f3b88af4895a3aacb580ec63ce7ae857185040
+          path: external/RippleEdits
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Materialize frozen dev-only manifest
         run: |
           set -euxo pipefail
-          echo "N1 is dev-only. Evaluation manifest loading is forbidden."
-          test ! -e manifests/evaluation_manifest.json
+          mkdir -p results/oacr_natural_learned_n1
+          python -m py_compile experiments/oacr_natural_learned/prepare_n1_dev_manifest.py
+          python experiments/oacr_natural_learned/prepare_n1_dev_manifest.py \
+            --repo_root "$GITHUB_WORKSPACE" \
+            --ripple_dir "$GITHUB_WORKSPACE/external/RippleEdits" \
+            --out "$GITHUB_WORKSPACE/results/oacr_natural_learned_n1/dev_manifest.json"
+          python - <<'PY'
+          import json
+          p=json.load(open("results/oacr_natural_learned_n1/dev_manifest.json",encoding="utf-8"))
+          assert p["development_size"]==128
+          assert p["evaluation_units_emitted"]==0
+          assert len(p["units"])==128
+          print("dev-only manifest seal PASS")
+          PY
+          sha256sum results/oacr_natural_learned_n1/dev_manifest.json \
+            | tee results/oacr_natural_learned_n1/dev_manifest.sha256
 
-      - name: Compile scaffold
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oacr-natural-learned-n1-dev-manifest
+          path: |
+            results/oacr_natural_learned_n1/dev_manifest.json
+            results/oacr_natural_learned_n1/dev_manifest.sha256
+          if-no-files-found: error
+
+  dev-smoke:
+    needs: prepare-dev
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/checkout@v5
+        with:
+          repository: Thartvigsen/GRACE
+          ref: f674183f17a995d109e10ee6140d4c3e6d016115
+          path: external/GRACE
+
+      - name: Verify official GRACE commit
+        run: test "$(git -C external/GRACE rev-parse HEAD)" = "f674183f17a995d109e10ee6140d4c3e6d016115"
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: oacr-natural-learned-n1-dev-manifest
+          path: results/oacr_natural_learned_n1
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.9"
+          cache: pip
+
+      - name: Install frozen GRACE QA runtime
         run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.0.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install transformers==4.20.1 hydra-core==1.2.0 omegaconf==2.2.3 sentencepiece==0.1.97 numpy==1.24.3
+
+      - name: Confirm evaluation seal and compile
+        run: |
+          set -euxo pipefail
+          test ! -e manifests/evaluation_manifest.json
+          test ! -e results/oacr_natural_learned_n1/evaluation_manifest.json
           python -m py_compile experiments/oacr_natural_learned/run_n1_dev_only.py
 
-      - name: Await frozen GRACE implementation
+      - name: Execute real GRACE RippleEdits dev smoke
         run: |
-          echo "Constructor implementation pending. No model execution started."
+          set -euxo pipefail
+          python experiments/oacr_natural_learned/run_n1_dev_only.py \
+            --manifest results/oacr_natural_learned_n1/dev_manifest.json \
+            --grace_repo external/GRACE \
+            --out results/oacr_natural_learned_n1/n1_dev_smoke.json \
+            --limit 8 \
+            --max_aux 2 \
+            --n_iter 100 \
+            --device cpu
+          sha256sum results/oacr_natural_learned_n1/n1_dev_smoke.json \
+            | tee results/oacr_natural_learned_n1/n1_dev_smoke.sha256
+
+      - name: Audit smoke authority and matched cost
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import json
+          p=json.load(open("results/oacr_natural_learned_n1/n1_dev_smoke.json",encoding="utf-8"))
+          s=p["summary"]
+          assert s["development_only"] is True
+          assert s["evaluation_units_loaded"]==0
+          for u in p["units"]:
+              if u.get("status")!="COMPLETE":
+                  continue
+              assert u["variants"]["B1_predictive"]["aux_keys"] == u["variants"]["B2_sham"]["aux_keys"]
+          print(json.dumps(s,indent=2))
+          print("authority + matched-cost audit PASS")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oacr-natural-learned-n1-dev-smoke
+          path: |
+            results/oacr_natural_learned_n1/n1_dev_smoke.json
+            results/oacr_natural_learned_n1/n1_dev_smoke.sha256
+          if-no-files-found: warn
