@@ -1,172 +1,262 @@
 # OACR Final Upgrade & Acceptance Gate
 
-Date: 2026-09-30
+Original freeze: 2026-09-30
+Current audit update: 2026-10-01
+Status: FROZEN UPGRADE CRITERIA; CORE CLAIM PROMOTION REOPENED
 
-Status: **FROZEN UPGRADE GATE**
+This remains the sole upgrade acceptance gate. New work must close Theory,
+Identification, or Natural Evidence. The original T/I/N requirements below remain
+in force; the present update adds stronger execution and information-availability
+obligations, not easier thresholds. Earlier progress judgments are retained in git
+history (previous gate blob dc31a17f0bad50422391647c00eb520b21f57914) and do not
+overrule this audit.
 
-This document is the sole acceptance gate for further OACR development. New work must close at least one of the three gates below. Work that does not contribute to Theory, Identification, or Natural Evidence is out of scope.
+## Immediate decision: core work does not wait for the learned smoke
 
+The existing GRACE/RippleEdits N1 dev smoke is an ancillary task-performance and
+implementation branch. Let its pinned run complete without retrospective changes.
+A positive smoke can support only the claim actually measured. It cannot validate
+an operational quotient, satisfy the core theory gate, or unlock the 512-unit
+evaluation bank automatically. A negative smoke cannot establish that the whole
+learned representation family is impossible.
 
-## Progress snapshot — 2026-09-30
+Core reference:
+- docs/OACR_CORE_REPAIRABILITY_EXECUTION_UPGRADE_2026-10-01.md
+- experiments/oacr_theory/contract_budget_audit_v1.py
+- docs/OACR_CORE_BUDGET_AUDIT_RESULT_2026-10-01.json
 
-### Theory Gate
-- **T1: WORKING PASS.** Contract-relative exact repair is now formalized with coarse/fine endpoints and an explicit admissible repair family.
-- **T2: PARTIAL PASS.** A theorem family now gives uniqueness inside the identity-gated representation family, edit-minimal contract updates, and path independence under contract evolution. Generic minimum-feature NP-hardness was rejected as non-novel prior art.
-- **T3: CANDIDATE PASS, proof/prior-art audit pending.** The one-delta DAG carrier admits an exact theorem: contract-active redundant deltas form singleton operational classes; inactive deltas collapse with base; the contract gate exactly realizes the quotient.
-- **T4: CANDIDATE PASS, proof/prior-art audit pending.** The same certificate yields additive and subtractive repair to one common target, with minimum Hamming record edits and path-independent updates as the contract expands or contracts. A four-node multi-delta counterexample proves the local rule does not extend universally.
-- **T5: WORKING PASS; manuscript integration pending.** Source-level audit against strong preservation, AIR, CEGAR, Verifix, and SMT summary repair preserves the joint OACR object but rejects weaker novelty framings: bidirectionality alone, minimal sufficient quotients alone, and weakening/strengthening alone are not novel.
+## Current promotion status
 
-### Identification Gate
-- **I1-I3: WORKING PASS; manuscript integration pending.** Non-anticipation is defined as provenance/freeze separation, the audit/constructor narrative is separated, and carrier-specific authority histories have been reconstructed for R4, SQEC, and Git G5. Realized evaluation outcomes may not adapt the current constructor; this is not statistical independence from predictable outcomes.
-- **I4: WORKING PASS; manuscript integration pending.** Same-contract evaluation, freeze-before-outcome, forbidden reads, fixed interpreters, producer/verifier separation, independent replay, matched sham controls, authority levels, and promotion/downgrade rules are unified in one provenance framework and carrier ledger.
-- **I5: PASS.** On frozen R4, an outcome-oracle constructor and the contract-predictive constructor both achieve U=E=0 with 22 retained records, while a same-cost structurally inactive sham also uses 22 records and 23 representation blocks but yields U=E=0.7556880439. Independent CI run 36734635683 verified the full reconstruction with error_count=0.
+### Theory
 
-### Natural Evidence Gate
-- **N1: STRUCTURAL PASS.** RippleEdits is frozen as the primary benchmark at commit 54f3b88..., with MQuAKE-CF-3k-v2 frozen as a secondary confirmation source.
-- **N2: STRUCTURAL PASS.** The six RippleEdits criterion families define the shared continuation schema; constructor-visible condition prompts are separated from verification-only held-out test prompts.
-- **N3: MANIFEST PASS / execution pending.** A deterministic 128-unit development bank and 512-unit evaluation bank are frozen with zero overlap. The evaluation bank contains 4,212 held-out future prompts across 27 edit relations.
-- **N4: OPEN.** GRACE adaptor representation repair and same-cost sham are specified but not yet executed.
-- **N5: GOVERNANCE FROZEN / outcome pending.** Evaluation-tuned rescue is prohibited; a frozen negative repair result will be retained as a boundary.
+- T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
+  simultaneously. Separate class exactness, native decoder correctness, and the
+  cost objective that makes excess distinctions undesirable.
+- T2/T4 QUALIFIED: canonical source-backed encoders and Hamming-optimal feature
+  changes do not imply executable recovery from a genuinely erased coarse state.
+  Statewise source witnesses and their storage/acquisition cost must be explicit.
+- T3 WORKING CANDIDATE: original one-delta static exactness is preserved with its
+  stated assumptions. A budgeted-deletion extension now supplies a restricted-cut
+  compiler, an explicit decoder, and a residual-budget update with a no-resurrection
+  proof. Cold proof review and same-input comparison remain open.
+- T5 REOPENED: a checklist of different ingredients is not a novelty clearance.
+  Include complete extensions AND restrictions (JACM 2000), observational
+  completeness, automata/state abstraction, and fault-tolerant reachability.
 
-### Frozen-theory audits completed
-- R4: the contract-coverage formula matches **64/64 singleton**, **2016/2016 pair**, and **64/64 leave-one-out** registered subcontract results.
-- R4: only **5/64** actions activate any candidate delta; the largest activates **19/22**, yielding 20 of 23 operational classes alone.
-- R4 exploratory contract basis: unique minimum basis of **4** actions on the already frozen activation matrix.
-- R3/R4 closed-form directional-gap equations reproduce the frozen reported \(U/E\) values to floating-point precision.
+### Identification
 
+- Keep the existing I5 execution result as a methodological demonstration with
+  its original retrospective/prospective labels; it is not independent novelty.
+- I1-I4 REQUIRE EXECUTION-LEVEL RECHECK: no adaptive evaluation feedback, actual
+  deployment information, permitted oracle/simulator calls, computational cost,
+  and semantic validity are separate dimensions.
+- An outcome-aware verified synthesis algorithm can be valuable. It does not
+  establish outcome-independent discovery on the same target outcomes.
+- A two-key test-visible heuristic is not a proven oracle ceiling.
 
-## Gate T — Theory
+### Natural evidence
+
+- N0 retains its historical structural preflight result: frozen 128 development
+  and 512 evaluation unit IDs. These are manifests, not completed model evidence.
+- The present N1 runner measures future-query answer accuracy. It does not compute
+  U/E over a declared state/representation/behavior bank and does not yet establish
+  maintainable representation repair under subsequent native edits.
+- Identical criterion names across units are not by themselves proof of an
+  identical action panel or a shared cross-unit operational quotient.
+- Raw unit-ID disjointness is not proof of statistical independence. Audit shared
+  subjects, facts, prompts and source clusters before claiming independent units.
+- No evaluation unlock until the scientific estimand, implementation invariants,
+  hard controls, denominators and final constructor are frozen and reviewed.
+
+## Added core execution requirements
+
+### R1. Available-input repairability
+
+Let Q be the target contract class and Z the full authorized per-instance repair
+view. An unrestricted deterministic exact encoder exists iff equal Z implies
+equal Q. If a coarse representation merges two different Q classes, no function
+of that representation and shared contract alone can recover the distinction.
+
+Any additive arrow must therefore name its statewise source witness W, retained
+log, original assertion, or reacquisition procedure. Source-backed recompilation
+and online recovery from a lossy state are different claims.
+
+### R2. Encoder, decoder, updater
+
+Require separately:
+
+    ker(Enc) = ker(B_C)
+    B_C(Dec(Enc(x))) = B_C(x)
+
+For maintained representations, also establish an executable residual-contract
+update, on the transition-closed reachable domain:
+
+    Update_a(Enc_C(x)) = Enc_(C/a)(T_a(x)).
+
+Account for remaining horizon and legality. Do not reset a finite horizon after
+each action without proving a stronger stationary congruence.
+
+### R3. Irreversibility and contract expansion
+
+A safely dropped distinction under one contract can become required by a larger
+contract. Path-independent recomputation from raw data does not imply reversible
+online updates after destructive compression. Charge source availability and
+reacquisition; do not secretly consult the full state.
+
+### R4. Computational and scientific separation
+
+A frozen exhaustive simulator may satisfy no-adaptive-feedback provenance. It is
+not automatically a novel or efficient constructor. Report oracle/native calls,
+compilation cost, storage, update cost, and replay cost separately.
+
+### R5. Reference behavior versus task correctness
+
+Preserving a native behavior quotient and changing answers toward task labels are
+different estimands. Neither can be substituted for the other. A learned branch
+must explicitly say which it tests.
+
+## New executed core audit (not natural-system evidence)
+
+Dependency-free reference implementation, executed locally on 2026-10-01:
+- constructor: restricted min-cut via Edmonds-Karp;
+- verifier path: deletion-set enumeration and BFS native reachability;
+- all topologically labelled DAGs on 2 through 5 vertices;
+- 182,104 graph/action-bank/budget contracts, zero quotient mismatches;
+- 1,453,876 commuting one-step update checks;
+- 6,234,453 state/failure decoder-replay checks;
+- 6,234,453 residual no-resurrection checks;
+- 256 small information-factorization cases;
+- seven explicit counterexamples to overstrong interpretations.
+
+Both code paths were authored in this audit. This is not independent human review,
+not a formal proof assistant certificate, not a new natural replication, and not
+millions of independent samples. General proof and novelty review remain open.
+
+## Gate T — Theory (original substantive requirements retained)
 
 ### T1. Contract-Adequate Representation Repair
-Define the repair problem for a state bank (X), continuation contract (mathcal C), implemented representation (R), admissible representation family (mathcal F), and cost (c):
 
-[
-exists R'\in\mathcal F:\quad P_{R'}=O_{\mathcal C}.
-]
-
-Cover both coarse-to-target and fine-to-target correction.
+Define finite state bank X, continuation contract C, implemented representation R,
+admissible representation/repair family F, and cost c. Define exact, minimal and
+approximate repair. Cover both coarse-to-target and fine-to-target correction,
+now also mixed/incomparable errors and the available-input constraint R1.
 
 ### T2. Nontrivial general theory
-Seek at least one load-bearing result of the following scale:
-- computational hardness of minimum-cost exact adequacy repair;
-- necessary-and-sufficient existence conditions;
-- uniqueness up to partition equivalence;
-- confluence/common-fixed-point conditions;
-- or an equivalent theorem family.
 
-Entropy identities and routine corollaries do **not** satisfy this gate.
+At least one load-bearing result: computational hardness, necessary-and-sufficient
+existence, uniqueness up to partition equivalence, confluence/common target,
+optimality, or an equivalent theorem family. Routine entropy identities and
+renamed minimum-test-set results do not satisfy this gate.
 
 ### T3. Tractable structural class
-Identify structural assumptions under which the general repair problem becomes exactly solvable. R3/R4 may instantiate such a class only if the theorem is stated independently of their observed outcome matrix.
 
-### T4. Bidirectional repair as a formal object
-Study
-[
-R_{\rm coarse}\xrightarrow{\Phi^+}R^\star\xleftarrow{\Phi^-}R_{\rm fine}
-]
-on the refinement lattice. Characterize when both directions reach the same operational quotient and when local feature interactions prevent this.
+Identify assumptions making exact repair tractable. State the theorem independently
+of the observed outcome matrix. Include encoder, native decoder and, where claimed,
+residual updater correctness. Do not turn finite enumeration into a proof.
+
+### T4. Bidirectional repair
+
+Characterize common target, reachability in the admissible repair language, and
+failure under feature interactions. Distinguish source-backed design symmetry
+from reversible operation under information loss and changing contracts.
 
 ### T5. Nearest-neighbor acceptance
-The final manuscript must directly distinguish OACR from:
-- strong preservation / abstract interpretation;
-- Abstract Interpretation Repair;
-- CEGAR;
-- verified/program repair such as Verifix and summary repair.
 
-A reviewer familiar with those literatures must be able to state OACR's independent theoretical object in one paragraph.
+Directly compare strong preservation, complete cores/shells, AIR, CEGAR,
+Verifix/program repair, summary repair, observational completeness, state
+minimization and relevant graph algorithms. A familiar reviewer must be able to
+state the independent problem and result, not merely a combination of labels.
 
 ## Gate I — Identification / Anti-circularity
 
-### I1. Information-authority boundary
-Separate construction-visible information
-[
-\mathcal I_{\rm construct}
-]
-from verification-only outcomes
-[
-Y_{\mathcal C}^{\rm verify}.
-]
+### I1. Information authority
 
-### I2. Non-anticipating repair
-A valid constructor must satisfy
-[
-\kappa=f(\mathcal C,\mathcal I_{\rm construct}),
-]
-not
-[
-\kappa=f(\mathcal C,\mathcal I_{\rm construct},Y_{\mathcal C}^{\rm verify}).
-]
+Declare construction-visible data and verification-only outcomes, plus actual
+per-state information still available at repair/deployment time.
 
-### I3. Correct audit/constructor narrative
-Do not require the audit outcome matrix to synthesize the certificate when the accepted carrier does not use it. Audit diagnoses; a separately permissioned constructor proposes; held-out native replay accepts or rejects.
+### I2. Non-anticipation
+
+Freeze constructor choices without adaptive use of the realized evaluation
+outcomes. Do not misdescribe predictability from legal inputs as leakage or
+claim statistical independence. Account separately for simulation/oracle access.
+
+### I3. Audit/constructor narrative
+
+Audit may diagnose; a separately permissioned constructor proposes; independent
+native replay verifies. Do not imply that the audit synthesized a certificate
+when the accepted implementation did not do so.
 
 ### I4. Unified identification framework
-Unify:
-- same-contract evaluation;
-- freeze-before-outcome;
-- forbidden reads;
-- outcome-blind witness selection;
-- fixed interpreter;
-- producer/verifier separation;
-- independent replay;
-- equal-cost sham repair.
 
-### I5. Leakage counterexample
-Provide at least one executable demonstration that outcome-aware feature construction can trivially or spuriously reproduce the operational partition, while the accepted constructor is forbidden from that information.
+Retain same-contract comparison, freeze-before-outcome, forbidden reads,
+outcome-blind selection, fixed interpreter, producer/verifier separation,
+independent replay, and matched-cost sham controls. A common code bug can survive
+a same-implementation verifier; inspect distinct implementation paths.
+
+### I5. Executable circularity demonstration
+
+Show that outcome-visible encoding can reproduce the target quotient. Contrast
+with declared predictive construction. Preserve the original R4 demonstration's
+retrospective status and SQEC's separate matched-control provenance.
 
 ## Gate N — Natural Evidence
 
-### N1. Mature learned benchmark
-Prefer an established substrate such as RippleEdits, MQuAKE, EasyEdit-supported CounterFact/ZsRE/recent knowledge, or another benchmark with dependent/sequential edit structure.
+### N1. Mature natural benchmark
 
-### N2. Shared continuation contract
-Comparable states must face the same frozen continuation panel. Pair-specific outcome-driven continuation selection is disallowed.
+Use a frozen established source such as RippleEdits, MQuAKE, CounterFact/ZsRE, or
+another appropriate sequential/dependent-edit substrate.
+
+### N2. Common continuation contract
+
+Comparable states face the same predeclared operations, outcome schema and
+weights. No pair-specific outcome-driven panel selection. Scope any unit-specific
+contracts explicitly rather than silently pooling their equivalence classes.
 
 ### N3. Natural scale
-Raise at least one learned carrier to hundreds of independent evaluation units; preferably include multiple editors and, if feasible, more than one model family.
+
+Hundreds of genuinely independent or explicitly clustered evaluation units for
+at least one learned carrier; preferably multiple editors and, if feasible,
+model families. State the unit, cluster and conditional denominators separately.
 
 ### N4. Learned constructive repair
-Target:
-[
-\text{diagnosed inadequacy}
-\rightarrow
-\text{contract-relevant representation intervention}
-\rightarrow
-\text{fixed native editor/interpreter}
-\rightarrow
-\text{future closure improvement}.
-]
 
-A matched irrelevant/sham intervention is required. Replacing the editor with a stronger model does not count.
+Require diagnosed inadequacy, a contract-relevant representational intervention,
+a fixed native mechanism, and improvement on the declared semantic target.
+Matched irrelevant/sham intervention is required; model replacement does not
+count. Task accuracy alone is not operational quotient exactness.
 
 ### N5. Scientific negative boundary
-If exact learned repair fails under a prospectively frozen protocol, report the residual mismatch and localize the failure to the representation family, optimization, or native stochasticity. Do not tune until success.
+
+A prospectively frozen failure must localize what failed: implementation,
+optimization, constructor, representation budget/family, or stochastic execution.
+A failed heuristic or non-optimized A0 control does not prove family-level
+impossibility. No evaluation-tuned rescue or failed-unit removal.
 
 ## Existing evidence authority
 
-- R4 remains the exact constructive centerpiece: 272 states, 64 actions, 17,408 native outcomes, 23 operational classes, 22/271 retained deltas.
-- R3 remains developmental structural replication.
-- SQEC fixed-interpreter repair remains the second controlled constructive carrier: H1 mismatch 0; H2 mismatch 12; relevant repair 12→0; equal-cost sham 12→12.
-- WACT-R 80/80 is always reported as selection-conditioned.
-- GRACE 224 collision pairs are always tied to 64 underlying states.
-- Finetune single positive witness becomes mechanism evidence rather than the learned headline if Gate N succeeds.
+The following are historical accepted claims, not new reruns in this audit:
+- R4 building: 272 states, 64 actions, 17,408 native outcomes, 23 classes,
+  22/271 retained deltas; maintain original protocol/replay authority.
+- R3: developmental structural replication, not fresh confirmation.
+- SQEC fixed-interpreter comparison: H1 mismatch 0, H2 mismatch 12;
+  relevant repair 12 to 0; equal-cost sham 12 to 12.
+- WACT-R 80/80: selection-conditioned denominator.
+- GRACE 224 collision pairs: 64 underlying states, not 224 independent systems.
+- Finetune single positive pair: mechanism witness, not natural-scale evidence.
+- Later R4 roots retain their own acceptance artifacts; do not infer their
+  acceptance solely from this gate's summary.
 
-## Final paper identity
+## Final identity and stop rule
 
-The final manuscript should have three main contributions:
+Target contributions remain theory, identification and evidence, but publication
+strength is not licensed by a progress percentage or a successful workflow.
 
-1. **Theory:** contract-relative representation adequacy and bidirectional repair.
-2. **Identification:** non-anticipating / outcome-blind representation-repair methodology.
-3. **Evidence:** exact structural repair, fixed-interpreter repair, and natural learned-system confirmation.
+Allowed final verdicts:
+- UPGRADE PASS: all substantive T/I/N gates and added R1-R5 obligations pass.
+- SCIENTIFIC PASS / UPGRADE INCOMPLETE: specifically delimited surviving claims
+  pass their own tests; unresolved upgrades are not promoted.
+- BLOCKED: a contradiction, leakage path or failed core replay invalidates a
+  promoted claim. Specify the affected claim rather than erasing valid results.
 
-A cold reviewer must not summarize the paper merely as a collection of graph, Git, LLM, and SQEC experiments.
-
-## Stop rule
-
-Final verdict must be one of:
-
-- **UPGRADE PASS** — Gates T, I, and N all pass.
-- **SCIENTIFIC PASS / UPGRADE INCOMPLETE** — the current paper remains publishable but at least one upgrade gate does not pass.
-- **BLOCKED** — a core contradiction, answer leakage, or failed independent replay invalidates a main claim.
-
-No new carrier, theorem, or experiment is authorized unless it closes a gate above.
+No additional carrier, theorem, or experiment is authorized merely to increase
+volume. Core improvement proceeds now, independently of the N1 smoke outcome.
