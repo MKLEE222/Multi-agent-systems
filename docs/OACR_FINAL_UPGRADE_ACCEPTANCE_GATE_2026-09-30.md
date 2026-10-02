@@ -38,6 +38,36 @@ This is a bounded executable improvement, not independent T2/T5 clearance or
 natural evidence. See docs/OACR_INCREMENTAL_NEED_RELEASE_2026-10-02.md. Frozen
 criteria below and the sealed 512-unit bank are unchanged.
 
+### Main-contribution decision: complete finite contracts and independent advantage
+
+The theoretical object is the complete finite continuation contract, including
+every registered history, observation, legality rule and residual context. The
+DAG deletion-budget model is an instance. Its executed acquisition, closure
+certificate, proof-DAG and indexed Need / Release upgrades are retired as
+independent main-contribution candidates: mature controls match the measured
+semantics and resource counts. They remain correct reference implementations;
+this decision does not erase BRFP or inherited OACR results.
+
+The user's aim remains independently novel phenomenon, theory and method. Each
+new claim must state its exact additional guarantee relative to the closest
+theorem and compete with resource-consistent strong methods on the same native
+task. General behavior quotients, abstract core/shell existence, sensing-based
+strategy synthesis, local belief dependency and executable abstraction refinement
+have concrete prior theorems. Complete finite semantics alone is not clearance.
+No new core theorem has passed this priority review.
+
+Existing R4 physical repair and SQEC controlled causal/shared repair results are
+retained. Heterogeneous audits do not establish cross-system verification of the
+same newly promoted constructor. Any new shared rule must be tested through native
+interfaces against the same prediction and full declared contracts. With neither
+an independent guarantee, a distinct tractable structural scope nor a measured
+complete-cost gain, a fully matched candidate cannot be promoted by adding cases.
+These are directions for closing the frozen gates, not substitute or easier gates.
+
+See docs/OACR_COMPLETE_FINITE_CONTRACT_PRIORITY_AUDIT_2026-10-02.md for concrete
+theorem references, reduction limits, evidence provenance and candidate exit
+conditions. This update runs no experiments and leaves the 512-unit bank sealed.
+
 ### Theory
 
 - T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
