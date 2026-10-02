@@ -34,8 +34,14 @@ OACR 直接承接 BRFP 线。SQEC/EEQ 是同源参照，它们已经包含行动
 | [Composable Interventions](https://proceedings.iclr.cc/paper_files/paper/2025/file/7f5f9a88c6516469c83d074c6f2976fb-Paper-Conference.pdf)，ICLR 2025，§2、§4.1 | 干预顺序敏感；相近 MMLU 不代表相近编辑组合能力 | “操作不交换”“通用能力不能代表可编辑性” |
 | [CacheReforge](https://arxiv.org/html/2609.30884v1)，2026-09-25 预印本，Methodology | 演化适配器造成缓存漂移，按层风险与版本信息有界修复 | “旧缓存会过时”“自适应缓存修复” |
 | 本库已完成的图审计 | 动作内容决定区分需求；持久 additions 的条件式 cut；消费预算时不复活 | 再举一个图反例或增加枚举数量不能建立新自然现象 |
+| [MESA](https://arxiv.org/pdf/2608.10108)，2026-08-10，§3–4、App. G | query/task 相关的互补结构子集选择；固定多结构和 answer model 的实证 | 宽泛的“组件作用随任务和其他组件改变”或多结构动态选择 |
+| [MSS-Complement](https://arxiv.org/abs/2609.20050)，2026-09-17，作者摘要 | 状态条件化的当前缺失证据集合恢复；编码 agent 与 AMA 比较 | 将“已有支持改变补取需求”作为独有概念；全文未取得，不推断其定理/证书边界 |
 
 本次检索没有建立候选机制的首创性。后续要针对实际确定的组件、算子和预测追查专用近邻，避免用过宽问题制造空白。
+
+强基线能力保留、经典语义维护及原系统/共享适配模块两组比较，见
+[强基线拆解](OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md)。未提供维护定理
+不等于实际方法失败；判别原生绑定、资格与支持更新，保留全任务分母和完整成本。
 
 ## 3. 独立于新方法的测量
 

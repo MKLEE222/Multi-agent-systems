@@ -83,6 +83,16 @@ interface decisions, not implemented adapters, new theorems or evaluation result
 See docs/OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md. Earlier accepted
 results and all frozen gates remain intact.
 
+The subsequent strong-baseline decomposition retains original-history fallback,
+context caching, learned memory policies and feedback optimization. AdaMEM,
+MESA and MSS-Complement enter the direct-neighbor audit; MESA's full paper was
+checked, while MSS is abstract-only and receives no inferred capability/theorem
+exclusion. Generic dynamic/complementary evidence selection is not unique
+clearance. Construct both original-system and shared-adapter comparisons, with
+correct optimized classical semantic maintenance and complete resource accounting.
+No baseline run, trained checkpoint or new theorem is claimed. See
+docs/OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md. Frozen gates are unchanged.
+
 ### Theory
 
 - T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
