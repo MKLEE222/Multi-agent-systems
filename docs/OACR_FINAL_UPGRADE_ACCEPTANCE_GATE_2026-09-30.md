@@ -95,6 +95,22 @@ docs/OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md. Frozen gates are unchange
 
 ### Theory
 
+Real public BFCL development replay was subsequently pre-run frozen at
+`a01af92d19c28aa0f7d34fbe534552d380e3ac3d`. All 50 base filesystem cases,
+159 turns and 276 reference calls remain in the denominator. A backward demand
+compiler and a classical prefix/dependency-indexed query-view control each
+correctly predict 19 of 73 actual reads; 54 require native evidence, with zero
+known-output mismatches or skipped calls under the unchanged official receipt
+rule. Both complete prescribed trajectories pass the unchanged checker. This
+is reference-trajectory development, not learned-agent scoring, a new theorem,
+unique algorithm gain or natural long-horizon memory-system validation. Author
+AMA raw/entity/BM25 accessors run unchanged, but its graph/LLM/full-agent system
+does not run. The initial freeze aborted after five native calls at a positional
+argument; that failure and parser-only re-freeze are recorded. The candidate
+remains a classical adaptation reference. See
+docs/OACR_REAL_BFCL_EXECUTION_2026-10-02.md. Existing gates and the 512-unit seal
+remain unchanged.
+
 The bounded native file-binding reference was frozen at
 `674f9260979aaa60274f3dc1d6e532cc48157b72` and executed once. Seven constructed
 fixtures contain 50 producer calls and 152 output slots: 65 known outputs match

@@ -73,7 +73,7 @@ python experiments/oacr_native/prepare_real_bfcl_views_v1.py --dest /tmp/oacr_re
 python -m pip install --target /tmp/oacr_real_sources/native_deps -r experiments/oacr_native/real_bfcl_views_v1.requirements.txt
 python experiments/oacr_native/run_real_bfcl_views_v1.py \
   --source-root /tmp/oacr_real_sources \
-  --freeze-commit FREEZE_COMMIT \
+  --freeze-commit a01af92d19c28aa0f7d34fbe534552d380e3ac3d \
   --output docs/OACR_REAL_BFCL_VIEWS_RESULT_2026-10-02.json
 ```
 
@@ -95,3 +95,78 @@ manifest 固定全部 50 case IDs、14 个作者 source/data 哈希、三份实�
 唯一门槛：[Acceptance Gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)。
 前序：[强基线拆解](OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md)、
 [领域适配](OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md)。
+
+## 6. 冻结后的真实案例结果
+
+修正后的预运行冻结为 `a01af92d19c28aa0f7d34fbe534552d380e3ac3d`，完整执行一次。
+producer、runner、配置与依赖此后未改动。50 个案例、159 轮、276 个参考原生调用
+均保留；73 个实际读取请求没有增造、删去或用已知任务替换。
+
+| 检查 / 成本 | 经典索引维护 | 当前需求回推候选 |
+| --- | ---: | ---: |
+| 从过去可见依据正确计算本次回执 | 19 / 73 | 19 / 73 |
+| 原生已知预测不一致 | 0 | 0 |
+| 需要继续原生取证 | 54 | 54 |
+| 可在原官方回执规则下省掉的调用 | 0 | 0 |
+| 完整轨迹通过原官方检查器 | 50 / 50 | 50 / 50 |
+| 查询事件 / lookup 访问 | 84 | 169 |
+| 更新访问（含 namespace 与索引） | 939 | 466 |
+| 各案例完整序列化 bundle 峰值之和，bytes | 87,837 | 92,837 |
+
+覆盖逐请求完全一致。50/50 不是新 agent 成绩：动作来自作者 reference；本轮实际
+没有省去任何调用，因此过滤分支保持同一原生调用列表。它确认了真实运行接口和
+检查器可用，不能作闭环决策优势。候选序列化存储多 5,000 bytes（约 5.69%）；
+查询与更新访问采用不同的程序原语，不把两列相加当普适成本界。单次 producer CPU
+记录在 JSON 中，未做重复性能实验，不据它宣称稳定速度或端到端总成本胜出。
+原生调用另分账：prefix 驱动为 276 次；原官方 checker 对三条完整分支各执行
+proposed/reference，合计 1,656 次 verifier-only 回放，总计 1,932 次。
+这 1,656 次未回流为 producer 的新证据，不算部署取证收益。
+
+19 个成功需求覆盖 13 个案例：wc 10、cat 3、sort 3、grep 2、tail 1。14 个案例进入
+未知/目录 transfer 的保守模式，仍在完整分母中。54 个未解决项是这个可见依据
+算法的输出，不是查询必要性证明；检索不到不存在的初始内容和本实现主动保守
+回退均可能影响覆盖。
+
+真实实例 base_2：`TeamNotes.txt` 经 echo 写入、复制至 Archived、再重命名为
+`IdeasArchive.txt`。最后 cat 的内容可由合法旧依据正确传递，经典与候选给出相同
+内容和 `[0,2,4,5,6]` 证据索引；原生结果一致。这个真正的重绑定案例说明维护有用，
+同时说明其本身不独有。base_36 的空文件 copy/rename 后 grep 也由两者同样处理。
+
+### 为什么不能把检索对照变成独有优势
+
+在 19 个选定 compiler witness 上，未改动作者 BM25 top-5 覆盖 17 个，固定 entity
+search 覆盖 9 个，完整历史回查覆盖全部。全 73 个请求的输出上下文字节分别为
+24,422、12,503、26,092。此批原始 prefix 很短；BM25 已接近返回全部上下文。
+缺少选定 witness 不证明缺少任何可替代依据，也不对应模型答案错误。
+
+AMA-Agent 的真正强度还包括语义状态/因果图、embedding 初取、自评缺口、图或
+代码/关键词扩查、原始历史保留。本轮跑到的三个 accessor 不能代表完整系统。
+其 v4 已用同一 actor 在 TextWorld 和 Spider2 检验端到端任务；这些领域和长链
+规模尚未在本轮复现。ACE 的详细策略 playbook、反馈反思和增量合并，以及
+AgeMem 的训练策略也不在这个 reference 回放中。比较它们时必须保留这些能力。
+
+源码补查：BFCL `base_handler.py` 在本 source pin 下获取实例初始状态用于日志，
+并把原生回执交给 actor；本轮没有把日志中的 state_info 提供给 producer。
+
+### 本轮研究决定
+
+“文件重绑定后回推并复用正确读依据”保留为实际适配基础，不能升格为独有核心。
+它与正确经典维护的覆盖完全相同，并无官方省调用收益。我们目前未找到新核心
+优势；真实执行不是新颖性的替代品。
+
+下一个候选只有满足下列具体区分才值得构造：在合法可见输入上处理本轮回退的
+部分观察/别名/效应结构，或在同保证下减少构建、更新、取证与存储的联合成本；
+且必须同时让正确的经典 heap/alias、查询视图与依赖维护竞争。原生适配的代码怪异、
+手工写得更多的规则、更漂亮的证据列表均不算这种区分。扩大到 τ² 的一次性动作
+资格及双角色更新时，也不能仅靠标准 typestate/前置条件回推来宣称新内核。
+
+在完整学习方法运行前，还须取得相同 actor 与各方法角色配置、作者实际 native
+runner、经验/反馈预算和公开开发轨迹。先记录完整原方法的失败及经典适配能否
+补齐，再决定算子，而不是根据我们自己造出的案例选新算子。缺少模型接口/本地
+checkpoint 是本轮未执行完整系统的实际限制，不用 accessor 数字填补此项。
+
+结果：[完整运行与逐案例成本](OACR_REAL_BFCL_VIEWS_RESULT_2026-10-02.json)、
+[73 条真实读取账本](OACR_REAL_BFCL_VIEWS_RESULT_2026-10-02.ledger.jsonl)。
+ledger SHA256：`c7ff9f2ace2e62763b0ca761e9e645b560b824c36630d3caf67ebf6dbe6fda88`。
+原文：[AMA-Agent v4](https://arxiv.org/html/2602.22769v4)、
+[ACE v3](https://arxiv.org/html/2510.04618v3)。输入/源码 pin 与下载 URL 见运行 manifest。

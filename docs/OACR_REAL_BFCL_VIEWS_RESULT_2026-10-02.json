@@ -1,0 +1,2227 @@
+{
+  "status": "PASS",
+  "scope": "exposed-development reference-trajectory replay; not a model benchmark score",
+  "freeze_commit": "a01af92d19c28aa0f7d34fbe534552d380e3ac3d",
+  "config_sha256": "f6eac87c7d86f4f5b7379904fd0b83fb2df6a9a40a63bf6f64ffdb6c8b5ba26c",
+  "totals": {
+    "producer_reference_calls": 276,
+    "native_read_requests": 73,
+    "case_count": 50,
+    "reference_turns": 159
+  },
+  "methods": {
+    "indexed_classical": {
+      "read_requests": 73,
+      "query_event_or_lookup_visits": 84,
+      "needs_native_evidence": 54,
+      "update_visits": 939,
+      "summed_case_peak_bundle_bytes": 87837,
+      "observe_cpu_ns": 1692644,
+      "prepare_cpu_ns": 653144,
+      "known": 19,
+      "native_mismatches": 0
+    },
+    "demand_compiler": {
+      "read_requests": 73,
+      "query_event_or_lookup_visits": 169,
+      "needs_native_evidence": 54,
+      "update_visits": 466,
+      "summed_case_peak_bundle_bytes": 92837,
+      "observe_cpu_ns": 553644,
+      "prepare_cpu_ns": 490915,
+      "known": 19,
+      "native_mismatches": 0
+    }
+  },
+  "official_checker_valid_cases": {
+    "reference_replay": 50,
+    "indexed_classical": 50,
+    "demand_compiler": 50
+  },
+  "author_accessor_scope": "unmodified AMA traj_get/traj_find and BM25; no graph/LLM sufficiency/agent replication",
+  "ledger": {
+    "path": "OACR_REAL_BFCL_VIEWS_RESULT_2026-10-02.ledger.jsonl",
+    "rows": 73,
+    "sha256": "c7ff9f2ace2e62763b0ca761e9e645b560b824c36630d3caf67ebf6dbe6fda88"
+  },
+  "wall_time_ns_including_native_verification": 176453703,
+  "model_calls": 0,
+  "new_theorem": false,
+  "unique_advantage_established": false,
+  "cases": [
+    {
+      "case_id": "multi_turn_base_0",
+      "reference_calls": 10,
+      "filesystem_methods": {
+        "cd": 4,
+        "mkdir": 1,
+        "mv": 2,
+        "grep": 1,
+        "sort": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 74961,
+          "prepare_cpu_ns": 35885,
+          "update_visits": 32,
+          "peak_complete_bundle_bytes": 2421
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 27730,
+          "prepare_cpu_ns": 24938,
+          "update_visits": 20,
+          "peak_complete_bundle_bytes": 3234
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_1",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "ls": 1,
+        "cd": 2,
+        "mv": 1,
+        "grep": 1,
+        "tail": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 35994,
+          "prepare_cpu_ns": 40010,
+          "update_visits": 18,
+          "peak_complete_bundle_bytes": 1716
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 11316,
+          "prepare_cpu_ns": 11707,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 1896
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_2",
+      "reference_calls": 8,
+      "filesystem_methods": {
+        "cd": 2,
+        "touch": 1,
+        "echo": 1,
+        "diff": 1,
+        "cp": 1,
+        "mv": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 74671,
+          "prepare_cpu_ns": 18357,
+          "update_visits": 50,
+          "peak_complete_bundle_bytes": 2687
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 23324,
+          "prepare_cpu_ns": 18528,
+          "update_visits": 16,
+          "peak_complete_bundle_bytes": 3071
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_3",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "find": 1,
+        "cd": 2,
+        "cp": 2
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 88501,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1262
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 11028,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1649
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_4",
+      "reference_calls": 3,
+      "filesystem_methods": {
+        "ls": 1,
+        "sort": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 13620,
+          "prepare_cpu_ns": 7671,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1132
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 3997,
+          "prepare_cpu_ns": 5799,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1130
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_5",
+      "reference_calls": 7,
+      "filesystem_methods": {
+        "cd": 1,
+        "mv": 1,
+        "cat": 1,
+        "sort": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 31246,
+          "prepare_cpu_ns": 20631,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 2294
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 9864,
+          "prepare_cpu_ns": 15123,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 2263
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_6",
+      "reference_calls": 9,
+      "filesystem_methods": {
+        "cd": 3,
+        "touch": 2,
+        "echo": 2,
+        "cat": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 2,
+          "observe_cpu_ns": 71728,
+          "prepare_cpu_ns": 15093,
+          "update_visits": 48,
+          "peak_complete_bundle_bytes": 2606
+        },
+        "demand_compiler": {
+          "known": 2,
+          "observe_cpu_ns": 20932,
+          "prepare_cpu_ns": 13700,
+          "update_visits": 18,
+          "peak_complete_bundle_bytes": 2967
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_7",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "cd": 1,
+        "mkdir": 1,
+        "find": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 19850,
+          "prepare_cpu_ns": 7512,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 1362
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 6991,
+          "prepare_cpu_ns": 6500,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1417
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_8",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "grep": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 17937,
+          "observe_cpu_ns": 18346,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 2447
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 11127,
+          "observe_cpu_ns": 5389,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 2310
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_9",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 2,
+        "cp": 1,
+        "mv": 1,
+        "sort": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 25879,
+          "prepare_cpu_ns": 7281,
+          "update_visits": 13,
+          "peak_complete_bundle_bytes": 1707
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 11296,
+          "prepare_cpu_ns": 5008,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1758
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_10",
+      "reference_calls": 10,
+      "filesystem_methods": {
+        "cd": 2,
+        "mkdir": 1,
+        "mv": 2,
+        "touch": 2,
+        "echo": 1,
+        "diff": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 61493,
+          "prepare_cpu_ns": 18036,
+          "update_visits": 44,
+          "peak_complete_bundle_bytes": 2390
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "observe_cpu_ns": 24146,
+          "prepare_cpu_ns": 14742,
+          "update_visits": 20,
+          "peak_complete_bundle_bytes": 3044
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_11",
+      "reference_calls": 2,
+      "filesystem_methods": {
+        "ls": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 2
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 2
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 2
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 4446,
+          "update_visits": 2,
+          "peak_complete_bundle_bytes": 615
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 2193,
+          "update_visits": 2,
+          "peak_complete_bundle_bytes": 649
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_12",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "cd": 1,
+        "touch": 1,
+        "echo": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 1,
+          "observe_cpu_ns": 27050,
+          "prepare_cpu_ns": 7521,
+          "update_visits": 23,
+          "peak_complete_bundle_bytes": 1208
+        },
+        "demand_compiler": {
+          "known": 1,
+          "observe_cpu_ns": 8953,
+          "prepare_cpu_ns": 6680,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1330
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_13",
+      "reference_calls": 3,
+      "filesystem_methods": {
+        "cd": 1,
+        "tail": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 19018,
+          "prepare_cpu_ns": 15854,
+          "update_visits": 9,
+          "peak_complete_bundle_bytes": 1212
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 6039,
+          "prepare_cpu_ns": 12009,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1116
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_14",
+      "reference_calls": 7,
+      "filesystem_methods": {
+        "cd": 1,
+        "find": 1,
+        "grep": 1,
+        "tail": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 28744,
+          "prepare_cpu_ns": 19868,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 2639
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 9304,
+          "prepare_cpu_ns": 11597,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 2646
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_15",
+      "reference_calls": 7,
+      "filesystem_methods": {
+        "touch": 1,
+        "echo": 1,
+        "tail": 1,
+        "wc": 3
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 4,
+          "observe_cpu_ns": 61631,
+          "prepare_cpu_ns": 32609,
+          "update_visits": 29,
+          "peak_complete_bundle_bytes": 1742
+        },
+        "demand_compiler": {
+          "known": 4,
+          "observe_cpu_ns": 15834,
+          "prepare_cpu_ns": 51107,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 2019
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_16",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "cd": 2,
+        "cp": 1,
+        "mv": 1,
+        "sort": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 40231,
+          "prepare_cpu_ns": 17876,
+          "update_visits": 18,
+          "peak_complete_bundle_bytes": 1878
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 13751,
+          "prepare_cpu_ns": 11377,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 2006
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_17",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "ls": 1,
+        "cd": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 25098,
+          "prepare_cpu_ns": 9304,
+          "update_visits": 9,
+          "peak_complete_bundle_bytes": 1757
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 8642,
+          "prepare_cpu_ns": 5899,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1654
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_18",
+      "reference_calls": 9,
+      "filesystem_methods": {
+        "mkdir": 1,
+        "cp": 4,
+        "cat": 1,
+        "sort": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 9
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "known": 1,
+          "observe_cpu_ns": 55492,
+          "prepare_cpu_ns": 30324,
+          "update_visits": 21,
+          "peak_complete_bundle_bytes": 2964
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "known": 1,
+          "observe_cpu_ns": 19459,
+          "prepare_cpu_ns": 23324,
+          "update_visits": 16,
+          "peak_complete_bundle_bytes": 3282
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_19",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "find": 1,
+        "cp": 1,
+        "cd": 1,
+        "mv": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 30372,
+          "prepare_cpu_ns": 8964,
+          "update_visits": 13,
+          "peak_complete_bundle_bytes": 1644
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 12038,
+          "prepare_cpu_ns": 5969,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1643
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_20",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 1,
+        "tail": 1,
+        "diff": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 36014,
+          "prepare_cpu_ns": 16485,
+          "update_visits": 25,
+          "peak_complete_bundle_bytes": 1908
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 10436,
+          "prepare_cpu_ns": 12098,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 2012
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_21",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "echo": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 17567,
+          "prepare_cpu_ns": 9063,
+          "update_visits": 7,
+          "peak_complete_bundle_bytes": 1652
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 6949,
+          "prepare_cpu_ns": 7231,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1590
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_22",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "cd": 1,
+        "cat": 1,
+        "cp": 1,
+        "diff": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 34713,
+          "prepare_cpu_ns": 19669,
+          "update_visits": 18,
+          "peak_complete_bundle_bytes": 3178
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 10965,
+          "prepare_cpu_ns": 13459,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 2648
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_23",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "touch": 1,
+        "echo": 1,
+        "du": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 22894,
+          "update_visits": 15,
+          "peak_complete_bundle_bytes": 1111
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 6962,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1249
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_24",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "diff": 1,
+        "mv": 2,
+        "cd": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "prepare_cpu_ns": 11478,
+          "observe_cpu_ns": 23964,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1627
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "prepare_cpu_ns": 6099,
+          "observe_cpu_ns": 10196,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1916
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_25",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cat": 1,
+        "cp": 1,
+        "cd": 1,
+        "sort": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "known": 2,
+          "prepare_cpu_ns": 26488,
+          "observe_cpu_ns": 77587,
+          "update_visits": 24,
+          "peak_complete_bundle_bytes": 1920
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "known": 2,
+          "prepare_cpu_ns": 20530,
+          "observe_cpu_ns": 32047,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1883
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_26",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 1,
+        "ls": 1,
+        "cat": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 29993,
+          "prepare_cpu_ns": 7081,
+          "update_visits": 25,
+          "peak_complete_bundle_bytes": 1512
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 8964,
+          "prepare_cpu_ns": 5117,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1584
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_27",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 1,
+        "mv": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 12409,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1507
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 5819,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1625
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_28",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "find": 1,
+        "cd": 1,
+        "grep": 1,
+        "du": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 32299,
+          "prepare_cpu_ns": 7942,
+          "update_visits": 27,
+          "peak_complete_bundle_bytes": 1768
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 10626,
+          "prepare_cpu_ns": 5408,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 1890
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_29",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "cd": 1,
+        "du": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 20430,
+          "update_visits": 20,
+          "peak_complete_bundle_bytes": 1177
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 7371,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1371
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_30",
+      "reference_calls": 3,
+      "filesystem_methods": {
+        "cd": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 15604,
+          "prepare_cpu_ns": 11437,
+          "update_visits": 7,
+          "peak_complete_bundle_bytes": 1399
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 4518,
+          "prepare_cpu_ns": 5798,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1217
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_31",
+      "reference_calls": 8,
+      "filesystem_methods": {
+        "mkdir": 1,
+        "mv": 1,
+        "cat": 1,
+        "grep": 1,
+        "wc": 2,
+        "cd": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 8
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "known": 2,
+          "observe_cpu_ns": 53089,
+          "prepare_cpu_ns": 30535,
+          "update_visits": 24,
+          "peak_complete_bundle_bytes": 2225
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "known": 2,
+          "observe_cpu_ns": 16063,
+          "prepare_cpu_ns": 25117,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 2280
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_32",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cat": 1,
+        "wc": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "prepare_cpu_ns": 15102,
+          "observe_cpu_ns": 34621,
+          "update_visits": 21,
+          "peak_complete_bundle_bytes": 1403
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "known": 1,
+          "prepare_cpu_ns": 10705,
+          "observe_cpu_ns": 9233,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1447
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_33",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "ls": 1,
+        "grep": 2
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 27783,
+          "prepare_cpu_ns": 17045,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1527
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 7211,
+          "prepare_cpu_ns": 15242,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1557
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_34",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "tail": 1,
+        "cat": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 18368,
+          "observe_cpu_ns": 35052,
+          "update_visits": 21,
+          "peak_complete_bundle_bytes": 1683
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 10596,
+          "observe_cpu_ns": 9454,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1707
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_35",
+      "reference_calls": 7,
+      "filesystem_methods": {
+        "cd": 2,
+        "tail": 1,
+        "cat": 1,
+        "diff": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 7
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 47791,
+          "prepare_cpu_ns": 21983,
+          "update_visits": 37,
+          "peak_complete_bundle_bytes": 3083
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 14800,
+          "prepare_cpu_ns": 18567,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 2803
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_36",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "cd": 2,
+        "touch": 1,
+        "cp": 1,
+        "mv": 1,
+        "grep": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 1,
+          "observe_cpu_ns": 44104,
+          "prepare_cpu_ns": 7812,
+          "update_visits": 38,
+          "peak_complete_bundle_bytes": 2267
+        },
+        "demand_compiler": {
+          "known": 1,
+          "observe_cpu_ns": 16024,
+          "prepare_cpu_ns": 7781,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 2366
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_37",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "wc": 1,
+        "grep": 1,
+        "touch": 1,
+        "echo": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 16885,
+          "observe_cpu_ns": 30948,
+          "update_visits": 21,
+          "peak_complete_bundle_bytes": 1845
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "prepare_cpu_ns": 9774,
+          "observe_cpu_ns": 8853,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1919
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_38",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 2,
+        "rm": 1,
+        "rmdir": 1,
+        "ls": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 20411,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 881
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 11386,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 1332
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_39",
+      "reference_calls": 10,
+      "filesystem_methods": {
+        "mkdir": 1,
+        "cd": 1,
+        "touch": 3,
+        "echo": 3,
+        "ls": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 10
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 1,
+          "observe_cpu_ns": 58759,
+          "prepare_cpu_ns": 6510,
+          "update_visits": 60,
+          "peak_complete_bundle_bytes": 2614
+        },
+        "demand_compiler": {
+          "known": 1,
+          "observe_cpu_ns": 19080,
+          "prepare_cpu_ns": 8352,
+          "update_visits": 20,
+          "peak_complete_bundle_bytes": 3136
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_40",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "ls": 1,
+        "cd": 1,
+        "cp": 1,
+        "tail": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 22905,
+          "prepare_cpu_ns": 8203,
+          "update_visits": 11,
+          "peak_complete_bundle_bytes": 1755
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 8973,
+          "prepare_cpu_ns": 5167,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1783
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_41",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "cd": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 16163,
+          "prepare_cpu_ns": 7691,
+          "update_visits": 7,
+          "peak_complete_bundle_bytes": 1841
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 6030,
+          "prepare_cpu_ns": 5078,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1671
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_42",
+      "reference_calls": 3,
+      "filesystem_methods": {
+        "touch": 1,
+        "echo": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "known": 1,
+          "observe_cpu_ns": 24777,
+          "prepare_cpu_ns": 7001,
+          "update_visits": 17,
+          "peak_complete_bundle_bytes": 991
+        },
+        "demand_compiler": {
+          "known": 1,
+          "observe_cpu_ns": 7010,
+          "prepare_cpu_ns": 6239,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1094
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_43",
+      "reference_calls": 6,
+      "filesystem_methods": {
+        "ls": 1,
+        "find": 1,
+        "cd": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 6
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 18879,
+          "prepare_cpu_ns": 7451,
+          "update_visits": 11,
+          "peak_complete_bundle_bytes": 1916
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 7521,
+          "prepare_cpu_ns": 5478,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1870
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_44",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "cd": 1,
+        "echo": 2,
+        "touch": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 25849,
+          "update_visits": 24,
+          "peak_complete_bundle_bytes": 1662
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 8935,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1665
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_45",
+      "reference_calls": 3,
+      "filesystem_methods": {
+        "find": 1,
+        "cd": 1,
+        "cp": 1
+      },
+      "conservative_directory_or_unknown_transfer": true,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 3
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 12528,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 835
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 5788,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1031
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_46",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "cd": 2,
+        "rm": 1,
+        "rmdir": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "observe_cpu_ns": 16985,
+          "update_visits": 12,
+          "peak_complete_bundle_bytes": 726
+        },
+        "demand_compiler": {
+          "observe_cpu_ns": 8803,
+          "update_visits": 10,
+          "peak_complete_bundle_bytes": 1077
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_47",
+      "reference_calls": 4,
+      "filesystem_methods": {
+        "find": 1,
+        "cat": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 4
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 13530,
+          "prepare_cpu_ns": 8032,
+          "update_visits": 6,
+          "peak_complete_bundle_bytes": 1124
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 1,
+          "observe_cpu_ns": 4476,
+          "prepare_cpu_ns": 4937,
+          "update_visits": 4,
+          "peak_complete_bundle_bytes": 1041
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_48",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "ls": 1,
+        "cd": 1,
+        "wc": 2
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 24647,
+          "prepare_cpu_ns": 15313,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 1637
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 2,
+          "observe_cpu_ns": 8602,
+          "prepare_cpu_ns": 10445,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1493
+        }
+      }
+    },
+    {
+      "case_id": "multi_turn_base_49",
+      "reference_calls": 5,
+      "filesystem_methods": {
+        "ls": 1,
+        "sort": 1,
+        "tail": 1,
+        "wc": 1
+      },
+      "conservative_directory_or_unknown_transfer": false,
+      "official_checker": {
+        "reference_replay": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "indexed_classical": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        },
+        "demand_compiler": {
+          "valid": true,
+          "error_type": null,
+          "remaining_calls": 5
+        }
+      },
+      "methods": {
+        "indexed_classical": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 31978,
+          "prepare_cpu_ns": 24837,
+          "update_visits": 14,
+          "peak_complete_bundle_bytes": 1380
+        },
+        "demand_compiler": {
+          "needs_native_evidence": 3,
+          "observe_cpu_ns": 8323,
+          "prepare_cpu_ns": 16563,
+          "update_visits": 8,
+          "peak_complete_bundle_bytes": 1496
+        }
+      }
+    }
+  ]
+}
