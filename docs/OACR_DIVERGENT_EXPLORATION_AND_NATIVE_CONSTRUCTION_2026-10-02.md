@@ -1,7 +1,7 @@
 # OACR：发散探索与谨慎构造
 
 日期：2026-10-02。起点：PR #89，`daa8c9d76bad77f2f5d15791a602a5d2d9c3e2fd`。
-状态：探索候选与第一个经典原生适配参考已构造；本文件随配置/代码冻结后才执行。
+状态：探索候选与第一个经典原生适配参考已构造；在 `674f9260979aaa60274f3dc1d6e532cc48157b72` 冻结后执行一次，有界原生审计通过。不是独立新算法结果。
 
 用户决定：发散探索，但谨慎执行构造。强基线强度与原生信息条件保持完整；超越必须增加构造、结构或成本结果，并在官方任务兑现。反循环要求、T/I/N 与 512 封存单元不变。
 
@@ -54,4 +54,14 @@ python experiments/oacr_native/audit_file_binding_v1.py \
 
 原生正确性、独立数学增量和官方任务收益三个验收保持分开。若最终经典方法同样正确且总成本追平，候选收为基础。已有 BRFP 与 OCAR 的原生构造、维护和反循环成果保留，用作新适配的基础。
 
-结果尚待本轮冻结后的执行。前序：[强基线拆解](OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md)、[领域与算子适配](OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md)。唯一门槛：[Acceptance Gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)。
+## 5. 冻结后的结果
+
+预运行冻结：`674f9260979aaa60274f3dc1d6e532cc48157b72`。v1 执行一次后未修改 producer、auditor 或配置；未追加/删去 fixture。
+
+7 个 fixture 共 50 次 producer 工具调用。152 个输出检查槽中，65 个 KNOWN 与复制的 native backend 实际 cat 一致，85 个 NEED_EVIDENCE，2 个 UNSUPPORTED；原生不一致为 0。65 次 verifier-only cat 独立计数，未回流给 producer。KNOWN 比较通过不代表 152 项都完成，也不代表普遍正确性定理。
+
+未知类型见证的 pwd/ls/mv 回执完全相同，但后续 cat 分别得到文件内容与目录错误；pre-move 参考明确要求类型取证。这个 pre-move 要求是本原型的覆盖选择，不是所有方法必须预先查询的下界；合法补取可发生在后续回答前。该见证只证明已有回执不足以确定后续 cat。隐藏 writer 见证得到 old/new 两种后续内容，确认 no-unobserved-writer 条件的实质作用。目录移动仍不支持。
+
+完整 ledger 与代码/配置/source 哈希见 [执行记录](OACR_NATIVE_FILE_BINDING_RESULT_2026-10-02.json)，ledger SHA256 为 `2e794d5a72d097bac2f804e3043df32eec02ff0a5e948a2a563e93f8b988ba10`。各例表示字节计入记录，未作总成本优势比较。经典参考首先正确处理了这批文件操作，因此新候选必须提供额外结果；本轮不据此宣称 OCAR 新颖性、官方分数、政策正确性或跨领域胜出。
+
+前序：[强基线拆解](OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md)、[领域与算子适配](OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md)。唯一门槛：[Acceptance Gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)。

@@ -95,6 +95,17 @@ docs/OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md. Frozen gates are unchange
 
 ### Theory
 
+The bounded native file-binding reference was frozen at
+`674f9260979aaa60274f3dc1d6e532cc48157b72` and executed once. Seven constructed
+fixtures contain 50 producer calls and 152 output slots: 65 known outputs match
+unmodified native execution, 85 require evidence, and 2 are unsupported. Checker
+probes remain evaluator-only. Unknown-type and unobserved-writer witnesses expose
+real information/scope boundaries. This is classical adapter development, not a
+new core algorithm, optimized-baseline cost comparison, official task result or
+cross-domain evidence. See
+docs/OACR_DIVERGENT_EXPLORATION_AND_NATIVE_CONSTRUCTION_2026-10-02.md and
+docs/OACR_NATIVE_FILE_BINDING_RESULT_2026-10-02.json. Existing gates remain in force.
+
 - T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
   simultaneously. Separate class exactness, native decoder correctness, and the
   cost objective that makes excess distinctions undesirable.
