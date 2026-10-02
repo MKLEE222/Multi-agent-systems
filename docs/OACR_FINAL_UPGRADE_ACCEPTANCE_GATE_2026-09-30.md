@@ -29,6 +29,15 @@ Core reference:
 
 ## Current promotion status
 
+The 2026-10-02 incremental Need / joint Release execution passes the inherited
+744-world, 7,068-history development bank. Indexed primal/dual transport reduces
+Need visits from 17,769 to 3,043, with zero cold update flows and 1,113 residual
+searches. A generic indexed classical-flow / proof-composition control matches
+all states and charged counts; extra initialization and storage are explicit.
+This is a bounded executable improvement, not independent T2/T5 clearance or
+natural evidence. See docs/OACR_INCREMENTAL_NEED_RELEASE_2026-10-02.md. Frozen
+criteria below and the sealed 512-unit bank are unchanged.
+
 ### Theory
 
 - T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
