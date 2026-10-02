@@ -38,11 +38,15 @@ This is a bounded executable improvement, not independent T2/T5 clearance or
 natural evidence. See docs/OACR_INCREMENTAL_NEED_RELEASE_2026-10-02.md. Frozen
 criteria below and the sealed 512-unit bank are unchanged.
 
-### Main-contribution decision: complete finite contracts and independent advantage
+### Main-contribution decision: real-domain operator adaptation and independent advantage
 
-The theoretical object is the complete finite continuation contract, including
-every registered history, observation, legality rule and residual context. The
-DAG deletion-budget model is an instance. Its executed acquisition, closure
+The research object is extracted from real-domain tasks, representations and
+native operations, including the actual task contracts carried by strong neighbors
+and baselines. Complete finite continuation contracts remain a conditional semantic
+specification and verification tool, not a sufficient paper anchor. Domain and
+operator adaptation must preserve native inputs, role visibility, constraints and
+official scoring before mathematical claims and shared-task advantage are assessed.
+The DAG deletion-budget model is an instance. Its executed acquisition, closure
 certificate, proof-DAG and indexed Need / Release upgrades are retired as
 independent main-contribution candidates: mature controls match the measured
 semantics and resource counts. They remain correct reference implementations;
@@ -67,6 +71,17 @@ These are directions for closing the frozen gates, not substitute or easier gate
 See docs/OACR_COMPLETE_FINITE_CONTRACT_PRIORITY_AUDIT_2026-10-02.md for concrete
 theorem references, reduction limits, evidence provenance and candidate exit
 conditions. This update runs no experiments and leaves the 512-unit bank sealed.
+
+The subsequent domain-first audit pins BFCL, tau2-bench and AppWorld public source
+revisions and inspects real tools/evaluators. ACE's AppWorld task, AMA-Agent's
+causality/tool-retrieval memory and native execution comparisons, and AgeMem's
+joint memory policy are direct competition targets. Agent memory is distinguished
+from hidden environment state; the graph decoder equation is not imposed on tools
+without that interface. The first operator-adaptation objects are native file
+binding/relocation and one-use retail item modification. These are research and
+interface decisions, not implemented adapters, new theorems or evaluation results.
+See docs/OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md. Earlier accepted
+results and all frozen gates remain intact.
 
 ### Theory
 
