@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
-"""Send one JSON request on stdin to a native actor's local execution bridge."""
+"""Send one JSON request on stdin via a native actor's local file mailbox."""
 import argparse
 import json
-import socket
+from pathlib import Path
 import sys
+import time
+import uuid
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--socket", required=True)
+    parser.add_argument("--mailbox", type=Path, required=True)
     args = parser.parse_args()
     payload = json.loads(sys.stdin.read())
-    with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as conn:
-        conn.settimeout(60)
-        conn.connect(args.socket)
-        conn.sendall(json.dumps(payload).encode() + b"\n")
-        data = bytearray()
-        while not data.endswith(b"\n"):
-            part = conn.recv(65536)
-            if not part:
-                break
-            data.extend(part)
-    response = json.loads(data)
+    request_id = uuid.uuid4().hex
+    temp = args.mailbox/(request_id+".tmp")
+    request_path = args.mailbox/(request_id+".request.json")
+    response_path = args.mailbox/(request_id+".response.json")
+    temp.write_text(json.dumps(payload))
+    temp.rename(request_path)
+    deadline = time.monotonic()+60
+    while not response_path.exists():
+        if time.monotonic() > deadline:
+            raise TimeoutError("Native bridge response timeout")
+        time.sleep(0.05)
+    response = json.loads(response_path.read_text())
+    response_path.unlink()
     print(json.dumps(response, ensure_ascii=False, indent=2))
     return 0 if response.get("status") != "bridge_error" else 1
 

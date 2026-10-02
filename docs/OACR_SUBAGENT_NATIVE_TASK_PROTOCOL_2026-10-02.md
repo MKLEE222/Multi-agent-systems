@@ -29,7 +29,9 @@ timeout 20s，环境 seed 123。子代理模型继承当前系统；其版本、
 
 ## 接口与评分分离
 
-Unix socket 桥仅公开 `start/execute/finish`；host actor 指令仅允许调用该 client，
+原 v1 Unix socket 创建被当前环境拒绝（PermissionError），3 个启动均止于
+actor 行动前；没有模型、native execute 或评分。失败保留并重新冻结 v2，样本/
+预算不变，使用原子文件消息队列。桥仅公开 `start/execute/finish`；host actor 指令仅允许调用该 client，
 禁止读文件/源码/后端/任务 labels、联网找答案、另起模型或继续委派。桥有补充 AST
 禁读项及原生 safety guard。共享 workspace 的 prompt 合规不是 OS 级隔离证明，
 因此保存全部经桥输入/回执供审计，不称对抗式安全保证。

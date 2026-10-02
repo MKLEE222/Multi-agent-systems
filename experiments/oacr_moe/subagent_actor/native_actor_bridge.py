@@ -13,8 +13,8 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import socket
 import subprocess
+import time
 
 AUTHOR_SHA = "9f3e92155345a9159f3a8b25abc334eeca05b545"
 HERE = Path(__file__).resolve().parent
@@ -35,7 +35,7 @@ def prepare(root, target):
     from appworld.task import load_task_ids
     ids = load_task_ids("train")
     # Only the public split manifest is read; no task, evaluator or output.
-    freeze = {"protocol": "subagent_native_train_smoke_v1", "source_ref": AUTHOR_SHA,
+    freeze = {"protocol": "subagent_native_train_smoke_v2", "source_ref": AUTHOR_SHA,
         "selection": "first three IDs of unchanged native train manifest",
         "dataset": "train", "train_count": len(ids),
         "train_manifest_sha256": sha("\n".join(ids).encode()),
@@ -52,6 +52,7 @@ def prepare(root, target):
         "model": "inherited ChatGPT subagent backend; version/seed/token/billing not exposed",
         "interpretation": "exposed-train feasibility/diagnostic; no method comparison, novelty or generalization claim",
         "protected_content": "private local artifacts; only encrypted archive or metadata may be committed",
+        "transport": "atomic local file mailbox; socket v1 aborted before actor actions",
         "implementation_sha256": {name: sha((HERE/name).read_bytes()) for name in
                                   ("native_actor_bridge.py", "actor_client.py")},
         "author_prompt_sha256": sha((root/"experiments/prompts/appworld_react_generator_prompt.txt").read_bytes()),
@@ -62,7 +63,7 @@ def prepare(root, target):
     print(json.dumps({"status": "frozen", "selected": 3, "tasks_loaded": 0}))
 
 
-def serve(root, freeze_path, index, socket_path, private_root, summary_path):
+def serve(root, freeze_path, index, mailbox, private_root, summary_path):
     from appworld import AppWorld
     from appworld.task import load_task_ids
     from jinja2 import Template
@@ -79,9 +80,9 @@ def serve(root, freeze_path, index, socket_path, private_root, summary_path):
         raise ValueError("task choice changed")
     private_root.mkdir(parents=True, exist_ok=True)
     events_path = private_root/f"events_{index}.jsonl"
-    if events_path.exists() or summary_path.exists() or socket_path.exists():
+    if events_path.exists() or summary_path.exists() or mailbox.exists():
         raise ValueError("refuse reuse/overwrite of this first-run world")
-    experiment_name = f"oacr_subagent_train_smoke_v1_{index}"
+    experiment_name = f"oacr_subagent_train_smoke_v2_{index}"
     started = clock.real_perf_counter()
     world = AppWorld(task_id=task_id, experiment_name=experiment_name,
         load_ground_truth=False, random_seed=freeze["environment_random_seed"],
@@ -111,24 +112,20 @@ def serve(root, freeze_path, index, socket_path, private_root, summary_path):
             stream.write(content+"\n")
 
     log_event({"op": "start", "prompt": prompt})
-    socket_path.parent.mkdir(parents=True, exist_ok=True)
-    with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as server:
-        server.bind(str(socket_path))
-        os.chmod(socket_path, 0o600)
-        server.listen(1)
+    mailbox.mkdir(parents=True)
+    os.chmod(mailbox, 0o700)
+    if True:
         print(json.dumps({"status":"native_actor_ready", "index":index}), flush=True)
         done = False
         while not done:
-            conn, _ = server.accept()
-            with conn:
-                buf = bytearray()
-                while not buf.endswith(b"\n"):
-                    part = conn.recv(65536)
-                    if not part or len(buf) > 200000:
-                        break
-                    buf.extend(part)
+            pending = sorted(mailbox.glob("*.request.json"))
+            if not pending:
+                time.sleep(0.05)
+                continue
+            request_path = pending[0]
+            if True:
                 try:
-                    request = json.loads(buf)
+                    request = json.loads(request_path.read_text())
                     op = request.get("op")
                     if op == "start":
                         response = {"status":"actor_task", "index":index, "prompt":prompt,
@@ -174,9 +171,13 @@ def serve(root, freeze_path, index, socket_path, private_root, summary_path):
                 except Exception as exc:
                     response = {"status":"bridge_error", "error_class":type(exc).__name__}
                     log_event({"op":"bridge_error", "error_class":type(exc).__name__})
-                conn.sendall(json.dumps(response,ensure_ascii=False).encode()+b"\n")
+                response_path = request_path.with_name(request_path.name.replace(".request.json", ".response.json"))
+                temp_response = response_path.with_suffix(".tmp")
+                temp_response.write_text(json.dumps(response,ensure_ascii=False))
+                temp_response.rename(response_path)
+                request_path.unlink()
     # Actor endpoint is closed before importing/calling private evaluation.
-    socket_path.unlink()
+    (mailbox/"terminated.txt").write_text("Actor terminated; grading feedback withheld.\n")
     actor_seconds = clock.real_perf_counter()-started
     native_interactions = len(world.environment_io)
     native_calls = len(world.requester.requests)
@@ -214,7 +215,7 @@ def main():
     parser.add_argument("--freeze",type=Path,required=True)
     parser.add_argument("--prepare",action="store_true")
     parser.add_argument("--index",type=int,choices=range(3))
-    parser.add_argument("--socket",type=Path)
+    parser.add_argument("--mailbox",type=Path)
     parser.add_argument("--private-root",type=Path)
     parser.add_argument("--summary",type=Path)
     args = parser.parse_args()
@@ -228,9 +229,9 @@ def main():
     if args.prepare:
         prepare(root,args.freeze)
     else:
-        if any(x is None for x in (args.index,args.socket,args.private_root,args.summary)):
-            parser.error("serve requires index/socket/private-root/summary")
-        serve(root,args.freeze,args.index,args.socket,args.private_root,args.summary)
+        if any(x is None for x in (args.index,args.mailbox,args.private_root,args.summary)):
+            parser.error("serve requires index/mailbox/private-root/summary")
+        serve(root,args.freeze,args.index,args.mailbox,args.private_root,args.summary)
 
 
 if __name__ == "__main__":

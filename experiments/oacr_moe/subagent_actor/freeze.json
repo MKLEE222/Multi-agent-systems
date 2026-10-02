@@ -1,5 +1,5 @@
 {
-  "protocol": "subagent_native_train_smoke_v1",
+  "protocol": "subagent_native_train_smoke_v2",
   "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
   "selection": "first three IDs of unchanged native train manifest",
   "dataset": "train",
@@ -36,9 +36,10 @@
   "model": "inherited ChatGPT subagent backend; version/seed/token/billing not exposed",
   "interpretation": "exposed-train feasibility/diagnostic; no method comparison, novelty or generalization claim",
   "protected_content": "private local artifacts; only encrypted archive or metadata may be committed",
+  "transport": "atomic local file mailbox; socket v1 aborted before actor actions",
   "implementation_sha256": {
-    "native_actor_bridge.py": "2a38f02991bc14fcc2ff85e2c1634ec45a6219514ce5163f962463fbc00808a3",
-    "actor_client.py": "c782442cee266495a9999b2da2c9f06d44b9f82c5a3a6e5d97c8568b0e30fea1"
+    "native_actor_bridge.py": "9a64bb2ade5512d9d3b62bbe6f2fbe1669e05925803163da2760a9dba421bf3e",
+    "actor_client.py": "352a844179c8aaed1234441d3cfd3c92e2e9284649b10f3f7f7e8f655c1fe989"
   },
   "author_prompt_sha256": "c109aeb9cf1f672eaec5bbe63bbd68cfc5ae4290ec7e9cd78d5eed6ad29df47e",
   "initial_playbook_sha256": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b"
