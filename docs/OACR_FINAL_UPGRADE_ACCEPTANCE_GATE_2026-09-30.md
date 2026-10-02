@@ -1,7 +1,7 @@
 # OACR Final Upgrade & Acceptance Gate
 
 Original freeze: 2026-09-30
-Current audit update: 2026-10-01
+Current audit update: 2026-10-02
 Status: FROZEN UPGRADE CRITERIA; CORE CLAIM PROMOTION REOPENED
 
 This remains the sole upgrade acceptance gate. New work must close Theory,
@@ -137,7 +137,19 @@ millions of independent samples. General proof and novelty review remain open.
 
 ## Gate T — Theory (original substantive requirements retained)
 
-### 2026-10-01 follow-up execution; thresholds unchanged
+### 2026-10-01/02 follow-up execution; thresholds unchanged
+
+- 2026-10-02 bounded operator review: the DAG pointwise-query claim survives fresh
+  proof/code checks. Its closure-theoretic basis (unique generation, extreme generators
+  and interval fibers) is directly covered by prior work; the source-query formulation
+  is a derived interface result, not novelty clearance. A legal budget-consumption
+  example preserves native output but invalidates transported paths after canonical
+  support coarsening. Persistent-support transport remains valid; joint representation/
+  certificate maintenance is open. All 2,550 closure systems on up to four elements,
+  744 targeted larger DAG source states and 5,032 receipts pass the declared checks.
+  Same-assistant review is not independent proof review. T2/T5, natural evidence and
+  the 512-unit evaluation seal remain unchanged. See
+  `docs/OACR_OPERATOR_COLD_REVIEW_2026-10-02.md`.
 
 - Operator lifting: a certified one-pass compiler now combines source acquisition
   and least physical output. A working DAG/full-reachability/source-cube proof
