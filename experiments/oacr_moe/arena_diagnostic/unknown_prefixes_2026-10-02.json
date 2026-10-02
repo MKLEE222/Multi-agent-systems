@@ -1,0 +1,1072 @@
+{
+  "scope": "exposed-development verifier diagnostic; no learned-agent or independent confirmation",
+  "panel_version": "fixed-content-edits-v1",
+  "unknown_rows": 54,
+  "ledger_sha256": "c7ff9f2ace2e62763b0ca761e9e645b560b824c36630d3caf67ebf6dbe6fda88",
+  "counts": {
+    "observational_insufficiency_witness": 50,
+    "no_witness_unclassified": 4
+  },
+  "native_fs_replays": 473,
+  "wall_seconds": 0.016523897999832116,
+  "rows": [
+    {
+      "case_id": "multi_turn_base_0",
+      "index": 4,
+      "call": "grep(file_name='final_report.pdf',pattern='budget analysis')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/document/final_report.pdf",
+        "original_content": "Year2024 This is the final report content including budget analysis and other sections.",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "Year2024 This is the final report content including budget analysis and other sections."
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_0",
+      "index": 5,
+      "call": "sort('final_report.pdf')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 5,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/document/final_report.pdf",
+        "original_content": "Year2024 This is the final report content including budget analysis and other sections.",
+        "alternative_content": "Year2024 This is the final report content including budget analysis and other sections.\nOCAR_DIAGNOSTIC",
+        "original_read": {
+          "sorted_content": "Year2024 This is the final report content including budget analysis and other sections."
+        },
+        "alternative_read": {
+          "sorted_content": "OCAR_DIAGNOSTIC\nYear2024 This is the final report content including budget analysis and other sections."
+        },
+        "checked_prior_fs_receipts": 5
+      }
+    },
+    {
+      "case_id": "multi_turn_base_0",
+      "index": 9,
+      "call": "diff(file_name1='final_report.pdf',file_name2='previous_report.pdf')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 2,
+      "witness": {
+        "changed_initial_file": "workspace/document/previous_report.pdf",
+        "original_content": "Year203 This is the previous report content with different budget analysis.",
+        "alternative_content": "",
+        "original_read": {
+          "diff_lines": "- Year2024 This is the final report content including budget analysis and other sections.\n+ Year203 This is the previous report content with different budget analysis."
+        },
+        "alternative_read": {
+          "diff_lines": ""
+        },
+        "checked_prior_fs_receipts": 9
+      }
+    },
+    {
+      "case_id": "multi_turn_base_1",
+      "index": 4,
+      "call": "grep(file_name='log.txt',pattern='Error')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/workspace/log.txt",
+        "original_content": "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line.",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line."
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_1",
+      "index": 5,
+      "call": "tail(file_name='log.txt',lines=20)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 5,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/workspace/log.txt",
+        "original_content": "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line.",
+        "alternative_content": "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line.\nOCAR_DIAGNOSTIC",
+        "original_read": {
+          "last_lines": "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line."
+        },
+        "alternative_read": {
+          "last_lines": "This is a log file. No errors found. Another line. Yet another line. Error: Something went wrong. Final line.\nOCAR_DIAGNOSTIC"
+        },
+        "checked_prior_fs_receipts": 5
+      }
+    },
+    {
+      "case_id": "multi_turn_base_2",
+      "index": 3,
+      "call": "diff(file_name1='ideas.txt', file_name2='TeamNotes.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 2,
+      "prefix_matched_trials": 2,
+      "witness": {
+        "changed_initial_file": "simona/documents/ideas.txt",
+        "original_content": "Collaboration leads to success. Innovation ignites growth.",
+        "alternative_content": "OCAR_DIAGNOSTIC",
+        "original_read": {
+          "diff_lines": ""
+        },
+        "alternative_read": {
+          "diff_lines": "- OCAR_DIAGNOSTIC\n+ Collaboration leads to success. Innovation ignites growth."
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_4",
+      "index": 1,
+      "call": "sort(file_name='report.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "tmp/report.txt",
+        "original_content": "Initial report content Unsorted data More unsorted data",
+        "alternative_content": "",
+        "original_read": {
+          "sorted_content": "Initial report content Unsorted data More unsorted data"
+        },
+        "alternative_read": {
+          "sorted_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_5",
+      "index": 2,
+      "call": "cat(file_name='archive_summary.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "data/project/archive_summary.txt",
+        "original_content": "Summary of archived files: analysis_report.csv",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Summary of archived files: analysis_report.csv"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_7",
+      "index": 3,
+      "call": "cat(file_name='goals.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/academic_venture/goals.txt",
+        "original_content": "Research topic selection Literature review Data collection Data analysis Draft writing Final submission",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Research topic selection Literature review Data collection Data analysis Draft writing Final submission"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_8",
+      "index": 0,
+      "call": "grep(file_name='experiment_log.txt',pattern='Anomaly')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "scientific_data/experiment_log.txt",
+        "original_content": "Observation 1: Normal Observation 2: Anomaly detected Observation 3: Normal Observation 4: Anomaly detected ",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "Observation 1: Normal Observation 2: Anomaly detected Observation 3: Normal Observation 4: Anomaly detected "
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_8",
+      "index": 1,
+      "call": "diff(file_name1='experiment_log.txt', file_name2='previous_study_log.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 6,
+      "prefix_matched_trials": 2,
+      "witness": {
+        "changed_initial_file": "scientific_data/experiment_log.txt",
+        "original_content": "Observation 1: Normal Observation 2: Anomaly detected Observation 3: Normal Observation 4: Anomaly detected ",
+        "alternative_content": "OCAR_DIAGNOSTIC\nObservation 1: Normal Observation 2: Anomaly detected Observation 3: Normal Observation 4: Anomaly detected ",
+        "original_read": {
+          "diff_lines": "- Observation 1: Normal Observation 2: Anomaly detected Observation 3: Normal Observation 4: Anomaly detected \n+ Observation A: Normal Observation B: Normal Observation C: Anomaly detected"
+        },
+        "alternative_read": {
+          "diff_lines": "- OCAR_DIAGNOSTIC\n+ Observation A: Normal Observation B: Normal Observation C: Anomaly detected"
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_9",
+      "index": 4,
+      "call": "sort(file_name='ArchivedFinalReport2024.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/Documentation/FinalReport.txt",
+        "original_content": "This is the final report for the year 2024. It contains all the necessary details and summaries.",
+        "alternative_content": "",
+        "original_read": {
+          "sorted_content": "This is the final report for the year 2024. It contains all the necessary details and summaries."
+        },
+        "alternative_read": {
+          "sorted_content": ""
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_10",
+      "index": 8,
+      "call": "diff(file_name1='notes.md',file_name2='summary.txt')",
+      "classification": "no_witness_unclassified",
+      "trials": 20,
+      "prefix_matched_trials": 20,
+      "witness": null
+    },
+    {
+      "case_id": "multi_turn_base_13",
+      "index": 1,
+      "call": "tail(file_name='report.txt',lines=1)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/documents/report.txt",
+        "original_content": "Zebra Apple Orange",
+        "alternative_content": "",
+        "original_read": {
+          "last_lines": "Zebra Apple Orange"
+        },
+        "alternative_read": {
+          "last_lines": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_13",
+      "index": 2,
+      "call": "diff(file_name1='report.txt',file_name2='summary.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 6,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/documents/report.txt",
+        "original_content": "Zebra Apple Orange",
+        "alternative_content": "OCAR_DIAGNOSTIC\nZebra Apple Orange",
+        "original_read": {
+          "diff_lines": "- Zebra Apple Orange\n+ Banana Grape Lemon"
+        },
+        "alternative_read": {
+          "diff_lines": "- OCAR_DIAGNOSTIC\n+ Banana Grape Lemon"
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_14",
+      "index": 2,
+      "call": "grep(file_name='report.csv',pattern='Quarterly Financial Overview')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "active_project/ResearchDocs/report.csv",
+        "original_content": "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts"
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_14",
+      "index": 3,
+      "call": "tail(file_name='report.csv',lines=5)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 5,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "active_project/ResearchDocs/report.csv",
+        "original_content": "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts",
+        "alternative_content": "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts\nOCAR_DIAGNOSTIC",
+        "original_read": {
+          "last_lines": "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts"
+        },
+        "alternative_read": {
+          "last_lines": "Line 1: Introduction Line 2: Quarterly Financial Overview Line 3: Details Line 4: More Details Line 5: Quarterly Financial Overview Line 6: Conclusion Line 7: Quarterly Financial Overview Line 8: Quarter has been successful. Line 9: Quarterly Financial Overview Line 10: Final Thoughts\nOCAR_DIAGNOSTIC"
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_16",
+      "index": 4,
+      "call": "sort(file_name='2024_research_backup.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/research/research_notes.txt",
+        "original_content": "Line 3: Experiment results Line 1: Introduction Line 2: Methodology",
+        "alternative_content": "",
+        "original_read": {
+          "sorted_content": "Line 3: Experiment results Line 1: Introduction Line 2: Methodology"
+        },
+        "alternative_read": {
+          "sorted_content": ""
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_16",
+      "index": 5,
+      "call": "wc(file_name='2024_research_backup.txt',mode='l')",
+      "classification": "no_witness_unclassified",
+      "trials": 10,
+      "prefix_matched_trials": 1,
+      "witness": null
+    },
+    {
+      "case_id": "multi_turn_base_17",
+      "index": 2,
+      "call": "cat(file_name='test_report.docx')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 21,
+      "prefix_matched_trials": 21,
+      "witness": {
+        "changed_initial_file": "workspace/project/test_report.docx",
+        "original_content": "Kelly Total Score: 96",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Kelly Total Score: 96"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_18",
+      "index": 5,
+      "call": "cat(file_name='MonthlySummary.docx')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 21,
+      "prefix_matched_trials": 21,
+      "witness": {
+        "changed_initial_file": "Quarter1_Reports/MonthlySummary.docx",
+        "original_content": "Summary of monthly activities and achievements.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Summary of monthly activities and achievements."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 5
+      }
+    },
+    {
+      "case_id": "multi_turn_base_18",
+      "index": 7,
+      "call": "diff(file_name1='History101.txt',file_name2='History202.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 31,
+      "prefix_matched_trials": 21,
+      "witness": {
+        "changed_initial_file": "Quarter1_Reports/History101.txt",
+        "original_content": "Introduction to History. Ancient civilizations.",
+        "alternative_content": "",
+        "original_read": {
+          "diff_lines": "- Introduction to History. Ancient civilizations.\n+ Advanced History. Modern world events."
+        },
+        "alternative_read": {
+          "diff_lines": ""
+        },
+        "checked_prior_fs_receipts": 7
+      }
+    },
+    {
+      "case_id": "multi_turn_base_19",
+      "index": 4,
+      "call": "cat(file_name='final_document.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "work/test_document.txt",
+        "original_content": "This is a draft version of the document.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "This is a draft version of the document."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_20",
+      "index": 1,
+      "call": "tail(file_name='file1.txt',lines=1)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/documents/file1.txt",
+        "original_content": "The quick brown fox jumps over the lazy dog.",
+        "alternative_content": "",
+        "original_read": {
+          "last_lines": "The quick brown fox jumps over the lazy dog."
+        },
+        "alternative_read": {
+          "last_lines": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_20",
+      "index": 2,
+      "call": "diff(file_name1='file1.txt',file_name2='file2.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 6,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/documents/file1.txt",
+        "original_content": "The quick brown fox jumps over the lazy dog.",
+        "alternative_content": "OCAR_DIAGNOSTIC\nThe quick brown fox jumps over the lazy dog.",
+        "original_read": {
+          "diff_lines": "- The quick brown fox jumps over the lazy dog.\n+ Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        "alternative_read": {
+          "diff_lines": "- OCAR_DIAGNOSTIC\n+ Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_21",
+      "index": 1,
+      "call": "diff(file_name1='ProjectOverview.txt',file_name2='Draft.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "workspace/Draft.txt",
+        "original_content": "Old draft content.",
+        "alternative_content": "",
+        "original_read": {
+          "diff_lines": "- To be discussed\n+ Old draft content."
+        },
+        "alternative_read": {
+          "diff_lines": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_22",
+      "index": 1,
+      "call": "cat(file_name='project_analysis.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/workspace/project_analysis.txt",
+        "original_content": "Initial analysis content.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Initial analysis content."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_22",
+      "index": 3,
+      "call": "diff(file_name1='project_analysis.txt', file_name2='old_project_analysis.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/workspace/old_project_analysis.txt",
+        "original_content": "Old analysis content.",
+        "alternative_content": "",
+        "original_read": {
+          "diff_lines": "- Initial analysis content.\n+ Old analysis content."
+        },
+        "alternative_read": {
+          "diff_lines": ""
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_24",
+      "index": 0,
+      "call": "diff(file_name1='report_draft.txt', file_name2='report_final.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "project/report_draft.txt",
+        "original_content": "Initial draft content for the report.",
+        "alternative_content": "",
+        "original_read": {
+          "diff_lines": "- Initial draft content for the report.\n+ Finalized content for the report."
+        },
+        "alternative_read": {
+          "diff_lines": ""
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_25",
+      "index": 0,
+      "call": "cat(file_name='summary.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/summary.txt",
+        "original_content": "This is the summary of the project. It includes various findings and conclusions. Further analysis is required.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "This is the summary of the project. It includes various findings and conclusions. Further analysis is required."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_26",
+      "index": 2,
+      "call": "cat(file_name='file3.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 21,
+      "prefix_matched_trials": 21,
+      "witness": {
+        "changed_initial_file": "alex/tmp/file3.txt",
+        "original_content": "Nothing important here. Yet another line.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Nothing important here. Yet another line."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_28",
+      "index": 2,
+      "call": "grep(file_name='analysis_report.txt',pattern='error')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/data/analysis_report.txt",
+        "original_content": "Line 1: No error Line 2: Minor error detected Line 3: All systems operational Line 4: Critical error found",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "Line 1: No error Line 2: Minor error detected Line 3: All systems operational Line 4: Critical error found"
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_30",
+      "index": 1,
+      "call": "cat(file_name='test_results.json')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/project/test_results.json",
+        "original_content": "{\"experiment\": \"Apollo Test\", \"result\": \"Success\", \"details\": \"All systems operational.\"}",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "{\"experiment\": \"Apollo Test\", \"result\": \"Success\", \"details\": \"All systems operational.\"}"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_31",
+      "index": 2,
+      "call": "cat(file_name='data.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "workspace/data.txt",
+        "original_content": "Q1 results Q2 results Q3 results Q4 financials Q4 financials analysis End of year summary",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Q1 results Q2 results Q3 results Q4 financials Q4 financials analysis End of year summary"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_31",
+      "index": 6,
+      "call": "wc(file_name='summary.doc',mode='c')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/summary.doc",
+        "original_content": "This is the summary document content.",
+        "alternative_content": "",
+        "original_read": {
+          "count": 37,
+          "type": "characters"
+        },
+        "alternative_read": {
+          "count": 0,
+          "type": "characters"
+        },
+        "checked_prior_fs_receipts": 6
+      }
+    },
+    {
+      "case_id": "multi_turn_base_32",
+      "index": 0,
+      "call": "cat(file_name='Spring2023Draft')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "project/Spring2023Draft",
+        "original_content": "These are the notes for Spring 2023.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "These are the notes for Spring 2023."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_33",
+      "index": 1,
+      "call": "grep(file_name='deploy.py', pattern='def')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "project/deploy.py",
+        "original_content": "def deploy():    # update the system    pass# update the database# update the server# final checks",
+        "alternative_content": "",
+        "original_read": {
+          "matching_lines": [
+            "def deploy():    # update the system    pass# update the database# update the server# final checks"
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_33",
+      "index": 2,
+      "call": "grep(file_name='deploy.py', pattern='update')",
+      "classification": "no_witness_unclassified",
+      "trials": 10,
+      "prefix_matched_trials": 5,
+      "witness": null
+    },
+    {
+      "case_id": "multi_turn_base_34",
+      "index": 0,
+      "call": "tail(file_name='finance_report.txt',lines=1)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/finance_report.txt",
+        "original_content": "Revenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4",
+        "alternative_content": "",
+        "original_read": {
+          "last_lines": "Revenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4"
+        },
+        "alternative_read": {
+          "last_lines": ""
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_34",
+      "index": 1,
+      "call": "cat(file_name='finance_report.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 6,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/finance_report.txt",
+        "original_content": "Revenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4",
+        "alternative_content": "OCAR_DIAGNOSTIC\nRevenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4",
+        "original_read": {
+          "file_content": "Revenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4"
+        },
+        "alternative_read": {
+          "file_content": "OCAR_DIAGNOSTIC\nRevenue: $5000Expenses: $3000Profit: $2000Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4Deadline: Q1Deadline: Q2Deadline: Q3Deadline: Q4"
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_35",
+      "index": 2,
+      "call": "tail(file_name='config.py',lines=1)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/projects/deep_folder/config.py",
+        "original_content": "Initialization of the system Error in module Setup complete Initialization successful Error detected",
+        "alternative_content": "",
+        "original_read": {
+          "last_lines": "Initialization of the system Error in module Setup complete Initialization successful Error detected"
+        },
+        "alternative_read": {
+          "last_lines": ""
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_35",
+      "index": 3,
+      "call": "cat(file_name='real_config.py')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 5,
+      "witness": {
+        "changed_initial_file": "alex/projects/deep_folder/real_config.py",
+        "original_content": "Real Config.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Real Config."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_35",
+      "index": 4,
+      "call": "diff(file_name1='config.py',file_name2='real_config.py')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 6,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/projects/deep_folder/config.py",
+        "original_content": "Initialization of the system Error in module Setup complete Initialization successful Error detected",
+        "alternative_content": "OCAR_DIAGNOSTIC\nInitialization of the system Error in module Setup complete Initialization successful Error detected",
+        "original_read": {
+          "diff_lines": "- Initialization of the system Error in module Setup complete Initialization successful Error detected\n+ Real Config."
+        },
+        "alternative_read": {
+          "diff_lines": "- OCAR_DIAGNOSTIC\n+ Real Config."
+        },
+        "checked_prior_fs_receipts": 4
+      }
+    },
+    {
+      "case_id": "multi_turn_base_37",
+      "index": 0,
+      "call": "wc(file_name='dev_summary.txt',mode='l')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "temp/dev_summary.txt",
+        "original_content": "This is a summary of the development process. No server error occurred during the initial phase. However, a server error was detected in the final testing phase. The team is working on resolving the server error. The server error is expected to be fixed by next week. Additional testing will be conducted to ensure no further server errors. The project is on track for completion. The final report will be submitted by the end of the month. The server error has been a major focus. The team is confident in resolving the server error soon.",
+        "alternative_content": "",
+        "original_read": {
+          "count": 1,
+          "type": "lines"
+        },
+        "alternative_read": {
+          "count": 0,
+          "type": "lines"
+        },
+        "checked_prior_fs_receipts": 0
+      }
+    },
+    {
+      "case_id": "multi_turn_base_37",
+      "index": 1,
+      "call": "grep(file_name='dev_summary.txt',pattern='server error')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 2,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "temp/dev_summary.txt",
+        "original_content": "This is a summary of the development process. No server error occurred during the initial phase. However, a server error was detected in the final testing phase. The team is working on resolving the server error. The server error is expected to be fixed by next week. Additional testing will be conducted to ensure no further server errors. The project is on track for completion. The final report will be submitted by the end of the month. The server error has been a major focus. The team is confident in resolving the server error soon.",
+        "alternative_content": "OCAR_DIAGNOSTIC",
+        "original_read": {
+          "matching_lines": [
+            "This is a summary of the development process. No server error occurred during the initial phase. However, a server error was detected in the final testing phase. The team is working on resolving the server error. The server error is expected to be fixed by next week. Additional testing will be conducted to ensure no further server errors. The project is on track for completion. The final report will be submitted by the end of the month. The server error has been a major focus. The team is confident in resolving the server error soon."
+          ]
+        },
+        "alternative_read": {
+          "matching_lines": []
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_40",
+      "index": 3,
+      "call": "tail(file_name='Q4_summary.doc',lines=1)",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "alex/Documents/Q4_summary.doc",
+        "original_content": "Summary of Q4 results. Conclusion: Profits increased.",
+        "alternative_content": "",
+        "original_read": {
+          "last_lines": "Summary of Q4 results. Conclusion: Profits increased."
+        },
+        "alternative_read": {
+          "last_lines": ""
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_41",
+      "index": 1,
+      "call": "cat(file_name='notes')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "workspace/initial_directory/notes",
+        "original_content": "Meeting notes and project details.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "Meeting notes and project details."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_43",
+      "index": 3,
+      "call": "cat(file_name='annual_report.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "alex/Documents/annual_report.txt",
+        "original_content": "This is the annual report. It includes Q4 results and other financial data.",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "This is the annual report. It includes Q4 results and other financial data."
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_47",
+      "index": 1,
+      "call": "cat(file_name='student_record.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 1,
+      "prefix_matched_trials": 1,
+      "witness": {
+        "changed_initial_file": "project_directory/student_record.txt",
+        "original_content": "John: 100 Jane: 95 Alice: 85 Bob: 90 Tom: 88 Olivia: 92",
+        "alternative_content": "",
+        "original_read": {
+          "file_content": "John: 100 Jane: 95 Alice: 85 Bob: 90 Tom: 88 Olivia: 92"
+        },
+        "alternative_read": {
+          "file_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_48",
+      "index": 2,
+      "call": "wc(file_name='test_file1.txt',mode='c')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 11,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "workspace/test/test_file1.txt",
+        "original_content": "This is a test file.",
+        "alternative_content": "",
+        "original_read": {
+          "count": 20,
+          "type": "characters"
+        },
+        "alternative_read": {
+          "count": 0,
+          "type": "characters"
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_48",
+      "index": 3,
+      "call": "wc(file_name='test_file2.txt',mode='c')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 21,
+      "prefix_matched_trials": 11,
+      "witness": {
+        "changed_initial_file": "workspace/test/test_file2.txt",
+        "original_content": "Another test file.",
+        "alternative_content": "",
+        "original_read": {
+          "count": 18,
+          "type": "characters"
+        },
+        "alternative_read": {
+          "count": 0,
+          "type": "characters"
+        },
+        "checked_prior_fs_receipts": 3
+      }
+    },
+    {
+      "case_id": "multi_turn_base_49",
+      "index": 1,
+      "call": "sort(file_name='file3.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 27,
+      "prefix_matched_trials": 27,
+      "witness": {
+        "changed_initial_file": "temp/file3.txt",
+        "original_content": "Zebra\nApple\nOrange\nBanana\nGrape\nCherry\nMango\nPeach\nLemon\nLime\nKiwi\nPlum\nPear\nFig\nDate\nCoconut\nPineapple\nPapaya\nGuava\nLychee",
+        "alternative_content": "",
+        "original_read": {
+          "sorted_content": "Apple\nBanana\nCherry\nCoconut\nDate\nFig\nGrape\nGuava\nKiwi\nLemon\nLime\nLychee\nMango\nOrange\nPapaya\nPeach\nPear\nPineapple\nPlum\nZebra"
+        },
+        "alternative_read": {
+          "sorted_content": ""
+        },
+        "checked_prior_fs_receipts": 1
+      }
+    },
+    {
+      "case_id": "multi_turn_base_49",
+      "index": 2,
+      "call": "tail(file_name='file3.txt')",
+      "classification": "observational_insufficiency_witness",
+      "trials": 36,
+      "prefix_matched_trials": 28,
+      "witness": {
+        "changed_initial_file": "temp/file3.txt",
+        "original_content": "Zebra\nApple\nOrange\nBanana\nGrape\nCherry\nMango\nPeach\nLemon\nLime\nKiwi\nPlum\nPear\nFig\nDate\nCoconut\nPineapple\nPapaya\nGuava\nLychee",
+        "alternative_content": "Lychee\nGuava\nPapaya\nPineapple\nCoconut\nDate\nFig\nPear\nPlum\nKiwi\nLime\nLemon\nPeach\nMango\nCherry\nGrape\nBanana\nOrange\nApple\nZebra",
+        "original_read": {
+          "last_lines": "Kiwi\nPlum\nPear\nFig\nDate\nCoconut\nPineapple\nPapaya\nGuava\nLychee"
+        },
+        "alternative_read": {
+          "last_lines": "Lime\nLemon\nPeach\nMango\nCherry\nGrape\nBanana\nOrange\nApple\nZebra"
+        },
+        "checked_prior_fs_receipts": 2
+      }
+    },
+    {
+      "case_id": "multi_turn_base_49",
+      "index": 3,
+      "call": "wc(file_name='file3.txt',mode='l')",
+      "classification": "no_witness_unclassified",
+      "trials": 39,
+      "prefix_matched_trials": 27,
+      "witness": null
+    }
+  ]
+}

@@ -61,7 +61,7 @@ AMA 的固定 `construct.py` 保存 `trajectory_text`、解析轨迹、state mem
 
 | 方法 | 只读审查的代码修订 | 已核入口 / 尚未完成 |
 | --- | --- | --- |
-| ACE | `82709de050e1db6e6ef2f07bcb0393560b94992a` | `ace/ace.py` 的 offline/online/test；此树未见 AppWorld runner，不能把 README 宣称支持当完整复现。需核论文运行组件，再明确命名移植 |
+| ACE | `82709de050e1db6e6ef2f07bcb0393560b94992a`；gitlink `ace-appworld@9f3e92155345a9159f3a8b25abc334eeca05b545` | 主库通用 offline/online/test 与子模块原生 AppWorld runner 均存在。原子模块为 AppWorld `0.1.4.dev0`，已有 ReAct/reflector/curator；不得用当前官方新版冒充原作者复现 |
 | AMA-Agent | `ddfd319e0be33424288c13806f1eafc63e625b59` | BaseMethod、ama_agent、construct/retrieve/tool；未执行 QA 或实时环境，native harness 覆盖待核 |
 | AgeMem | `98f563f907d67b2f2436e3ae7b7ceff32e482814` | 官方 Trinity-RFT 训练/评价说明及独立 demo；未取得训练 checkpoint 或运行五类任务 |
 | GEPA | `fb1ed589fd83372caef499cffc2c73173d3b096b` | `GEPAAdapter.evaluate` / `make_reflective_dataset` 及扩展接口；论文版与现扩展版须分别固定 |
@@ -69,6 +69,27 @@ AMA 的固定 `construct.py` 保存 `trajectory_text`、解析轨迹、state mem
 这些不是实验前冻结。AdaMEM 已核作者仓库但尚未 pin；MESA/MSS 的可复用实现尚未核实，不用简化复刻冒充原方法。
 
 AMA README 表明公开数据 test-only；新增开发/校准拆分独立声明，不把同条轨迹的不同 QA 当未见轨迹验证。AppWorld 禁止硬编码领域 API 调用，适配层不能靠固定脚本自动补查来宣称官方成绩。所有原生评分与角色输入不变。
+
+### MOE 冷启动后的入口更正与实际状态
+
+此前未展开 gitlink，因而遗漏了 ACE 的实际原生入口；“未见 runner”不再是当前
+结论。子模块已实际固定、取得 LFS bundles，独立环境安装并下载其指定数据。
+train 首个原生环境以 `load_ground_truth=false` 启动，执行 2 次公开 API 调用并
+正常关闭；没有调用模型、任务评分或 test 实例。42 个作者公开源文件 SHA 对齐，
+5 个配置编译、runner/merge 接口核验通过。完整 ACE 闭环仍缺授权模型资源，
+`--require-model` 实际返回 2；环境就绪不能写成作者任务成绩已复现。
+
+原 `no_GT` 配置仍向 actor 提供 `ground_truth.required_apis`，并将训练任务后
+`test_report` 提供给 reflector；它只禁用 compiled solution，不是零 gold 侧先验。
+作者复现须准确保留这些能力，共享三臂须共同声明输入权限和反馈时机。
+子模块实现的是 ADD 合并，不能直接代表论文 v3 的全部 grow/refine/dedup 增强。
+offline evaluation 默认产物有缺失/空文件，先从合法 train 生成经验；online
+test 学习的现成 playbook 不作我们的开发起点。
+
+详见 [冷基线报告](OACR_MOE_COLD_BASELINES_2026-10-02.md) 与
+`experiments/oacr_moe/baseline_capsule/NATIVE_APPWORLD_SMOKE_2026-10-02.json`。
+AMA 完整图/embedding/actor 与 AgeMem 训练 actor 仍未运行，旧 accessor 结果不
+替代它们。上述准备没有给当前候选补出独有优势。
 
 ### 共享适配后的维护模块
 

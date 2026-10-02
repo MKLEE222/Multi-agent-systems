@@ -1,0 +1,228 @@
+{
+  "capsule_version": 1,
+  "ace_parent_ref": "82709de050e1db6e6ef2f07bcb0393560b94992a",
+  "source_repository": "ace-agent/ace-appworld",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "source_version": "0.1.4.dev0",
+  "files": [
+    {
+      "path": "LICENSE",
+      "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "size": 11357
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha": "d23673f414c76537fb81ccc9881509a947bef247",
+      "size": 5215
+    },
+    {
+      "path": "experiments/code/ace/__init__.py",
+      "git_blob_sha": "ee4157c5c1ef4cc301de9a36ee4dce98928f65e1",
+      "size": 751
+    },
+    {
+      "path": "experiments/code/ace/adaptation_agent.py",
+      "git_blob_sha": "5575630ee2a3ef96647b884248d365d8571d8fbe",
+      "size": 10505
+    },
+    {
+      "path": "experiments/code/ace/adaptation_react.py",
+      "git_blob_sha": "0aa91dd8e0f6376048dae461dc4da1dc903e846e",
+      "size": 18759
+    },
+    {
+      "path": "experiments/code/ace/api_predictor.py",
+      "git_blob_sha": "3f29ca764dd80b826a768b4879adedbddebcdacc",
+      "size": 3463
+    },
+    {
+      "path": "experiments/code/ace/base_agent.py",
+      "git_blob_sha": "d29bd7e26cb1ac136b9a72a764b5b3a1f099696b",
+      "size": 4000
+    },
+    {
+      "path": "experiments/code/ace/base_react.py",
+      "git_blob_sha": "ecbbc2bd24f4f9a5f982430b89f0ead68699c559",
+      "size": 9070
+    },
+    {
+      "path": "experiments/code/ace/cost_tracker.py",
+      "git_blob_sha": "56cfd3debe56ff3777a6c943949cbfa2aba0b7ae",
+      "size": 900
+    },
+    {
+      "path": "experiments/code/ace/evaluation_agent.py",
+      "git_blob_sha": "4ac4795111ca405ff8db72ebc396a3b12b9db2cf",
+      "size": 5225
+    },
+    {
+      "path": "experiments/code/ace/evaluation_react.py",
+      "git_blob_sha": "21274f2320927a3586a97c1eee7a05c0f55834b0",
+      "size": 9502
+    },
+    {
+      "path": "experiments/code/ace/ipfuncall.py",
+      "git_blob_sha": "bae7ea4915d1d7900a51923e6c92cdb81d3897dd",
+      "size": 6479
+    },
+    {
+      "path": "experiments/code/ace/lite_llm_generator.py",
+      "git_blob_sha": "b758163bc20dbea55e0242baaf203683e92daba7",
+      "size": 14090
+    },
+    {
+      "path": "experiments/code/ace/logger.py",
+      "git_blob_sha": "fce053c22fd2bde74853a18b66419c6c23fd7aef",
+      "size": 5574
+    },
+    {
+      "path": "experiments/code/ace/playbook.py",
+      "git_blob_sha": "273a46c6c8d91935e93a3dfd430b0c682043356b",
+      "size": 13420
+    },
+    {
+      "path": "experiments/code/ace/run.py",
+      "git_blob_sha": "e716bdeb55de03896cbd99fbc75896c3cad57182",
+      "size": 2122
+    },
+    {
+      "path": "experiments/code/ace/utils.py",
+      "git_blob_sha": "0eb8c934c74dc31cc78d1d95b16d54c09428a009",
+      "size": 4499
+    },
+    {
+      "path": "experiments/configs/ACE_offline_no_GT_adaptation.jsonnet",
+      "git_blob_sha": "a2a52c87621540529e5f46d07219f4f302002b72",
+      "size": 3042
+    },
+    {
+      "path": "experiments/configs/ACE_offline_no_GT_evaluation.jsonnet",
+      "git_blob_sha": "96b82334c38360e3597bb4f62eacfcd541bda808",
+      "size": 1672
+    },
+    {
+      "path": "experiments/configs/ACE_offline_with_GT_adaptation.jsonnet",
+      "git_blob_sha": "77fb1a4be6dfd9ec9148edc709650da06b8a36db",
+      "size": 3007
+    },
+    {
+      "path": "experiments/configs/ACE_offline_with_GT_evaluation.jsonnet",
+      "git_blob_sha": "2d50e22a206ee9bb9ea5589b810f29a21a19a324",
+      "size": 1661
+    },
+    {
+      "path": "experiments/configs/ACE_online_no_GT.jsonnet",
+      "git_blob_sha": "745468f3040c0952c30152b5188c911af2282599",
+      "size": 2971
+    },
+    {
+      "path": "experiments/configs/__init__.py",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "experiments/playbooks/__init__.py",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "experiments/playbooks/appworld_initial_playbook.txt",
+      "git_blob_sha": "099f914ec56dcbf7ea227161ee8c78eaaf13d4f0",
+      "size": 1469
+    },
+    {
+      "path": "experiments/playbooks/appworld_offline_trained_no_gt_playbook.txt",
+      "git_blob_sha": "6efc1acf02dbfdb0f0977fc3a901dec6149aa27c",
+      "size": 1723
+    },
+    {
+      "path": "experiments/playbooks/appworld_offline_trained_with_gt_playbook.txt",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "experiments/playbooks/appworld_online_trained_playbook.txt",
+      "git_blob_sha": "331ca332e612911ca335bbf78a67f4c03d1f613e",
+      "size": 130120
+    },
+    {
+      "path": "experiments/prompts/__init__.py",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0
+    },
+    {
+      "path": "experiments/prompts/api_predictor.txt",
+      "git_blob_sha": "bace655eaab2104fbcd7e9e7f94298dea331c08f",
+      "size": 1100
+    },
+    {
+      "path": "experiments/prompts/appworld_react_curator_prompt.txt",
+      "git_blob_sha": "a42e292f2e7a8f2eba595acc74a2b9b871a752c5",
+      "size": 5192
+    },
+    {
+      "path": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "git_blob_sha": "b8db6b899203fbb536d720de847cd909e1c9d798",
+      "size": 27020
+    },
+    {
+      "path": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+      "git_blob_sha": "c798cef5db5a58d0db25a9604f5759a50356dc63",
+      "size": 6639
+    },
+    {
+      "path": "experiments/prompts/appworld_react_reflector_with_gt_prompt.txt",
+      "git_blob_sha": "b82b435c4443cb8ee5b84c34a4f53270d967129f",
+      "size": 6397
+    },
+    {
+      "path": "experiments/prompts/execute.txt",
+      "git_blob_sha": "19dd95187736988a9d7619d07310da42a52a50c0",
+      "size": 15432
+    },
+    {
+      "path": "experiments/prompts/function_calling.json",
+      "git_blob_sha": "f7f1041ad5b4c730daefe4cd43967733b34b35b0",
+      "size": 12112
+    },
+    {
+      "path": "experiments/prompts/function_calling.txt",
+      "git_blob_sha": "be4a8b8ed5f5df0baeee4c7ca1930288729804f0",
+      "size": 2015
+    },
+    {
+      "path": "experiments/prompts/plan.txt",
+      "git_blob_sha": "1fd892af3a2c5ac086475b5d6db1d08182d5892d",
+      "size": 3643
+    },
+    {
+      "path": "experiments/prompts/react.txt",
+      "git_blob_sha": "c24b71e5728cd5261c6773b983819e2c1d3c1c91",
+      "size": 7678
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob_sha": "b1c79957a0e042e34cb011f67e779c63e1b8e911",
+      "size": 7348
+    },
+    {
+      "path": "src/appworld/download.py",
+      "git_blob_sha": "5a18840fe21f0f8a880dcd825f2d8f9681a0fa51",
+      "size": 3024
+    },
+    {
+      "path": "src/appworld/task.py",
+      "git_blob_sha": "16bf7e563bca88f9f5b74241dd92f3d942f34337",
+      "size": 12314
+    }
+  ],
+  "appworld_data_bundle": "data-0.1.0.bundle",
+  "models": {
+    "generator": "DeepSeek-V3.1",
+    "reflector": "DeepSeek-V3.1",
+    "curator": "DeepSeek-V3.1"
+  },
+  "provider": "sambanova",
+  "scoring": "AppWorld TGC/SGC; unchanged native evaluator",
+  "no_gt_permissions": "use_gt_code=false; source nevertheless passes required_apis into initial actor prompt and per-task evaluator test_report to reflector"
+}

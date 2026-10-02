@@ -1,0 +1,44 @@
+{
+  "scope": "native author environment smoke; no ACE actor or task score",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "dataset": "train",
+  "selection": "first native train manifest ID, independent of outcomes",
+  "train_count": 90,
+  "train_manifest_sha256": "93d9fe71e7a2e3b7529803d4a20b604f4ebf5ae806f321081140238068189d37",
+  "selected_task_id_sha256": "d292d4cd969e36ece621f6f161d3c4d1d462aac73489eda06bff617a51a50049",
+  "ground_truth_loaded": false,
+  "task_evaluator_called": false,
+  "model_calls": 0,
+  "test_tasks_loaded": 0,
+  "commands": [
+    {
+      "code": "print(apis.api_docs.show_app_descriptions())",
+      "nonempty_success_receipt": true,
+      "receipt_bytes": 1366,
+      "receipt_sha256": "85c2eebff08a5c50e0b310659a8e70a6f59957e12bf27a074ac5ad69dedaa14c"
+    },
+    {
+      "code": "print(apis.supervisor.show_active_task())",
+      "nonempty_success_receipt": true,
+      "receipt_bytes": 133,
+      "receipt_sha256": "9071b9c42d6e59ae14ff3f15b146a9bc24f2a769b656c2734b908778ffbd6d90"
+    }
+  ],
+  "runtime_versions": {
+    "appworld": "0.1.4.dev0",
+    "appworld-experiments": "0.1.0.dev0",
+    "click": "8.1.8",
+    "typer": "0.12.5",
+    "pydantic": "2.13.5",
+    "sqlmodel": "0.0.19"
+  },
+  "earlier_cli_failure": {
+    "click": "8.5.0",
+    "typer": "0.12.5",
+    "message": "Secondary flag is not valid for non-boolean flag",
+    "resolution": "pin click==8.1.8; no author Python changed"
+  },
+  "native_interactions": 2,
+  "elapsed_seconds": 1.8851600660000258,
+  "status": "native_environment_ready"
+}

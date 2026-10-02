@@ -2,14 +2,48 @@
 
 Original freeze: 2026-09-30
 Current audit update: 2026-10-02
-Status: FROZEN UPGRADE CRITERIA; CORE CLAIM PROMOTION REOPENED
+Status: HISTORICAL FULL-UPGRADE CRITERIA RETAINED; NEW CLAIMS EVALUATED BY SCOPE
 
-This remains the sole upgrade acceptance gate. New work must close Theory,
-Identification, or Natural Evidence. The original T/I/N requirements below remain
-in force; the present update adds stronger execution and information-availability
-obligations, not easier thresholds. Earlier progress judgments are retained in git
+This remains the sole acceptance registry. The original T/I/N requirements below
+remain in force for the originally promised full upgrade; they are not mandatory
+joint obligations for every narrower research contribution. New claims must name
+their contribution, inherited components, applicable obligations and evidence.
+Earlier progress judgments are retained in git
 history (previous gate blob dc31a17f0bad50422391647c00eb520b21f57914) and do not
 overrule this audit.
+
+## Current user calibration and claim-scoped acceptance (2026-10-02)
+
+The user has clarified that originality does not require inventing every component
+from scratch. Independently novel phenomenon, theory and method remain an
+aspirational upper bound, not three simultaneous admission requirements. Nor is
+a gain of tens of percentage points required. At least one concrete, attributable
+contribution must survive its direct comparison: a mechanism, effective
+construction, additional guarantee, tractable structural scope, or complete-cost
+advantage relevant to the declared native task. No current negative result is
+retroactively promoted by this clarification.
+
+| Claim | Required evidence | Obligations not automatically imported |
+| --- | --- | --- |
+| New mechanism or empirical phenomenon | Method-independent definition, appropriate intervention/boundaries, direct prior review, appropriately independent confirmation | A separately novel algorithm and general quotient theorem |
+| New construction, guarantee, structural scope or cost bound | Explicit inherited results, exact incremental claim, proof where claimed, implementable strong controls, corresponding native validation | All components independently new, or all three contribution layers new |
+| Native system/adapter contribution | Full original-system comparison, module attribution, legal role inputs, complete costs and actual task benefit | Calling a combination a new core theorem |
+| Exact maintainable representation or cross-system shared kernel | Applicable R1–R5, native encoder/decoder/updater correctness, or the same rule/prediction across declared systems | Task accuracy as a substitute for those guarantees |
+
+T2's new-theory requirement and T4's bidirectional repair apply when those are part
+of the claim. N3/N4 retain authority for the original learned-carrier upgrade, but
+do not exclude a sound symbolic construction merely for lacking that carrier.
+Evidence scale follows the estimand and clustering rather than an automatic case
+count. Information authority, producer/verifier separation, native scoring,
+complete denominators/costs, freeze labels and nearest-neighbor review remain
+required. The original 512-unit bank remains sealed.
+
+Classical comparisons must freeze a specific implementable control, permissions
+and optimization budget; they are not an unnamed opponent consisting of every
+possible correct program. Improvements are versioned. Matching correct outputs
+alone is expected and is not a veto; matching all claimed guarantees, scope and
+complete costs leaves no independent claim. See
+docs/OACR_MOE_COLD_SCIENCE_2026-10-02.md.
 
 ## Immediate decision: core work does not wait for the learned smoke
 
@@ -28,6 +62,18 @@ Core reference:
 - experiments/oacr_theory/available_source_repair_v1.py
 
 ## Current promotion status
+
+Latest MOE execution (2026-10-02): the author ACE AppWorld gitlink has been
+expanded and its pinned native train environment boots successfully, with two
+public API interactions, no ground truth loaded and no model/evaluator calls.
+Complete author actor execution remains model-resource blocked. The independent
+tau2 exact-effect authority adapter executes 31 constructed fixtures with no
+audited native mismatch; its proposed transport predicate is the same one allowed
+to the classical control, so that fragment is retired as an independent core.
+These are runnable preparation/adaptation assets, not official task gains or
+cross-system confirmation. See
+docs/OACR_MOE_COLD_START_AND_EXECUTION_2026-10-02.md. The original 512 units remain
+sealed and inherited results retain their scope.
 
 The 2026-10-02 incremental Need / joint Release execution passes the inherited
 744-world, 7,068-history development bank. Indexed primal/dual transport reduces
@@ -52,8 +98,8 @@ independent main-contribution candidates: mature controls match the measured
 semantics and resource counts. They remain correct reference implementations;
 this decision does not erase BRFP or inherited OACR results.
 
-The user's aim remains independently novel phenomenon, theory and method. Each
-new claim must state its exact additional guarantee relative to the closest
+The user aims for a clear independent contribution while aspiring to originality
+at multiple levels. Each new claim must state its exact additional result relative to the closest
 theorem and compete with resource-consistent strong methods on the same native
 task. General behavior quotients, abstract core/shell existence, sensing-based
 strategy synthesis, local belief dependency and executable abstraction refinement
@@ -66,7 +112,8 @@ same newly promoted constructor. Any new shared rule must be tested through nati
 interfaces against the same prediction and full declared contracts. With neither
 an independent guarantee, a distinct tractable structural scope nor a measured
 complete-cost gain, a fully matched candidate cannot be promoted by adding cases.
-These are directions for closing the frozen gates, not substitute or easier gates.
+These are directions for evaluating explicit claims; they do not license the
+historical full-upgrade verdict without its original obligations.
 
 See docs/OACR_COMPLETE_FINITE_CONTRACT_PRIORITY_AUDIT_2026-10-02.md for concrete
 theorem references, reduction limits, evidence provenance and candidate exit
@@ -429,7 +476,8 @@ The following are historical accepted claims, not new reruns in this audit:
 
 ## Final identity and stop rule
 
-Target contributions remain theory, identification and evidence, but publication
+The original full-upgrade target retains its theory, identification and evidence
+obligations. Narrower claims are assessed by the calibration above; publication
 strength is not licensed by a progress percentage or a successful workflow.
 
 Allowed final verdicts:

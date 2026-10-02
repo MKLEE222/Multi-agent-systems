@@ -1,0 +1,107 @@
+{
+  "repository": "sierra-research/tau2-bench",
+  "commit": "5bfa7e37b36656b37dc6d022156be6563c1007f3",
+  "upstream_files": [
+    {
+      "path": "src/tau2/domains/retail/tools.py",
+      "git_blob_sha": "eba01ab32dca0d4ef33328c22358b794d859f2b6",
+      "sha256": "622d7179e7db3ebc9beed266b7b4e884691523575dd9c4117e6b4d62ae2e34c0"
+    },
+    {
+      "path": "src/tau2/domains/retail/data_model.py",
+      "git_blob_sha": "e8cedd4c73c3c3865e86ef7dd9202ad2468d685b",
+      "sha256": "17aa5486c6fbf26570409eaf3320b66cec1765686256807b08999910e303b370"
+    }
+  ],
+  "methods": [
+    {
+      "name": "_get_order",
+      "source_lines": [
+        29,
+        43
+      ],
+      "source_segment_sha256": "8f1c779b64dcd9c82af30bee8350a7b6f9ade604120528e7c07945082a25ca13",
+      "ast_body_sha256": "61693fdaf49c6c4d9d1778a05999fa750a9e93f2b5876470a8c92bb98d79bf7f"
+    },
+    {
+      "name": "_get_user",
+      "source_lines": [
+        45,
+        59
+      ],
+      "source_segment_sha256": "fda50c4a2e20b92e639536ddb44404479d8fbeb2dac4cc1ffe9008e405ec24b3",
+      "ast_body_sha256": "1a23baed4ebbf7eac7766757336c3c6f07877d7995307ff72493b6cceadb780d"
+    },
+    {
+      "name": "_get_product",
+      "source_lines": [
+        61,
+        75
+      ],
+      "source_segment_sha256": "3d63da5193787ea47caf774dd2f84afe380f254e4ea21c2e65d53743f6ef1d0b",
+      "ast_body_sha256": "31f0df92746e77b5098729f4ed38fb9970ffdbabd2924901b2be889084a576c5"
+    },
+    {
+      "name": "_get_variant",
+      "source_lines": [
+        95,
+        111
+      ],
+      "source_segment_sha256": "112961927f3c9fb3c3e88b2395ab8f77f5fde5e5b30e4fd34ebf05b6973eb722",
+      "ast_body_sha256": "5776343c8f29ad2796dc0e98388b9c0360489e8dd34ce2b076f229245a432815"
+    },
+    {
+      "name": "_get_payment_method",
+      "source_lines": [
+        113,
+        130
+      ],
+      "source_segment_sha256": "3d48b3398190632c2ad298c50dd326312afbe757d1a6269f992751652b1bf6bd",
+      "ast_body_sha256": "d0eed33f34f029bf14d77fe8655f7fc3084c5df43922c1b82cd2a51d0702dbe0"
+    },
+    {
+      "name": "get_order_details",
+      "source_lines": [
+        333,
+        346
+      ],
+      "source_segment_sha256": "2b291dc0c109462718495d74b7275836ea631b83f2ce6d8a4874b5545eb993ac",
+      "ast_body_sha256": "5731c0dc1952889f71e0b56ef57a97d194977dc2994324cb71b5b49f807d4f21"
+    },
+    {
+      "name": "get_product_details",
+      "source_lines": [
+        349,
+        362
+      ],
+      "source_segment_sha256": "e99fc6b263a9fa18c0aff8af9526dc1006dabc644707b9e5ef602a34b4685936",
+      "ast_body_sha256": "3acc79dae4a709fdeb2e9b043efb46ee4c14c2f77d2cae46c05799f25dceaea6"
+    },
+    {
+      "name": "get_user_details",
+      "source_lines": [
+        381,
+        394
+      ],
+      "source_segment_sha256": "8108aaf038c800dc4918f8c40e40d6d281065a52790227d826448f057ac24e5f",
+      "ast_body_sha256": "5322c150ba86df5291b044155f090f7c7e123ec98ace73e9d1b0096f171c7863"
+    },
+    {
+      "name": "modify_pending_order_items",
+      "source_lines": [
+        455,
+        542
+      ],
+      "source_segment_sha256": "a46af16042b6387d1081031e3bc9b66c8152e9cd937c307c7a129cbf8e21cb6b",
+      "ast_body_sha256": "8650b34fa59f88e83046fedc0287b38e780560b0b0f47374bdfec4c9294dcdb3"
+    }
+  ],
+  "native_excerpt_sha256": "1301413074d234c706f682d3a5fb73d78348c39ca36c211e6690866e5e09d9b4",
+  "transformations": [
+    "Omit @is_tool registration decorators",
+    "Replace toolkit base/constructor with db assignment only",
+    "Copy data model definitions except database container; fixture uses SimpleNamespace dictionaries",
+    "No target/helper method body changes"
+  ],
+  "scope": "fixed source-body verifier; no full tau2 runner or official tasks"
+}
