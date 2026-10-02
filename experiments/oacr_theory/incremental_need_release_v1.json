@@ -1,0 +1,37 @@
+{
+  "protocol_id": "OACR_INCREMENTAL_NEED_RELEASE_V1",
+  "date": "2026-10-02",
+  "parent_commit": "8798021c460c74cf45f835724e03b07398a4678c",
+  "scope": "Inherited public potential DAG, full reachability, frozen singleton source, persistent additions and legal base-edge deletions consuming budget. No contract expansion, source lifecycle changes, new natural evaluation or paid calls.",
+  "operator_target": "Maintain exact canonical physical support together with omission proofs and retained-edge demand certificates. Compute the local Need work set from cached max-flow value buckets and native-edge positive-flow incidence. Safe support releases stay available as proven virtual edges in frozen earlier-support networks.",
+  "working_properties": [
+    "A unit-capacity native deletion changes each maximum flow by zero or one. A positive-flow edge can be rerouted by one residual tail-to-head search; failure supplies a separating cut and removes one whole source-to-target path. This primitive is classical, not a novelty claim.",
+    "For a retained edge with exact flow value lambda<=h, only lambda=h or positive flow through the arrived deletion requires a Need visit. Every other edge remains necessary with unchanged primal/dual certificates when budget becomes h-1.",
+    "The frozen earlier-support network is behaviorally equivalent under the remaining contract to the current physical earlier prefix, because every released prefix edge has an acyclic robust proof at that same contract. Safe releases therefore need no independent flow invalidation in longer frozen networks.",
+    "Candidate flow repair uses at most one residual BFS per positive-flow capsule affected by the native deletion and zero cold update flows. This is a bound on the Need core, not the full producer, which still transports/checks all omission nodes and copies dictionaries/index sets."
+  ],
+  "candidate": "residual_need_dag: visit tight-value and positive-flow indexed capsules in support order, repair the unit deletion, and jointly emit physical retention or release plus the robust proof. Keep primal flow, a matching cut, frozen prefix IDs, incidence and value buckets in charged state.",
+  "controls": [
+    "cold_dag: inherited canonicalization with bounded flow for every old retained edge and generic proof-DAG substitution",
+    "cut_cache_dag: transport a cached separating cut; when it no longer fits the residual budget, perform a cold flow on its frozen earlier-support network; carry no primal-flow or incidence index",
+    "generic_indexed_flow_dag: same allowed classical unit-deletion repair and full indices, update the affected flow instances first, filter by the residual threshold, then assemble omission proofs bottom-up; may match the candidate completely",
+    "persistent_flat: inherited correct support retention with no canonicality promise; all extra physical support and complete serialized bytes are charged"
+  ],
+  "initialization": "All methods share inherited compile_from_source initialization. Each certificate-caching method additionally performs and pays for a cold flow for every initially retained edge. Cut-cache discards the computed primal flow; dynamic methods retain it and build charged indices. No free access to compiler residual internals.",
+  "visible_input": "Prior actual maintained representation, public graph/actions/budget, authorized inherited negative facts, proof nodes, capsule prefix IDs/flow/cut and indices, epoch and predecessor token. Hidden additions and source callbacks are verifier-only and never passed to updates.",
+  "development_bank": "Exactly the inherited 60 seed-20261002 configurations and 744 source states; enumerate every ordered legal prefix up to initial h<=2, at most five native deletion edges. Expected 7068 history states and 6324 updates per method. No changed seed, case selection or additional search after results.",
+  "fixed_cases": [
+    "budget-only release: inherited six-node disconnected deletion; flow incidence alone misses the newly redundant retained support",
+    "alternative cut: delete an internal chain edge outside the particular cached minimum cut; that cut invalidates but another cut still proves necessity",
+    "successful residual rerouting: a bottleneck followed by a diamond, delete the positive-flow non-critical branch and release at the reduced budget",
+    "joint release: two protected shortcuts supporting a longer omitted edge, consume a disconnected deletion, jointly release both shortcuts with valid acyclic replacements",
+    "outside-DAG mutual support: native cyclic graph where two individually safe additions cannot be jointly dropped; an explicit scope counterexample, not natural evidence"
+  ],
+  "audit": "Fresh literal BFS against hidden full reference under all residual failure sets, standalone omission-DAG plus primal/dual/index checks, native retained-edge necessity witnesses, equality of all canonical representations, exact candidate/generic proof/capsule/index equality, copied-map/index and global-check accounting, code hash invariance, invalid capsule/index/epoch/action rejection. Verify the flow-incidence-only false localizer on the declared counterexample.",
+  "metrics": "Shared and method-specific initialization cold flows/searches/arc work; update cold flows, residual repair searches and arc work, Need visits/skips, flow writes/decomposition, proof transport/checker/index/copy visits, zero update source calls; separately serialized inherited state and additional demand-certificate/index bytes, complete bundle byte sums and per-history maxima. These byte sums use equal exposed-history weight, not deployment storage, RSS or independent observations. No post hoc weighted resource score.",
+  "literature": [
+    "Gupta and Khan, arXiv:1804.01823v1, Section 4.1 / Theorem 4.1: explicit folklore unit-deletion residual rerouting. Core primitive reproduction with protected-capacity extension justified by the working proof; not an external software benchmark.",
+    "Ahi et al., ITCS 2026, DOI 10.4230/LIPIcs.ITCS.2026.5, Theorems 1.2, 1.3 and 7.3: compact fault-sensitive flow/cut oracles. Not implemented here, and no superiority over these oracles is claimed."
+  ],
+  "freeze": "Commit protocol, constructor and audit before executing this bank. Syntax and declared-input inspection allowed before freeze. Record any correction separately; do not silently modify a run. Stop after the fixed bank, cases and attacks; independent novelty, full-cost superiority and natural evidence remain undecided. Sealed 512 units stay unread."
+}
