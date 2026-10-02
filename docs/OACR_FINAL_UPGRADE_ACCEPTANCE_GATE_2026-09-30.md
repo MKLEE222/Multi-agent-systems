@@ -139,6 +139,20 @@ millions of independent samples. General proof and novelty review remain open.
 
 ### 2026-10-01/02 follow-up execution; thresholds unchanged
 
+- 2026-10-02 joint representation/certificate maintenance: a compositional proof
+  DAG closes the dangling-support obligation after canonical coarsening in the
+  inherited model. All 744 development source worlds, 7,068 ordered-history states
+  and 6,324 transitions pass native/certificate checks with zero update source
+  calls. Candidate update flow is 17,769 vs 18,444 dependency-flat and 38,654 cold
+  flat; a separately coded generic dependency-DAG control returns identical proofs
+  and costs. Persistent support uses zero update flow and fewer serialized bundle
+  bytes on this bank, though it is not canonical-minimal. Thus minimal physical
+  additions do not minimize the measured complete maintenance bundle. This closes
+  a scoped execution gap, not T2/T5 or natural evidence; incremental certificates
+  and summary/proof reuse enter the nearest-neighbor boundary. The user's ambition
+  remains independently novel phenomenon, theory and method, while actual promotion
+  requires evidence. See `docs/OACR_JOINT_CERTIFICATE_MAINTENANCE_2026-10-02.md`.
+
 - 2026-10-02 bounded operator review: the DAG pointwise-query claim survives fresh
   proof/code checks. Its closure-theoretic basis (unique generation, extreme generators
   and interval fibers) is directly covered by prior work; the source-query formulation
