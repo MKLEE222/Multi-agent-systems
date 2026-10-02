@@ -90,7 +90,7 @@
   },
   "implementation_hashes": {
     "real_bfcl_views_v1.py": "d35c42fc43f26cf17f902d8a905619ca9718e034b99c536c9c22fd1979c56d78",
-    "run_real_bfcl_views_v1.py": "3b407287c78c98dad80d201f85fe5edaf7ce1935e0fcae869b41adf4b1274cef",
+    "run_real_bfcl_views_v1.py": "49750b623318e5c9e50bb4bfc7d090e0ffdb208565d8cbe003df5c9d99d07b8b",
     "prepare_real_bfcl_views_v1.py": "ea0a577a278b09dded3bf25edd96436fd54d9e2abe068838fd77d4cda03a26ba"
   },
   "author_accessor_top_k": 5,
@@ -114,5 +114,21 @@
     "official filtered-branch failure",
     "source/implementation hash mismatch"
   ],
-  "evaluation_bank_512": "sealed; not read"
+  "evaluation_bank_512": "sealed; not read",
+  "setup_attempts": [
+    {
+      "freeze_commit": "d6d001c744ae25f4c9ed9f48c77b6ab6745b87cf",
+      "status": "PARTIAL_REPLAY_ABORTED_AT_PARSER",
+      "reason": "sort positional argument rejected by keyword-only parser",
+      "case": "multi_turn_base_0",
+      "turn": 2,
+      "reference_calls_executed_before_abort": 5,
+      "read_requests_before_abort": 1,
+      "completed_case_replays": 0,
+      "complete_result_generated": false,
+      "correction": "bind literal positional/keyword arguments using public class method signatures; preflight all calls before native execution",
+      "producer_algorithm_changed": false,
+      "case_selection_changed": false
+    }
+  ]
 }

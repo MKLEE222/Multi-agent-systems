@@ -11,6 +11,8 @@ import ast
 import collections
 import hashlib
 import importlib.util
+import importlib
+import inspect
 import json
 import re
 import sys
@@ -28,13 +30,18 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def parse_call(text):
+def parse_call(text, public_methods):
     p = ast.parse(text, mode="eval").body
-    if not isinstance(p, ast.Call) or not isinstance(p.func, ast.Name) or p.args:
-        raise ValueError("Replay requires literal keyword-only public reference calls")
+    if not isinstance(p, ast.Call) or not isinstance(p.func, ast.Name):
+        raise ValueError("Replay requires literal calls to public methods")
     if any(k.arg is None for k in p.keywords):
         raise ValueError("Expanded arguments outside replay grammar")
-    return p.func.id, {k.arg: ast.literal_eval(k.value) for k in p.keywords}
+    name = p.func.id
+    bound = inspect.signature(public_methods[name]).bind(None,
+        *[ast.literal_eval(x) for x in p.args],
+        **{k.arg: ast.literal_eval(k.value) for k in p.keywords})
+    bound.arguments.pop("self", None)
+    return name, dict(bound.arguments)
 
 
 def decode_receipt(text):
@@ -65,6 +72,7 @@ def main():
     sys.path[:0] = [str(args.source_root / "native_deps"), str(args.source_root)]
     from bfcl_eval.eval_checker.multi_turn_eval.multi_turn_utils import execute_multi_turn_func_call
     from bfcl_eval.eval_checker.multi_turn_eval.multi_turn_checker import multi_turn_checker
+    from bfcl_eval.constants.executable_backend_config import CLASS_FILE_PATH_MAPPING
     from src.method.bm25 import BM25Method
     spec = importlib.util.spec_from_file_location("author_ama_tool", args.source_root / "ama_tool.py")
     author_tools = importlib.util.module_from_spec(spec)
@@ -76,6 +84,18 @@ def main():
     cases = [x for x in questions if "GorillaFileSystem" in x["involved_classes"]]
     if [x["id"] for x in cases] != config["case_ids"]:
         raise ValueError("Public metadata selection changed")
+    public_classes = {name: getattr(importlib.import_module(CLASS_FILE_PATH_MAPPING[name]), name)
+                      for name in set(n for c in cases for n in c["involved_classes"])}
+    # Parse all literal calls before any native execution. Signatures are public
+    # source/API metadata, not an initialized or private environment instance.
+    method_maps = {}
+    for case in cases:
+        method_maps[case["id"]] = {m: fn for name in case["involved_classes"]
+            for m, fn in inspect.getmembers(public_classes[name], inspect.isfunction)
+            if not m.startswith("_")}
+        for turn in answers[case["id"]]:
+            for call in turn:
+                parse_call(call, method_maps[case["id"]])
     totals = collections.Counter()
     methods = {m: collections.Counter() for m in ["indexed_classical", "demand_compiler"]}
     rows, cases_out, checks = [], [], []
@@ -92,7 +112,7 @@ def main():
         for turn, calls in enumerate(ground):
             turn_requests = {m: collections.Counter() for m in producers}
             for call in calls:
-                method, kwargs = parse_call(call)
+                method, kwargs = parse_call(call, method_maps[cid])
                 index = len(history)
                 pending = {}
                 if method in READS:
