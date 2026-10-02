@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "purpose": "Classical native file-binding adapter correctness; no candidate novelty or official score",
+  "source_repository": "ShishirPatil/gorilla",
+  "source_revision": "6ea57973c7a6097fd7c5915698c54c17c5b1b6c8",
+  "sources": [
+    {"local_path": "bfcl_eval/eval_checker/multi_turn_eval/func_source_code/gorilla_file_system.py", "sha256": "84173750930b09aaa31b90547c9bd79ce75714682608b35e78a9c1ea259faf2b"},
+    {"local_path": "bfcl_eval/eval_checker/multi_turn_eval/func_source_code/long_context.py", "sha256": "5c9a5710115609c779e5b2ccb43f6ad58271ed96f2ea7a797edb0d65c385aa38"}
+  ],
+  "limits": {"cases": 7, "llm_calls": 0, "official_task_data": false, "directory_moves_supported": false},
+  "limitations": ["Hand-constructed fixtures using the actual native interpreter, not natural task evidence", "No unobserved writers within the positive scope", "Initial cwd is root; names limited to ASCII letters/digits/dot/underscore/hyphen", "Successful moves require previously confirmed file type", "Unknown facts and unsupported coverage are not exact-completion claims", "No proof, candidate algorithm comparison, optimized baseline cost result, policy/confirmation result, official score or cross-domain claim"],
+  "cases": [
+    {"id": "rename_chain", "initial": {"a": "value"}, "events": [["pwd", {}], ["cat", {"file_name": "a"}], ["mv", {"source": "a", "destination": "b"}], ["mv", {"source": "b", "destination": "c"}], ["cat", {"file_name": "c"}]], "probes": ["a", "b", "c", "ghost"]},
+    {"id": "move_into_directory", "initial": {"a": "value", "box": {}}, "events": [["pwd", {}], ["cat", {"file_name": "a"}], ["mv", {"source": "a", "destination": "box"}], ["cd", {"folder": "box"}], ["cat", {"file_name": "a"}], ["cd", {"folder": ".."}], ["cat", {"file_name": "a"}]], "probes": ["a", "box", "ghost"]},
+    {"id": "homonyms", "initial": {"left": {"report": "LEFT"}, "right": {"report": "RIGHT"}}, "events": [["pwd", {}], ["cd", {"folder": "left"}], ["cat", {"file_name": "report"}], ["cd", {"folder": "/"}], ["cd", {"folder": "right"}], ["cat", {"file_name": "report"}], ["cd", {"folder": "/"}], ["cd", {"folder": "left"}], ["mv", {"source": "report", "destination": "renamed"}], ["cd", {"folder": "/"}], ["cd", {"folder": "right"}], ["cat", {"file_name": "report"}]], "probes": ["report", "renamed", "ghost"]},
+    {"id": "failed_moves", "initial": {"a": "A", "b": "B"}, "events": [["pwd", {}], ["cat", {"file_name": "a"}], ["cat", {"file_name": "b"}], ["mv", {"source": "a", "destination": "b"}], ["mv", {"source": "a", "destination": "x/y"}], ["mv", {"source": "ghost", "destination": "z"}], ["cat", {"file_name": "a"}], ["cat", {"file_name": "b"}]], "probes": ["a", "b", "z"]},
+    {"id": "write_after_rename", "initial": {"a": "old"}, "events": [["pwd", {}], ["cat", {"file_name": "a"}], ["mv", {"source": "a", "destination": "b"}], ["echo", {"content": "new", "file_name": "b"}], ["cat", {"file_name": "b"}], ["touch", {"file_name": "fresh"}], ["echo", {"content": "F", "file_name": "fresh"}], ["cat", {"file_name": "fresh"}]], "probes": ["a", "b", "fresh"]},
+    {"id": "filtered_listing", "initial": {"a": "A", ".hidden": "H"}, "events": [["pwd", {}], ["ls", {"a": false}], ["cat", {"file_name": ".hidden"}], ["ls", {"a": false}], ["cat", {"file_name": "a"}], ["mv", {"source": "a", "destination": "b"}], ["cat", {"file_name": ".hidden"}]], "probes": ["a", "b", ".hidden"]},
+    {"id": "unsupported_directory_move", "initial": {"folder": {"child": "C"}}, "events": [["pwd", {}], ["cat", {"file_name": "folder"}], ["mv", {"source": "folder", "destination": "renamed"}]], "probes": ["folder", "renamed"]}
+  ]
+}
