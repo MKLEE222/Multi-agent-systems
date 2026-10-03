@@ -194,10 +194,26 @@ def main() -> int:
         text = (root / "experiments/code/ace" / file).read_text()
         if "world.task.ground_truth.required_apis" in text:
             required_api_paths.append(file)
+    # A source reference is not evidence that a value reaches the model. The
+    # historical v1 output made that invalid inference; preserve its JSON as
+    # history, and consult the separate actual-render audit for current claims.
+    audit_path = Path(__file__).parent.parent / "prompt_authority_audit" / "AUTHOR_PROMPT_AUTHORITY_AUDIT_2026-10-02.json"
+    audit_verified = False
+    if audit_path.exists():
+        audit = json.loads(audit_path.read_text())
+        audit_verified = bool(audit.get("passed") and audit.get("source_ref") == manifest["source_ref"])
+        audit_verified = audit_verified and all(
+            (root / item["path"]).exists() and
+            blob_sha((root / item["path"]).read_bytes()) == item["git_blob_sha"]
+            for item in audit["source_hashes"])
     report["checks"]["feedback_permissions"] = {
-        "required_api_hint_in_initial_prompt": required_api_paths,
-        "no_gt_means_no_compiled_solution_only": True,
-        "per_task_evaluation_report_sent_to_reflector": True,
+        "authority_schema_revision": "actual-render-audit-2026-10-02",
+        "source_reads_required_apis": required_api_paths,
+        "actual_render_audit_verified_against_current_source": audit_verified,
+        "required_api_hint_in_initial_prompt": False if audit_verified else None,
+        "no_gt_dynamic_evaluation_report_in_reflector_prompt": False if audit_verified else None,
+        "no_gt_compiled_solution_input": False if audit_verified else None,
+        "authority_basis": "separate author-method synthetic-render audit, not source string detection",
         "test_split_not_read_by_this_preflight": True}
     credential_names = ["SAMBANOVA_API_KEY", "TOGETHER_API_KEY", "OPENAI_API_KEY"]
     modules = ["_jsonnet", "jinja2", "joblib", "litellm", "openai", "sambanova", "appworld"]

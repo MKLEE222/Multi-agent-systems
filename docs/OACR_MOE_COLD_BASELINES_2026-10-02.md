@@ -3,6 +3,12 @@
 日期：2026-10-02。审查起点：PR #89 head `dde1d4da9471ed0e2485c6b8ae549c1dbbb7d282`。
 独立冷基线审查；不读取旧 512 封存单元，不使用任务 gold 驱动 producer。
 
+**权限勘误（同日后续审计）：此前从“源码读取字段”直接推断“actor 收到 API 先验、
+no-GT reflector 收到 evaluator 报告”，判断过头。** 5 份原配配置都不把
+`required_apis` 渲染进 generator 输入；两份 no-GT adaptation 配置的 reflector/curator
+也不接收动态 `test_report` 内容。第 3 节以实际公开模板渲染和原方法合成 sentinel
+审计更正。旧冻结预检结果保持原样；其中的权限推断不能再当作有效证据。
+
 **今天能实际开始的是 ACE 作者发布的原生 AppWorld 训练入口及其配置/接口准备。**
 此前“ACE 固定树未见 AppWorld runner”的判断遗漏了 Git submodule，需要更正：
 `ace-agent/ace@82709de050e1db6e6ef2f07bcb0393560b94992a` 的 `ace-appworld`
@@ -90,21 +96,69 @@ appworld run ACE_offline_no_GT_adaptation
 运行预算原配整体 1000、每任务 10 的费用单位，必须结合实际 provider/model 价格校准。
 不能把 unknown-model 的费用追踪警告当作真实零成本。
 
-## 3. no-GT 不等于没有任何 gold 侧先验或反馈
+## 3. 实际模板渲染权限：修正源码字段推断
 
-必须在实验前冻结下面两个源码事实，而不能根据名字推定输入权限：
+`adaptation_react.initialize` 和 `evaluation_react.initialize` 确实读取
+`world.task.ground_truth.required_apis`，并把其字符串放进 `template_params`
+的 `relevant_apis`。**这不证明模型接收该字段。** 5 份默认配置都选择同一
+`appworld_react_generator_prompt.txt`；该模板没有 `relevant_apis` 引用，Jinja 实际
+undeclared variables 仅为 `app_descriptions/input_str/main_user/playbook`。
+替换两种合成 required-API sentinel 后，原 `initialize` 的 actor messages 和原
+`trimmed_messages` 所准备的首次 generator 输入均完全相同，sentinel 均未出现。
 
-1. `adaptation_react.initialize` 和 `evaluation_react.initialize` 都读取
-   `world.task.ground_truth.required_apis`，把它渲染为 actor 初始 prompt 的
-   `relevant_apis`。`use_gt_code=false` 只关掉 compiled solution 分支，没有关掉该先验。
-2. no-GT 的任务结束分支调用 `evaluate_task` 并保存 `test_report`；reflector 把该报告
-   插入 prompt，再产生 curator 更新。这比“只有 code execution 回执”强。该 pin 与
-   论文“无 GT labels”措辞怎样对应仍待作者设置对齐，不能悄悄归并。
+no-GT 的任务结束分支也确实调用 `evaluate_task` 并保存 `self.test_report`，随后
+调用 curator。但默认 `appworld_react_reflector_no_gt_prompt.txt` 没有
+`{{test_report}}` 或 `{{ground_truth_code}}` 占位符，原 `reflector_call` 的这些
+`str.replace` 没有把字段插入 prompt。原 curator 模板也没有 report/gt 占位符。
+在原 reflector/curator 方法中改变合成 report 内容，两个实际待发送输入均不变、
+sentinel 均未出现；改变可见执行历史则两个输入都变化，作为正对照。
 
-**本轮 producer 没有获得这两个字段。** 运行作者复现时保留作者设置并准确报告；
-为 OCAR 设计共享对照时选择共同权限：若 API oracle 允许，给所有 actor 同样先验；
-若目标是纯合法公开输入，三臂共同移除该 oracle，并称为移植变体。评价标签只可按
-声明的训练反馈时机使用，不能实时生成候选调用或“证据”。
+| 默认配置 | required-API 字段读取 | required-API 内容进入 generator | 动态 evaluator 报告进入 reflector | compiled solution 进入 reflector |
+| --- | --- | --- | --- | --- |
+| `ACE_offline_no_GT_adaptation` | 是 | 否 | 否 | 否 |
+| `ACE_offline_no_GT_evaluation` | 是 | 否 | 无该模型角色 | 无该模型角色 |
+| `ACE_offline_with_GT_adaptation` | 是 | 否 | 是 | 是 |
+| `ACE_offline_with_GT_evaluation` | 是 | 否 | 无该模型角色 | 无该模型角色 |
+| `ACE_online_no_GT` | 是 | 否 | 否 | 否 |
+
+with-GT reflector 是有效的正对照：它确有 report/solution 占位符，分别改变两种
+sentinel 会改变 reflector 输入。curator 可经真实 reflector 的输出间接接收 GT
+推导；本审计使用固定合成 reflector 回复，所以不据 curator 的不变断言该间接
+路径不存在。上表仅说明当前默认模板与对应字段的动态传播，不声称静态示范、
+作者初始 playbook 或训练经验不包含任务知识。
+
+no-GT 的 evaluator 调用仍存在于控制平面：源码是在
+`world.task_completed() or cost_tracker.exceeded()` 成立后赋值报告，才调用 curator；
+`solve_task_wo_gt` 后续没有读取 `test_tracker.failures` 或 `self.test_report` 控制
+重试/结束。若仅耗尽 max_steps 而未触发该条件，也不会自动进入这个 curator 分支。
+reflector/curator 的有效默认反馈是模型可见的 `trimmed_messages` 执行历史和反思，
+不是 evaluator 报告内容。我们没有运行 evaluator 或 native 循环。
+
+修正后的共同权限条件因此是：默认 no-GT 对照没有动态 API oracle 或 grader report
+输入，不需要凭旧推断给 OCAR 免费增加它们。共享经典/候选维护仍只接受角色合法
+可见的历史回执。若改模板引用这些字段，应重新审计并准确命名输入条件；评价标签
+不能实时生成候选调用或“证据”。
+
+审计代码和实际结果位于 `experiments/oacr_moe/prompt_authority_audit/`，共核对
+12 个公开源文件的精确 Git blob、5 份 Jsonnet 配置和 Jinja 变量；直接执行原公开
+`initialize/reflector_call/curator_call` 方法的渲染段，0 模型请求、0 benchmark
+任务/答案/DB 读取。替身 transport 截获 curator 的待发送输入并抛出明确的停止信号，
+在 JSON 解析/merge/写 playbook 之前停止；只保存布尔差异、哈希和变量名，不保存
+原模板/渲染消息内容。该渲染审计不证明模型会如何使用输入，也不覆盖另换模板、
+初始化外手动插入标签或完整 native 异常/终止路径。
+
+```bash
+python -m pip install --target /tmp/ocar_prompt_audit_deps \
+  -r experiments/oacr_moe/prompt_authority_audit/requirements.txt
+PYTHONPATH=/tmp/ocar_prompt_audit_deps \
+python experiments/oacr_moe/prompt_authority_audit/audit_author_prompt_authority_v1.py \
+  --source-root /path/to/pinned/ace-appworld \
+  --output /tmp/ocar_author_prompt_authority_audit.json
+```
+
+实际结果：[公开模板权限渲染审计](../experiments/oacr_moe/prompt_authority_audit/AUTHOR_PROMPT_AUTHORITY_AUDIT_2026-10-02.json)。
+旧 `AUTHOR_ACE_PREFLIGHT`、manifest 和 train 配置生成器里相应推断性字段/日志保留为
+冻结历史，本轮不改写；它们不能覆盖本次实际渲染证据。
 
 强对照的三臂应是同一 native actor、同一学习过的 ACE playbook/反思预算，分别：
 作者 task-local 上下文、加入共享经典维护、加入候选维护。维护器只消费该角色过去

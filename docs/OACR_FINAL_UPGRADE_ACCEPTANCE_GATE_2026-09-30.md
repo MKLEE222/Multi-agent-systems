@@ -63,7 +63,16 @@ Core reference:
 
 ## Current promotion status
 
-Latest MOE execution (2026-10-02): the author ACE AppWorld gitlink has been
+Latest subagent execution (2026-10-02): three cold actor variants execute the first
+three native train IDs (one scenario), then terminate before untouched author
+evaluation. All three tasks pass, with 16 native code interactions and 131 API
+calls. This is a backbone/interface feasibility variant, not the full ACE learning
+system or an OCAR advantage. Actual default template audits also retract earlier
+inferences that required-API hints/no-GT dynamic score reports reached models.
+See docs/OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md. Claim-scoped acceptance
+and the sealed 512-unit bank remain intact.
+
+Earlier MOE execution (2026-10-02): the author ACE AppWorld gitlink has been
 expanded and its pinned native train environment boots successfully, with two
 public API interactions, no ground truth loaded and no model/evaluator calls.
 Complete author actor execution remains model-resource blocked. The independent

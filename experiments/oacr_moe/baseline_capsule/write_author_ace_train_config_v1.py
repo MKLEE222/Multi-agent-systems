@@ -54,8 +54,10 @@ def main() -> int:
     args.dest.write_text(json.dumps(config, indent=2) + "\n")
     print(json.dumps({"config": str(args.dest), "dataset": "train", "sample_size": args.sample_size,
                       "shared_model_roles": args.model, "provider": args.provider,
-                      "use_gt_code": False, "required_api_prior": "retained from author source",
-                      "per_task_evaluator_feedback": "retained from author source",
+                      "use_gt_code": False,
+                      "required_api_prior": "not rendered by pinned default generator template",
+                      "per_task_evaluator_feedback": "not rendered by pinned no-GT reflector template",
+                      "authority_audit": "experiments/oacr_moe/prompt_authority_audit/",
                       "native_tasks_executed": 0, "model_calls": 0}))
     return 0
 

@@ -1,0 +1,337 @@
+{
+  "source_repository": "ace-agent/ace-appworld",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "scope": "public-source template authority audit; only synthetic render variables/history",
+  "runtime_versions": {
+    "Jinja2": "3.1.6",
+    "jsonnet": "0.21.0"
+  },
+  "source_hashes": [
+    {
+      "path": "experiments/code/ace/adaptation_agent.py",
+      "bytes": 10505,
+      "git_blob_sha": "5575630ee2a3ef96647b884248d365d8571d8fbe",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/code/ace/adaptation_react.py",
+      "bytes": 18759,
+      "git_blob_sha": "0aa91dd8e0f6376048dae461dc4da1dc903e846e",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/code/ace/evaluation_react.py",
+      "bytes": 9502,
+      "git_blob_sha": "21274f2320927a3586a97c1eee7a05c0f55834b0",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/configs/ACE_offline_no_GT_adaptation.jsonnet",
+      "bytes": 3042,
+      "git_blob_sha": "a2a52c87621540529e5f46d07219f4f302002b72",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/configs/ACE_offline_no_GT_evaluation.jsonnet",
+      "bytes": 1672,
+      "git_blob_sha": "96b82334c38360e3597bb4f62eacfcd541bda808",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/configs/ACE_offline_with_GT_adaptation.jsonnet",
+      "bytes": 3007,
+      "git_blob_sha": "77fb1a4be6dfd9ec9148edc709650da06b8a36db",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/configs/ACE_offline_with_GT_evaluation.jsonnet",
+      "bytes": 1661,
+      "git_blob_sha": "2d50e22a206ee9bb9ea5589b810f29a21a19a324",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/configs/ACE_online_no_GT.jsonnet",
+      "bytes": 2971,
+      "git_blob_sha": "745468f3040c0952c30152b5188c911af2282599",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/prompts/appworld_react_curator_prompt.txt",
+      "bytes": 5192,
+      "git_blob_sha": "a42e292f2e7a8f2eba595acc74a2b9b871a752c5",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "bytes": 27020,
+      "git_blob_sha": "b8db6b899203fbb536d720de847cd909e1c9d798",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+      "bytes": 6639,
+      "git_blob_sha": "c798cef5db5a58d0db25a9604f5759a50356dc63",
+      "exact_source_match": true
+    },
+    {
+      "path": "experiments/prompts/appworld_react_reflector_with_gt_prompt.txt",
+      "bytes": 6397,
+      "git_blob_sha": "b82b435c4443cb8ee5b84c34a4f53270d967129f",
+      "exact_source_match": true
+    }
+  ],
+  "configs": [
+    {
+      "config": "ACE_offline_no_GT_adaptation",
+      "dataset_name_from_public_config": "train",
+      "run_type": "ace-adaptation",
+      "agent_type": "ace_adaptation_react",
+      "use_gt_code": false,
+      "generator_template": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "jinja_undeclared_variables": [
+        "app_descriptions",
+        "input_str",
+        "main_user",
+        "playbook"
+      ],
+      "source_reads_required_apis": true,
+      "required_apis_in_rendered_actor_messages": false,
+      "actor_messages_equal_after_only_required_apis_change": true,
+      "first_generator_input_equal_after_only_required_apis_change": true,
+      "required_apis_in_first_generator_input": false,
+      "actor_message_sha256_pair": [
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83",
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83"
+      ],
+      "actor_message_count": 75,
+      "instruction_sentinel_present": true,
+      "benchmark_task_loaded": false,
+      "feedback_render_audit": {
+        "reflector_template": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+        "curator_template": "experiments/prompts/appworld_react_curator_prompt.txt",
+        "reflector_replace_target_counts": {
+          "test_report": 0,
+          "ground_truth_code": 0,
+          "execution_error": 0
+        },
+        "curator_format_fields": [
+          "current_playbook",
+          "final_generated_code",
+          "guidebook",
+          "question_context"
+        ],
+        "evaluator_report_in_reflector_input": false,
+        "evaluator_report_in_curator_input": false,
+        "report_change_affects_reflector_input": false,
+        "report_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "compiled_solution_in_reflector_input": false,
+        "solution_change_affects_reflector_input": false,
+        "solution_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "visible_history_change_affects_reflector_input": true,
+        "visible_history_change_affects_curator_input": true,
+        "no_model_request": true,
+        "stop_before_curator_parse_or_playbook_write": true,
+        "boundary": "author methods and templates; inert superclass; synthetic world/history; intercepted transports",
+        "feedback_inputs_sha256": {
+          "reflector": "9b30534a4df637a6cde8c6cc7355b7565b714a83dc4e8f06aba8404b9a0f9a3a",
+          "curator": "1ae87cf92bea8bdf1a7b5f328e74d54b66a69b62e1e09607af6d762f63ca3111"
+        }
+      }
+    },
+    {
+      "config": "ACE_offline_no_GT_evaluation",
+      "dataset_name_from_public_config": "test_normal",
+      "run_type": "ace-evaluation",
+      "agent_type": "ace_evaluation_react",
+      "use_gt_code": false,
+      "generator_template": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "jinja_undeclared_variables": [
+        "app_descriptions",
+        "input_str",
+        "main_user",
+        "playbook"
+      ],
+      "source_reads_required_apis": true,
+      "required_apis_in_rendered_actor_messages": false,
+      "actor_messages_equal_after_only_required_apis_change": true,
+      "first_generator_input_equal_after_only_required_apis_change": true,
+      "required_apis_in_first_generator_input": false,
+      "actor_message_sha256_pair": [
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83",
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83"
+      ],
+      "actor_message_count": 75,
+      "instruction_sentinel_present": true,
+      "benchmark_task_loaded": false
+    },
+    {
+      "config": "ACE_offline_with_GT_adaptation",
+      "dataset_name_from_public_config": "train",
+      "run_type": "ace-adaptation",
+      "agent_type": "ace_adaptation_react",
+      "use_gt_code": true,
+      "generator_template": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "jinja_undeclared_variables": [
+        "app_descriptions",
+        "input_str",
+        "main_user",
+        "playbook"
+      ],
+      "source_reads_required_apis": true,
+      "required_apis_in_rendered_actor_messages": false,
+      "actor_messages_equal_after_only_required_apis_change": true,
+      "first_generator_input_equal_after_only_required_apis_change": true,
+      "required_apis_in_first_generator_input": false,
+      "actor_message_sha256_pair": [
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83",
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83"
+      ],
+      "actor_message_count": 75,
+      "instruction_sentinel_present": true,
+      "benchmark_task_loaded": false,
+      "feedback_render_audit": {
+        "reflector_template": "experiments/prompts/appworld_react_reflector_with_gt_prompt.txt",
+        "curator_template": "experiments/prompts/appworld_react_curator_prompt.txt",
+        "reflector_replace_target_counts": {
+          "test_report": 1,
+          "ground_truth_code": 1,
+          "execution_error": 1
+        },
+        "curator_format_fields": [
+          "current_playbook",
+          "final_generated_code",
+          "guidebook",
+          "question_context"
+        ],
+        "evaluator_report_in_reflector_input": true,
+        "evaluator_report_in_curator_input": false,
+        "report_change_affects_reflector_input": true,
+        "report_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "compiled_solution_in_reflector_input": true,
+        "solution_change_affects_reflector_input": true,
+        "solution_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "visible_history_change_affects_reflector_input": true,
+        "visible_history_change_affects_curator_input": true,
+        "no_model_request": true,
+        "stop_before_curator_parse_or_playbook_write": true,
+        "boundary": "author methods and templates; inert superclass; synthetic world/history; intercepted transports",
+        "feedback_inputs_sha256": {
+          "reflector": "ce9bd8b90c7ffea0211a1303b1035393be4f6625460f8def16b9d5ef91531a1a",
+          "curator": "1ae87cf92bea8bdf1a7b5f328e74d54b66a69b62e1e09607af6d762f63ca3111"
+        }
+      }
+    },
+    {
+      "config": "ACE_offline_with_GT_evaluation",
+      "dataset_name_from_public_config": "test_normal",
+      "run_type": "ace-evaluation",
+      "agent_type": "ace_evaluation_react",
+      "use_gt_code": false,
+      "generator_template": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "jinja_undeclared_variables": [
+        "app_descriptions",
+        "input_str",
+        "main_user",
+        "playbook"
+      ],
+      "source_reads_required_apis": true,
+      "required_apis_in_rendered_actor_messages": false,
+      "actor_messages_equal_after_only_required_apis_change": true,
+      "first_generator_input_equal_after_only_required_apis_change": true,
+      "required_apis_in_first_generator_input": false,
+      "actor_message_sha256_pair": [
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83",
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83"
+      ],
+      "actor_message_count": 75,
+      "instruction_sentinel_present": true,
+      "benchmark_task_loaded": false
+    },
+    {
+      "config": "ACE_online_no_GT",
+      "dataset_name_from_public_config": "test_normal",
+      "run_type": "ace-adaptation",
+      "agent_type": "ace_adaptation_react",
+      "use_gt_code": false,
+      "generator_template": "experiments/prompts/appworld_react_generator_prompt.txt",
+      "jinja_undeclared_variables": [
+        "app_descriptions",
+        "input_str",
+        "main_user",
+        "playbook"
+      ],
+      "source_reads_required_apis": true,
+      "required_apis_in_rendered_actor_messages": false,
+      "actor_messages_equal_after_only_required_apis_change": true,
+      "first_generator_input_equal_after_only_required_apis_change": true,
+      "required_apis_in_first_generator_input": false,
+      "actor_message_sha256_pair": [
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83",
+        "6b764f1e4d2f93423e34ea54e1b52b084f0016d34392552d75a8466e8532fe83"
+      ],
+      "actor_message_count": 75,
+      "instruction_sentinel_present": true,
+      "benchmark_task_loaded": false,
+      "feedback_render_audit": {
+        "reflector_template": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+        "curator_template": "experiments/prompts/appworld_react_curator_prompt.txt",
+        "reflector_replace_target_counts": {
+          "test_report": 0,
+          "ground_truth_code": 0,
+          "execution_error": 0
+        },
+        "curator_format_fields": [
+          "current_playbook",
+          "final_generated_code",
+          "guidebook",
+          "question_context"
+        ],
+        "evaluator_report_in_reflector_input": false,
+        "evaluator_report_in_curator_input": false,
+        "report_change_affects_reflector_input": false,
+        "report_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "compiled_solution_in_reflector_input": false,
+        "solution_change_affects_reflector_input": false,
+        "solution_change_affects_curator_input_with_constant_synthetic_reflector_reply": false,
+        "visible_history_change_affects_reflector_input": true,
+        "visible_history_change_affects_curator_input": true,
+        "no_model_request": true,
+        "stop_before_curator_parse_or_playbook_write": true,
+        "boundary": "author methods and templates; inert superclass; synthetic world/history; intercepted transports",
+        "feedback_inputs_sha256": {
+          "reflector": "9b30534a4df637a6cde8c6cc7355b7565b714a83dc4e8f06aba8404b9a0f9a3a",
+          "curator": "1ae87cf92bea8bdf1a7b5f328e74d54b66a69b62e1e09607af6d762f63ca3111"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "model_calls": 0,
+  "benchmark_tasks_read": 0,
+  "gold_answers_read": 0,
+  "native_executions": 0,
+  "raw_prompt_contents_persisted": false,
+  "old_frozen_preflight_modified": false,
+  "no_gt_feedback_control_flow": {
+    "method": "StarAgent.solve_task_wo_gt",
+    "evaluator_assignment_lines": [
+      194
+    ],
+    "curator_call_lines": [
+      195
+    ],
+    "report_loads_in_execution_loop": [],
+    "test_tracker_loads_in_execution_loop": [],
+    "evaluator_runs_before_curator": true,
+    "stop_condition": "world.task_completed() or cost_tracker.exceeded(); not test_tracker.failures",
+    "native_loop_not_executed": true
+  },
+  "passed": true,
+  "correction": {
+    "source_field_read_is_not_rendered_authority": true,
+    "default_generator_has_no_required_api_prior": true,
+    "default_no_gt_reflector_has_no_evaluator_report_content": true,
+    "with_gt_reflector_does_render_report_and_compiled_solution": true,
+    "native_no_gt_evaluator_call_still_occurs": true
+  }
+}

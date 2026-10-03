@@ -3,6 +3,12 @@
 日期：2026-10-02。审查起点：PR #89，`62f2c8cf93e843839a4a3703407d1bf924d1cede`。
 状态：原文、公开实现接口与构建条件已核对；论文完整系统、训练与新算子证明尚未完成。
 
+后续子代理实际执行已打通：三位冷启动 actor 完成固定 train 前三项，3/3 原生
+成功、6/6 检查通过、16 次代码执行和 131 次 API 调用。三项属于同一场景，未
+运行 ACE 反思/curation 或 OCAR 方法对照。实际渲染审计同时撤回前轮默认
+no-GT API gold 提示和动态评分反馈的过度推断。见
+[子代理执行结果](OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md)。
+
 后续最小执行已实现经典文件绑定参考，并经预运行冻结完成 7 个人工原生 fixture
 的 50 次工具调用审计；65 个已知输出与原生执行一致，85 个需取证、2 个不支持。
 这没有复现上表论文系统，也不是新算法或官方任务成绩。范围、候选及完整账本见
@@ -79,9 +85,12 @@ train 首个原生环境以 `load_ground_truth=false` 启动，执行 2 次公�
 5 个配置编译、runner/merge 接口核验通过。完整 ACE 闭环仍缺授权模型资源，
 `--require-model` 实际返回 2；环境就绪不能写成作者任务成绩已复现。
 
-原 `no_GT` 配置仍向 actor 提供 `ground_truth.required_apis`，并将训练任务后
-`test_report` 提供给 reflector；它只禁用 compiled solution，不是零 gold 侧先验。
-作者复现须准确保留这些能力，共享三臂须共同声明输入权限和反馈时机。
+同日实际模板审计纠正前轮权限推断：源码虽读取 `required_apis/test_report`，
+5 份默认 generator 模板均未引用 relevant_apis；默认 no-GT reflector/curator
+也没有动态评分报告占位符。改变这些合成 sentinel 不改变实际模型输入；改变可见
+历史会改变输入，with-GT 的报告/solution 正对照会改变输入。不得将源码读取直接
+写成 actor/reflector 得到先验。作者原配能力与实际模型输入分开声明，详见
+`experiments/oacr_moe/prompt_authority_audit/AUTHOR_PROMPT_AUTHORITY_AUDIT_2026-10-02.json`。
 子模块实现的是 ADD 合并，不能直接代表论文 v3 的全部 grow/refine/dedup 增强。
 offline evaluation 默认产物有缺失/空文件，先从合法 train 生成经验；online
 test 学习的现成 playbook 不作我们的开发起点。

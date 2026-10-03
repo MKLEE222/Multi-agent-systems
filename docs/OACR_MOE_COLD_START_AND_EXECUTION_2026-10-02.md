@@ -8,6 +8,13 @@
 不是所有局部结果的联合准入门槛。仍然需要对应主张的近邻、正确经典对照、
 原生验证与实际价值；当前没有已确认的独有核心算法。
 
+后续子代理执行与勘误：3 位 cold actors 已在原生 train 的同一 scenario 三个
+variants 上完成任务，3/3 通过；这证明执行桥可用，不是完整 ACE/OCAR 优势。
+此前把源码读到字段当作模型实际收到先验/反馈的推断已纠正：实际模板渲染不含
+required API 先验，默认 no-GT reflection 不含动态评分报告。见
+[执行报告](OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md)。下面环境与适配
+数字保留其原阶段范围，原冻结预检中权限推断的字段已被独立模板审计取代。
+
 本轮不是仅给建议：四位专家独立冷审，完成旧真实实验的原因诊断，展开此前
 遗漏的作者原生 runner、安装并实际启动其 train 环境，同时构造并运行了第一版
 效应绑定授权接口。该版一经形式化就归约为经典检查，立即停止其独有内核主张。
@@ -17,7 +24,7 @@
 | 冷审 | 具体发现 | 对推进顺序的影响 |
 | --- | --- | --- |
 | [科学目标](OACR_MOE_COLD_SCIENCE_2026-10-02.md) | 经典匹配、信息不足、实现漏覆盖、评分契约和载体负荷是不同障碍；旧 gate 将完整升级与所有局部贡献混用 | 唯一验收登记已按主张绑定义务；不追溯给负结果盖章，不增加三层原创的强制门槛 |
-| [强系统](OACR_MOE_COLD_BASELINES_2026-10-02.md) | ACE 的实际 AppWorld runner 在固定 gitlink 内；no-GT 仍有相关 API 先验和训练评分反馈；公开子模块与论文 v3 的增强存在版本边界 | 修正“未见 runner”；原系统能力和权限逐项保留，环境就绪与完整模型成绩分开 |
+| [强系统](OACR_MOE_COLD_BASELINES_2026-10-02.md) | ACE 的实际 runner 在固定 gitlink 内；公开子模块与论文 v3 存在版本边界。后续模板审计证明默认输入没有原先推断的 API 先验/no-GT 动态评分报告 | 修正“未见 runner”及过度权限推断；以实际模型输入核对能力，原系统成绩与变体分开 |
 | [真实 arena](OACR_MOE_COLD_ARENA_2026-10-02.md) | 54 个 unknown 中，50 有执行不可辨见证，1 有源码见证，3 是可由经典维护补齐的实现缺口 | 不再将全部 unknown 解释为信息下界，也不拿补三条覆盖当新算法 |
 | [底层算子](OACR_MOE_COLD_OPERATOR_2026-10-02.md) | 提出效应绑定授权、可见别名运输、许可动作建立义务三条候选；每条都有直接经典近邻 | 先做可证伪的接口/原生边界；一次性 ledger、symbolic heap、belief/reset 各自已有基础，不以换名升格 |
 
@@ -63,9 +70,10 @@ python experiments/oacr_moe/baseline_capsule/native_appworld_smoke_v1.py \
 虽依赖模块齐全，授权模型仍缺。没有调用源码中的凭据字面量或下载模型。
 
 **环境可运行不等于 ACE actor 完成任务。** 未执行 Generator/Reflector/Curator
-闭环，未生成有效训练经验，未得官方 TGC/SGC。no-GT 的 `required_apis` 先验与
-任务后 `test_report` 反馈必须分别记录；若做公开输入的三臂移植，共同移除该先验
-并明确命名，不能偷偷改变作者原系统然后声称复现其成绩。
+闭环，未生成有效训练经验，未得完整测试集 TGC/SGC。后续实际渲染审计证明
+默认 generator 不含 `required_apis`，no-GT reflector/curator 不含动态
+`test_report`；不要再基于源码参数字典虚构这些输入。with-GT 设置另列。
+子代理 actor 尝试是明示 backbone/interface 变体，不声称完整作者成绩。
 
 ## 3. 第一版算子已经构造并接受原生核验
 
