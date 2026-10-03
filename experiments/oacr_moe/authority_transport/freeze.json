@@ -1,0 +1,17 @@
+{
+  "protocol": "authority_transport_source_body_mutation_suite_v1",
+  "frozen_before_execution": true,
+  "implementation_sha256": {
+    "core.py": "72ec48b110b0a56566c6147c18c6aa544675538d1453e32ba3a77f0d4517be2a",
+    "native_retail.py": "1301413074d234c706f682d3a5fb73d78348c39ca36c211e6690866e5e09d9b4",
+    "source_manifest.json": "3b2cc820b771cd9e563b7bdfa7906c910c0add9618b78ead3679d274da51467c",
+    "run_mutation_suite.py": "44e623e93d9304023177e8147a4e764488842cf4c3f187648bf54e739aca6ad4"
+  },
+  "scope": "31 publicly constructed fixtures; structured exact-effect authority; explicit serial harness window; no model/no official tasks",
+  "resource_equality_excludes_runtime_timing": true,
+  "method_controls": [
+    "exact intent and version caching",
+    "affine ready/spent/uncertain ledger",
+    "compiled effect-predicate semantic fallback supplied equally"
+  ]
+}

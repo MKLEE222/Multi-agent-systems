@@ -1,0 +1,597 @@
+{
+  "scope": "author source/config/runner preflight; not native task or model evaluation",
+  "source_repository": "ace-agent/ace-appworld",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "checks": {
+    "source_hashes": [
+      {
+        "path": "LICENSE",
+        "exact_git_blob_match": true,
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      },
+      {
+        "path": "README.md",
+        "exact_git_blob_match": true,
+        "sha256": "76a3dfdfab636c75a4600862511bc7eb4c8b30dd9f71b06698e945b694f10acc"
+      },
+      {
+        "path": "experiments/code/ace/__init__.py",
+        "exact_git_blob_match": true,
+        "sha256": "527c8c28800fd30667b2a6e74b106bfe5680b71ecc7272bf6feb9132fe37009f"
+      },
+      {
+        "path": "experiments/code/ace/adaptation_agent.py",
+        "exact_git_blob_match": true,
+        "sha256": "ed870059788cecc99e37ceb80a2ff133c0b5815c706be300abfdf1d3f6863432"
+      },
+      {
+        "path": "experiments/code/ace/adaptation_react.py",
+        "exact_git_blob_match": true,
+        "sha256": "4d714ab65205255842ffb6ce120e51e86e3aafaae7097e4f1f2e4e3a6c6bda43"
+      },
+      {
+        "path": "experiments/code/ace/api_predictor.py",
+        "exact_git_blob_match": true,
+        "sha256": "cdf9f10f31fc35fe1e7eeaa102f83996697e00dcf29773b42a2219daafe96f19"
+      },
+      {
+        "path": "experiments/code/ace/base_agent.py",
+        "exact_git_blob_match": true,
+        "sha256": "7bc03b42378843b8e581c3c547da9cb10b452aa6be52a72a2b5cf96f96af225f"
+      },
+      {
+        "path": "experiments/code/ace/base_react.py",
+        "exact_git_blob_match": true,
+        "sha256": "7e201c4826a3b9d7b89675cf537a4a6531621cc115d1a4701dbf5433ec37e888"
+      },
+      {
+        "path": "experiments/code/ace/cost_tracker.py",
+        "exact_git_blob_match": true,
+        "sha256": "48ea49d1d5941c800297fb7a43edf64241e8cf30d5f68fc38534cc5279db1cad"
+      },
+      {
+        "path": "experiments/code/ace/evaluation_agent.py",
+        "exact_git_blob_match": true,
+        "sha256": "b1f0f7edf6b5e2e5399e38322c55b2f5f9a6be69ff77bc1d8cd55eca61d22705"
+      },
+      {
+        "path": "experiments/code/ace/evaluation_react.py",
+        "exact_git_blob_match": true,
+        "sha256": "cea4fcc6da8cca5b0911a64b3ee4b9a36cb1791631834aa753a4fb6eac8eb487"
+      },
+      {
+        "path": "experiments/code/ace/ipfuncall.py",
+        "exact_git_blob_match": true,
+        "sha256": "206dc1ddba76bec633dcd02e8e8cdc862cc2717e1061c8cead0f2342f8f26860"
+      },
+      {
+        "path": "experiments/code/ace/lite_llm_generator.py",
+        "exact_git_blob_match": true,
+        "sha256": "f87ab2e88e11aad0e734607f7fb877f05c5ae31c323c48430550b9a6c5184453"
+      },
+      {
+        "path": "experiments/code/ace/logger.py",
+        "exact_git_blob_match": true,
+        "sha256": "511b5bcee0919a418481db214ebb86e413419b6349d87b9d8e19a99d963fb260"
+      },
+      {
+        "path": "experiments/code/ace/playbook.py",
+        "exact_git_blob_match": true,
+        "sha256": "84a9a7b999680b061cf37ed1bf32d2188d79684337ff44f71c5ba7c00e36d2a7"
+      },
+      {
+        "path": "experiments/code/ace/run.py",
+        "exact_git_blob_match": true,
+        "sha256": "ba41bbea9c41e2aebe01273e7461c3118c0d0ebecf0db5bc6e8d363f52f4f609"
+      },
+      {
+        "path": "experiments/code/ace/utils.py",
+        "exact_git_blob_match": true,
+        "sha256": "99f9edb2bdf9acc043d716fda6788e45ff57e10c90b167bb7548f61796de8ac5"
+      },
+      {
+        "path": "experiments/configs/ACE_offline_no_GT_adaptation.jsonnet",
+        "exact_git_blob_match": true,
+        "sha256": "0d52d4699ec414a802a32362d489b08c8cb89cbb4a6f30217140f3a9f42d1c75"
+      },
+      {
+        "path": "experiments/configs/ACE_offline_no_GT_evaluation.jsonnet",
+        "exact_git_blob_match": true,
+        "sha256": "325276f413e79f5cc1e8f124da5df83cda1850bfd9e107d61a3b99fe785e1bc4"
+      },
+      {
+        "path": "experiments/configs/ACE_offline_with_GT_adaptation.jsonnet",
+        "exact_git_blob_match": true,
+        "sha256": "327250410e99f25ceba06d342eaada69fcea7d47f28f89aef068941bed0344ed"
+      },
+      {
+        "path": "experiments/configs/ACE_offline_with_GT_evaluation.jsonnet",
+        "exact_git_blob_match": true,
+        "sha256": "a29d0f9c9b231b0584faa56ffed9bd177406d87bf31c7ed4dc32395223958f76"
+      },
+      {
+        "path": "experiments/configs/ACE_online_no_GT.jsonnet",
+        "exact_git_blob_match": true,
+        "sha256": "0d3a29568404e2c496fe15fea3260b9c95b4e50655475074e650c169cbfd5da8"
+      },
+      {
+        "path": "experiments/configs/__init__.py",
+        "exact_git_blob_match": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "experiments/playbooks/__init__.py",
+        "exact_git_blob_match": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "experiments/playbooks/appworld_initial_playbook.txt",
+        "exact_git_blob_match": true,
+        "sha256": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b"
+      },
+      {
+        "path": "experiments/playbooks/appworld_offline_trained_no_gt_playbook.txt",
+        "exact_git_blob_match": true,
+        "sha256": "135193a62e461c685bef6395f3226c89abe4fc7eb8ca872e9ad5f17f3e6f66e6"
+      },
+      {
+        "path": "experiments/playbooks/appworld_offline_trained_with_gt_playbook.txt",
+        "exact_git_blob_match": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "experiments/playbooks/appworld_online_trained_playbook.txt",
+        "exact_git_blob_match": true,
+        "sha256": "d6801d3a35026c9089a66e201c579e87cb687fbf8f8081d909e357b255915ba9"
+      },
+      {
+        "path": "experiments/prompts/__init__.py",
+        "exact_git_blob_match": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "experiments/prompts/api_predictor.txt",
+        "exact_git_blob_match": true,
+        "sha256": "6248d0710b0673e48a1a98af0d5d96ccb71ebc5e75082327fe704143511d051c"
+      },
+      {
+        "path": "experiments/prompts/appworld_react_curator_prompt.txt",
+        "exact_git_blob_match": true,
+        "sha256": "27b7d9dd2dcfe85646bf19ea7be387760874b70c0f9f27b1bed38d8f3e11e2bc"
+      },
+      {
+        "path": "experiments/prompts/appworld_react_generator_prompt.txt",
+        "exact_git_blob_match": true,
+        "sha256": "c109aeb9cf1f672eaec5bbe63bbd68cfc5ae4290ec7e9cd78d5eed6ad29df47e"
+      },
+      {
+        "path": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+        "exact_git_blob_match": true,
+        "sha256": "7769bda89a9dd08044ee92823cde1d494bd8f06a562446f5ee6ff3821307c3c6"
+      },
+      {
+        "path": "experiments/prompts/appworld_react_reflector_with_gt_prompt.txt",
+        "exact_git_blob_match": true,
+        "sha256": "2673330c147fcccd8f2757a8105078ab487ac5a3ae350831069cb05fbed0427f"
+      },
+      {
+        "path": "experiments/prompts/execute.txt",
+        "exact_git_blob_match": true,
+        "sha256": "3811ec42efde6bfe74f6a74ed51440d62a72c741221b2829974fc74bf533bd15"
+      },
+      {
+        "path": "experiments/prompts/function_calling.json",
+        "exact_git_blob_match": true,
+        "sha256": "3a184aad2d1a5820a4998c09ab1e3c7e23ecc01858d04400d96f7051f9420360"
+      },
+      {
+        "path": "experiments/prompts/function_calling.txt",
+        "exact_git_blob_match": true,
+        "sha256": "2c0c2b9881b0d99d057f16e7e7cdc739217ad0fec26a29794db902b5919e496d"
+      },
+      {
+        "path": "experiments/prompts/plan.txt",
+        "exact_git_blob_match": true,
+        "sha256": "4d9c9a4d25403b86b57f83d973847e45bd9e84bb92d635517603357ea762a3e9"
+      },
+      {
+        "path": "experiments/prompts/react.txt",
+        "exact_git_blob_match": true,
+        "sha256": "d403ca2e7c8a33ce21337c9f51b77795021c40028f7173b77f3d1f214371666a"
+      },
+      {
+        "path": "pyproject.toml",
+        "exact_git_blob_match": true,
+        "sha256": "32ffda88daee5ca94112fd795968450eecbd994b29bf1b8ee9a2da5fb23d86b7"
+      },
+      {
+        "path": "src/appworld/download.py",
+        "exact_git_blob_match": true,
+        "sha256": "4f01501a163f6bbfa6513c544b96b8404e0fd1ce731d3c9fd9fc5a3f9c17a869"
+      },
+      {
+        "path": "src/appworld/task.py",
+        "exact_git_blob_match": true,
+        "sha256": "c6c5d2950cc0bd7abdff4a30253c9c3699a0d753351cfcd01bf4d04addd7c994"
+      }
+    ],
+    "python_syntax": {
+      "parsed_files": 20
+    },
+    "source_credential_literals": {
+      "count": 1,
+      "values": "redacted; never used or printed"
+    },
+    "appworld_version": {
+      "observed": "0.1.4.dev0",
+      "expected": "0.1.4.dev0",
+      "passed": true,
+      "not_current_0_2": true
+    },
+    "configs": [
+      {
+        "config": "ACE_offline_no_GT_adaptation.jsonnet",
+        "dataset": "train",
+        "run_type": "ace-adaptation",
+        "agent_type": "ace_adaptation_react",
+        "num_epochs": 1,
+        "use_gt_code": false,
+        "max_steps": 40,
+        "model_roles": {
+          "generator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "reflector": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "curator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          }
+        },
+        "paths": [
+          {
+            "field": "curator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_curator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 5192,
+            "required_input_ready": true
+          },
+          {
+            "field": "generator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_generator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 27020,
+            "required_input_ready": true
+          },
+          {
+            "field": "initial_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_initial_playbook.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 1469,
+            "required_input_ready": true
+          },
+          {
+            "field": "reflector_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 6639,
+            "required_input_ready": true
+          },
+          {
+            "field": "trained_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_offline_trained_no_gt_playbook_deepseek_3_1.txt",
+            "kind": "output",
+            "exists": false,
+            "bytes": null,
+            "required_input_ready": true
+          }
+        ]
+      },
+      {
+        "config": "ACE_offline_no_GT_evaluation.jsonnet",
+        "dataset": "test_normal",
+        "run_type": "ace-evaluation",
+        "agent_type": "ace_evaluation_react",
+        "num_epochs": 1,
+        "use_gt_code": false,
+        "max_steps": 40,
+        "model_roles": {
+          "generator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          }
+        },
+        "paths": [
+          {
+            "field": "generator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_generator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 27020,
+            "required_input_ready": true
+          },
+          {
+            "field": "trained_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_offline_trained_no_gt_playbook_deepseek_3_1.txt",
+            "kind": "input",
+            "exists": false,
+            "bytes": null,
+            "required_input_ready": false
+          }
+        ]
+      },
+      {
+        "config": "ACE_offline_with_GT_adaptation.jsonnet",
+        "dataset": "train",
+        "run_type": "ace-adaptation",
+        "agent_type": "ace_adaptation_react",
+        "num_epochs": 1,
+        "use_gt_code": true,
+        "max_steps": 40,
+        "model_roles": {
+          "generator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "reflector": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "curator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          }
+        },
+        "paths": [
+          {
+            "field": "curator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_curator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 5192,
+            "required_input_ready": true
+          },
+          {
+            "field": "generator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_generator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 27020,
+            "required_input_ready": true
+          },
+          {
+            "field": "initial_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_initial_playbook.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 1469,
+            "required_input_ready": true
+          },
+          {
+            "field": "reflector_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_reflector_with_gt_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 6397,
+            "required_input_ready": true
+          },
+          {
+            "field": "trained_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_offline_trained_with_gt_playbook.txt",
+            "kind": "output",
+            "exists": true,
+            "bytes": 0,
+            "required_input_ready": true
+          }
+        ]
+      },
+      {
+        "config": "ACE_offline_with_GT_evaluation.jsonnet",
+        "dataset": "test_normal",
+        "run_type": "ace-evaluation",
+        "agent_type": "ace_evaluation_react",
+        "num_epochs": 1,
+        "use_gt_code": false,
+        "max_steps": 40,
+        "model_roles": {
+          "generator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          }
+        },
+        "paths": [
+          {
+            "field": "generator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_generator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 27020,
+            "required_input_ready": true
+          },
+          {
+            "field": "trained_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_offline_trained_with_gt_playbook.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 0,
+            "required_input_ready": false
+          }
+        ]
+      },
+      {
+        "config": "ACE_online_no_GT.jsonnet",
+        "dataset": "test_normal",
+        "run_type": "ace-adaptation",
+        "agent_type": "ace_adaptation_react",
+        "num_epochs": 1,
+        "use_gt_code": false,
+        "max_steps": 40,
+        "model_roles": {
+          "generator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "reflector": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          },
+          "curator": {
+            "name": "DeepSeek-V3.1",
+            "provider": "sambanova",
+            "temperature": 0,
+            "seed": 100,
+            "use_cache": true,
+            "max_retries": 50
+          }
+        },
+        "paths": [
+          {
+            "field": "curator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_curator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 5192,
+            "required_input_ready": true
+          },
+          {
+            "field": "generator_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_generator_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 27020,
+            "required_input_ready": true
+          },
+          {
+            "field": "initial_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_initial_playbook.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 1469,
+            "required_input_ready": true
+          },
+          {
+            "field": "reflector_prompt_file_path",
+            "relative_path": "experiments/prompts/appworld_react_reflector_no_gt_prompt.txt",
+            "kind": "input",
+            "exists": true,
+            "bytes": 6639,
+            "required_input_ready": true
+          },
+          {
+            "field": "trained_playbook_file_path",
+            "relative_path": "experiments/playbooks/appworld_online_trained_playbook.txt",
+            "kind": "output",
+            "exists": true,
+            "bytes": 130120,
+            "required_input_ready": true
+          }
+        ]
+      }
+    ],
+    "config_inputs_ready": {
+      "ACE_offline_no_GT_adaptation.jsonnet": true,
+      "ACE_offline_no_GT_evaluation.jsonnet": false,
+      "ACE_offline_with_GT_adaptation.jsonnet": true,
+      "ACE_offline_with_GT_evaluation.jsonnet": false,
+      "ACE_online_no_GT.jsonnet": true
+    },
+    "author_runner_interface": {
+      "passed": true,
+      "branches": 3,
+      "task_loader_calls": 6,
+      "native_tasks_executed": 0,
+      "model_calls": 0,
+      "boundary": "author function; inert synthetic loader and agent doubles"
+    },
+    "author_incremental_merge_interface": {
+      "passed": true,
+      "old_bullets_preserved": 8,
+      "delta_additions": 1,
+      "model_calls": 0,
+      "not_a_learned_playbook": true
+    },
+    "feedback_permissions": {
+      "authority_schema_revision": "actual-render-audit-2026-10-02",
+      "source_reads_required_apis": [
+        "adaptation_react.py",
+        "evaluation_react.py"
+      ],
+      "actual_render_audit_verified_against_current_source": true,
+      "required_api_hint_in_initial_prompt": false,
+      "no_gt_dynamic_evaluation_report_in_reflector_prompt": false,
+      "no_gt_compiled_solution_input": false,
+      "authority_basis": "separate author-method synthetic-render audit, not source string detection",
+      "test_split_not_read_by_this_preflight": true
+    },
+    "runtime": {
+      "credential_presence": {
+        "SAMBANOVA_API_KEY": false,
+        "TOGETHER_API_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "module_presence": {
+        "_jsonnet": true,
+        "jinja2": true,
+        "joblib": true,
+        "litellm": true,
+        "openai": true,
+        "sambanova": true,
+        "appworld": true
+      }
+    }
+  },
+  "errors": [],
+  "original_model_credential_present": false,
+  "model_endpoint_availability": "not_checked; no model requests in preflight",
+  "model_calls": 0,
+  "native_tasks_executed": 0,
+  "source_config_interfaces_passed": true,
+  "execution_status": "model_blocked"
+}

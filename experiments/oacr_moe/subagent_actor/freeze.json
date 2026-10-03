@@ -1,0 +1,46 @@
+{
+  "protocol": "subagent_native_train_smoke_v2",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "selection": "first three IDs of unchanged native train manifest",
+  "dataset": "train",
+  "train_count": 90,
+  "train_manifest_sha256": "93d9fe71e7a2e3b7529803d4a20b604f4ebf5ae806f321081140238068189d37",
+  "selected_task_hashes": [
+    "d292d4cd969e36ece621f6f161d3c4d1d462aac73489eda06bff617a51a50049",
+    "fcdc47e8b06df1f0748f350562e331cd70ed5067bc35b016a01e7ab59b4d6e71",
+    "be4829440c6a6602b5dbb0558e10ce689e48917c764bf8b32aa8ad81da4f07b8"
+  ],
+  "selected_generator_hashes": [
+    "f9bc5ad929bfc4387c7e98bb43994123f2a233c0af525028e16aaf6f4972759d",
+    "f9bc5ad929bfc4387c7e98bb43994123f2a233c0af525028e16aaf6f4972759d",
+    "f9bc5ad929bfc4387c7e98bb43994123f2a233c0af525028e16aaf6f4972759d"
+  ],
+  "actors": 3,
+  "fresh_worlds": true,
+  "max_execute_requests_per_actor": 40,
+  "environment_random_seed": 123,
+  "code_timeout_seconds": 20,
+  "actor_context": "native public task + author rendered generator demonstrations + initial playbook + own full receipts",
+  "actor_ground_truth_loaded": false,
+  "task_prior_or_feedback": false,
+  "roles_executed": [
+    "independent cold subagent actor"
+  ],
+  "roles_not_executed": [
+    "ACE reflector",
+    "ACE curator",
+    "learned playbook updates"
+  ],
+  "grading": "unchanged author evaluate_task once, after actor termination; never returned to actor",
+  "retries_or_task_replacement": false,
+  "model": "inherited ChatGPT subagent backend; version/seed/token/billing not exposed",
+  "interpretation": "exposed-train feasibility/diagnostic; no method comparison, novelty or generalization claim",
+  "protected_content": "private local artifacts; only encrypted archive or metadata may be committed",
+  "transport": "atomic local file mailbox; socket v1 aborted before actor actions",
+  "implementation_sha256": {
+    "native_actor_bridge.py": "9a64bb2ade5512d9d3b62bbe6f2fbe1669e05925803163da2760a9dba421bf3e",
+    "actor_client.py": "352a844179c8aaed1234441d3cfd3c92e2e9284649b10f3f7f7e8f655c1fe989"
+  },
+  "author_prompt_sha256": "c109aeb9cf1f672eaec5bbe63bbd68cfc5ae4290ec7e9cd78d5eed6ad29df47e",
+  "initial_playbook_sha256": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b"
+}

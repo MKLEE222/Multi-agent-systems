@@ -1,0 +1,3 @@
+# Raw working copies are saved losslessly in the tracked gzip reports.
+*.json
+!manifest.json

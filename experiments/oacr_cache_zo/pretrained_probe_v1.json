@@ -1,0 +1,25 @@
+{
+  "protocol": "OACR_CACHE_ZO_PRETRAINED_DEPENDENCY_PROBE_V1",
+  "authority": "trained-model mechanism development on manually constructed linguistic probes",
+  "model_id": "Qwen/Qwen2.5-0.5B",
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "source_blob": "defdad8cd04a5366016b5b6185b014af24d1784f",
+  "runtime": {"torch": "2.5.1+cpu", "transformers": "4.44.2", "numpy": "1.26.4"},
+  "prompts": [
+    "Paris is a city in France, and its main airport is",
+    "For this diagnostic, read the entire statement carefully and use the geographical relationship stated in the sentence that follows. Paris is a city in France, and its main airport is"
+  ],
+  "subject": "Paris",
+  "edit_token": "last token overlapping the subject character span",
+  "target_string": " London",
+  "objective": "negative log probability of first target token at final prompt position; target is a diagnostic label, not a factual gold answer",
+  "edit_layers": [0, 5, 23],
+  "direction_seeds": [901, 902],
+  "epsilon": 0.01,
+  "prefix": 10,
+  "variants": ["fresh", "official_cache", "exact_causal_reuse"],
+  "exact_causal_rule": "prefix 10 through the edited layer; min(10, edit_position) at later attention layers",
+  "prediction": "Same center output can coexist with a zero cached suffix secant inside the prefix; exact causal reuse restores fresh perturbation behavior. Outside the prefix and at the last layer, the predicted discrepancy disappears.",
+  "limitations": ["two prompts from one manually constructed fact", "one pretrained model", "no factual editing optimization", "no quantization", "not natural held-out tasks", "no mobile cost claim"],
+  "evaluation_units_loaded": 0
+}

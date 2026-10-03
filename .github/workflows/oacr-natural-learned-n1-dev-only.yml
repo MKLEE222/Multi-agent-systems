@@ -2,6 +2,11 @@ name: OACR Natural Learned N1 Dev Only
 
 on:
   workflow_dispatch:
+  push:
+    branches: [work/ocar-takeover-20261001]
+    paths:
+      - '.github/workflows/oacr-natural-learned-n1-dev-only.yml'
+      - 'experiments/oacr_natural_learned/**'
   issues:
     types: [opened]
 
@@ -93,6 +98,18 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install torch==2.0.0 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install transformers==4.20.1 hydra-core==1.2.0 omegaconf==2.2.3 sentencepiece==0.1.97 numpy==1.24.3 wandb==0.13.2
+          python -m pip install huggingface-hub==0.36.2
+
+      - name: Verify GRACE T5 interface without benchmark inputs
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_natural_learned/check_n1_runtime_interface.py --grace_repo external/GRACE
+
+      - name: Stage inherited checkpoint at immutable revision
+        run: |
+          set -euxo pipefail
+          python experiments/oacr_natural_learned/prepare_n1_model_snapshot.py --out-dir "$RUNNER_TEMP/oacr_n1_model"
+          cp "$RUNNER_TEMP/oacr_n1_model/oacr_snapshot_provenance.json" results/oacr_natural_learned_n1/
 
       - name: Confirm evaluation seal and compile
         run: |
@@ -102,11 +119,15 @@ jobs:
           python -m py_compile experiments/oacr_natural_learned/run_n1_dev_only.py
 
       - name: Execute real GRACE RippleEdits dev smoke
+        env:
+          HF_HUB_OFFLINE: "1"
+          TRANSFORMERS_OFFLINE: "1"
         run: |
           set -euxo pipefail
           python experiments/oacr_natural_learned/run_n1_dev_only.py \
             --manifest results/oacr_natural_learned_n1/dev_manifest.json \
             --grace_repo external/GRACE \
+            --model_dir "$RUNNER_TEMP/oacr_n1_model" \
             --out results/oacr_natural_learned_n1/n1_dev_smoke.json \
             --limit 8 \
             --max_aux 2 \
@@ -139,4 +160,5 @@ jobs:
           path: |
             results/oacr_natural_learned_n1/n1_dev_smoke.json
             results/oacr_natural_learned_n1/n1_dev_smoke.sha256
+            results/oacr_natural_learned_n1/oacr_snapshot_provenance.json
           if-no-files-found: warn

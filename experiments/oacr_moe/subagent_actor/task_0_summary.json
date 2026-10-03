@@ -1,0 +1,91 @@
+{
+  "protocol": "subagent_native_train_smoke_v2",
+  "index": 0,
+  "task_id_sha256": "d292d4cd969e36ece621f6f161d3c4d1d462aac73489eda06bff617a51a50049",
+  "generator_sha256": "f9bc5ad929bfc4387c7e98bb43994123f2a233c0af525028e16aaf6f4972759d",
+  "actor_terminated": true,
+  "finish_reason": "actor_declared_finished",
+  "actor_ground_truth_loaded": false,
+  "actor_evaluator_feedback": false,
+  "execute_requests": 6,
+  "native_interactions": 6,
+  "native_api_calls": 70,
+  "bridge_rejections": 0,
+  "actor_elapsed_seconds": 124.02499663100002,
+  "steps": [
+    {
+      "index": 1,
+      "code_sha256": "945f8c73a4dfaf3e6a17b4e2b0cb24fa1fbb4085380f68e62df907483b9c6aec",
+      "receipt_sha256": "129e02d0766183944d77d608ee440714ef042f5a2ef6fa62761ea7174d9aeb69",
+      "receipt_bytes": 9726,
+      "native_executed": true,
+      "native_api_calls": 2,
+      "elapsed_seconds": 0.04612740399988979,
+      "execution_error": false
+    },
+    {
+      "index": 2,
+      "code_sha256": "37359c9a80781788468cc71dc17514068fe284bcf473762aebb0c38fc5235cb1",
+      "receipt_sha256": "9a9268f0c194bf44470cd7189de0a60429e9bbd308978fdee0ac13e7b43df39e",
+      "receipt_bytes": 5270,
+      "native_executed": true,
+      "native_api_calls": 6,
+      "elapsed_seconds": 0.24183366700003717,
+      "execution_error": false
+    },
+    {
+      "index": 3,
+      "code_sha256": "d5dd801e284f4aa0933c4983fbbc7b93c1ec7beb149c7968fc9aa9383acc5a99",
+      "receipt_sha256": "e45444220eda2ee66eabcda6087cdb8f37b7a7623bf34d37ff4a356d7b2aa4a4",
+      "receipt_bytes": 26,
+      "native_executed": true,
+      "native_api_calls": 2,
+      "elapsed_seconds": 0.1516977720000341,
+      "execution_error": false
+    },
+    {
+      "index": 4,
+      "code_sha256": "0b6968dda600f52b2496ca99378d0ae1922e9fab0bcb11c17ee104b68239f053",
+      "receipt_sha256": "5dc8084186d18f19c39e4da31fdac7f7eac48edc0ac2a20278ca659347e2528b",
+      "receipt_bytes": 64,
+      "native_executed": true,
+      "native_api_calls": 2,
+      "elapsed_seconds": 0.04609799600007136,
+      "execution_error": false
+    },
+    {
+      "index": 5,
+      "code_sha256": "44d683ade129459b5f0285efce6a79fb532f1d917055650f47b332ad01725e99",
+      "receipt_sha256": "269c2d606890ff82397bae62d87a0246f797235002ef733c4259db2fb988b9df",
+      "receipt_bytes": 92,
+      "native_executed": true,
+      "native_api_calls": 57,
+      "elapsed_seconds": 0.21149692499989214,
+      "execution_error": false
+    },
+    {
+      "index": 6,
+      "code_sha256": "e76115165ab2baf6eff2e7c6bc2693ab4772f6bb9d013bb66a780f6eedb00c71",
+      "receipt_sha256": "762c3b5df6af85d2179be736eb9ab83a8488322f0e265a7e841a17eb51ab6a18",
+      "receipt_bytes": 48,
+      "native_executed": true,
+      "native_api_calls": 1,
+      "elapsed_seconds": 0.023613277000094968,
+      "execution_error": false
+    }
+  ],
+  "grade": {
+    "status": "evaluated",
+    "success": true,
+    "num_tests": 2,
+    "pass_count": 2,
+    "fail_count": 0
+  },
+  "events_sha256": "d969e6af86420f9860591955b134df680c28b72cb4c677b51bcb6731e98d12f0",
+  "events_chain_final_sha256": "20b136812706160290ddab5690b1cb20a72fd8793ad58aea0966851e4efbb64a",
+  "prompt_sha256": "959d2d89204bbbe397757136bdc5144db8feaccc1e1d21d00958930a0293f3b8",
+  "prompt_bytes": 29749,
+  "external_provider_model_calls": 0,
+  "subagent_model_usage": "nonzero; token/billing not exposed",
+  "interpretation": "subagent-native exposed-train smoke; not complete ACE or OCAR advantage"
+}

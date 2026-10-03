@@ -1,0 +1,21 @@
+{
+  "contract_expansion": {
+    "H1_erases_delta": true,
+    "H2_requires_source_witness": true
+  },
+  "multi_delta": {
+    "existing_witness_regression": true,
+    "independent_activity_overrefines": true
+  },
+  "ordered_history_step_checks": 24,
+  "partial_output": {
+    "observed_pair": [
+      0,
+      3
+    ],
+    "two_distinct_full_classes_merge": true
+  },
+  "protocol": "OACR_BUDGET_SCOPE_REGRESSIONS_V1",
+  "scope": "synthetic same-author proof debugging; existing boundaries, no new empirical authority",
+  "verified": true
+}

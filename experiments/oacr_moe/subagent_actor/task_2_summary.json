@@ -1,0 +1,81 @@
+{
+  "protocol": "subagent_native_train_smoke_v2",
+  "index": 2,
+  "task_id_sha256": "be4829440c6a6602b5dbb0558e10ce689e48917c764bf8b32aa8ad81da4f07b8",
+  "generator_sha256": "f9bc5ad929bfc4387c7e98bb43994123f2a233c0af525028e16aaf6f4972759d",
+  "actor_terminated": true,
+  "finish_reason": "actor_declared_finished",
+  "actor_ground_truth_loaded": false,
+  "actor_evaluator_feedback": false,
+  "execute_requests": 5,
+  "native_interactions": 5,
+  "native_api_calls": 29,
+  "bridge_rejections": 0,
+  "actor_elapsed_seconds": 160.4996243999999,
+  "steps": [
+    {
+      "index": 1,
+      "code_sha256": "fcce8d72ec7e562935b1ccbfdb231bd6275da34fd54c6a2c84357b3894803e10",
+      "receipt_sha256": "4c25342cf54b31af2f8ea5c1e2407552c78bf743c818bb060e3444f208ebbac6",
+      "receipt_bytes": 9450,
+      "native_executed": true,
+      "native_api_calls": 2,
+      "elapsed_seconds": 0.06684112900006767,
+      "execution_error": false
+    },
+    {
+      "index": 2,
+      "code_sha256": "686862057f69bb751f5d551b15d0795324d657957ea2942e3f142ad280f19542",
+      "receipt_sha256": "9aceee9e990cd95f8b58b9dc55f16d5920495b70a5236db46e5400b30e1b32dc",
+      "receipt_bytes": 5189,
+      "native_executed": true,
+      "native_api_calls": 7,
+      "elapsed_seconds": 0.2598828399998183,
+      "execution_error": false
+    },
+    {
+      "index": 3,
+      "code_sha256": "3f8e784153ff874637535f6e4baad4b7f28f945abf79da3d3f6296e0965b61fb",
+      "receipt_sha256": "5308055fa81bb5e2d620a9ef0d4367af38f896bdf4b8aac71b67f0fec504b332",
+      "receipt_bytes": 1403,
+      "native_executed": true,
+      "native_api_calls": 3,
+      "elapsed_seconds": 0.16901293099999748,
+      "execution_error": false
+    },
+    {
+      "index": 4,
+      "code_sha256": "fda79bfff448bc3d330da732fe6f257c97ff90366fcaa8a5dac037d84db59e5a",
+      "receipt_sha256": "4ec5e8d05363b6f1da6a4634fc557f7b50915514a9660298006166ee3ea951ae",
+      "receipt_bytes": 1375,
+      "native_executed": true,
+      "native_api_calls": 16,
+      "elapsed_seconds": 0.07790292599997883,
+      "execution_error": false
+    },
+    {
+      "index": 5,
+      "code_sha256": "c1abf00bc3b9b00032aa741d8404a2b2a1c549ee271c008f1ccbdb958ab85def",
+      "receipt_sha256": "762c3b5df6af85d2179be736eb9ab83a8488322f0e265a7e841a17eb51ab6a18",
+      "receipt_bytes": 48,
+      "native_executed": true,
+      "native_api_calls": 1,
+      "elapsed_seconds": 0.023960945999988326,
+      "execution_error": false
+    }
+  ],
+  "grade": {
+    "status": "evaluated",
+    "success": true,
+    "num_tests": 2,
+    "pass_count": 2,
+    "fail_count": 0
+  },
+  "events_sha256": "02bfb5c11ee3f473f568f4b08e0cd25d694fa1416251a3e71721ff21ccaef71a",
+  "events_chain_final_sha256": "d557b5d15753a6dec4eb43c9be0b149cf28f43b62d9e766777178ae63eb44cbf",
+  "prompt_sha256": "c15aeacc9b0d07c2e97c8c668be8f6936f307f444aa10537e2d744bdfd424082",
+  "prompt_bytes": 29749,
+  "external_provider_model_calls": 0,
+  "subagent_model_usage": "nonzero; token/billing not exposed",
+  "interpretation": "subagent-native exposed-train smoke; not complete ACE or OCAR advantage"
+}
