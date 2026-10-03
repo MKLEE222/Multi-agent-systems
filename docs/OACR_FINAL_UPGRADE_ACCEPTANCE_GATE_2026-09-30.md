@@ -63,6 +63,18 @@ Core reference:
 
 ## Current promotion status
 
+Support-Lifecycle kill test (2026-10-03): seven neighboring theory lines and
+public native carriers have been audited. Alternative supports, partial
+invalidation, costed adaptive sensing and revocable/use-once authorization have
+direct classical coverage. The broad proposed object is retired as an independent
+core; no strict native algorithm residual or official comparison benefit has been
+established. A four-bit classical decision-tree witness is implemented and
+independently rerun (adaptive expected cost 21/8 versus fixed order 25/8); this is
+not an OCAR result or a benchmark experiment. Conditional finite encodings do not
+veto all future structural algorithms. See
+docs/OACR_SUPPORT_LIFECYCLE_KILL_TEST_2026-10-03.md. Existing claim-scoped standards,
+inherited results and the 512-unit seal are unchanged.
+
 Latest subagent execution (2026-10-02): three cold actor variants execute the first
 three native train IDs (one scenario), then terminate before untouched author
 evaluation. All three tasks pass, with 16 native code interactions and 131 API

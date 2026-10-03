@@ -1,0 +1,597 @@
+{
+  "schema": "oacr_support_kill_classical_witness_v1",
+  "date": "2026-10-03",
+  "classification": "classical_control_capability_witness",
+  "not_claimed": [
+    "OCAR gain",
+    "new algorithm",
+    "official-task experiment"
+  ],
+  "inputs": {
+    "formula": "(x1 AND x2) OR (x3 AND x4)",
+    "unknown_bits": 4,
+    "query_cost_each": 1,
+    "true_probability_each": {
+      "numerator": 1,
+      "denominator": 2,
+      "exact": "1/2"
+    },
+    "distribution": "independent product",
+    "query_legality": "holes only",
+    "positive_terminal": "all compatible worlds satisfy Psi",
+    "negative_terminal": "all compatible worlds falsify Psi"
+  },
+  "enumeration": {
+    "worlds": 16,
+    "partial_observations": 81,
+    "fixed_orders": 24,
+    "batch_subsets": 16,
+    "certificate_counts": {
+      "0": 25,
+      "1": 17,
+      "ambiguous": 39
+    },
+    "dnf_vs_truth_table_crosscheck": "all 81 states pass"
+  },
+  "results": {
+    "optimal_adaptive_expected_cost": {
+      "numerator": 21,
+      "denominator": 8,
+      "exact": "21/8"
+    },
+    "optimal_fixed_order_expected_cost": {
+      "numerator": 25,
+      "denominator": 8,
+      "exact": "25/8"
+    },
+    "optimal_minimax_cost": 4,
+    "minimum_determining_batch_cost": 4,
+    "offline_certificate_cost_all_worlds": [
+      2
+    ],
+    "expected_offline_certificate_cost": {
+      "numerator": 2,
+      "denominator": 1,
+      "exact": "2"
+    },
+    "fixed_order_to_adaptive_ratio": {
+      "numerator": 25,
+      "denominator": 21,
+      "exact": "25/21"
+    },
+    "all_world_positive_commit_feasible": false
+  },
+  "truth_table": [
+    {
+      "world": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 3,
+      "minimax_optimal_policy_realized_cost": 3,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "Psi": 0,
+      "expected_optimal_policy_realized_cost": 4,
+      "minimax_optimal_policy_realized_cost": 4,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 4,
+      "minimax_optimal_policy_realized_cost": 4,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    },
+    {
+      "world": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "Psi": 1,
+      "expected_optimal_policy_realized_cost": 2,
+      "minimax_optimal_policy_realized_cost": 2,
+      "offline_certificate_cost": 2
+    }
+  ],
+  "fixed_order_results": [
+    {
+      "order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        1,
+        2,
+        4,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        1,
+        3,
+        2,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        1,
+        4,
+        2,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        1,
+        4,
+        3,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        1,
+        3,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        4,
+        1,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        2,
+        4,
+        3,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        2,
+        1,
+        4
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        2,
+        4,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        4,
+        1,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        3,
+        4,
+        2,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        1,
+        2,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        1,
+        3,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        2,
+        1,
+        3
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        2,
+        3,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        3,
+        1,
+        2
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    },
+    {
+      "order": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "expected_cost": {
+        "numerator": 25,
+        "denominator": 8,
+        "exact": "25/8"
+      },
+      "worst_cost": 4
+    }
+  ],
+  "checks": "all assertions passed"
+}
