@@ -1,0 +1,20 @@
+{
+  "scope": "pre-run pure controller boundary check; no native world or task loaded",
+  "watchdog_shortened_test_seconds": 0.25,
+  "watchdog_interrupted_idle_wait": true,
+  "watchdog_observed_elapsed_seconds": 0.25107242900003257,
+  "native_SIGALRM_handler_untouched": true,
+  "legal_public_api_or_json_ast_examples_accepted": 2,
+  "host_open_os_private_attribute_examples_blocked": 3,
+  "native_worlds_loaded": 0,
+  "author_source_tracked_diff_empty": true,
+  "isolated_runtime_appworld_origin_matches_pinned_src": true,
+  "final_native_window_interrupt_keeps_ledger": true,
+  "final_protected_ledger_completes_before_cutoff_exception": true,
+  "final_grade_timer_interrupts_and_restores_native_SIGALRM": true,
+  "preflight_freeze_1_sha256": "2ed99b2c5ccc0e5a97439390f21192c1ce2b47b649f557932d75dad49d8c9c8c",
+  "first_freeze_actor_invocations": 0,
+  "first_freeze_native_worlds": 0,
+  "refreeze_reason": "Cold audit found deadline interruption during ledger finalization and placeholder-vs-native receipt byte classification; identities and native author implementation unchanged.",
+  "interpretation": "Limited mechanism check; not OS isolation, native timeout stress test or task correctness evidence. Final implementation separately reviewed before freeze."
+}
