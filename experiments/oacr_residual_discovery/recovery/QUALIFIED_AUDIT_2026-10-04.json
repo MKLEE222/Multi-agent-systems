@@ -1,0 +1,190 @@
+{
+  "rows": [
+    {
+      "index": 0,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 1,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 2,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 3,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 4,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 5,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 6,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 7,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 8,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 9,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 10,
+      "status": "qualified_prefix_adjudication",
+      "scope": "external_runtime_interruption",
+      "checks": {
+        "original_prefix_unchanged": true,
+        "adjudication_hash_matches": true,
+        "one_grade_after_closed_endpoint": true,
+        "grade_matches_separate_record": true,
+        "no_replay_or_restart": true,
+        "unknown_cost_preserved": true
+      },
+      "original_raw_audit_exceptions": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch"
+      ],
+      "ordinary_producer_terminal_chain_claimed": false
+    },
+    {
+      "index": 11,
+      "status": "qualified_prefix_adjudication",
+      "scope": "external_runtime_interruption",
+      "checks": {
+        "original_prefix_unchanged": true,
+        "adjudication_hash_matches": true,
+        "one_grade_after_closed_endpoint": true,
+        "grade_matches_separate_record": true,
+        "no_replay_or_restart": true,
+        "unknown_cost_preserved": true
+      },
+      "original_raw_audit_exceptions": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch"
+      ],
+      "ordinary_producer_terminal_chain_claimed": false
+    },
+    {
+      "index": 12,
+      "status": "qualified_prefix_adjudication",
+      "scope": "external_runtime_interruption",
+      "checks": {
+        "original_prefix_unchanged": true,
+        "adjudication_hash_matches": true,
+        "one_grade_after_closed_endpoint": true,
+        "grade_matches_separate_record": true,
+        "no_replay_or_restart": true,
+        "unknown_cost_preserved": true
+      },
+      "original_raw_audit_exceptions": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch",
+        "initial_prompt_not_fully_delivered"
+      ],
+      "ordinary_producer_terminal_chain_claimed": false
+    },
+    {
+      "index": 13,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 14,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 15,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 16,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 17,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 18,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 19,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 20,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 21,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 22,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    },
+    {
+      "index": 23,
+      "status": "passed",
+      "scope": "original_producer_terminal_record",
+      "raw_errors": []
+    }
+  ],
+  "original_producer_terminal_rows": 21,
+  "qualified_external_prefixes": 3,
+  "unresolved_integrity_errors": [],
+  "raw_aggregate_overwritten": false,
+  "interpretation": "21 original producer terminal records (including1initializationfailure),3separatepostruntimeprefixadjudications; not24uninterruptedactortrajectories."
+}

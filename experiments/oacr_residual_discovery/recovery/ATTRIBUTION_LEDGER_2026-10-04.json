@@ -1,0 +1,1863 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-04",
+  "protocol": "oacr_residual_dev24_v1",
+  "run_id": "oacr_residual_dev24_infrastructure_recovery_1",
+  "protocol_commit": "9276445530198098e986f72b822843a7bb3bec9f",
+  "recovery_freeze_commit": "a862d4754072294cd6a8b4d9465a349a99a68a26",
+  "recovery_freeze_sha256": "7d2cb3c3ef337b2f0a7186db3e75e421045a871de6f4077a11c8a9f75ede3bb9",
+  "posthoc_prefix_registration_commit": "5ed064382fdf1383f6d65eb09d348f1db90c761f",
+  "attribution_status": "post-outcome diagnosis; original producer records and aggregate unchanged",
+  "fixed_denominator": 24,
+  "distinct_families": 24,
+  "cohorts": {
+    "producer_graded_terminal": {
+      "count": 20,
+      "successes": 18,
+      "not_successful": 2,
+      "transport_confounded_indices": [
+        1
+      ]
+    },
+    "external_interrupted_prefix": {
+      "count": 3,
+      "successes": 1,
+      "not_successful": 2,
+      "indices": [
+        10,
+        11,
+        12
+      ]
+    },
+    "initialization_failure": {
+      "count": 1,
+      "unscored": 1,
+      "indices": [
+        13
+      ]
+    }
+  },
+  "native_test_passed_known_subtotal": 120,
+  "native_test_total_known_subtotal": 137,
+  "raw_result_sha256": "b6dd7a2f50ca5e6f2f37990b1869064d3eed859f67a0c19c510df4ce7220e84b",
+  "qualified_audit_sha256": "5ebed1f1c590e55370bf6adb69e39a072dfa1aca1683804e81c9e4f5608511a1",
+  "cold_audit_sha256": {
+    "docs/OACR_DEV24_TRANSPORT_AUDIT_2026-10-04.md": "1c0b15e97cfcd62e421b2b6d858b9b02ff31e39604d8716f97151a8da4326784",
+    "docs/OACR_DEV24_TASK_FAILURE_AUDIT_2026-10-04.md": "1a4ba465c7cb8c1a1e68224f54e5dbd548bac4ed1eab848afabbc7b06017f170"
+  },
+  "raw_all_fixed_rows_audited": false,
+  "qualifying_algorithm_residuals": [],
+  "unresolved_natural_failure_indices": [
+    2
+  ],
+  "R1": {
+    "status": "not_met",
+    "maximum_unresolved_natural_tasks": 1,
+    "maximum_unresolved_natural_families": 1,
+    "mechanism_recurrence_established": false
+  },
+  "R2": {
+    "status": "native_failure_observed; proposed mechanism causality not established"
+  },
+  "R3": {
+    "status": "not_met",
+    "classical_controls_executed_in_this_batch": 0
+  },
+  "R4": {
+    "status": "not_met",
+    "independent_increment_established": false
+  },
+  "R5": {
+    "status": "narrow diagnostic falsifier prospective; not a core admission result"
+  },
+  "oacr_intervention": false,
+  "method_comparison": false,
+  "sealed_evaluation_bank_512_used": false,
+  "task_replacement_or_score_conditioned_retry": false,
+  "frozen_producer_modified": false,
+  "model_usage": "nonzero; checkpoint, sampling, calls, tokens and billing unknown",
+  "interpretation": "No independent algorithm residual admitted. This is a scoped development discovery ledger, not a completed-actor aggregate score, classical survival result, test generalization estimate or global algorithm impossibility.",
+  "rows": [
+    {
+      "index": 0,
+      "task_id_sha256": "f6698e50c86429c99bbed9b9f65ff69a565ea2e7584095f7bbc89890342e4616",
+      "family_sha256": "b1b55dd5566c6332a2d17a199a9177e6f34d9ba69268834a7cea5e32aafbffd8",
+      "manifest_index": 3,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_0_summary.json",
+      "summary_sha256": "e298f382046a4cc0d26fe81420548787358ca57d2994a2e7731a359fbc45b71e",
+      "events_sha256": "7b6a0b565b9b305f2ed98acc16bce7221ebf9c1ba9e23d3fd2d9d978f74424cf",
+      "events_chain_final_sha256": "592c405bba98d32ead2369c6696ee4ff899e1bd4464a25162d196184e679ddb2",
+      "events_count": 72,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 7,
+        "pass_count": 7,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 9,
+        "native_execute_attempts": 9,
+        "native_interactions": 9,
+        "native_api_calls": 72,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 23293,
+        "generated_native_receipt_bytes": 23293,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29807,
+        "transport_receipt_text_bytes": 19843,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 5,
+        "mailbox_response_bytes": 62195,
+        "actor_elapsed_seconds": 217.91052801100022
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 0,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 0,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "task_id_sha256": "1fed9164bbc8cc76ce95257c456da993fc69773134ccf81733d3818af0fb8cfa",
+      "family_sha256": "416d8c581a81e5cf453ecf37e3618515d48a12ffc2b7483572b2cbac17465ef3",
+      "manifest_index": 6,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_1_summary.json",
+      "summary_sha256": "6858c08ef49856b15db76f5dfddb9e5dd87b224d36a0614aec2c477542afe328",
+      "events_sha256": "e202c52a20eb1497ebb7ac8cb9044b230915754168e902d32514e5d2d7e15e46",
+      "events_chain_final_sha256": "486d05cb1642016a0f40f9fba2007cfc40867b0c9e4195195966dba98cf250b6",
+      "events_count": 64,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "controller_error",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": false,
+        "num_tests": 6,
+        "pass_count": 1,
+        "fail_count": 5
+      },
+      "observed_cost": {
+        "execute_requests": 6,
+        "native_execute_attempts": 6,
+        "native_interactions": 6,
+        "native_api_calls": 76,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 23122,
+        "generated_native_receipt_bytes": 23122,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29785,
+        "transport_receipt_text_bytes": 19664,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 6,
+        "mailbox_response_bytes": 61212,
+        "actor_elapsed_seconds": 185.87550890900002
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 1,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 1,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "implementation_infrastructure_transport",
+        "causal_failure_mechanism": null,
+        "observed_transport_defect": "Same execute UUID was executed three times; missing pre-execution UUID claim/deduplication.",
+        "exact_request_retention_cause": "unresolved",
+        "distinct_execute_uuid_count": 4,
+        "actual_native_executions": 6,
+        "replay_associated_api_records": 40,
+        "once_only_counterfactual_score_or_cost": null,
+        "scientific_residual": false,
+        "scientific_R1_R3_eligible": false,
+        "classical_control_executed": false,
+        "control_status": "Future at-most-once admission control proposed; not implemented or tested.",
+        "disposition": "Keep original score and measured counts; exclude transport-confounded outcome from scientific recurrence.",
+        "evidence": [
+          "docs/OACR_DEV24_TRANSPORT_AUDIT_2026-10-04.md"
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "task_id_sha256": "ea980c2b3fe30c2479b7eeec44e1abfba374a3b34b0811d567fe70de3ee51086",
+      "family_sha256": "6410b74c66b363243f508ed0e1dd0c943cb54b8155d25a1c68fba349c70e80a0",
+      "manifest_index": 9,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_2_summary.json",
+      "summary_sha256": "fcec90a284f3ead5169e9a0f6cc308375b645294b79f6226f995a4a9c0e8cbe1",
+      "events_sha256": "4287b9e9a24369148779328e617ecee21941de82c0fd20f919201a7fcedd12e8",
+      "events_chain_final_sha256": "fb7c6627de1f466762680f83193a634d0e4aadc8f1ab8df6e91c46d2776e0dd3",
+      "events_count": 84,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": false,
+        "num_tests": 10,
+        "pass_count": 7,
+        "fail_count": 3
+      },
+      "observed_cost": {
+        "execute_requests": 11,
+        "native_execute_attempts": 9,
+        "native_interactions": 9,
+        "native_api_calls": 88,
+        "bridge_rejections": 2,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 23016,
+        "generated_native_receipt_bytes": 22904,
+        "generated_bridge_receipt_bytes": 112,
+        "transport_prompt_text_bytes": 29978,
+        "transport_receipt_text_bytes": 23016,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 8,
+        "mailbox_response_bytes": 66612,
+        "actor_elapsed_seconds": 272.2736376920002
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 2,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 2,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "unresolved",
+        "causal_failure_mechanism": null,
+        "hypothesis": "Serialization/acceptance mismatch after conventional AST-rejected operations were replaced.",
+        "hypothesis_confidence": "low",
+        "hypothesis_causally_established": false,
+        "scientific_residual": false,
+        "eligible_for_further_diagnosis": true,
+        "classical_control_executed": false,
+        "control_status": "Paired quote-policy plus independent CSV/coverage checks prospectively specified; pending separate registration and execution.",
+        "disposition": "One natural native failure in one family, mechanism unresolved; no R1 recurrence or R3 survival.",
+        "evidence": [
+          "docs/OACR_DEV24_TASK_FAILURE_AUDIT_2026-10-04.md"
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "task_id_sha256": "08167d1b4c9984ddbb88791db8e8951c3e9835e3ef6c18cee163991ed13f653b",
+      "family_sha256": "8fd285c505779629736ac2a1b59a0ab867e6918624f177a10fcaa10f06971387",
+      "manifest_index": 12,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_3_summary.json",
+      "summary_sha256": "44bb63be59380a8f4367004955cc2803f6d7ba90ba8acf29a60729a2d2badf68",
+      "events_sha256": "0b390f5caac207901c47bc90cccc82aa716a5da967e0d84c73bfe62e6bc388b7",
+      "events_chain_final_sha256": "2fb4c0f980b497574dc52c8626f5b521a5861d3a182dd400707889c97c23c06a",
+      "events_count": 82,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 8,
+        "pass_count": 8,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 11,
+        "native_execute_attempts": 10,
+        "native_interactions": 10,
+        "native_api_calls": 23,
+        "bridge_rejections": 0,
+        "parse_errors": 1,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 25513,
+        "generated_native_receipt_bytes": 25422,
+        "generated_bridge_receipt_bytes": 91,
+        "transport_prompt_text_bytes": 29866,
+        "transport_receipt_text_bytes": 25513,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 7,
+        "mailbox_response_bytes": 69159,
+        "actor_elapsed_seconds": 238.96402782500036
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 3,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 3,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "task_id_sha256": "36bffdce14b3c57b44e8f36ab2dfbab7d640e37aad4853c225055ca92dc3deb2",
+      "family_sha256": "1fa4fdc36fa7e1c6bad48fa295a107f72c0118ea5cb0e23caf51d9fbf806f58a",
+      "manifest_index": 15,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_4_summary.json",
+      "summary_sha256": "6005835b773fdc3d3d909334b99968db3d8147ba66fa9b6348298b5d9d49441b",
+      "events_sha256": "5bfc4e0ea5db2f4544492f18923d98ce8f1eae73ce66cfbcc7771cc550f6f1bf",
+      "events_chain_final_sha256": "95db7b5319d1a10c69fa101d6fa2b9269e9a345559564185b185af28ad52beaf",
+      "events_count": 82,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 9,
+        "pass_count": 9,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 9,
+        "native_execute_attempts": 9,
+        "native_interactions": 9,
+        "native_api_calls": 71,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 27745,
+        "generated_native_receipt_bytes": 27745,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29830,
+        "transport_receipt_text_bytes": 27745,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 10,
+        "mailbox_response_bytes": 71973,
+        "actor_elapsed_seconds": 257.99050476400043
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 4,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 4,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "task_id_sha256": "0ef9c1f9da9b7e89677c297dd1257e736bdddacb7f2e551ca4d69c695990041c",
+      "family_sha256": "c2dbfa215b003fda0486751aa200355b3f3ad4e982d4dfaf01c244567f85f67a",
+      "manifest_index": 18,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_5_summary.json",
+      "summary_sha256": "74b0a5454cdecc48c1893f16f8293117267b7095450aa9b58bc8b5a1f44498fe",
+      "events_sha256": "ceb7ef46a2fe57e3445db8fb39cd47f9cad998c14c281b7fb0247e66f005bd9f",
+      "events_chain_final_sha256": "767eefad5a27479fdae78e1d4624720450ddb023b7b8f57abefb5d6f94277bc1",
+      "events_count": 55,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 2,
+        "pass_count": 2,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 4,
+        "native_execute_attempts": 4,
+        "native_interactions": 4,
+        "native_api_calls": 11,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 12814,
+        "generated_native_receipt_bytes": 12814,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29724,
+        "transport_receipt_text_bytes": 12814,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 4,
+        "mailbox_response_bytes": 52687,
+        "actor_elapsed_seconds": 162.09634379399995
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 5,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 5,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "task_id_sha256": "778b960132d2cf9f904ef8e2e8e2ae10a86534ad3b5444e5089b9cf8d46f5917",
+      "family_sha256": "3642fa38f26f9363a1492329884caa17f5533f9bca87280a3428a37b84feda2a",
+      "manifest_index": 21,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_6_summary.json",
+      "summary_sha256": "aea490c06a2c16d000ab178995074f1fcf142e24d59f419879e09007cf78be01",
+      "events_sha256": "322a4654b497a075a176fdff7c64d904fe40c5a68e99c7ce697fb48a84d61dd5",
+      "events_chain_final_sha256": "b7a9962057dd0fb19a47c3f492075ce47f98033ede80601a091fbebc8f5c69ee",
+      "events_count": 62,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 2,
+        "pass_count": 2,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 7,
+        "native_execute_attempts": 7,
+        "native_interactions": 7,
+        "native_api_calls": 96,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 15857,
+        "generated_native_receipt_bytes": 15857,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29805,
+        "transport_receipt_text_bytes": 12407,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 3,
+        "mailbox_response_bytes": 52820,
+        "actor_elapsed_seconds": 177.5762074989998
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 6,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 6,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "task_id_sha256": "3193bf4191ecae04241a774152778aa7078cfb6d11b5872da22756f4564267a0",
+      "family_sha256": "4bc74fa1f1b08c6df61f308afd543a436713cc71d79e076de2dec7d03b1d1515",
+      "manifest_index": 24,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_7_summary.json",
+      "summary_sha256": "be94324842989ed06773435e47f581ff4c14c0a1e432905b2b6df251a9b46f93",
+      "events_sha256": "7b8b61fb70c035272ee7cb3396885630f6744aae68b635a0006cdee78c099d7b",
+      "events_chain_final_sha256": "a3d97f5d1c12138429b2bc0ca925da1e3542cf9bdd2b2806723e833ec90733f8",
+      "events_count": 89,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 4,
+        "pass_count": 4,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 12,
+        "native_execute_attempts": 12,
+        "native_interactions": 12,
+        "native_api_calls": 36,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 38942,
+        "generated_native_receipt_bytes": 38942,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29961,
+        "transport_receipt_text_bytes": 29628,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 9,
+        "mailbox_response_bytes": 74582,
+        "actor_elapsed_seconds": 269.20651535399975
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 7,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 7,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "task_id_sha256": "c3593f125c4c4d3088eba049e14a32111ff84d3a18deb18849131109b3cbc160",
+      "family_sha256": "357f56eb4a9d1c521f465e31beb6cc99e5a9b512171603522695a98aae0f4772",
+      "manifest_index": 27,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_8_summary.json",
+      "summary_sha256": "f1ddff2c9da3df25878d63054d71c6801e4187c13e10586f9af549561585fcfe",
+      "events_sha256": "e267198d34d13798042afd210449bd6cc57775afbe4ad984f452303fda2e0c4a",
+      "events_chain_final_sha256": "b1b7dd56f6d573719b6bc8db3f05b46b68d8d55134d74e07ed491022714f463b",
+      "events_count": 67,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 2,
+        "pass_count": 2,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 6,
+        "native_execute_attempts": 5,
+        "native_interactions": 5,
+        "native_api_calls": 23,
+        "bridge_rejections": 1,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 19592,
+        "generated_native_receipt_bytes": 19536,
+        "generated_bridge_receipt_bytes": 56,
+        "transport_prompt_text_bytes": 29760,
+        "transport_receipt_text_bytes": 19592,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 7,
+        "mailbox_response_bytes": 61385,
+        "actor_elapsed_seconds": 207.55258998099998
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 8,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 8,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "task_id_sha256": "ab40b91176aa2e92ba27f929465c184aea656e4549f67bb360b512adcd23525b",
+      "family_sha256": "9cd0e65b0dc176e7b4c64351046e6c9bb82f1a8c668e096886f45d491fc971ff",
+      "manifest_index": 30,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_9_summary.json",
+      "summary_sha256": "82af2c6b8565afe9356b3ad69dfc3522b4328a1a6f4972c4f5c28c34b45cc056",
+      "events_sha256": "c2db4f6da96b2f5cabcbf46b84e3256d790806def64bb2ac0a36eda09231cb67",
+      "events_chain_final_sha256": "addc8e26829feab4d8cd106c0f0e63b62f32b059ecd628d27e4845be8f5b4c2b",
+      "events_count": 68,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 4,
+        "pass_count": 4,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 7,
+        "native_execute_attempts": 7,
+        "native_interactions": 7,
+        "native_api_calls": 81,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 19567,
+        "generated_native_receipt_bytes": 19567,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29765,
+        "transport_receipt_text_bytes": 19567,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 6,
+        "mailbox_response_bytes": 61487,
+        "actor_elapsed_seconds": 202.81297129999984
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 9,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 9,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "task_id_sha256": "503d49e2456f5fefbc595270c572deb68e4c3bf9f84c07a37820a4c735573f91",
+      "family_sha256": "78595d38c3b2d3150515c0c35a8be87122aece33c0b6f7235e7ef644717364cc",
+      "manifest_index": 33,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_10_summary.json",
+      "summary_sha256": "f737d34bca8fad9a0f5bca382342e7278e90b67b73ea39dfc784f4e39cde4acc",
+      "events_sha256": "0d0bbc71e9176b0fb3eed5cd2c86de947a7954630a5f639d8f26c5f298b1031f",
+      "events_chain_final_sha256": "404383b2197cc3fdd72151aa01293cdf1342636be879d1b634f87d3169a94eed",
+      "events_count": 62,
+      "adjudication_sha256": "0f010d15131482c0802ae7bcf0d7eb4f768244dbf7ef99f9713398e761cc7dc1",
+      "record_scope": "saved_prefix_after_workspace_runtime_interruption",
+      "actor_started": true,
+      "finish_reason": "workspace_resource_interruption",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "scope": "saved_prefix_after_workspace_runtime_interruption",
+        "success": true,
+        "num_tests": 2,
+        "pass_count": 2,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 7,
+        "native_execute_attempts": 6,
+        "native_interactions": 6,
+        "native_api_calls": 21,
+        "bridge_rejections": 1,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 13974,
+        "generated_native_receipt_bytes": 13918,
+        "generated_bridge_receipt_bytes": 56,
+        "transport_prompt_text_bytes": 29804,
+        "transport_receipt_text_bytes": 13974,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 5,
+        "mailbox_response_bytes": null,
+        "actor_elapsed_seconds": null
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": null
+      },
+      "complete_prefix_cost_known": false,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 10,
+        "status": "requires_review",
+        "errors": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch"
+        ]
+      },
+      "qualified_audit": {
+        "index": 10,
+        "status": "qualified_prefix_adjudication",
+        "scope": "external_runtime_interruption",
+        "checks": {
+          "original_prefix_unchanged": true,
+          "adjudication_hash_matches": true,
+          "one_grade_after_closed_endpoint": true,
+          "grade_matches_separate_record": true,
+          "no_replay_or_restart": true,
+          "unknown_cost_preserved": true
+        },
+        "original_raw_audit_exceptions": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch"
+        ],
+        "ordinary_producer_terminal_chain_claimed": false
+      },
+      "attribution": {
+        "category": "external_workspace_resource_interruption",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "scientific_R1_R3_eligible": false,
+        "classical_control_executed": false,
+        "complete_actor_trajectory": false,
+        "complete_cost_known": false,
+        "actor_restart_or_native_replay": false,
+        "disposition": "Separate saved-prefix grade after endpoint closure; not a completed actor outcome or recurrent scientific failure.",
+        "evidence": [
+          "docs/OACR_RESIDUAL_DEV24_RUNTIME_INTERRUPTION_2026-10-04.md",
+          "experiments/oacr_residual_discovery/recovery/QUALIFIED_AUDIT_2026-10-04.json"
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "task_id_sha256": "abc7887647b99a905011cb6a0384d9b5f100ac0c19b3af2da4b62b1294989bc3",
+      "family_sha256": "1580bcaa83c8a2c1dea3a79717b4574266107b64922595ea5dc323dd3466162e",
+      "manifest_index": 36,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_11_summary.json",
+      "summary_sha256": "211783a1b45091a2636f04a7a613c3b2cfbb65b1bf3867b22649da7d27af33de",
+      "events_sha256": "570db6afd3ec43fad8c56d26ba4c0c9280ebb7e93fe2a4b1e8b2446145a04f52",
+      "events_chain_final_sha256": "ed2e03af06335466b60ce5a88f961f0ddfae8b0599f63dc0843b87acf25a379b",
+      "events_count": 46,
+      "adjudication_sha256": "ac7d5a9a8fbbf6d7c07a97628f198ea6658c2ed48273db1d5bf334ab5beabbbb",
+      "record_scope": "saved_prefix_after_workspace_runtime_interruption",
+      "actor_started": true,
+      "finish_reason": "workspace_resource_interruption",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "scope": "saved_prefix_after_workspace_runtime_interruption",
+        "success": false,
+        "num_tests": 5,
+        "pass_count": 2,
+        "fail_count": 3
+      },
+      "observed_cost": {
+        "execute_requests": 3,
+        "native_execute_attempts": 3,
+        "native_interactions": 3,
+        "native_api_calls": 10,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 9103,
+        "generated_native_receipt_bytes": 9103,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 30024,
+        "transport_receipt_text_bytes": 7616,
+        "prompt_page_requests": 16,
+        "receipt_page_requests": 2,
+        "mailbox_response_bytes": null,
+        "actor_elapsed_seconds": null
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": null
+      },
+      "complete_prefix_cost_known": false,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 11,
+        "status": "requires_review",
+        "errors": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch"
+        ]
+      },
+      "qualified_audit": {
+        "index": 11,
+        "status": "qualified_prefix_adjudication",
+        "scope": "external_runtime_interruption",
+        "checks": {
+          "original_prefix_unchanged": true,
+          "adjudication_hash_matches": true,
+          "one_grade_after_closed_endpoint": true,
+          "grade_matches_separate_record": true,
+          "no_replay_or_restart": true,
+          "unknown_cost_preserved": true
+        },
+        "original_raw_audit_exceptions": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch"
+        ],
+        "ordinary_producer_terminal_chain_claimed": false
+      },
+      "attribution": {
+        "category": "external_workspace_resource_interruption",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "scientific_R1_R3_eligible": false,
+        "classical_control_executed": false,
+        "complete_actor_trajectory": false,
+        "complete_cost_known": false,
+        "actor_restart_or_native_replay": false,
+        "disposition": "Separate saved-prefix grade after endpoint closure; not a completed actor outcome or recurrent scientific failure.",
+        "evidence": [
+          "docs/OACR_RESIDUAL_DEV24_RUNTIME_INTERRUPTION_2026-10-04.md",
+          "experiments/oacr_residual_discovery/recovery/QUALIFIED_AUDIT_2026-10-04.json"
+        ]
+      }
+    },
+    {
+      "index": 12,
+      "task_id_sha256": "abfa142d0da12f87a966bb167f0c13bd10175b667c1bd09dcf241264c2427fc5",
+      "family_sha256": "2c9d3a377ff0daf7b19aad8c9258b1c7a26610c29cd0410a6cbcb4b40a0ab5c3",
+      "manifest_index": 39,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_12_summary.json",
+      "summary_sha256": "d8f8ddb15d0a84323b9bf28763ad454fcb16efa570b3acfeeb80bd937dccf100",
+      "events_sha256": "f8355f5c60c58d96b95690e0dfc081c48759e731c30c2c57422e2a445928dadb",
+      "events_chain_final_sha256": "24f237a1fcd0b6627df7d2997246db2bacc97ef7c028c91dac0c0614bbe5295d",
+      "events_count": 27,
+      "adjudication_sha256": "0741b4cc408b07ed329e834d3627372bf8093124e78729e3a16ac4a0c61aada5",
+      "record_scope": "saved_prefix_after_workspace_runtime_interruption",
+      "actor_started": true,
+      "finish_reason": "workspace_resource_interruption",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "scope": "saved_prefix_after_workspace_runtime_interruption",
+        "success": false,
+        "num_tests": 8,
+        "pass_count": 2,
+        "fail_count": 6
+      },
+      "observed_cost": {
+        "execute_requests": 0,
+        "native_execute_attempts": 0,
+        "native_interactions": 0,
+        "native_api_calls": 0,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 0,
+        "generated_native_receipt_bytes": 0,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 26000,
+        "transport_receipt_text_bytes": 0,
+        "prompt_page_requests": 13,
+        "receipt_page_requests": 0,
+        "mailbox_response_bytes": null,
+        "actor_elapsed_seconds": null
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": null
+      },
+      "complete_prefix_cost_known": false,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 12,
+        "status": "requires_review",
+        "errors": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch",
+          "initial_prompt_not_fully_delivered"
+        ]
+      },
+      "qualified_audit": {
+        "index": 12,
+        "status": "qualified_prefix_adjudication",
+        "scope": "external_runtime_interruption",
+        "checks": {
+          "original_prefix_unchanged": true,
+          "adjudication_hash_matches": true,
+          "one_grade_after_closed_endpoint": true,
+          "grade_matches_separate_record": true,
+          "no_replay_or_restart": true,
+          "unknown_cost_preserved": true
+        },
+        "original_raw_audit_exceptions": [
+          "grade_before_actor_stop",
+          "grading_count_mismatch",
+          "initial_prompt_not_fully_delivered"
+        ],
+        "ordinary_producer_terminal_chain_claimed": false
+      },
+      "attribution": {
+        "category": "external_workspace_resource_interruption",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "scientific_R1_R3_eligible": false,
+        "classical_control_executed": false,
+        "complete_actor_trajectory": false,
+        "complete_cost_known": false,
+        "actor_restart_or_native_replay": false,
+        "disposition": "Separate saved-prefix grade after endpoint closure; not a completed actor outcome or recurrent scientific failure.",
+        "evidence": [
+          "docs/OACR_RESIDUAL_DEV24_RUNTIME_INTERRUPTION_2026-10-04.md",
+          "experiments/oacr_residual_discovery/recovery/QUALIFIED_AUDIT_2026-10-04.json"
+        ]
+      }
+    },
+    {
+      "index": 13,
+      "task_id_sha256": "14164ac5a01f4804d0e8d8ffb9561a1d82909e6b48dfac5f8998c75ddaf53571",
+      "family_sha256": "9632777f9becec6e4b35cd0afdb87c748901ae759107454f9ac934d3ea282a56",
+      "manifest_index": 42,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_13_summary.json",
+      "summary_sha256": "ebf97a88a0d4614932f632a9ebdecbf77c3009225020d95b78cb5309650903d8",
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043",
+      "events_chain_final_sha256": "0a4f871d9df25ab193a6fd077032421f39113a853d423a5dc9dd355a8eb90d13",
+      "events_count": 2,
+      "adjudication_sha256": null,
+      "record_scope": "initialization_failure",
+      "actor_started": false,
+      "finish_reason": "controller_initialization_error",
+      "grade": {
+        "status": "not_run",
+        "attempts": 0
+      },
+      "observed_cost": {
+        "execute_requests": 0,
+        "native_execute_attempts": 0,
+        "native_interactions": 0,
+        "native_api_calls": 0,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 0,
+        "generated_native_receipt_bytes": 0,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 0,
+        "transport_receipt_text_bytes": 0,
+        "prompt_page_requests": 0,
+        "receipt_page_requests": 0,
+        "mailbox_response_bytes": 0,
+        "actor_elapsed_seconds": 0.0
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 13,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 13,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "shared_base_asset_initialization_failure",
+        "causal_failure_mechanism": null,
+        "observed_asset": "amazon.db",
+        "asset_damage_cause": "unknown",
+        "scientific_residual": false,
+        "scientific_R1_R3_eligible": false,
+        "classical_control_executed": false,
+        "disposition": "No actor or grade; fixed position retained without retry, author canonical bytes restored before remaining tasks.",
+        "evidence": [
+          "experiments/oacr_residual_discovery/recovery/ASSET_RESUME_RESTORATION_2026-10-04.json"
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "task_id_sha256": "1d6db95bcc627dbb4db52e64126e9c6a8ada0bf1a84c29f7de3783b9a5b35b6d",
+      "family_sha256": "caabbd13e83fa134e68aa5022d0d5b0b89dd41e7b85430f64f3b58ff52de08dc",
+      "manifest_index": 45,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_14_summary.json",
+      "summary_sha256": "7194580cf434ab4e19e9620d28a25653957e233e35b048284c8076d88d7ea84d",
+      "events_sha256": "63528c5db14285638f821f3e26bfd24552841539f74acd178514d76778358c47",
+      "events_chain_final_sha256": "36a1e7a55d079dbd428c6ecf35a883df8bf004a25cdcfdb26b15c6e0257d2fa5",
+      "events_count": 76,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 6,
+        "pass_count": 6,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 9,
+        "native_execute_attempts": 9,
+        "native_interactions": 9,
+        "native_api_calls": 76,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 22619,
+        "generated_native_receipt_bytes": 22619,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29960,
+        "transport_receipt_text_bytes": 22619,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 7,
+        "mailbox_response_bytes": 65660,
+        "actor_elapsed_seconds": 243.21157752900035
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 14,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 14,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 15,
+      "task_id_sha256": "99ee7f3d1005eaa61807f9253ab108bce183899bb43d8389d0d998a1736e4b1c",
+      "family_sha256": "81b3666aa05a1bd75b8c006d3590c0ae4d68c499707a13ebdf614ff3232ee946",
+      "manifest_index": 48,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_15_summary.json",
+      "summary_sha256": "755f9122cc3490cb7a823ad54b6648f98094eb79972d91564cc26e833a4d9e4c",
+      "events_sha256": "f2cadaf7f13cddadcc3b157f9ae6b67879b196026cc7b6be5d02c96d562e61ab",
+      "events_chain_final_sha256": "d8750ca353543ba312a8b71bbf4c93ec799e7cdb943b936d61032df897b9c40e",
+      "events_count": 67,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 8,
+        "pass_count": 8,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 8,
+        "native_execute_attempts": 8,
+        "native_interactions": 8,
+        "native_api_calls": 22,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 12069,
+        "generated_native_receipt_bytes": 12069,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 30065,
+        "transport_receipt_text_bytes": 12069,
+        "prompt_page_requests": 16,
+        "receipt_page_requests": 3,
+        "mailbox_response_bytes": 52809,
+        "actor_elapsed_seconds": 238.14738477499986
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 15,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 15,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "task_id_sha256": "09652b8caabc0ed837194c0e2c0ba50388ee8d92cea78e20d5b001e959982851",
+      "family_sha256": "8f3d33053ab464c1ddee9f41d2c5a459aeda3b8ba266daf6f67e652b7e7a4cb2",
+      "manifest_index": 51,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_16_summary.json",
+      "summary_sha256": "dca11f6330d8c23cb1356772b270497cc1c2ec1639735cbda8562f9e4edec8ef",
+      "events_sha256": "faaf21f39ff987b2524160e8895ecd3ffbf87eba1c6baae054229125c870de56",
+      "events_chain_final_sha256": "c1bddc5aa0b37e2548007693a60e63b18b0120f092fda2075754a591fad760e2",
+      "events_count": 68,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 9,
+        "pass_count": 9,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 7,
+        "native_execute_attempts": 7,
+        "native_interactions": 7,
+        "native_api_calls": 43,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 17655,
+        "generated_native_receipt_bytes": 17655,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29795,
+        "transport_receipt_text_bytes": 17655,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 6,
+        "mailbox_response_bytes": 59281,
+        "actor_elapsed_seconds": 203.9087110380001
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 16,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 16,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 17,
+      "task_id_sha256": "482362088a71872f13d20dfb872e99691747a4fbca31c82b99d2d963667033da",
+      "family_sha256": "19ef2ee2506e57fd8151f127e1f75742c498616a6947e007ea4f15040d12ca03",
+      "manifest_index": 54,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_17_summary.json",
+      "summary_sha256": "75b2ba81095a86231f5656509b2a394f1a674ec3f76c43e02edfcd8c1cd55818",
+      "events_sha256": "2f1d328b122279ee992a704cdd50d27decc0bd54943302838a2b3e75488dd42c",
+      "events_chain_final_sha256": "198c5689f00f2bb13e67ed1e521f2c124b54a29eda8bdd263cc05a6f42e7e177",
+      "events_count": 63,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 5,
+        "pass_count": 5,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 6,
+        "native_execute_attempts": 6,
+        "native_interactions": 6,
+        "native_api_calls": 30,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 15214,
+        "generated_native_receipt_bytes": 15214,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29767,
+        "transport_receipt_text_bytes": 15214,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 5,
+        "mailbox_response_bytes": 56065,
+        "actor_elapsed_seconds": 183.644906387
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 17,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 17,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "task_id_sha256": "d7dee2632fc7e6e1885943b68eca2ec16f1097488983eea47045bca586aff05f",
+      "family_sha256": "7b22dc7a0db739fabfbe211cdee12277ff6c1d7b1df8ef8d453c9ff0caa17a56",
+      "manifest_index": 57,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_18_summary.json",
+      "summary_sha256": "dd4d8e500b02d50e0771c5005bacc4cb91df8ee6356c92d7824110ee69605cf4",
+      "events_sha256": "d4d9bc3d2e38b0bb860ccc5d38f11540c0778ff64671a7030ad1f49593d475b3",
+      "events_chain_final_sha256": "a15565a860952beb06087c215d8ca0910808736122d7648507063addfa6ece1d",
+      "events_count": 85,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 7,
+        "pass_count": 7,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 8,
+        "native_execute_attempts": 8,
+        "native_interactions": 8,
+        "native_api_calls": 27,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 31686,
+        "generated_native_receipt_bytes": 31686,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29786,
+        "transport_receipt_text_bytes": 31686,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 13,
+        "mailbox_response_bytes": 76255,
+        "actor_elapsed_seconds": 262.5562901479998
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 18,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 18,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 19,
+      "task_id_sha256": "3edf527ef034f2addb78f1f8f182ebecbf020f85d6b8e8e958b8b77ac10f2267",
+      "family_sha256": "4e05d84492d18ec928c1b3a9fe36f5b82bf299d665d4b3b8a8d9b4184b1ed5b6",
+      "manifest_index": 60,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_19_summary.json",
+      "summary_sha256": "04f71bc755365ac37570ac36a7de78e99cac6549318aaca2590d6ad9d300aa42",
+      "events_sha256": "cd9b0fa1213524e8b7be00ee52cb1537340ee77a851ce11b65f3fb6fed293dfd",
+      "events_chain_final_sha256": "15f5a1351b2958c10587a66db51e73df6f5c5f216ab5811574fb728f0c172d93",
+      "events_count": 68,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 6,
+        "pass_count": 6,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 7,
+        "native_execute_attempts": 7,
+        "native_interactions": 7,
+        "native_api_calls": 39,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 19209,
+        "generated_native_receipt_bytes": 19209,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29762,
+        "transport_receipt_text_bytes": 19209,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 6,
+        "mailbox_response_bytes": 59902,
+        "actor_elapsed_seconds": 210.3834721449998
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 19,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 19,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "task_id_sha256": "6fc8d13a141658b9a2884c64474477c6a82b3ad5990f2ef5527d8e0f3b1b08fc",
+      "family_sha256": "520c38532177b5756fcb0426242020093d388f4a8adbf372d4d0d88e72c0b3cb",
+      "manifest_index": 63,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_20_summary.json",
+      "summary_sha256": "c264f3fd5b7a7195cb52356a7445c83c7f88985275fcbed046c65285f526a11f",
+      "events_sha256": "7453ef264b765056c8646249a8140866dcbd62a1e8fe357d2d53b6a9db552589",
+      "events_chain_final_sha256": "ab0e91640561483875d17cc32e86ac18f6319da2710310b70d254e8ad394070c",
+      "events_count": 56,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 5,
+        "pass_count": 5,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 5,
+        "native_execute_attempts": 5,
+        "native_interactions": 5,
+        "native_api_calls": 15,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 14676,
+        "generated_native_receipt_bytes": 14676,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29754,
+        "transport_receipt_text_bytes": 11226,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 3,
+        "mailbox_response_bytes": 51006,
+        "actor_elapsed_seconds": 167.3492869060001
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 20,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 20,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 21,
+      "task_id_sha256": "3dd1552a041fc2a6401a6fae7a82eaea111ed94ffa85bfe8a48d741d56c9e21f",
+      "family_sha256": "deb5d8c71a10eba13c67dd38e923acb61073017c275cb415b37508dd35e9e33e",
+      "manifest_index": 66,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_21_summary.json",
+      "summary_sha256": "14368659c64725573e574f217d20ba93cecaddc4bce00930a95a87ea47d96ccd",
+      "events_sha256": "aea23d51250e0281273294cd652615a12a31c5d432d60cd4ff91ade225a8a3da",
+      "events_chain_final_sha256": "e1b952d18decc0e85629d80bf79162bc98359e925fd3b730455562707ba685ea",
+      "events_count": 88,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 6,
+        "pass_count": 6,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 11,
+        "native_execute_attempts": 10,
+        "native_interactions": 10,
+        "native_api_calls": 54,
+        "bridge_rejections": 1,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 26989,
+        "generated_native_receipt_bytes": 26933,
+        "generated_bridge_receipt_bytes": 56,
+        "transport_prompt_text_bytes": 29922,
+        "transport_receipt_text_bytes": 26989,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 10,
+        "mailbox_response_bytes": 71498,
+        "actor_elapsed_seconds": 280.01267482799994
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 21,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 21,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 22,
+      "task_id_sha256": "b282c8e43cc6c0b588d92c74aad37b6be02037569ff5d53ffb7bc8a40e0d0d51",
+      "family_sha256": "db39d0316b6e0556766b1bb894ff7cd51eb4166bafc577b09af828fbb93e3cf2",
+      "manifest_index": 69,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_22_summary.json",
+      "summary_sha256": "79adfb9343822aa92f6f6b04b52521ade44663e883e663e7e2c45fd4e45958d9",
+      "events_sha256": "3eaf589165d7c85fc4a8320a4b7aef7f446330a5dae6091a00392ac8a62c1797",
+      "events_chain_final_sha256": "4829b9c42d680c1e4cb460f791b6d5b9f2f140867c76ee4e6eab1c0701d40f71",
+      "events_count": 63,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 8,
+        "pass_count": 8,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 6,
+        "native_execute_attempts": 6,
+        "native_interactions": 6,
+        "native_api_calls": 16,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 13663,
+        "generated_native_receipt_bytes": 13663,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29788,
+        "transport_receipt_text_bytes": 13663,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 5,
+        "mailbox_response_bytes": 54390,
+        "actor_elapsed_seconds": 186.77602999700002
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 22,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 22,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    },
+    {
+      "index": 23,
+      "task_id_sha256": "bb18fdfe9cbaf070e992eccd6a1d49f29296f56b05028f6345db28c562e90441",
+      "family_sha256": "6bd5a7e1aafc31f690fd7d4c65262449c41e7b4374c3c83f96d3bb81ef4eb683",
+      "manifest_index": 72,
+      "summary_path": "experiments/oacr_residual_discovery/recovery/task_23_summary.json",
+      "summary_sha256": "ecfb7783b833022d5ef886cedabe8cc78f914e7b4e123f72c743371b242819fa",
+      "events_sha256": "d5a490d67b6ac96585fa0eca3b62bdd05ee21ac16b7c30b4a3ce4e344b59be8c",
+      "events_chain_final_sha256": "76fc492bb27e23c5ecdf2749e2885c634934f7abf10d1c421bc39ed78d6324c1",
+      "events_count": 59,
+      "adjudication_sha256": null,
+      "record_scope": "original_producer_graded_terminal",
+      "actor_started": true,
+      "finish_reason": "actor_declared_finished",
+      "grade": {
+        "status": "evaluated",
+        "attempts": 1,
+        "success": true,
+        "num_tests": 8,
+        "pass_count": 8,
+        "fail_count": 0
+      },
+      "observed_cost": {
+        "execute_requests": 6,
+        "native_execute_attempts": 6,
+        "native_interactions": 6,
+        "native_api_calls": 17,
+        "bridge_rejections": 0,
+        "parse_errors": 0,
+        "native_execution_errors": 0,
+        "generated_receipt_bytes": 10604,
+        "generated_native_receipt_bytes": 10604,
+        "generated_bridge_receipt_bytes": 0,
+        "transport_prompt_text_bytes": 29783,
+        "transport_receipt_text_bytes": 10604,
+        "prompt_page_requests": 15,
+        "receipt_page_requests": 3,
+        "mailbox_response_bytes": 50656,
+        "actor_elapsed_seconds": 220.19625317999999
+      },
+      "high_cost_flags": {
+        "native_api_calls": false,
+        "execute_requests": false,
+        "generated_native_receipt_bytes": false,
+        "actor_elapsed_seconds": false
+      },
+      "complete_prefix_cost_known": null,
+      "actual_model_visible_bytes": null,
+      "model_calls_tokens_cost": null,
+      "raw_audit": {
+        "index": 23,
+        "status": "passed",
+        "errors": []
+      },
+      "qualified_audit": {
+        "index": 23,
+        "status": "passed",
+        "scope": "original_producer_terminal_record",
+        "raw_errors": []
+      },
+      "attribution": {
+        "category": "native_task_passed_no_registered_high_cost",
+        "causal_failure_mechanism": null,
+        "scientific_residual": false,
+        "classical_control_executed": false,
+        "disposition": "No observed failure or registered high-cost trigger; no intervention constructed.",
+        "evidence": [
+          "task_summary_and_frozen_cost_screen"
+        ]
+      }
+    }
+  ]
+}

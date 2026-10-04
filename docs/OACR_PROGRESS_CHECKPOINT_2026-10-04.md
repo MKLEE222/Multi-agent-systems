@@ -1,6 +1,6 @@
 # OACR 研究进度记录（2026-10-04）
 
-记录位置：[PR #89](https://github.com/MKLEE222/Multi-agent-systems/pull/89) 的 `work/ocar-takeover-20261001` 分支。本文是证据状态索引，不替代各实验协议、结果文件或最终验收 gate。核对范围为截至本次读取时该 PR 的公开文件；本记录没有重新运行原生实验。
+记录位置：[PR #89](https://github.com/MKLEE222/Multi-agent-systems/pull/89) 的 `work/ocar-takeover-20261001` 分支。本文是证据状态索引，不替代各实验协议、结果文件或最终验收 gate。本次更新纳入 24 个冻结任务位的执行、三项中断前缀处置及两项冷审；本记录本身没有重新运行实验。
 
 ## 当前判定
 
@@ -11,6 +11,7 @@
 | Support-Lifecycle 抽象 | **退出独有核心** | [kill test](OACR_SUPPORT_LIFECYCLE_KILL_TEST_2026-10-03.md) 的七条理论线和原生载体审查发现 ATMS、SBFE、LPCFS、规划、溯源、物化视图维护、运行时监测等直接近邻。此判定针对当前抽象主张；具体结构算法仍须逐项比较。 |
 | 经典主动取证控制 | **实跑、归类为经典能力** | [精确结果](../experiments/oacr_support_kill/CLASSICAL_WITNESS_2026-10-03.json)：16 worlds、81 partial observations、24 fixed orders；固定顺序期望查询成本 `25/8`，最优自适应决策树 `21/8`，最坏情形均为 4。该四位自构见证不是官方任务收益。 |
 | ACE/AppWorld 原生入口 | **执行路径可用** | [三项原生 train 变体](OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md) 在同一场景 family 上 3/3 成功，证明接口可执行；完整 ACE 学习闭环和跨 family 收益未验证。 |
+| 多场景原生残差发现 | **24 个任务位已记录，无合格残差** | [DEV24 结果](OACR_RESIDUAL_DEV24_RESULTS_2026-10-04.md)：20 项原 producer 终态评分中 18 成功；另 3 项额度中断前缀、1 项基库启动失败单列。两项终态未成功中，一项有确证接口干扰，另一项定因未决；经典诊断控制尚未执行。 |
 | BFCL 与效应授权 | **经典适配/控制** | [BFCL 开发回放](OACR_REAL_BFCL_EXECUTION_2026-10-02.md) 的 54 个 unknown 已分解为信息边界和可补工程缺口；同场强经典维护没有留下独有调用收益。[效应授权报告](OACR_MOE_COLD_START_AND_EXECUTION_2026-10-02.md) 的 31 项构造检查通过，effect equality 条件归入经典检查。 |
 | 既有 R4、SQEC、BRFP 证据 | **保留原范围** | 见[唯一升级验收 gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)。已有精确或控制实验不承担这轮独有核心的新颖性证明。 |
 
@@ -29,11 +30,22 @@
 
 [原批结果](../experiments/oacr_residual_discovery/RESULT_2026-10-04.json)的 24 行完整保留：前 6 项在 world initialization 的 SQLite backup 阶段报 `DatabaseError`，其余 18 项因共同基础设施故障未启动。原批成功初始化、actor 调用、prompt 交付和 evaluator 调用均为 0；`task_success_score` 为 `null`。这次中止不产生 actor 能力分数，也不构成自然任务的科学 residual。
 
-[基础设施恢复记录](OACR_RESIDUAL_DEV24_INFRA_RECOVERY_2026-10-04.md)显示：损坏的共享 Gmail DB 已用作者固定数据包的原始字节恢复，12 个共享 DB 的哈希与 canonical 包对齐；没有读取任务正文、gold 或评分标签。恢复臂需沿用相同 24 个 task/family hashes 与原顺序，使用独立 freeze、run ID 和结果目录；原批中止记录不得覆盖。**截至本记录核对的公开文件，恢复臂尚无 24 项 actor/评分结果。** [静态审查](OACR_RESIDUAL_DEV24_AUDIT_2026-10-04.md)通过启动代码门槛，仍待实际原生运行及失败归因。
+[基础设施恢复记录](OACR_RESIDUAL_DEV24_INFRA_RECOVERY_2026-10-04.md)显示：损坏的共享 Gmail DB 已用作者固定数据包的原始字节恢复，12 个共享 DB 的哈希与 canonical 包对齐；没有读取任务正文、gold 或评分标签。恢复臂在 `a862d4754072294cd6a8b4d9465a349a99a68a26` 独立预冻结，沿用相同 24 个 task/family hashes、顺序、producer 与预算；原批中止记录完整保留。
+
+**恢复臂的 24 个任务位现已全部记录。** [范围化结果报告](OACR_RESIDUAL_DEV24_RESULTS_2026-10-04.md)与[完整归因账本](../experiments/oacr_residual_discovery/recovery/ATTRIBUTION_LEDGER_2026-10-04.json)区分：20 项原 producer 终态评分（18 成功、2 未成功），3 项额度中断保存前缀（1 成功、2 未成功），以及 1 项基库初始化失败未评分。固定分母仍为 24；23 次原生评分的 19 次观测成功包含一条中断前缀，不是 24 条完整 actor 轨迹的成功率。已知原生测试小计为 120/137。
+
+索引 10–12 的 controller 在额度中断中消失；先于评分提交的[中断处置](OACR_RESIDUAL_DEV24_RUNTIME_INTERRUPTION_2026-10-04.md)仅对已保存前缀评分一次，没有重启 actor 或重放 native actions。原始 exporter 的三项异常与 `all_fixed_rows_audited: false` 保留；[限定审计](../experiments/oacr_residual_discovery/recovery/QUALIFIED_AUDIT_2026-10-04.json)检查单独处置记录，不将其伪装成原 producer 正常终态。索引 13 的共享 Amazon 基库字节再次损坏，成因未知；保留启动失败，恢复 canonical 字节后继续其余固定任务，不重试索引 13。
+
+20 项终态均未触发预注册高成本阈值。已知成本小计为 165 次 execute、159 次原生执行、947 条 API requester records；中断项的完整墙钟和成本未知，模型使用非零但 checkpoint、tokens、调用与费用均未知。没有 OACR 干预、方法比较或封存评估库使用。
+
+[接口冷审](OACR_DEV24_TRANSPORT_AUDIT_2026-10-04.md)确证索引 1 同一个 execute UUID 执行三次，76 条 API records 中 40 条来自额外重复执行；终止出错发生于 response publication。保留原评分与成本，该项不支持科学 R1/R3，精确请求保留原因未定。[任务冷审](OACR_DEV24_TASK_FAILURE_AUDIT_2026-10-04.md)对索引 2 未建立因果解释；序列化/验收差异仅是低置信假设，不能宣称 evaluator bug。窄经典诊断控制已说明、尚未执行。
+
+因此只有一项原因未决的原生失败，没有同机制跨任务复发，也没有经典控制下存活证据。**R1、R3、R4 未达到，不准新核心晋级。** Support-Lifecycle 继续退出；这轮不产生独有算法结论，也不证明未来没有可成立的结构增量。
 
 ## 下一次可晋级的条件
 
-- 保留原批 24 行及独立恢复臂的完整 24 行；任何再次启动失败也单列，禁止按结果换任务。
+- 原批与恢复臂的各 24 行已保留；后续不得覆盖原记录或按结果换任务。先在新版本处理 request at-most-once admission 与 host/native 文件边界，transport-only 诊断通过后再冻结后续执行。该修复目前只是审查建议，未实现或测试。
+- 经典窄诊断须独立预注册；它不重写本批结果，也不将未决归因当作经典控制存活。继续按结果无关的任务选择寻找同机制复发。
 - 若出现跨独立开发任务的同类原生剩余问题，先执行同合法信息、同原生评分、同完成约束的强经典控制；记录完整资源成本与模型成本中的未知项。
 - 只有 R1–R5 都有证据，才构造新的核心候选。若强经典控制消除剩余问题，归档为适配或工程结论。
 - 冻结的 512-unit 评估库保持封存，直到原[升级 gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)的科学 estimand、实现、对手与最终构造通过审查。
