@@ -11,9 +11,13 @@
 
 ## 结论与范围
 
-24 项 discovery 的设计可用于开发诊断；不能用旧 smoke 桥不经修改直接执行。
-旧桥缺少 actor 总时限，异常请求会漏记 step，旧 exporter 也会排除未正常 finish 或
-未评分的尝试。下列门槛须在任何 actor 取得 task prompt 前落实并冻结。
+最终 dev24 实现的静态复核已完成，发现的 deadline/ledger 与 receipt 分类阻断项已修正，
+没有发现尚未解决的代码 launch blocker；最终 freeze 已核对匹配。随后原批在前 6 项
+初始化时因资产 DatabaseError 中止，尚无 actor/评分证据；不能继续写作“可启动的原批”。
+文末规定独立基础设施恢复臂及原批 24 行的保留方式。24 项设计仅用于开发诊断。
+
+旧 smoke 桥不能不经修改直接执行：它缺少 actor 总时限，异常请求会漏记 step，旧
+exporter 也会排除未正常 finish 或未评分的尝试。下文保留具体审查要求及最终解决证据。
 
 本次附加门槛比用户协议 R1 的例外更严格：不采用 formal-counterexample 豁免；
 晋级仍要求至少 3 个 development tasks、至少 2 个 families，且实跑 R3 control。
@@ -196,16 +200,83 @@ instructions、exporter 和 dev24 execution preregistration。发现的两项 pr
 `2ed99b2c5ccc0e5a97439390f21192c1ce2b47b649f557932d75dad49d8c9c8c`；root 报告在
 任何 task/world/actor 启动前发现上述阻断项，保留首份为 `preflight_freeze_1.json`，
 使用新的私有 run directory 重新 prepare。首份不得作为最终 producer 的运行 freeze。
-最终 freeze 须匹配上表 bridge/client SHA，并在第一位 actor 之前提交 Git；结果记录该
-commit/hash。exporter 同样在首跑前提交，以固定分析路径，不作为 actor producer。
+最终 metadata-only prepare 的 freeze SHA256 为
+`cf9530a3fe8e5d9c87a17113d3f15356e77d97c66fd848e48434ab3845b15648`；本审查核对其
+bridge/client hashes、execution protocol hash 和 actor instructions hash 均匹配当前文件，
+24 项索引与 family 数量不变。root 报告 prepare 加载 task/world 数量为 0。
+首位 actor 前仍须提交 Git；结果记录该 commit/hash。exporter 同样在首跑前提交，
+以固定分析路径，不作为 actor producer。
 
 有限预运行证据：公开 `PREFLIGHT_2026-10-04.json` 记录 controller-only watchdog 缩短
 为 0.25s 时在约 0.251s 中断 idle wait，native SIGALRM handler 未改变，两个合法 AST
 示例通过、三个 host/private 示例被拒绝，worlds loaded 为 0；工程方报告最终两文件
 AST/bytecode compile 通过。root 另以静态 venv `find_spec('appworld').origin` 核实 canonical
 import 指向 pinned checkout 的 `src/appworld/__init__.py`，没有加载 task/world。
+更新后的 public preflight 还记录：最终 native window 截止仍保留 ledger，protected
+ledger 完成后才抛 cutoff exception，缩短 grading timer 可以中断且恢复 native SIGALRM，
+三项均 true，worlds 为 0。本审查读取这些报告，没有重跑测试。
 这些证据支持启动路径配置，不能升级为 adversarial isolation 或真实 task success 证明。
 
 本审查没有执行 bridge、prepare、exporter、actor、grade 或原生环境；仅读取公开代码、
 元信息 freeze 和上述 public preflight report。后续失败/highcost 归因、R3 controls 和
 R1-R5 晋级仍按前文门槛办理。
+
+## 基础设施中止与独立恢复臂
+
+controller 随后报告：原 batch 的前 6 项在 AppWorld initialization 的
+`from_db_connection.backup` 抛 `DatabaseError`（malformed database）；6 项均未开始 actor、
+未交付 prompt、未调用 grade。其余 18 项因共同基础设施故障而未启动。这是 controller
+报告的启动状态，本审查没有打开数据库、任务内容、gold、private 日志或执行环境。
+
+原 batch 应永久封存为 **infrastructure_aborted**，固定 24 行：
+
+| 原批行数 | 状态 | 可报告的含义 |
+| --- | --- | --- |
+| 6 | initialization_database_error | 6 次 world initialization 尝试；成功初始化 worlds、actor starts、prompt delivery、evaluator invocations 均为 0 |
+| 18 | not_started_due_infrastructure_abort | 为共同基础设施故障统一停止，未根据任务成败选择跳过；不是遗失记录或 native evaluator 判 false |
+| 24 | 原批完整分母 | native-scored tasks 为 0；不存在可解释为 actor 能力的 0/24 成绩 |
+
+保留原 freeze、commit、6 项 summary/events、原 outputs、18 项显式未启动状态和中止原因。
+原 actor window、原生评分和模型成本没有观察值时不补造结果。尤其通用 exporter 的
+“model usage nonzero”常量不适用于本次无 native actors 的中止批：原批报告须按实际
+controller invocation ledger 写 native actor invocations/usage 为 0；controller/工程对话
+的模型使用不是该实验 actor 成本。不要由初始化失败推断没有加载过 task metadata，
+也不要把初始化 API/server 工作混为 actor requester records。
+
+用户上位协议禁止的是 task replacement 和 score-conditioned retry。按同 24 IDs 修复
+资产并另注册恢复臂，属于完成已授权执行任务的例行基础设施恢复；不需为例行修复再
+开启权限流程。但原执行注册含通用 `retries_or_task_replacement=False`，因此不能暗中
+续跑后声称原批仍满足该字段。必须明确写：**原批已中止；恢复臂是新的基础设施尝试，
+六项有 initialization reattempt，十八项此前未启动；没有 score-conditioned actor retry。**
+这不是将原批失败改为成功，也不把两个 batch 合并为 48 项独立任务。
+
+恢复臂事前注册应最少包含：
+
+1. parent batch 的最终 freeze hash `cf9530a3fe8e5d9c87a17113d3f15356e77d97c66fd848e48434ab3845b15648`、
+   原 pre-run commit、中止 6/18 状态、零 actor 信息暴露及恢复理由。
+2. 完全相同的 24 selected task/family hashes、manifest indices、旧曝光排除与顺序；
+   不额外排除前 6、不换 family、不择难度、不增加样本。旧三项仍是原曝光排除项。
+3. 原样技术恢复 author assets 的来源与不含内容的 hash/版本证据；对完整 canonical
+   asset package/shared infrastructure 恢复，禁止依据 selected task 或 native score 挑选
+   修改数据库。任何完整性诊断只返回基础设施状态/hash，不输出受保护 rows/gold。
+4. 新 run/result/private/mailbox/output namespace；所有 24 项 fresh worlds，预算、seed、
+   prompt/playbook、cold actor context 和 evaluator 保持原注册值。actors 不收到原批错误
+   诊断，不继承 controller 或其它 actor 轨迹。
+5. 恢复臂独立 freeze/commit，首位 actor 前完成；明确 `infrastructure_reattempt=True`、
+   `score_conditioned_actor_retry=False`、`task_replacement=False`。成本分原批与恢复臂
+   展示；技术恢复工作不伪装为 actor 的免费操作。
+6. 恢复臂仍固定 24 分母。若相同初始化故障再次出现，停止该臂、保留状态，不在其内部
+   自动换任务/修输出/恢复 world 后再补一个同 task actor；后续修复须另留版本记录。
+
+最小实现路径有两种。若换一个完整、干净且仍对应相同 author pin/code hashes 的
+source/output root，bridge/client 可以保持逐字不变；experiment 的完整身份须包含该
+新 root/run identity，不能仅比较 basename。若继续同 source root，当前
+`experiment = f"{PROTOCOL}_{index}"` 会与原前 6 项 outputs 冲突，不能删除旧 outputs
+规避保护。此时只增加冻结的 safe run ID/experiment prefix，并让 serve 从 freeze 取
+namespace，是必要的最小配置改动；重新计算 implementation hash，明确“actor 逻辑/
+预算未改，namespace 代码有 delta”，不宣称 producer bytes 完全未改。
+
+恢复后得到的结果只能表述为“同一预选 24-task 集合在已记录资产恢复后的独立开发运行”。
+原批没有自然 actor failure、高成本 actor episode 或 R1 recurrence；基础设施损坏本身
+不是 surviving residual，不满足 R2/R3，也不能为新核心提供晋级依据。discovery 问题
+在原批尚未得到观测回答。恢复臂继续遵守上述归因、classical-control-first 和 R1-R5 门槛。

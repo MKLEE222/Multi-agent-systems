@@ -1,0 +1,264 @@
+{
+  "protocol": "oacr_residual_dev24_v1",
+  "freeze_commit": "13b794c7d9ddf1c56999189ac27ba9315701a4b5",
+  "freeze_sha256": "cf9530a3fe8e5d9c87a17113d3f15356e77d97c66fd848e48434ab3845b15648",
+  "batch_denominator": 24,
+  "world_initialization_attempts": 6,
+  "successful_world_initializations": 0,
+  "actor_invocations": 0,
+  "prompt_deliveries": 0,
+  "native_actor_api_calls": 0,
+  "evaluator_invocations": 0,
+  "task_success_score": null,
+  "status": "infrastructure_aborted",
+  "rows": [
+    {
+      "index": 0,
+      "task_id_sha256": "f6698e50c86429c99bbed9b9f65ff69a565ea2e7584095f7bbc89890342e4616",
+      "family_sha256": "b1b55dd5566c6332a2d17a199a9177e6f34d9ba69268834a7cea5e32aafbffd8",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 1,
+      "task_id_sha256": "1fed9164bbc8cc76ce95257c456da993fc69773134ccf81733d3818af0fb8cfa",
+      "family_sha256": "416d8c581a81e5cf453ecf37e3618515d48a12ffc2b7483572b2cbac17465ef3",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 2,
+      "task_id_sha256": "ea980c2b3fe30c2479b7eeec44e1abfba374a3b34b0811d567fe70de3ee51086",
+      "family_sha256": "6410b74c66b363243f508ed0e1dd0c943cb54b8155d25a1c68fba349c70e80a0",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 3,
+      "task_id_sha256": "08167d1b4c9984ddbb88791db8e8951c3e9835e3ef6c18cee163991ed13f653b",
+      "family_sha256": "8fd285c505779629736ac2a1b59a0ab867e6918624f177a10fcaa10f06971387",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 4,
+      "task_id_sha256": "36bffdce14b3c57b44e8f36ab2dfbab7d640e37aad4853c225055ca92dc3deb2",
+      "family_sha256": "1fa4fdc36fa7e1c6bad48fa295a107f72c0118ea5cb0e23caf51d9fbf806f58a",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 5,
+      "task_id_sha256": "0ef9c1f9da9b7e89677c297dd1257e736bdddacb7f2e551ca4d69c695990041c",
+      "family_sha256": "c2dbfa215b003fda0486751aa200355b3f3ad4e982d4dfaf01c244567f85f67a",
+      "status": "initialization_database_error",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0,
+      "events_sha256": "baf3df11e116271d29b1c423da922126b20c402909ef21b955b34760eab4f043"
+    },
+    {
+      "index": 6,
+      "task_id_sha256": "778b960132d2cf9f904ef8e2e8e2ae10a86534ad3b5444e5089b9cf8d46f5917",
+      "family_sha256": "3642fa38f26f9363a1492329884caa17f5533f9bca87280a3428a37b84feda2a",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 7,
+      "task_id_sha256": "3193bf4191ecae04241a774152778aa7078cfb6d11b5872da22756f4564267a0",
+      "family_sha256": "4bc74fa1f1b08c6df61f308afd543a436713cc71d79e076de2dec7d03b1d1515",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 8,
+      "task_id_sha256": "c3593f125c4c4d3088eba049e14a32111ff84d3a18deb18849131109b3cbc160",
+      "family_sha256": "357f56eb4a9d1c521f465e31beb6cc99e5a9b512171603522695a98aae0f4772",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 9,
+      "task_id_sha256": "ab40b91176aa2e92ba27f929465c184aea656e4549f67bb360b512adcd23525b",
+      "family_sha256": "9cd0e65b0dc176e7b4c64351046e6c9bb82f1a8c668e096886f45d491fc971ff",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 10,
+      "task_id_sha256": "503d49e2456f5fefbc595270c572deb68e4c3bf9f84c07a37820a4c735573f91",
+      "family_sha256": "78595d38c3b2d3150515c0c35a8be87122aece33c0b6f7235e7ef644717364cc",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 11,
+      "task_id_sha256": "abc7887647b99a905011cb6a0384d9b5f100ac0c19b3af2da4b62b1294989bc3",
+      "family_sha256": "1580bcaa83c8a2c1dea3a79717b4574266107b64922595ea5dc323dd3466162e",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 12,
+      "task_id_sha256": "abfa142d0da12f87a966bb167f0c13bd10175b667c1bd09dcf241264c2427fc5",
+      "family_sha256": "2c9d3a377ff0daf7b19aad8c9258b1c7a26610c29cd0410a6cbcb4b40a0ab5c3",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 13,
+      "task_id_sha256": "14164ac5a01f4804d0e8d8ffb9561a1d82909e6b48dfac5f8998c75ddaf53571",
+      "family_sha256": "9632777f9becec6e4b35cd0afdb87c748901ae759107454f9ac934d3ea282a56",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 14,
+      "task_id_sha256": "1d6db95bcc627dbb4db52e64126e9c6a8ada0bf1a84c29f7de3783b9a5b35b6d",
+      "family_sha256": "caabbd13e83fa134e68aa5022d0d5b0b89dd41e7b85430f64f3b58ff52de08dc",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 15,
+      "task_id_sha256": "99ee7f3d1005eaa61807f9253ab108bce183899bb43d8389d0d998a1736e4b1c",
+      "family_sha256": "81b3666aa05a1bd75b8c006d3590c0ae4d68c499707a13ebdf614ff3232ee946",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 16,
+      "task_id_sha256": "09652b8caabc0ed837194c0e2c0ba50388ee8d92cea78e20d5b001e959982851",
+      "family_sha256": "8f3d33053ab464c1ddee9f41d2c5a459aeda3b8ba266daf6f67e652b7e7a4cb2",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 17,
+      "task_id_sha256": "482362088a71872f13d20dfb872e99691747a4fbca31c82b99d2d963667033da",
+      "family_sha256": "19ef2ee2506e57fd8151f127e1f75742c498616a6947e007ea4f15040d12ca03",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 18,
+      "task_id_sha256": "d7dee2632fc7e6e1885943b68eca2ec16f1097488983eea47045bca586aff05f",
+      "family_sha256": "7b22dc7a0db739fabfbe211cdee12277ff6c1d7b1df8ef8d453c9ff0caa17a56",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 19,
+      "task_id_sha256": "3edf527ef034f2addb78f1f8f182ebecbf020f85d6b8e8e958b8b77ac10f2267",
+      "family_sha256": "4e05d84492d18ec928c1b3a9fe36f5b82bf299d665d4b3b8a8d9b4184b1ed5b6",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 20,
+      "task_id_sha256": "6fc8d13a141658b9a2884c64474477c6a82b3ad5990f2ef5527d8e0f3b1b08fc",
+      "family_sha256": "520c38532177b5756fcb0426242020093d388f4a8adbf372d4d0d88e72c0b3cb",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 21,
+      "task_id_sha256": "3dd1552a041fc2a6401a6fae7a82eaea111ed94ffa85bfe8a48d741d56c9e21f",
+      "family_sha256": "deb5d8c71a10eba13c67dd38e923acb61073017c275cb415b37508dd35e9e33e",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 22,
+      "task_id_sha256": "b282c8e43cc6c0b588d92c74aad37b6be02037569ff5d53ffb7bc8a40e0d0d51",
+      "family_sha256": "db39d0316b6e0556766b1bb894ff7cd51eb4166bafc577b09af828fbb93e3cf2",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    },
+    {
+      "index": 23,
+      "task_id_sha256": "bb18fdfe9cbaf070e992eccd6a1d49f29296f56b05028f6345db28c562e90441",
+      "family_sha256": "6bd5a7e1aafc31f690fd7d4c65262449c41e7b4374c3c83f96d3bb81ef4eb683",
+      "status": "not_started_due_infrastructure_abort",
+      "grade_status": "not_run",
+      "actor_started": false,
+      "execute_requests": 0,
+      "evaluator_attempts": 0
+    }
+  ],
+  "recovery_results_replace_this_batch": false,
+  "interpretation": "24 fixed rows:6initializationfailures18notstarted; not an actor capability score or scientific residual."
+}

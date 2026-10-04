@@ -1,0 +1,105 @@
+{
+  "source_url": "https://s3.us-west-2.amazonaws.com/appworld.dev/data-0.1.0.bundle",
+  "bundle_bytes": 34280074,
+  "bundle_sha256": "fd9f9608c2ec71ed0ac25c3633a738b9129a318a129e31230425b9188e508250",
+  "assets": [
+    {
+      "asset": "admin.db",
+      "bytes": 286720,
+      "canonical_sha256": "2a54320b5c0f3e15ec42a91ff6d48a35c1b9402a439676fd83abe9cba6907ac9",
+      "installed_sha256": "2a54320b5c0f3e15ec42a91ff6d48a35c1b9402a439676fd83abe9cba6907ac9",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "amazon.db",
+      "bytes": 25178112,
+      "canonical_sha256": "0507b4e718504fbba85c6871f3b185b3d1b4c9c3020f5e4bd8d3e118a6ab9f1d",
+      "installed_sha256": "0507b4e718504fbba85c6871f3b185b3d1b4c9c3020f5e4bd8d3e118a6ab9f1d",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "api_docs.db",
+      "bytes": 598016,
+      "canonical_sha256": "40bf67a299fbd2300aae1ed966a42b585f0fbf5571bd8a0ac719c91938399931",
+      "installed_sha256": "40bf67a299fbd2300aae1ed966a42b585f0fbf5571bd8a0ac719c91938399931",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "file_system.db",
+      "bytes": 8593408,
+      "canonical_sha256": "6073413135b14fff3ea3a289574d04d9815ea257ebbc3083db25eb97b634846a",
+      "installed_sha256": "6073413135b14fff3ea3a289574d04d9815ea257ebbc3083db25eb97b634846a",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "gmail.db",
+      "bytes": 62545920,
+      "canonical_sha256": "b7c9d69a557014e0d1e7f9d8c089abba389731e0a3cb1fa8b0432fae7b8bc600",
+      "installed_sha256": "d1130f96bc6e3f20943439a9e4d1df9afa622bf28c4d18788e30bdebe41dc0ab",
+      "bytes_match": false,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "phone.db",
+      "bytes": 12611584,
+      "canonical_sha256": "cc4b9469902a874adae83ba73f88d3b96e650fbabb34119409f13710abe0a143",
+      "installed_sha256": "cc4b9469902a874adae83ba73f88d3b96e650fbabb34119409f13710abe0a143",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "simple_note.db",
+      "bytes": 9961472,
+      "canonical_sha256": "58bfe70a5272be257a07bac3508d17c1d657c431c9628038c21a7e955e9827ed",
+      "installed_sha256": "58bfe70a5272be257a07bac3508d17c1d657c431c9628038c21a7e955e9827ed",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "splitwise.db",
+      "bytes": 6017024,
+      "canonical_sha256": "36c88eb0b56b9663a74cc8696b520175afe2dedad5c9c9b7fcbbc3135e7ca8a3",
+      "installed_sha256": "36c88eb0b56b9663a74cc8696b520175afe2dedad5c9c9b7fcbbc3135e7ca8a3",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "spotify.db",
+      "bytes": 1863680,
+      "canonical_sha256": "ef3c6b2a09938cbf862ff7a0fdabdace6cbda6454038c0405695b4edf3f80fba",
+      "installed_sha256": "ef3c6b2a09938cbf862ff7a0fdabdace6cbda6454038c0405695b4edf3f80fba",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "supervisor.db",
+      "bytes": 45056,
+      "canonical_sha256": "410f9388a56d356d50a91e3b42b47777cf8bf0fed86a8c2461f598d91c562072",
+      "installed_sha256": "410f9388a56d356d50a91e3b42b47777cf8bf0fed86a8c2461f598d91c562072",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "todoist.db",
+      "bytes": 2916352,
+      "canonical_sha256": "5470d42bbc9ba39467b279ac2eab62b1978efa3b48d116274438d7031f54fdbb",
+      "installed_sha256": "5470d42bbc9ba39467b279ac2eab62b1978efa3b48d116274438d7031f54fdbb",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    },
+    {
+      "asset": "venmo.db",
+      "bytes": 4739072,
+      "canonical_sha256": "129606cdcf93b290fe91bf11a4133d20bb498f943af27bec2ef49007320ad749",
+      "installed_sha256": "129606cdcf93b290fe91bf11a4133d20bb498f943af27bec2ef49007320ad749",
+      "bytes_match": true,
+      "canonical_integrity_ok": true
+    }
+  ],
+  "task_rows_inspected": false,
+  "gold_inspected": false
+}
