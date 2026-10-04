@@ -1,0 +1,15 @@
+{
+  "changed_assets": [
+    {
+      "asset": "amazon.db",
+      "installed_bytes": 15411712,
+      "installed_sha256": "5061d7f9174e379793bd28de9bb631ed14027c277568f1a151285d53faf61021",
+      "canonical_sha256": "0507b4e718504fbba85c6871f3b185b3d1b4c9c3020f5e4bd8d3e118a6ab9f1d",
+      "canonical_bytes": 25178112
+    }
+  ],
+  "all_12_canonical_after_restore": true,
+  "task_or_gold_rows_inspected": false,
+  "score_conditioned_retry": false,
+  "damaged_asset_cause": "unknown"
+}
