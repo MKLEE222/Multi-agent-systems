@@ -1,0 +1,17 @@
+{
+  "registered_at_utc": "2026-10-05T02:58:29.799606+00:00",
+  "changed_assets": [
+    {
+      "asset": "simple_note.db",
+      "installed_bytes": 2295808,
+      "installed_sha256": "e09261f6759b377ee024bd3c0530d775e988f88ae514444d4b6460c08288dc6c",
+      "canonical_bytes": 9961472,
+      "canonical_sha256": "58bfe70a5272be257a07bac3508d17c1d657c431c9628038c21a7e955e9827ed"
+    }
+  ],
+  "all_12_canonical_after_restore": true,
+  "damage_cause": "unknown",
+  "task_or_gold_rows_inspected": false,
+  "native_diagnostic_started": false,
+  "original_producer_or_results_modified": false
+}
