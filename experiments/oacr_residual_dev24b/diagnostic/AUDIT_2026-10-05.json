@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-05",
+  "scope": "post_run_artifact_audit",
+  "passed": true,
+  "result_sha256": "fc9cdf48141a2d2b6e1e87673d79e9db275d60174d002e7aea7f288ba06e9166",
+  "freeze_commit": "8af3081f54a325a545b6abec099b6df04589f0eb",
+  "freeze_sha256": "890ea6405bafe6608b49a018a5a8faa740514a1aa4e26069ed014695e09804c0",
+  "audit_source_sha256": "d30b26901ed0e0e402a0f9911f68d7cf3939f499dd911ecded69c2858a2c586f",
+  "arm_costs": {
+    "A": {
+      "native_attempts": 10,
+      "native_api_calls": 88,
+      "receipt_bytes": 34007,
+      "native_elapsed_seconds": 1.094714262999787,
+      "grade_attempts": 1
+    },
+    "B": {
+      "native_attempts": 10,
+      "native_api_calls": 88,
+      "receipt_bytes": 33715,
+      "native_elapsed_seconds": 1.056878616999711,
+      "grade_attempts": 1
+    }
+  },
+  "fixed_native_steps_each_once": true,
+  "receipts_and_payload_hashes_verified": true,
+  "paired_parsers_and_readback_rechecked": true,
+  "barrier_source_and_file_order_verified": true,
+  "canonical_shared_assets_matching_after_run": 12,
+  "original_A_receipt_hashes_matching": 9,
+  "original_frozen_code_and_legal_evidence_hashes_reverified": true,
+  "model_calls_by_audit": 0,
+  "world_native_evaluator_calls_by_audit": 0,
+  "limits": [
+    "artifact audit and frozen source verification; not an independent native replication",
+    "file order checks use local filesystem metadata; no cryptographic execution attestation",
+    "root model tokens and billing are unavailable",
+    "installed native app source hashes are pinned; not tracked in the ACE Git revision"
+  ]
+}

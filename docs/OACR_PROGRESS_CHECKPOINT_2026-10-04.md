@@ -1,6 +1,6 @@
 # OACR 研究进度记录（2026-10-04）
 
-记录位置：[PR #89](https://github.com/MKLEE222/Multi-agent-systems/pull/89) 的 `work/ocar-takeover-20261001` 分支。本文是证据状态索引，不替代各实验协议、结果文件或最终验收 gate。本次更新纳入 24 个冻结任务位的执行、三项中断前缀处置及两项冷审；本记录本身没有重新运行实验。
+记录位置：[PR #89](https://github.com/MKLEE222/Multi-agent-systems/pull/89) 的 `work/ocar-takeover-20261001` 分支。本文是证据状态索引，不替代各实验协议、结果文件或最终验收 gate。原 10 月 4 日记录纳入 24 个冻结任务位、三项中断前缀处置及两项冷审；下文新增 10 月 5 日单代理工程与 paired diagnostic 结果，历史实验行和评分不覆盖。
 
 ## 当前判定
 
@@ -11,7 +11,7 @@
 | Support-Lifecycle 抽象 | **退出独有核心** | [kill test](OACR_SUPPORT_LIFECYCLE_KILL_TEST_2026-10-03.md) 的七条理论线和原生载体审查发现 ATMS、SBFE、LPCFS、规划、溯源、物化视图维护、运行时监测等直接近邻。此判定针对当前抽象主张；具体结构算法仍须逐项比较。 |
 | 经典主动取证控制 | **实跑、归类为经典能力** | [精确结果](../experiments/oacr_support_kill/CLASSICAL_WITNESS_2026-10-03.json)：16 worlds、81 partial observations、24 fixed orders；固定顺序期望查询成本 `25/8`，最优自适应决策树 `21/8`，最坏情形均为 4。该四位自构见证不是官方任务收益。 |
 | ACE/AppWorld 原生入口 | **执行路径可用** | [三项原生 train 变体](OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md) 在同一场景 family 上 3/3 成功，证明接口可执行；完整 ACE 学习闭环和跨 family 收益未验证。 |
-| 多场景原生残差发现 | **24 个任务位已记录，无合格残差** | [DEV24 结果](OACR_RESIDUAL_DEV24_RESULTS_2026-10-04.md)：20 项原 producer 终态评分中 18 成功；另 3 项额度中断前缀、1 项基库启动失败单列。两项终态未成功中，一项有确证接口干扰，另一项定因未决；经典诊断控制尚未执行。 |
+| 多场景原生残差发现 | **24 个任务位已记录，无合格残差** | [DEV24 结果](OACR_RESIDUAL_DEV24_RESULTS_2026-10-04.md)：20 项原 producer 终态评分中 18 成功；另 3 项额度中断前缀、1 项基库启动失败单列。index 1 有确证接口干扰；[10 月 5 日独立控制](OACR_DEV24B_QUOTE_DIAGNOSTIC_RESULTS_2026-10-05.md)得到 quote-all 未通过、minimal quote 通过，index 2 归档为经典序列化/验收敏感性。控制臂不拼入原成功率。 |
 | BFCL 与效应授权 | **经典适配/控制** | [BFCL 开发回放](OACR_REAL_BFCL_EXECUTION_2026-10-02.md) 的 54 个 unknown 已分解为信息边界和可补工程缺口；同场强经典维护没有留下独有调用收益。[效应授权报告](OACR_MOE_COLD_START_AND_EXECUTION_2026-10-02.md) 的 31 项构造检查通过，effect equality 条件归入经典检查。 |
 | 既有 R4、SQEC、BRFP 证据 | **保留原范围** | 见[唯一升级验收 gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)。已有精确或控制实验不承担这轮独有核心的新颖性证明。 |
 
@@ -42,10 +42,20 @@
 
 因此只有一项原因未决的原生失败，没有同机制跨任务复发，也没有经典控制下存活证据。**R1、R3、R4 未达到，不准新核心晋级。** Support-Lifecycle 继续退出；这轮不产生独有算法结论，也不证明未来没有可成立的结构增量。
 
+## 10 月 5 日：两次 kill 已执行，B 保持未启动
+
+用户因异常用量暂停子代理，本轮只使用单主代理。新 transport 和桥接实现单独保存，没有修改旧 producer。[纯 stub stress](../experiments/oacr_residual_dev24b/TRANSPORT_STRESS_RESULT_2026-10-04.json) 26/26 通过，154 个 callback-admitted UUID 对应 154 次 callback；无 native task/API/evaluator/model 调用。4 项 controller audit 通过，覆盖重复执行、缓存篡改和发布后清理失败的实际成本。保证为 at-most-once，未知结果 fail closed；不是任意 crash 下的 exactly-once，新 bridge 的完整 cold-actor 集成尚未运行。
+
+paired quote diagnostic 在 `8af3081f54a325a545b6abec099b6df04589f0eb` 预冻结并回读后执行。两条独立 fresh-world 臂只改变 quoting，解析和公开 read-back 的 72 行及来源/顺序/操作不变量通过；producer 成功位 A=0、B=1。按预注册 `01` 分支，index 2 退出独有核心候选，归入经典 acceptance/serialization sensitivity。quote-all 在独立 CSV parser 下有效；未读取 evaluator report，不声称 malformed CSV 或 evaluator bug。原实例失败记录保留，控制不增加独立开发任务数。
+
+本次实际 diagnostic 成本为 20 次 native execute、176 条 API requester records、67,722 receipt bytes、2 次评分，parent 墙钟 10.199182 秒；固定 actor model calls 为 0。主代理工程/审查模型消耗非零且 tokens/费用未知，异常账单原因没有因此查明。执行后审计通过，原 A 的 9 个 native receipt hashes 与旧合法记录一致；12 个共享基库及原冻结来源哈希重验通过。启动前 `simple_note.db` 的再次损坏先备份再恢复 canonical 原始字节，成因未知，按环境问题记录。
+
+详见[完整诊断报告](OACR_DEV24B_QUOTE_DIAGNOSTIC_RESULTS_2026-10-05.md)及[控制用量的 B 执行准备](OACR_DEV24B_BOUNDED_EXECUTION_PLAN_2026-10-05.md)。两项实验前置门槛已通过，**DEV24-B 尚未冻结、B prompt 未读、B world/actor 均为 0**；子代理暂停持续有效。没有新的 R1/R3 机制残差，Support-Lifecycle 不复活，独有核心仍未发现。
+
 ## 下一次可晋级的条件
 
-- 原批与恢复臂的各 24 行已保留；后续不得覆盖原记录或按结果换任务。先在新版本处理 request at-most-once admission 与 host/native 文件边界，transport-only 诊断通过后再冻结后续执行。该修复目前只是审查建议，未实现或测试。
-- 经典窄诊断须独立预注册；它不重写本批结果，也不将未决归因当作经典控制存活。继续按结果无关的任务选择寻找同机制复发。
+- 原批与恢复臂的各 24 行已保留；后续不得覆盖原记录或按结果换任务。新 transport 的纯 stub gate 已通过，完整 B 运行仍需核验桥接 ledger 与真实成本。
+- 窄诊断已独立预冻结并执行，index 2 不再作为经典控制存活候选。B 须先登记 actor 身份、可执行模型用量上限与计量，保持原 24 family 的 outcome-independent next variants；没有 R1 则停止 AppWorld broad core search。
 - 若出现跨独立开发任务的同类原生剩余问题，先执行同合法信息、同原生评分、同完成约束的强经典控制；记录完整资源成本与模型成本中的未知项。
 - 只有 R1–R5 都有证据，才构造新的核心候选。若强经典控制消除剩余问题，归档为适配或工程结论。
 - 冻结的 512-unit 评估库保持封存，直到原[升级 gate](OACR_FINAL_UPGRADE_ACCEPTANCE_GATE_2026-09-30.md)的科学 estimand、实现、对手与最终构造通过审查。
