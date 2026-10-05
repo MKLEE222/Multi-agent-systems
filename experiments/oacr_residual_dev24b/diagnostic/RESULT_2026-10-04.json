@@ -1,0 +1,107 @@
+{
+  "protocol": "oacr_residual_dev24b_quote_v1",
+  "task_sha256": "ea980c2b3fe30c2479b7eeec44e1abfba374a3b34b0811d567fe70de3ee51086",
+  "family_sha256": "6410b74c66b363243f508ed0e1dd0c943cb54b8155d25a1c68fba349c70e80a0",
+  "freeze_sha256": "890ea6405bafe6608b49a018a5a8faa740514a1aa4e26069ed014695e09804c0",
+  "freeze_commit": "8af3081f54a325a545b6abec099b6df04589f0eb",
+  "actor_ground_truth_loaded": false,
+  "actor_model_calls": 0,
+  "diagnostic_terminal_record": true,
+  "arms": 2,
+  "paired_invariants_passed": true,
+  "retry": false,
+  "status": "paired_complete",
+  "grade_attempts": 2,
+  "arm_status": {
+    "A": {
+      "status": "graded_once",
+      "native_attempts": 10,
+      "delete_attempts": 1,
+      "grade_attempts": 1,
+      "grade_status": "evaluated_once",
+      "producer_success_count": 0,
+      "native_api_calls_known_subtotal": 88,
+      "generated_receipt_bytes_known_subtotal": 34007,
+      "native_elapsed_seconds_known_subtotal": 1.094714262999787,
+      "native_cost_records_complete": true
+    },
+    "B": {
+      "status": "graded_once",
+      "native_attempts": 10,
+      "delete_attempts": 1,
+      "grade_attempts": 1,
+      "grade_status": "evaluated_once",
+      "producer_success_count": 1,
+      "native_api_calls_known_subtotal": 88,
+      "generated_receipt_bytes_known_subtotal": 33715,
+      "native_elapsed_seconds_known_subtotal": 1.056878616999711,
+      "native_cost_records_complete": true
+    }
+  },
+  "commit_proof_sha256": "0a662abebeaaad6dc5b7259b79952ccd001dc4b9cca7c65904557f968508fb14",
+  "predelete": {
+    "A": {
+      "status": "predelete_pass",
+      "count": 72,
+      "distinct_pairs": 72,
+      "source_counts": [
+        12,
+        6,
+        6
+      ],
+      "header_sha256": "70931a764de6f094dc8c72538dbefb5fef705f7bee54a30b8fddc03b81f9b51c",
+      "source_union_sha256": "0802c93050cc4f67eb8f87b6fd046f661f5b426b69ef52ab3ac405781139dc79",
+      "source_components_sha256": "b44034eeb363270270e200c82b4125b5392cfe11437c5b2cbfad29c097302635",
+      "record_order_sha256": "0802c93050cc4f67eb8f87b6fd046f661f5b426b69ef52ab3ac405781139dc79",
+      "row_order_sha256": "c46ab07701630976580ae89f9b1d2c5ef2e6b2a73ef5e5b4cf64b5d35e016682",
+      "row_set_sha256": "b93dcacc2ccf795a1a1b4344d9016802d6dd139e1ce9e708192ad1b1f4bce87a",
+      "readback_parsed_order_sha256": "c46ab07701630976580ae89f9b1d2c5ef2e6b2a73ef5e5b4cf64b5d35e016682",
+      "readback_content_sha256": "5ae952f62d10e41251dd7c443c6b37b7b55c110c6a859a39c9b60772abc79f07",
+      "readback_content_bytes": 3094,
+      "native_attempts": 8,
+      "native_api_calls": 86
+    },
+    "B": {
+      "status": "predelete_pass",
+      "count": 72,
+      "distinct_pairs": 72,
+      "source_counts": [
+        12,
+        6,
+        6
+      ],
+      "header_sha256": "70931a764de6f094dc8c72538dbefb5fef705f7bee54a30b8fddc03b81f9b51c",
+      "source_union_sha256": "0802c93050cc4f67eb8f87b6fd046f661f5b426b69ef52ab3ac405781139dc79",
+      "source_components_sha256": "b44034eeb363270270e200c82b4125b5392cfe11437c5b2cbfad29c097302635",
+      "record_order_sha256": "0802c93050cc4f67eb8f87b6fd046f661f5b426b69ef52ab3ac405781139dc79",
+      "row_order_sha256": "c46ab07701630976580ae89f9b1d2c5ef2e6b2a73ef5e5b4cf64b5d35e016682",
+      "row_set_sha256": "b93dcacc2ccf795a1a1b4344d9016802d6dd139e1ce9e708192ad1b1f4bce87a",
+      "readback_parsed_order_sha256": "c46ab07701630976580ae89f9b1d2c5ef2e6b2a73ef5e5b4cf64b5d35e016682",
+      "readback_content_sha256": "3af3c6e11b8c6e3812141972e135309b901af961c59071daa40e50d765375f7b",
+      "readback_content_bytes": 2806,
+      "native_attempts": 8,
+      "native_api_calls": 86
+    }
+  },
+  "paired_predelete_invariants": "passed",
+  "closed": {
+    "A": {
+      "status": "closed",
+      "native_attempts": 10,
+      "native_api_calls": 88
+    },
+    "B": {
+      "status": "closed",
+      "native_attempts": 10,
+      "native_api_calls": 88
+    }
+  },
+  "producer_success_counts": {
+    "A": 0,
+    "B": 1
+  },
+  "branch": "quote_policy_acceptance_sensitivity",
+  "qualifying_ocar_residual": false,
+  "execution_parent_wall_seconds": 10.199181878999752,
+  "model_cost_scope": "fixed diagnostic actor calls zero; root authoring/review model use is nonzero and unexposed"
+}

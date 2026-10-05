@@ -1,0 +1,20 @@
+{
+  "protocol_id": "OACR_COMMON_ARENA_V1",
+  "date": "2026-10-01",
+  "prior_commit": "68a37acc43e699fdcf37609b7a1764552197fad3",
+  "scope": "development competition on previously exposed structural fixtures; not a public benchmark or independent confirmation",
+  "fixture_protocol": "adaptive_source_compile_v1.json",
+  "task": "Recover native reachability behavior under all allowed future base-edge failures from an old compressed state and a membership source; return a physical persistent-edge representation supporting residual updates.",
+  "common_inputs": ["public G,D and old/new contracts", "same old canonical representation R", "same source snapshot and full query permissions", "unit-cost noiseless membership tests", "public deterministic native semantics", "uniform prior on the compatible old source fiber"],
+  "source_budget": "|D| for full runs; report completion curves obtained by truncating each unchanged policy at budgets 0 through |D|",
+  "baselines": ["published_ec2", "published_effecxtive", "class_information_gain", "exact_expected_optimal", "full_source_rebuild", "structural_lex", "structural_reverse", "structural_span"],
+  "development_candidate": "structural_one_step: under the declared independent uniform fiber prior, choose the query maximizing the expected one-step drop in structurally demanded unknowns; this is a myopic development heuristic without a new optimality guarantee",
+  "ec2_source": "Golovin, Krause, Ray, Near-Optimal Bayesian Active Learning with Noisy Observations, arXiv:1010.3091v2, Section 3, Eq. 3.1 and expected marginal edge-cut criterion. Implement the deterministic uniform-hypothesis special case without modifying the target classes.",
+  "effecxtive_source": "Same paper, Section 4 and Algorithm 1: expected increase in sum of squared target-class posterior probabilities, divided by test cost.",
+  "tie_breaks": "lexicographic for score ties; information-gain floats within 1e-12 tie; structural span sorts by (v-u,u,v) in the fixed public topological labeling",
+  "legal_simulation": "Baseline model generation enumerates possible states and simulates their behavior from public inputs. It never reads verifier outcome files or the true source set. This is allowed computation and all calls are charged.",
+  "physical_output": "Every strategy feeds only known-positive source facts and R to the same native compile_multi encoder. Shared encoder benefit is credited to all methods; there is no private OACR success coordinate.",
+  "costs": "Fresh constructor per request: no cross-request caches or free verifier memoization. Separately record membership queries, demand/selection/final-encoding cut calls and misses, model simulations, scoring/DP work, serialized policy storage, and local CPU. Source latency/storage fees, physical RSS and production costs are unmeasured and cannot be replaced by a scalar synthetic total.",
+  "verification": "Native bitset reachability and residual replay, separate from baseline BFS simulation. Independently enumerate compatible worlds for class certainty and least retained subsets. Validate EC2 closed-form scores by literal cross-class-edge enumeration.",
+  "freeze": "All methods, fixtures, priors, tie breaks and metrics fixed before this execution. All old fixtures retained. No result-driven method tuning. Any later correction must be logged. Existing 512-unit evaluation remains sealed."
+}

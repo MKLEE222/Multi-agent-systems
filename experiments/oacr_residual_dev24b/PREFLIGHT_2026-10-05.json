@@ -1,0 +1,17 @@
+{
+  "registered_at_utc": "2026-10-05T03:03:51.906702+00:00",
+  "transport_stress_tests_passed": 26,
+  "transport_source_and_test_hashes_match": true,
+  "controller_audit_tests_passed": 4,
+  "parser_synthetic_rows": 6,
+  "parser_quote_policies": 2,
+  "malformed_parser_cases_rejected": 3,
+  "native_worlds_started": 0,
+  "task_api_calls": 0,
+  "evaluator_calls": 0,
+  "fixed_diagnostic_actor_model_calls": 0,
+  "root_model_usage": "nonzero; exact calls/tokens/billing unexposed",
+  "diagnostic_freeze_sha256": "890ea6405bafe6608b49a018a5a8faa740514a1aa4e26069ed014695e09804c0",
+  "dev24b_frozen_or_started": false,
+  "prior_preparation_block": "untracked installed API files; zero worlds/artifacts before repair; no original task retry"
+}

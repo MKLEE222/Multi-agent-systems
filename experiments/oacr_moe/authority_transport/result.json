@@ -1,0 +1,4959 @@
+{
+  "protocol": "authority_transport_source_body_mutation_suite_v1",
+  "commit": "5bfa7e37b36656b37dc6d022156be6563c1007f3",
+  "fixture_count": 31,
+  "source_body_native_probe_calls": 62,
+  "admitted_each": 8,
+  "guard_effect_native_mismatches": 0,
+  "unsound_admissions": 0,
+  "all_counted_resources_matched": true,
+  "independent_kernel_claim": "retired_in_this_exact_effect_fragment",
+  "reason": "Candidate effect-bound transport is the same compiled predicate allowed to the strong classical control.",
+  "scientific_scope": "synthetic fixtures/source-body native audit; no full tau2 runner, official tasks, model system, theorem or global priority claim",
+  "guarantee_scope": "explicit structured exact-effect confirmation + declared serial no-interference interval; unknown interference invalidates epochs; no policy/effect guarantee across hidden updates",
+  "cost_scope": "serialized retained facts/grants/ledger/cache, shared implementation/capsule bytes, receipt bytes, READ/probe counts, deterministic work counters; CPU/wall times measured separately, not asserted equal",
+  "shared_costs": {
+    "source_capsule_bytes": 18475,
+    "implementation_bytes": {
+      "core.py": 12523,
+      "native_retail.py": 14784,
+      "source_manifest.json": 3691,
+      "run_mutation_suite.py": 18662
+    }
+  },
+  "freeze": {
+    "protocol": "authority_transport_source_body_mutation_suite_v1",
+    "frozen_before_execution": true,
+    "implementation_sha256": {
+      "core.py": "72ec48b110b0a56566c6147c18c6aa544675538d1453e32ba3a77f0d4517be2a",
+      "native_retail.py": "1301413074d234c706f682d3a5fb73d78348c39ca36c211e6690866e5e09d9b4",
+      "source_manifest.json": "3b2cc820b771cd9e563b7bdfa7906c910c0add9618b78ead3679d274da51467c",
+      "run_mutation_suite.py": "44e623e93d9304023177e8147a4e764488842cf4c3f187648bf54e739aca6ad4"
+    },
+    "scope": "31 publicly constructed fixtures; structured exact-effect authority; explicit serial harness window; no model/no official tasks",
+    "resource_equality_excludes_runtime_timing": true,
+    "method_controls": [
+      "exact intent and version caching",
+      "affine ready/spent/uncertain ledger",
+      "compiled effect-predicate semantic fallback supplied equally"
+    ]
+  },
+  "wall_time_ns": 43890370,
+  "cases": [
+    {
+      "name": "single_write",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 75742,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 75633,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "exact_intent_version_cache",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 2,
+            "cache_writes": 1,
+            "guard_lookup_visits": 19,
+            "effect_comparisons": 2
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 41522,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 2,
+            "cache_writes": 1,
+            "guard_lookup_visits": 19,
+            "effect_comparisons": 2
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 36284,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "equivalent_reordered_pair",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 15.0,
+                    "options": {
+                      "color": "green"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n2",
+                    "price": 15.0,
+                    "options": {
+                      "color": "green"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "refund",
+                  "amount": 0.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": 0.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2842,
+          "state_hash": "fd1eaffd53fb67a253945f3c7b7757f4482891391db461926c0aab66c86f4e97",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 15.0,
+                "options": {
+                  "color": "green"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n2",
+                "price": 15.0,
+                "options": {
+                  "color": "green"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "refund",
+              "amount": 0.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": 0.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1395,
+          "prepare_cpu_ns": 44095,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 15.0,
+                    "options": {
+                      "color": "green"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n2",
+                    "price": 15.0,
+                    "options": {
+                      "color": "green"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "refund",
+                  "amount": 0.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": 0.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2842,
+          "state_hash": "fd1eaffd53fb67a253945f3c7b7757f4482891391db461926c0aab66c86f4e97",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 15.0,
+                "options": {
+                  "color": "green"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n2",
+                "price": 15.0,
+                "options": {
+                  "color": "green"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "refund",
+              "amount": 0.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": 0.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1395,
+          "prepare_cpu_ns": 40961,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "terminal_variant_violates_pair_intent",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 22.0,
+                    "options": {
+                      "color": "red"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n2",
+                    "price": 22.0,
+                    "options": {
+                      "color": "red"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 4.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -4.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2827,
+          "state_hash": "1db4cee71f979ee685f76aa57d9854aec78002570159bb099cbdd0014f9a0348",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 22.0,
+                "options": {
+                  "color": "red"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n2",
+                "price": 22.0,
+                "options": {
+                  "color": "red"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 4.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -4.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 38347,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 22.0,
+                    "options": {
+                      "color": "red"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n2",
+                    "price": 22.0,
+                    "options": {
+                      "color": "red"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 4.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -4.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2827,
+          "state_hash": "1db4cee71f979ee685f76aa57d9854aec78002570159bb099cbdd0014f9a0348",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 22.0,
+                "options": {
+                  "color": "red"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n2",
+                "price": 22.0,
+                "options": {
+                  "color": "red"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 4.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -4.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 36694,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "sequential_collision_violates_simultaneous_intent",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "faeda0a0dd849d2dd8d29479b42a06494cab6c21a2eefe4609e0361a034f3fbf",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 37145,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "faeda0a0dd849d2dd8d29479b42a06494cab6c21a2eefe4609e0361a034f3fbf",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 36455,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "payment_id_changed",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "cc"
+                },
+                "gift_card_delta": null
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2826,
+          "state_hash": "7b5891c1107437fe3f2e8ed74b36efd2a4ca39d4067d6acc5a6056c4003e3a52",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "cc"
+            },
+            "gift_card_delta": null
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 31757,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "cc"
+                },
+                "gift_card_delta": null
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2826,
+          "state_hash": "7b5891c1107437fe3f2e8ed74b36efd2a4ca39d4067d6acc5a6056c4003e3a52",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "cc"
+            },
+            "gift_card_delta": null
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 31898,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "confirmation_session_mismatch",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "confirmation_scope_mismatch",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3115,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "confirmation_scope_mismatch",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 2574,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "owner_scope_mismatch",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_owner_mismatch",
+            "obligation": {
+              "native_guard": "scope_owner_mismatch",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ]
+              ],
+              "work": 1,
+              "missing": []
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2269,
+          "state_hash": "2deea1f09fee8fe9f6e8f67aa5c16ecc39f2c9270abfaf46436f1230eef04899",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 17236,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_owner_mismatch",
+            "obligation": {
+              "native_guard": "scope_owner_mismatch",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ]
+              ],
+              "work": 1,
+              "missing": []
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2269,
+          "state_hash": "2deea1f09fee8fe9f6e8f67aa5c16ecc39f2c9270abfaf46436f1230eef04899",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 16925,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "unavailable_variant",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "New item n1 not found or available",
+            "obligation": {
+              "native_guard": "New item n1 not found or available",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": []
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 2270,
+          "state_hash": "cdb54e9de4b166044cb4ef603fe0482fb62ba46a64a6af33859d9498a46888f7",
+          "native_guard_prediction_checked": true,
+          "native_error": "New item n1 not found or available",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1393,
+          "prepare_cpu_ns": 20020,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "New item n1 not found or available",
+            "obligation": {
+              "native_guard": "New item n1 not found or available",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": []
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 2270,
+          "state_hash": "cdb54e9de4b166044cb4ef603fe0482fb62ba46a64a6af33859d9498a46888f7",
+          "native_guard_prediction_checked": true,
+          "native_error": "New item n1 not found or available",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1393,
+          "prepare_cpu_ns": 18748,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "wrong_product_variant",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "Variant not found",
+            "obligation": {
+              "native_guard": "Variant not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": []
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "Variant not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 23646,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "Variant not found",
+            "obligation": {
+              "native_guard": "Variant not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": []
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "Variant not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 31817,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "insufficient_gift_balance",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "Insufficient gift card balance to pay for the new item",
+            "obligation": {
+              "native_guard": "Insufficient gift card balance to pay for the new item",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2267,
+          "state_hash": "04937fecce62c597b2a51fccfa53851c73555b4d293dd3b26e930f5760ebd065",
+          "native_guard_prediction_checked": true,
+          "native_error": "Insufficient gift card balance to pay for the new item",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1390,
+          "prepare_cpu_ns": 29193,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "Insufficient gift card balance to pay for the new item",
+            "obligation": {
+              "native_guard": "Insufficient gift card balance to pay for the new item",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2267,
+          "state_hash": "04937fecce62c597b2a51fccfa53851c73555b4d293dd3b26e930f5760ebd065",
+          "native_guard_prediction_checked": true,
+          "native_error": "Insufficient gift card balance to pay for the new item",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1390,
+          "prepare_cpu_ns": 29043,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "excess_duplicate_count",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "a not found",
+            "obligation": {
+              "native_guard": "a not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 8,
+              "missing": []
+            },
+            "work": 9,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 9
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "a not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 20220,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "a not found",
+            "obligation": {
+              "native_guard": "a not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 8,
+              "missing": []
+            },
+            "work": 9,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 9
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "a not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 17466,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "valid_duplicate_count",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 4.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -4.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2831,
+          "state_hash": "e2316c407ec1ccd0a8ad5969cd9904d301edafa8044fb3093a4e1497acad70bc",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 4.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -4.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1393,
+          "prepare_cpu_ns": 40130,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 4.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -4.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 25,
+              "missing": []
+            },
+            "work": 27,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 26,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2831,
+          "state_hash": "e2316c407ec1ccd0a8ad5969cd9904d301edafa8044fb3093a4e1497acad70bc",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 4.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -4.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1393,
+          "prepare_cpu_ns": 38217,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "same_old_new",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "The new item id should be different from the old item id",
+            "obligation": {
+              "native_guard": "The new item id should be different from the old item id",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 8,
+              "missing": []
+            },
+            "work": 9,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 9
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "The new item id should be different from the old item id",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 22433,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "The new item id should be different from the old item id",
+            "obligation": {
+              "native_guard": "The new item id should be different from the old item id",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 8,
+              "missing": []
+            },
+            "work": 9,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 9
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "The new item id should be different from the old item id",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 17366,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "list_cardinality_mismatch",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "The number of items to be exchanged should match",
+            "obligation": {
+              "native_guard": "The number of items to be exchanged should match",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "The number of items to be exchanged should match",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 81472,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "The number of items to be exchanged should match",
+            "obligation": {
+              "native_guard": "The number of items to be exchanged should match",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2269,
+          "state_hash": "53597d5705e435e4cadc4e28a087466cfd0fe60b1892236d6966b3daa06b83c1",
+          "native_guard_prediction_checked": true,
+          "native_error": "The number of items to be exchanged should match",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 18969,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "unrelated_observed_user_address",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  2
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 4,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "cf8a9d63496efaa3fd7e3ac1619e502fb67ba9337173d4688a6f8484263d90f4",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 4,
+          "public_receipt_bytes": 1771,
+          "prepare_cpu_ns": 38227,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  2
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 4,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "cf8a9d63496efaa3fd7e3ac1619e502fb67ba9337173d4688a6f8484263d90f4",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 4,
+          "public_receipt_bytes": 1771,
+          "prepare_cpu_ns": 35704,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "observed_variant_price_changed",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 13.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 3.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -3.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  2
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 4,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "262129a504827a8a775ced25f8eb13a499ca57f5cbb6febfd83947e5f55fcaa7",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 13.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 3.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -3.0
+          },
+          "public_read_calls": 4,
+          "public_receipt_bytes": 1751,
+          "prepare_cpu_ns": 71185,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "effect_not_confirmed",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 13.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 3.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -3.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  2
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 4,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "262129a504827a8a775ced25f8eb13a499ca57f5cbb6febfd83947e5f55fcaa7",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 13.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 3.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -3.0
+          },
+          "public_read_calls": 4,
+          "public_receipt_bytes": 1751,
+          "prepare_cpu_ns": 32539,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "uncertified_interference_window",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "uncertified_interference_window",
+            "obligation": {
+              "native_guard": "uncertified_interference_window",
+              "effect": null,
+              "supports": [],
+              "work": 0,
+              "missing": []
+            },
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 1
+          },
+          "state_bytes": 2270,
+          "state_hash": "27fbedb19a725916bf0cb8145f1ff2118ef60299a9a655baf2c08c5aadab1a0d",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 16475,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "uncertified_interference_window",
+            "obligation": {
+              "native_guard": "uncertified_interference_window",
+              "effect": null,
+              "supports": [],
+              "work": 0,
+              "missing": []
+            },
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 1
+          },
+          "state_bytes": 2270,
+          "state_hash": "27fbedb19a725916bf0cb8145f1ff2118ef60299a9a655baf2c08c5aadab1a0d",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 18357,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "stale_epoch_even_with_serial_window",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "needs_observation",
+            "obligation": {
+              "native_guard": "needs_observation",
+              "effect": null,
+              "supports": [],
+              "work": 1,
+              "missing": [
+                "order:#O"
+              ]
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2269,
+          "state_hash": "cd3451d503bf41169aa1216c0a4da5f812cfa78551f2d3037c42174c951ba7b0",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 19439,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "needs_observation",
+            "obligation": {
+              "native_guard": "needs_observation",
+              "effect": null,
+              "supports": [],
+              "work": 1,
+              "missing": [
+                "order:#O"
+              ]
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2269,
+          "state_hash": "cd3451d503bf41169aa1216c0a4da5f812cfa78551f2d3037c42174c951ba7b0",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 15854,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "reobserve_then_serial_window",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 6,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "ae3b43b5d90a5036f8b4fdb88e2759108d3df8ad9b15a39a3b834933f73b8813",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 6,
+          "public_receipt_bytes": 2784,
+          "prepare_cpu_ns": 36384,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 6,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "ae3b43b5d90a5036f8b4fdb88e2759108d3df8ad9b15a39a3b834933f73b8813",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 6,
+          "public_receipt_bytes": 2784,
+          "prepare_cpu_ns": 38377,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "incomplete_batch_confirmation",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_not_closed",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2270,
+          "state_hash": "569fdad48793a8475b7721ec0a6cce63ee71da5a85f962008e6c438530133625",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3014,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_not_closed",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2270,
+          "state_hash": "569fdad48793a8475b7721ec0a6cce63ee71da5a85f962008e6c438530133625",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 2924,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "consumed_success_not_reusable",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_spent",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "1ff0c0f766eb46740ab97051d1e51455503b348011df431640674aaecfe2ad8a",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 4006,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_spent",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "1ff0c0f766eb46740ab97051d1e51455503b348011df431640674aaecfe2ad8a",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3665,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "uncertain_write_not_retried",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_uncertain",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2273,
+          "state_hash": "49644cf63f3baca8c232704450173da469a7fd3074358040c259c551be7cb3de",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3856,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_uncertain",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2273,
+          "state_hash": "49644cf63f3baca8c232704450173da469a7fd3074358040c259c551be7cb3de",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3115,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "audited_no_write_failure_not_consumed",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 37056,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "n1",
+                    "price": 12.0,
+                    "options": {
+                      "color": "blue"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "payment",
+                  "amount": 2.0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": -2.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 14,
+              "missing": []
+            },
+            "work": 16,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "completion_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 15,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2828,
+          "state_hash": "b34a7c4afe8645f8f009060834844ed9a0288f6adff433641e6912bdd0fee78a",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 32949,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "new_confirmation_does_not_restore_consumed_guard",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_spent",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 2,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "1ff0c0f766eb46740ab97051d1e51455503b348011df431640674aaecfe2ad8a",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3815,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "authority_spent",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 2,
+            "completion_writes": 1,
+            "prepare_calls": 1
+          },
+          "state_bytes": 2269,
+          "state_hash": "1ff0c0f766eb46740ab97051d1e51455503b348011df431640674aaecfe2ad8a",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 3465,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "no_confirmation",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "no_confirmation",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "prepare_calls": 1
+          },
+          "state_bytes": 1624,
+          "state_hash": "1e3b63443200f3d9d38187b0395448dceafb549c4bb7ee29542d9df2b13ee1e0",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 1893,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "no_confirmation",
+            "obligation": null,
+            "work": 1,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "prepare_calls": 1
+          },
+          "state_bytes": 1624,
+          "state_hash": "1e3b63443200f3d9d38187b0395448dceafb549c4bb7ee29542d9df2b13ee1e0",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 1722,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "missing_product_observation",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "needs_observation",
+            "obligation": {
+              "native_guard": "needs_observation",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": [
+                "product:p1"
+              ]
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 2,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 1860,
+          "state_hash": "b79538721cb62d32674b30df100a760cf5315bf7e48b7d21510ae6a0531a7cd2",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 2,
+          "public_receipt_bytes": 1033,
+          "prepare_cpu_ns": 23535,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "needs_observation",
+            "obligation": {
+              "native_guard": "needs_observation",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 11,
+              "missing": [
+                "product:p1"
+              ]
+            },
+            "work": 12,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 2,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 12
+          },
+          "state_bytes": 1860,
+          "state_hash": "b79538721cb62d32674b30df100a760cf5315bf7e48b7d21510ae6a0531a7cd2",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 2,
+          "public_receipt_bytes": 1033,
+          "prepare_cpu_ns": 18568,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "policy_order_membership_mismatch",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_order_membership_mismatch",
+            "obligation": {
+              "native_guard": "scope_order_membership_mismatch",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 2,
+              "missing": []
+            },
+            "work": 3,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 3
+          },
+          "state_bytes": 2265,
+          "state_hash": "d8b32dd1c054f9e8aa2c36c63b4976a5fc233fad5b0535d7b8596e79c60ee1b1",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1388,
+          "prepare_cpu_ns": 17627,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "scope_order_membership_mismatch",
+            "obligation": {
+              "native_guard": "scope_order_membership_mismatch",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 2,
+              "missing": []
+            },
+            "work": 3,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 3
+          },
+          "state_bytes": 2265,
+          "state_hash": "d8b32dd1c054f9e8aa2c36c63b4976a5fc233fad5b0535d7b8596e79c60ee1b1",
+          "native_guard_prediction_checked": false,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "n1",
+                "price": 12.0,
+                "options": {
+                  "color": "blue"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "payment",
+              "amount": 2.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": -2.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1388,
+          "prepare_cpu_ns": 14492,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "pending_substring_not_strict_guard",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "Non-pending order cannot be modified",
+            "obligation": {
+              "native_guard": "Non-pending order cannot be modified",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ]
+              ],
+              "work": 1,
+              "missing": []
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2285,
+          "state_hash": "07b915f8eaf4485235c6f92693ab8c5ba7f8e521c17ab35a702f4b071d759252",
+          "native_guard_prediction_checked": true,
+          "native_error": "Non-pending order cannot be modified",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1408,
+          "prepare_cpu_ns": 15543,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "Non-pending order cannot be modified",
+            "obligation": {
+              "native_guard": "Non-pending order cannot be modified",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ]
+              ],
+              "work": 1,
+              "missing": []
+            },
+            "work": 2,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 2
+          },
+          "state_bytes": 2285,
+          "state_hash": "07b915f8eaf4485235c6f92693ab8c5ba7f8e521c17ab35a702f4b071d759252",
+          "native_guard_prediction_checked": true,
+          "native_error": "Non-pending order cannot be modified",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1408,
+          "prepare_cpu_ns": 20921,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "missing_payment_method",
+      "expected_admitted": false,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": false,
+            "reason": "Payment method not found",
+            "obligation": {
+              "native_guard": "Payment method not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2211,
+          "state_hash": "aad4897318ca71445a4fab4c1855a0fd1825a44cf681b11bb614ea679514fdb6",
+          "native_guard_prediction_checked": true,
+          "native_error": "Payment method not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1334,
+          "prepare_cpu_ns": 21582,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": false,
+            "reason": "Payment method not found",
+            "obligation": {
+              "native_guard": "Payment method not found",
+              "effect": null,
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ],
+                [
+                  "product",
+                  "p1",
+                  1
+                ]
+              ],
+              "work": 12,
+              "missing": []
+            },
+            "work": 13,
+            "transported": false,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "guard_lookup_visits": 13
+          },
+          "state_bytes": 2211,
+          "state_hash": "aad4897318ca71445a4fab4c1855a0fd1825a44cf681b11bb614ea679514fdb6",
+          "native_guard_prediction_checked": true,
+          "native_error": "Payment method not found",
+          "native_probe_effect": null,
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1334,
+          "prepare_cpu_ns": 20330,
+          "extensional_transport_beyond_anchor_syntax": 0,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    },
+    {
+      "name": "empty_list_source_boundary",
+      "expected_admitted": true,
+      "methods": {
+        "classical": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "a",
+                    "price": 10.0,
+                    "options": {
+                      "color": "black"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "refund",
+                  "amount": 0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": 0.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 5,
+              "missing": []
+            },
+            "work": 7,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 6,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2802,
+          "state_hash": "1c47431bd0728a0f6db62a9636d7eb9c2ff92d7102eca5a3c8ac89e9d83ba0b3",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "a",
+                "price": 10.0,
+                "options": {
+                  "color": "black"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "refund",
+              "amount": 0.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": 0.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 29754,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        },
+        "candidate": {
+          "decision": {
+            "admitted": true,
+            "reason": "admitted",
+            "obligation": {
+              "native_guard": "pass",
+              "effect": {
+                "order_id": "#O",
+                "user_id": "u1",
+                "status": "pending (item modified)",
+                "items": [
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "a",
+                    "price": 10.0,
+                    "options": {
+                      "color": "black"
+                    }
+                  },
+                  {
+                    "name": "shirt",
+                    "product_id": "p1",
+                    "item_id": "b",
+                    "price": 20.0,
+                    "options": {
+                      "color": "gray"
+                    }
+                  }
+                ],
+                "appended_payment": {
+                  "transaction_type": "refund",
+                  "amount": 0,
+                  "payment_method_id": "gift"
+                },
+                "gift_card_delta": 0.0
+              },
+              "supports": [
+                [
+                  "order",
+                  "#O",
+                  1
+                ],
+                [
+                  "user",
+                  "u1",
+                  1
+                ]
+              ],
+              "work": 5,
+              "missing": []
+            },
+            "work": 7,
+            "transported": true,
+            "cache_hit": false
+          },
+          "work": {
+            "read_receipts": 3,
+            "confirmation_writes": 1,
+            "prepare_calls": 1,
+            "cache_writes": 1,
+            "guard_lookup_visits": 6,
+            "effect_comparisons": 1
+          },
+          "state_bytes": 2802,
+          "state_hash": "1c47431bd0728a0f6db62a9636d7eb9c2ff92d7102eca5a3c8ac89e9d83ba0b3",
+          "native_guard_prediction_checked": true,
+          "native_error": null,
+          "native_probe_effect": {
+            "order_id": "#O",
+            "user_id": "u1",
+            "status": "pending (item modified)",
+            "items": [
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "a",
+                "price": 10.0,
+                "options": {
+                  "color": "black"
+                }
+              },
+              {
+                "name": "shirt",
+                "product_id": "p1",
+                "item_id": "b",
+                "price": 20.0,
+                "options": {
+                  "color": "gray"
+                }
+              }
+            ],
+            "appended_payment": {
+              "transaction_type": "refund",
+              "amount": 0.0,
+              "payment_method_id": "gift"
+            },
+            "gift_card_delta": 0.0
+          },
+          "public_read_calls": 3,
+          "public_receipt_bytes": 1392,
+          "prepare_cpu_ns": 31397,
+          "extensional_transport_beyond_anchor_syntax": 1,
+          "serial_window_provided_by_declared_harness_protocol": true
+        }
+      },
+      "same_guarantee_and_counted_resources": true
+    }
+  ]
+}

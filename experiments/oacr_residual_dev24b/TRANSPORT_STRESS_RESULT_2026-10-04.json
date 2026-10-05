@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-04",
+  "scope": "synthetic_transport_only",
+  "appworld_imported": false,
+  "task_world_api_model_evaluator_calls": 0,
+  "real_task_data_used": false,
+  "tests_run": 26,
+  "tests_passed": 26,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "cases": {
+    "test_already_existing_matching_response": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_batch_stress_128_uuids_2048_cache_deliveries": {
+      "accepted_uuids": 128,
+      "callback_calls": 128,
+      "new_claims": 128,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_cache_persisted_executed_record_failed_restart_closed": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_changed_payload_same_uuid_fail_closed": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_cleanup_unlink_noop_after_accepted_execution": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_cleanup_unlink_raises_after_accepted_execution": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_consumer_unlinks_new_response_before_publisher_finishes": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_corrupted_cache_never_reexecutes": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_delayed_cleanup_with_duplicate_thread": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_duplicate_delivery_republishes_cache": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_duplicate_pending_uuid_while_inflight": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_existing_matching_response_later_cleanup_failure_cost": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_full_guard_filesystem_monkeypatch_independent_host": {
+      "accepted_uuids": 2,
+      "callback_calls": 2,
+      "new_claims": 2,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_global_os_path_unlink_monkeypatch_independent_host": {
+      "accepted_uuids": 2,
+      "callback_calls": 2,
+      "new_claims": 2,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_harmful_response_appears_after_callback": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_harmful_response_before_claim_rejected": {
+      "accepted_uuids": 0,
+      "callback_calls": 0,
+      "new_claims": 0,
+      "rejected_before_callback": 1,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_publication_failure_then_cached_recovery": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_responded_record_failure_preserves_published_cost": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_response_fsync_failure_preserves_installed_cost": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_response_tampering_does_not_mutate_cache": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_response_temporary_cleanup_failure_preserves_installed_cost": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_restart_claimed_before_callback_abandoned_no_retry": {
+      "accepted_uuids": 0,
+      "callback_calls": 0,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 1,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_restart_claimed_without_result_fail_closed": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_restart_executed_cache_only": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_same_live_claim_concurrent_callback_admission": {
+      "accepted_uuids": 1,
+      "callback_calls": 1,
+      "new_claims": 1,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    },
+    "test_separate_process_restart_executed_and_claimed": {
+      "accepted_uuids": 2,
+      "callback_calls": 2,
+      "new_claims": 2,
+      "rejected_before_callback": 0,
+      "abandoned_new_claims_before_callback": 0,
+      "accepted_each_exactly_one_callback": true,
+      "rejected_each_zero_callbacks": true
+    }
+  },
+  "accepted_callback_uuids_total": 154,
+  "new_claims_total": 155,
+  "callback_calls_total": 154,
+  "rejected_before_callback_total": 1,
+  "abandoned_new_claims_before_callback_total": 1,
+  "transport_source_sha256": "a9ade88c9bbc95a61afd101e3f6fd378127b28e3316db4136cb47e9c20b225a9",
+  "test_source_sha256": "1a3bcc561042fa52e830abc7a08b80fe4e45cbe34418b32d5fb4ea3f43fca207",
+  "limits": [
+    "at-most-once admission, not general exactly-once execution",
+    "claimed without executed result fails closed, even if callback never ran",
+    "response publication is not consumer acknowledgment",
+    "local POSIX filesystem and durable ledger must be retained",
+    "native bridge integration and native task controls not tested here"
+  ]
+}

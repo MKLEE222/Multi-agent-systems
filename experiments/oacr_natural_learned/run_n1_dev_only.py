@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 import torch
 from omegaconf import OmegaConf
+from prepare_n1_model_snapshot import validate_snapshot
 
 CRITERIA=("Relation_Specificity","Logical_Generalization","Subject_Aliasing",
           "Compositionality_I","Compositionality_II","Forgetfulness")
@@ -87,14 +88,14 @@ def query_pass(text,q):
     if not groups: return False
     return all(any(v in pred for v in group) for group in groups)
 
-def cfg(device,n_iter):
+def cfg(device,n_iter,model_dir=None):
     return OmegaConf.create({
         "device":device,"re_init_model":False,"dropout":0.0,
         "model":{
-            "name":"google/t5-small-ssm-nq",
+            "name":str(model_dir) if model_dir else "google/t5-small-ssm-nq",
             "class_name":"AutoModelForSeq2SeqLM",
             "tokenizer_class":"AutoTokenizer",
-            "tokenizer_name":"google/t5-small-ssm-nq",
+            "tokenizer_name":str(model_dir) if model_dir else "google/t5-small-ssm-nq",
             "inner_params":["encoder.block[4].layer[1].DenseReluDense.wo.weight"],
             "pt":None,
         },
@@ -145,8 +146,12 @@ def capture_key(editor,prompt):
     h=adapter.register_forward_pre_hook(hook)
     tok=editor.tokenizer([prompt],padding=True,max_length=64,truncation=True,return_tensors="pt")
     tok={k:v.to(editor.config["device"]) for k,v in tok.items()}
-    with torch.no_grad(): editor.model(**tok)
-    h.remove()
+    try:
+        # The registered layer is in the encoder. Full seq2seq forward requires
+        # decoder inputs and is unnecessary for this label-free key extraction.
+        with torch.no_grad(): editor.model.get_encoder()(**tok)
+    finally:
+        h.remove()
     return box["q"]
 
 def add_aux(editor,prompts,max_aux):
@@ -177,12 +182,17 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--manifest",required=True)
     ap.add_argument("--grace_repo",required=True)
+    ap.add_argument("--model_dir",required=True)
     ap.add_argument("--out",required=True)
     ap.add_argument("--limit",type=int,default=8)
     ap.add_argument("--max_aux",type=int,default=2)
     ap.add_argument("--n_iter",type=int,default=100)
     ap.add_argument("--device",default="cpu")
     a=ap.parse_args()
+
+    model_dir=Path(a.model_dir).resolve()
+    model_provenance=validate_snapshot(model_dir,json.loads(
+        (model_dir/"oacr_snapshot_provenance.json").read_text(encoding="utf-8")))
 
     m=json.loads(Path(a.manifest).read_text(encoding="utf-8"))
     if m.get("evaluation_units_emitted")!=0 or "evaluation" in m:
@@ -199,12 +209,13 @@ def main():
     random.seed(1729); torch.manual_seed(1729)
     results=[]
     for idx,uid in enumerate(order):
+        print(f"N1 dev unit {idx+1}/{len(order)} started: {uid}",flush=True)
         unit=units[uid]; entry=unit["entry"]
         edit_prompt,edit_target=parse_edit_fact(entry["edit"]["prompt"])
         if not edit_prompt:
             results.append({"unit_id":uid,"status":"UNPARSABLE_EDIT"}); continue
 
-        c=cfg(a.device,a.n_iter)
+        c=cfg(a.device,a.n_iter,model_dir)
         model=QAModel(c).to(a.device)
         editor=GRACE(c,model)
         editor.generate=model.model.generate
@@ -237,6 +248,7 @@ def main():
             "heldout_queries":len(future),"condition_prompts":len(cond),
             "sham_unit_id":sham_uid,"variants":variants,
         })
+        print(f"N1 dev unit {idx+1}/{len(order)} COMPLETE; heldout_queries={len(future)}",flush=True)
         del editor,model; gc.collect()
 
     complete=[x for x in results if x.get("status")=="COMPLETE"]
@@ -253,6 +265,7 @@ def main():
             k:mean_acc(k) for k in ("B0_base","B1_predictive","B2_sham","A0_oracle")
         },
         "immediate_success_rate":(sum(int(x["immediate_success"]) for x in complete)/len(complete)) if complete else None,
+        "model_snapshot":model_provenance,
     }
     out={"summary":summary,"units":results}
     p=Path(a.out); p.parent.mkdir(parents=True,exist_ok=True)

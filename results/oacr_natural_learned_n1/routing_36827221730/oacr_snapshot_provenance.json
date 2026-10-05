@@ -1,0 +1,13 @@
+{
+  "files": {
+    "config.json": "31776417fd202de4f9282a3b22f97d5c126b26877830e03675a8aac400bd0a0b",
+    "generation_config.json": "f5a1c7e2be8092018d8835128987edf0111637dd98e90599cc80310fef75d95a",
+    "pytorch_model.bin": "e182e6abc02bed60d1df562cc594a59e66ef0cfec9ec9d87e87065fdbd667bd9",
+    "special_tokens_map.json": "4720c0fddbe4c5991334f85ad7073d9bd0a294a8ba4641a2f8dab614ca825949",
+    "spiece.model": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+    "tokenizer_config.json": "55466ac86254ad9ad0d052598ce8115bc304b16843010c20fb83e64b69e90603"
+  },
+  "model_id": "google/t5-small-ssm-nq",
+  "revision": "4371c64b6f65176f6663af43066bd094597b1116",
+  "revision_source": "GitHub Actions run 36818820271 model-resolution traceback"
+}

@@ -1,0 +1,1747 @@
+{
+  "status": "PASS",
+  "claim": "classical adapter correctness on bounded native fixtures only",
+  "freeze_commit": "674f9260979aaa60274f3dc1d6e532cc48157b72",
+  "config_sha256": "037e691b56298a3573f8978bc6b449e179a301b00c4b10c15f60b4c662cf14fb",
+  "producer_sha256": "5c1e0986a47a2f4543a3eb32b3c2db220e9778cc4a68febe44f00a2a7dece79c",
+  "auditor_sha256": "7dcf10210262b1adabaa85278672237a717a0be00ba0e115d658c0a08e840275",
+  "sources": [
+    {
+      "local_path": "bfcl_eval/eval_checker/multi_turn_eval/func_source_code/gorilla_file_system.py",
+      "sha256": "84173750930b09aaa31b90547c9bd79ce75714682608b35e78a9c1ea259faf2b"
+    },
+    {
+      "local_path": "bfcl_eval/eval_checker/multi_turn_eval/func_source_code/long_context.py",
+      "sha256": "5c9a5710115609c779e5b2ccb43f6ad58271ed96f2ea7a797edb0d65c385aa38"
+    }
+  ],
+  "counts": {
+    "producer_events": 50,
+    "known_checks": 65,
+    "need_evidence_checks": 85,
+    "unsupported_checks": 2,
+    "native_mismatches": 0,
+    "verifier_probe_calls": 65
+  },
+  "cases": [
+    {
+      "case": "rename_chain",
+      "events": 5,
+      "known": 9,
+      "need_evidence": 11,
+      "unsupported": 0,
+      "peak_representation_bytes": 202
+    },
+    {
+      "case": "move_into_directory",
+      "events": 7,
+      "known": 9,
+      "need_evidence": 12,
+      "unsupported": 0,
+      "peak_representation_bytes": 217
+    },
+    {
+      "case": "homonyms",
+      "events": 12,
+      "known": 7,
+      "need_evidence": 29,
+      "unsupported": 0,
+      "peak_representation_bytes": 342
+    },
+    {
+      "case": "failed_moves",
+      "events": 8,
+      "known": 13,
+      "need_evidence": 11,
+      "unsupported": 0,
+      "peak_representation_bytes": 152
+    },
+    {
+      "case": "write_after_rename",
+      "events": 8,
+      "known": 16,
+      "need_evidence": 8,
+      "unsupported": 0,
+      "peak_representation_bytes": 201
+    },
+    {
+      "case": "filtered_listing",
+      "events": 7,
+      "known": 10,
+      "need_evidence": 11,
+      "unsupported": 0,
+      "peak_representation_bytes": 201
+    },
+    {
+      "case": "unsupported_directory_move",
+      "events": 3,
+      "known": 1,
+      "need_evidence": 3,
+      "unsupported": 2,
+      "peak_representation_bytes": 164
+    }
+  ],
+  "boundary_witnesses": {
+    "unknown_source_type": {
+      "history": [
+        [
+          "pwd",
+          {}
+        ],
+        [
+          "ls",
+          {
+            "a": true
+          }
+        ],
+        [
+          "mv",
+          {
+            "source": "a",
+            "destination": "b"
+          }
+        ]
+      ],
+      "receipts": [
+        {
+          "current_working_directory": "/root"
+        },
+        {
+          "current_directory_content": [
+            "a"
+          ]
+        },
+        {
+          "result": "'a' moved to 'b'"
+        }
+      ],
+      "move_preparation": {
+        "status": "NEED_EVIDENCE",
+        "missing": "source type"
+      },
+      "left_next_cat": {
+        "file_content": "value"
+      },
+      "right_next_cat": {
+        "error": "cat: 'b': Is a directory"
+      }
+    },
+    "unobserved_writer": {
+      "left_next_cat": {
+        "file_content": "old"
+      },
+      "right_next_cat": {
+        "file_content": "new"
+      },
+      "scope": "outside monitored-writer fragment"
+    }
+  },
+  "ledger_sha256": "2e794d5a72d097bac2f804e3043df32eec02ff0a5e948a2a563e93f8b988ba10",
+  "ledger": [
+    {
+      "case": "rename_chain",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "c",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "rename_chain",
+      "step": 1,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "value"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "c",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 116
+    },
+    {
+      "case": "rename_chain",
+      "step": 2,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "b"
+        }
+      ],
+      "receipt": {
+        "result": "'a' moved to 'b'"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "c",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 159
+    },
+    {
+      "case": "rename_chain",
+      "step": 3,
+      "call": [
+        "mv",
+        {
+          "source": "b",
+          "destination": "c"
+        }
+      ],
+      "receipt": {
+        "result": "'b' moved to 'c'"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'b': No such file or directory"
+          }
+        },
+        {
+          "name": "c",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 202
+    },
+    {
+      "case": "rename_chain",
+      "step": 4,
+      "call": [
+        "cat",
+        {
+          "file_name": "c"
+        }
+      ],
+      "receipt": {
+        "file_content": "value"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'b': No such file or directory"
+          }
+        },
+        {
+          "name": "c",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 202
+    },
+    {
+      "case": "move_into_directory",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "box",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "move_into_directory",
+      "step": 1,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "value"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "box",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 116
+    },
+    {
+      "case": "move_into_directory",
+      "step": 2,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "box"
+        }
+      ],
+      "receipt": {
+        "result": "'a' moved to 'box/a'"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "box",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'box': Is a directory"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 211
+    },
+    {
+      "case": "move_into_directory",
+      "step": 3,
+      "call": [
+        "cd",
+        {
+          "folder": "box"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "box"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "box",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 217
+    },
+    {
+      "case": "move_into_directory",
+      "step": 4,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "value"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "value"
+          }
+        },
+        {
+          "name": "box",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 217
+    },
+    {
+      "case": "move_into_directory",
+      "step": 5,
+      "call": [
+        "cd",
+        {
+          "folder": ".."
+        }
+      ],
+      "receipt": {},
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "box",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'box': Is a directory"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 211
+    },
+    {
+      "case": "move_into_directory",
+      "step": 6,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "error": "cat: 'a': No such file or directory"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "box",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'box': Is a directory"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 211
+    },
+    {
+      "case": "homonyms",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "homonyms",
+      "step": 1,
+      "call": [
+        "cd",
+        {
+          "folder": "left"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "left"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 128
+    },
+    {
+      "case": "homonyms",
+      "step": 2,
+      "call": [
+        "cat",
+        {
+          "file_name": "report"
+        }
+      ],
+      "receipt": {
+        "file_content": "LEFT"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "LEFT"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 181
+    },
+    {
+      "case": "homonyms",
+      "step": 3,
+      "call": [
+        "cd",
+        {
+          "folder": "/"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "root"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 174
+    },
+    {
+      "case": "homonyms",
+      "step": 4,
+      "call": [
+        "cd",
+        {
+          "folder": "right"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "right"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 232
+    },
+    {
+      "case": "homonyms",
+      "step": 5,
+      "call": [
+        "cat",
+        {
+          "file_name": "report"
+        }
+      ],
+      "receipt": {
+        "file_content": "RIGHT"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "RIGHT"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 287
+    },
+    {
+      "case": "homonyms",
+      "step": 6,
+      "call": [
+        "cd",
+        {
+          "folder": "/"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "root"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 279
+    },
+    {
+      "case": "homonyms",
+      "step": 7,
+      "call": [
+        "cd",
+        {
+          "folder": "left"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "left"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "LEFT"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 286
+    },
+    {
+      "case": "homonyms",
+      "step": 8,
+      "call": [
+        "mv",
+        {
+          "source": "report",
+          "destination": "renamed"
+        }
+      ],
+      "receipt": {
+        "result": "'report' moved to 'renamed'"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'report': No such file or directory"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "LEFT"
+          }
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 340
+    },
+    {
+      "case": "homonyms",
+      "step": 9,
+      "call": [
+        "cd",
+        {
+          "folder": "/"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "root"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 334
+    },
+    {
+      "case": "homonyms",
+      "step": 10,
+      "call": [
+        "cd",
+        {
+          "folder": "right"
+        }
+      ],
+      "receipt": {
+        "current_working_directory": "right"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "RIGHT"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 342
+    },
+    {
+      "case": "homonyms",
+      "step": 11,
+      "call": [
+        "cat",
+        {
+          "file_name": "report"
+        }
+      ],
+      "receipt": {
+        "file_content": "RIGHT"
+      },
+      "checks": [
+        {
+          "name": "report",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "RIGHT"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "ghost",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 342
+    },
+    {
+      "case": "failed_moves",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "failed_moves",
+      "step": 1,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "A"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 112
+    },
+    {
+      "case": "failed_moves",
+      "step": 2,
+      "call": [
+        "cat",
+        {
+          "file_name": "b"
+        }
+      ],
+      "receipt": {
+        "file_content": "B"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "failed_moves",
+      "step": 3,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "b"
+        }
+      ],
+      "receipt": {
+        "error": "mv: cannot move 'a' to 'b': Not a directory"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "failed_moves",
+      "step": 4,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "x/y"
+        }
+      ],
+      "receipt": {
+        "error": "mv: path not allowed in destination. Provide only a file or directory name."
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "failed_moves",
+      "step": 5,
+      "call": [
+        "mv",
+        {
+          "source": "ghost",
+          "destination": "z"
+        }
+      ],
+      "receipt": {
+        "error": "mv: cannot move 'ghost': No such file or directory"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "failed_moves",
+      "step": 6,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "A"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "failed_moves",
+      "step": 7,
+      "call": [
+        "cat",
+        {
+          "file_name": "b"
+        }
+      ],
+      "receipt": {
+        "file_content": "B"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "B"
+          }
+        },
+        {
+          "name": "z",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 152
+    },
+    {
+      "case": "write_after_rename",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "fresh",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "write_after_rename",
+      "step": 1,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "old"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "old"
+          }
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "fresh",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 114
+    },
+    {
+      "case": "write_after_rename",
+      "step": 2,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "b"
+        }
+      ],
+      "receipt": {
+        "result": "'a' moved to 'b'"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "old"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 157
+    },
+    {
+      "case": "write_after_rename",
+      "step": 3,
+      "call": [
+        "echo",
+        {
+          "content": "new",
+          "file_name": "b"
+        }
+      ],
+      "receipt": null,
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "new"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 157
+    },
+    {
+      "case": "write_after_rename",
+      "step": 4,
+      "call": [
+        "cat",
+        {
+          "file_name": "b"
+        }
+      ],
+      "receipt": {
+        "file_content": "new"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "new"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 157
+    },
+    {
+      "case": "write_after_rename",
+      "step": 5,
+      "call": [
+        "touch",
+        {
+          "file_name": "fresh"
+        }
+      ],
+      "receipt": null,
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "new"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "KNOWN",
+          "response": {
+            "file_content": ""
+          }
+        }
+      ],
+      "representation_bytes": 200
+    },
+    {
+      "case": "write_after_rename",
+      "step": 6,
+      "call": [
+        "echo",
+        {
+          "content": "F",
+          "file_name": "fresh"
+        }
+      ],
+      "receipt": null,
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "new"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "F"
+          }
+        }
+      ],
+      "representation_bytes": 201
+    },
+    {
+      "case": "write_after_rename",
+      "step": 7,
+      "call": [
+        "cat",
+        {
+          "file_name": "fresh"
+        }
+      ],
+      "receipt": {
+        "file_content": "F"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "new"
+          }
+        },
+        {
+          "name": "fresh",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "F"
+          }
+        }
+      ],
+      "representation_bytes": 201
+    },
+    {
+      "case": "filtered_listing",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": ".hidden",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "filtered_listing",
+      "step": 1,
+      "call": [
+        "ls",
+        {
+          "a": false
+        }
+      ],
+      "receipt": {
+        "current_directory_content": [
+          "a"
+        ]
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": ".hidden",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "filtered_listing",
+      "step": 2,
+      "call": [
+        "cat",
+        {
+          "file_name": ".hidden"
+        }
+      ],
+      "receipt": {
+        "file_content": "H"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": ".hidden",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "H"
+          }
+        }
+      ],
+      "representation_bytes": 118
+    },
+    {
+      "case": "filtered_listing",
+      "step": 3,
+      "call": [
+        "ls",
+        {
+          "a": false
+        }
+      ],
+      "receipt": {
+        "current_directory_content": [
+          "a"
+        ]
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": ".hidden",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "H"
+          }
+        }
+      ],
+      "representation_bytes": 118
+    },
+    {
+      "case": "filtered_listing",
+      "step": 4,
+      "call": [
+        "cat",
+        {
+          "file_name": "a"
+        }
+      ],
+      "receipt": {
+        "file_content": "A"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": "b",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": ".hidden",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "H"
+          }
+        }
+      ],
+      "representation_bytes": 158
+    },
+    {
+      "case": "filtered_listing",
+      "step": 5,
+      "call": [
+        "mv",
+        {
+          "source": "a",
+          "destination": "b"
+        }
+      ],
+      "receipt": {
+        "result": "'a' moved to 'b'"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": ".hidden",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "H"
+          }
+        }
+      ],
+      "representation_bytes": 201
+    },
+    {
+      "case": "filtered_listing",
+      "step": 6,
+      "call": [
+        "cat",
+        {
+          "file_name": ".hidden"
+        }
+      ],
+      "receipt": {
+        "file_content": "H"
+      },
+      "checks": [
+        {
+          "name": "a",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'a': No such file or directory"
+          }
+        },
+        {
+          "name": "b",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "A"
+          }
+        },
+        {
+          "name": ".hidden",
+          "status": "KNOWN",
+          "response": {
+            "file_content": "H"
+          }
+        }
+      ],
+      "representation_bytes": 201
+    },
+    {
+      "case": "unsupported_directory_move",
+      "step": 0,
+      "call": [
+        "pwd",
+        {}
+      ],
+      "receipt": {
+        "current_working_directory": "/root"
+      },
+      "checks": [
+        {
+          "name": "folder",
+          "status": "NEED_EVIDENCE"
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 73
+    },
+    {
+      "case": "unsupported_directory_move",
+      "step": 1,
+      "call": [
+        "cat",
+        {
+          "file_name": "folder"
+        }
+      ],
+      "receipt": {
+        "error": "cat: 'folder': Is a directory"
+      },
+      "checks": [
+        {
+          "name": "folder",
+          "status": "KNOWN",
+          "response": {
+            "error": "cat: 'folder': Is a directory"
+          }
+        },
+        {
+          "name": "renamed",
+          "status": "NEED_EVIDENCE"
+        }
+      ],
+      "representation_bytes": 123
+    },
+    {
+      "case": "unsupported_directory_move",
+      "step": 2,
+      "call": [
+        "mv",
+        {
+          "source": "folder",
+          "destination": "renamed"
+        }
+      ],
+      "receipt": {
+        "result": "'folder' moved to 'renamed'"
+      },
+      "checks": [
+        {
+          "name": "folder",
+          "status": "UNSUPPORTED"
+        },
+        {
+          "name": "renamed",
+          "status": "UNSUPPORTED"
+        }
+      ],
+      "representation_bytes": 164
+    }
+  ],
+  "limitations": [
+    "Hand-constructed fixtures using the actual native interpreter, not natural task evidence",
+    "No unobserved writers within the positive scope",
+    "Initial cwd is root; names limited to ASCII letters/digits/dot/underscore/hyphen",
+    "Successful moves require previously confirmed file type",
+    "Unknown facts and unsupported coverage are not exact-completion claims",
+    "No proof, candidate algorithm comparison, optimized baseline cost result, policy/confirmation result, official score or cross-domain claim"
+  ]
+}

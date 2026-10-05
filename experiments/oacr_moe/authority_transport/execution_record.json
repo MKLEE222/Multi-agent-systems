@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "diagnostic_suite_attempts": 1,
+  "pre_freeze_suite_executions": 0,
+  "failed_suite_attempts": 0,
+  "freeze_matches_delivered_implementation": true,
+  "native_write_probe_executions": 62,
+  "native_public_read_executions": 194,
+  "runner_wall_time_ns": 43890370,
+  "exec_command_wall_time_seconds": 0.092217615,
+  "replay_command": "python experiments/oacr_moe/authority_transport/run_mutation_suite.py --freeze experiments/oacr_moe/authority_transport/freeze.json --output /tmp/authority_transport_replay.json",
+  "files_sha256": {
+    "core.py": "72ec48b110b0a56566c6147c18c6aa544675538d1453e32ba3a77f0d4517be2a",
+    "native_retail.py": "1301413074d234c706f682d3a5fb73d78348c39ca36c211e6690866e5e09d9b4",
+    "source_manifest.json": "3b2cc820b771cd9e563b7bdfa7906c910c0add9618b78ead3679d274da51467c",
+    "run_mutation_suite.py": "44e623e93d9304023177e8147a4e764488842cf4c3f187648bf54e739aca6ad4",
+    "freeze.json": "8642bb38a4eb46dcd06592a9a8594357c82a51e46496540a081e3c225d8f5a92",
+    "result.json": "c4277bbfb098ab2b737f2b85dd365ffa23fc4e8ad8f1b4bee29c78c592474950",
+    "LICENSE": "e57427cef36f33163a5c7f68393a58a3a801f511a63cb736076ef098bb8a2800"
+  },
+  "interpretation": "One shared-framework fixed-predicate adapter audit; resource-count match follows construction; CPU equality/global optimality unclaimed.",
+  "native_method_executions_total": 256
+}

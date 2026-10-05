@@ -1,0 +1,204 @@
+{
+  "protocol": "oacr_residual_dev24_v1",
+  "freeze_commit": "a862d4754072294cd6a8b4d9465a349a99a68a26",
+  "freeze_sha256": "7d2cb3c3ef337b2f0a7186db3e75e421045a871de6f4077a11c8a9f75ede3bb9",
+  "tasks": 24,
+  "distinct_families": 24,
+  "native_scored_tasks": 23,
+  "native_task_successes": 19,
+  "not_successful_or_unscored_indices": [
+    1,
+    2,
+    11,
+    12,
+    13
+  ],
+  "native_test_passed_known_subtotal": 120,
+  "native_test_total_known_subtotal": 137,
+  "high_cost_screen_indices": [],
+  "diagnosis_required_indices": [
+    1,
+    2,
+    11,
+    12,
+    13
+  ],
+  "high_cost_thresholds": {
+    "native_api_calls": 100,
+    "execute_requests": 20,
+    "generated_native_receipt_bytes": 100000,
+    "actor_elapsed_seconds": 600
+  },
+  "grade_status_counts": {
+    "evaluated": 23,
+    "not_run": 1
+  },
+  "cost_known_subtotals": {
+    "execute_requests": 165,
+    "native_execute_attempts": 159,
+    "native_interactions": 159,
+    "native_api_calls": 947,
+    "bridge_rejections": 5,
+    "parse_errors": 1,
+    "native_execution_errors": 0,
+    "generated_receipt_bytes": 436922,
+    "generated_native_receipt_bytes": 436551,
+    "generated_bridge_receipt_bytes": 371,
+    "prompt_bytes": 686275,
+    "transport_prompt_text_bytes": 682491,
+    "transport_receipt_text_bytes": 412313,
+    "prompt_page_requests": 345,
+    "receipt_page_requests": 133,
+    "mailbox_response_bytes": 1231634,
+    "actor_elapsed_seconds": 4388.445422062001
+  },
+  "missing_cost_rows": [
+    10,
+    11,
+    12
+  ],
+  "native_evaluator_invocations": 23,
+  "actor_invocations_started": 23,
+  "model_usage": "nonzero; model checkpoint, sampling seed, calls, tokens and cost unknown",
+  "external_provider_model_calls": 0,
+  "actor_actual_visible_bytes": null,
+  "oacr_intervention": false,
+  "method_comparison": false,
+  "sealed_evaluation_bank_512_used": false,
+  "task_replacement_or_score_conditioned_retry": false,
+  "audit": [
+    {
+      "index": 0,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 1,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 2,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 3,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 4,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 5,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 6,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 7,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 8,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 9,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 10,
+      "status": "requires_review",
+      "errors": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch"
+      ]
+    },
+    {
+      "index": 11,
+      "status": "requires_review",
+      "errors": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch"
+      ]
+    },
+    {
+      "index": 12,
+      "status": "requires_review",
+      "errors": [
+        "grade_before_actor_stop",
+        "grading_count_mismatch",
+        "initial_prompt_not_fully_delivered"
+      ]
+    },
+    {
+      "index": 13,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 14,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 15,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 16,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 17,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 18,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 19,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 20,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 21,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 22,
+      "status": "passed",
+      "errors": []
+    },
+    {
+      "index": 23,
+      "status": "passed",
+      "errors": []
+    }
+  ],
+  "all_fixed_rows_audited": false,
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "interpretation": "Fixed manifest-prefix train discovery; cost flags require attribution, unresolved does not imply classical survival or novelty."
+}

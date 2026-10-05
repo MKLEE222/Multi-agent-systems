@@ -1,0 +1,111 @@
+{
+  "closure_audit": {
+    "counts": {
+      "generic_pointwise_policy_checks": 9844,
+      "not_uniquely_generated": 1911,
+      "source_sets": 40200,
+      "unique_generation_iff_certificate_checks": 2550,
+      "uniquely_generated": 639
+    },
+    "first_joint_ambiguity": {
+      "closed_sets": [
+        0,
+        3
+      ],
+      "closures": [
+        3,
+        0
+      ],
+      "compatible_source": 0,
+      "n": 2,
+      "sensitive_mask": 0,
+      "source": 3
+    }
+  },
+  "dag_audit": {
+    "counts": {
+      "native_pointwise_and_relabel_checks": 744,
+      "public_configurations": 60,
+      "receipt_checks": 5032
+    },
+    "ledger_digest": "e95ededfceb445fff0ccf190c1e1993c7ed9c1b352dc374da5bea6855250a53c"
+  },
+  "input_sha256": {
+    "available_source_repair_v1.py": "7826a1717aa11f52fe9ba388031b446201a3de11401a960fbbdeeb35246a9a8d",
+    "contract_budget_audit_v1.py": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+    "operator_cold_review_v1.json": "10d0b54b507ed0135e5c52bda7713404860e058c7a2f13cb6d71417e92e6598a",
+    "operator_cold_review_v1.py": "66dd95f8d44820344abf403eef89fc5e8554aff1a6519b97384c4e5ea058d74b",
+    "ordered_source_compile_v1.py": "30f379986fb08a2c57bbe91aba41702e496c72041ed1905fb21eb2fa013763ad"
+  },
+  "protocol": "OACR_OPERATOR_COLD_REVIEW_V1",
+  "reviewed_commit": "d85eeecbce9ceed6e4cfe65e6ae001cb312b466f",
+  "status": "bounded proof debugging passed; prior-art and natural evidence gates open",
+  "transport_attack": {
+    "actions": [
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "consumed_action": [
+      4,
+      5
+    ],
+    "graph": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "interpretation": "existing scoped transport is correct; stronger free-coarsening transport is false",
+    "native_preserved": true,
+    "new_canonical_stored": [],
+    "old_paths": [
+      [
+        0,
+        2,
+        3
+      ],
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "old_stored": [
+      [
+        0,
+        2
+      ]
+    ],
+    "omitted_unknown": [
+      0,
+      3
+    ],
+    "transported_paths": [
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "valid_after_canonical_coarsening": false,
+    "valid_with_persistent_support": true
+  }
+}

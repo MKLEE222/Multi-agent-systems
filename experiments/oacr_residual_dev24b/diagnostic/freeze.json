@@ -1,0 +1,116 @@
+{
+  "protocol": "oacr_residual_dev24b_quote_v1",
+  "task_sha256": "ea980c2b3fe30c2479b7eeec44e1abfba374a3b34b0811d567fe70de3ee51086",
+  "family_sha256": "6410b74c66b363243f508ed0e1dd0c943cb54b8155d25a1c68fba349c70e80a0",
+  "tasks": 1,
+  "families": 1,
+  "arms": 2,
+  "fresh_worlds": 2,
+  "actor_model_calls": 0,
+  "actor_ground_truth_loaded": false,
+  "native_guard_enabled": true,
+  "environment_random_seed": 123,
+  "max_interactions": 40,
+  "code_timeout_seconds": 20,
+  "actor_wall_clock_seconds": 1200,
+  "grade_timeout_seconds": 120,
+  "grade_attempts_per_closed_arm": 1,
+  "grade_save_report": false,
+  "original_freeze_sha256": "7d2cb3c3ef337b2f0a7186db3e75e421045a871de6f4077a11c8a9f75ede3bb9",
+  "source_ref": "9f3e92155345a9159f3a8b25abc334eeca05b545",
+  "source_file_sha256": {
+    "author_prompt": "c109aeb9cf1f672eaec5bbe63bbd68cfc5ae4290ec7e9cd78d5eed6ad29df47e",
+    "initial_playbook": "3c4f46888c9159088c3eb8f70e879d4d28a5704ab9f15d132563ba0ee2730b7b",
+    "evaluator": "0fc79205bf7e5828988497d6938b6f69d51fb0f7cd8990c25bf0739cba51010e",
+    "environment": "f1ede383bc5833af31c3af1d99d987b8cbdd49c2f7a0bdda227b5e006e70c618",
+    "native_safety_guard": "fa105c1bc55bc9fc3dba70f414bdfcb43e05fcede06e63477ceb712037044da7",
+    "task_loader": "c6c5d2950cc0bd7abdff4a30253c9c3699a0d753351cfcd01bf4d04addd7c994",
+    "package_init": "0570fb789fffdb0c7021a61325c7593d8b92df595cbd0bf8224f3fc30e37010c"
+  },
+  "bridge_sha256": "d762eba3dd71bcd34e01c481af72ca82e7581778be238ac5f36ef946b8220b7f",
+  "runner_sha256": "3316abf337560ea0719a6ec348a3fe18454671ec2e1c113fe6779286f2371b29",
+  "protocol_sha256": "2fb7e0ac2f16450c6c00823021dad8b6d7a4da68472e0c1a247c3492cfb533e7",
+  "transport_module_sha256": "a9ade88c9bbc95a61afd101e3f6fd378127b28e3316db4136cb47e9c20b225a9",
+  "transport_test_sha256": "1a3bcc561042fa52e830abc7a08b80fe4e45cbe34418b32d5fb4ea3f43fca207",
+  "transport_stress_sha256": "f36fbc46bccc52989b70f421c8fad65cec262a09d52e31642751c90545f65433",
+  "external_commit_proof_required": true,
+  "native_api_source_sha256": {
+    "src/appworld/apps/spotify/apis.py": "f0acfc4765cfd697fc4a7bf4b347586ff7813f34c9eb23da1a760c13ea1d79d4",
+    "src/appworld/apps/file_system/apis.py": "5717b0cbabf4b8647c7429a187db3b3c278e9778798a51ff83f14815f8065e22"
+  },
+  "native_api_source_provenance": {
+    "src/appworld/apps/spotify/apis.py": "installed_native_source_pinned_by_sha256; not tracked in ACE Git revision",
+    "src/appworld/apps/file_system/apis.py": "installed_native_source_pinned_by_sha256; not tracked in ACE Git revision"
+  },
+  "private_metadata_sha256": "c0a1cb93f7f9087798958bd31b1a74f232463eaee3ef72076046f621e34230a1",
+  "payload_sha256": {
+    "A": {
+      "32": "2b1b805966c2f38066fe7748e170b771273001e45e9867c228b05bb306f5add6",
+      "45": "e9631a2fb0ab3898ba5f9d77fd40bcce6a02882f91bc214a5707316146624866",
+      "48": "c30afa1bc03c7ec1f7ab4d104701a7cb8d3ea78c250dd5407341705ccc97c581",
+      "56": "2a7cdc2f59cf675942c2cadc277813fef81f65aef6b495d5dd77b671aecb0e52",
+      "61": "77b00d715b94a95dd8bf65b38d66442556479b8311c80ab92cf18d164fca4a81",
+      "69": "dc4034c1a7ecf80a7c48dda446d549038f26f664ae7a90eaca17f27e2ba15b4d",
+      "72": "7c6efdc2192aacb1bc6896d13a5f6fe3ad3ae5ad05246933a4fa07cad6972302",
+      "75": "cfd60d8141c31c6e059dc13c97a8e6d59d4860178151cc5a38b3a14851dd5a9a",
+      "78": "15288b6f37ad12b7072b4fb80201b65feedf69225d19817d8881aa8e032d3aa4",
+      "check": "7a0b8fe52bd46d80600478dfad4f12352fe634873ea3da40a83551200e1152a2"
+    },
+    "B": {
+      "32": "2b1b805966c2f38066fe7748e170b771273001e45e9867c228b05bb306f5add6",
+      "45": "e9631a2fb0ab3898ba5f9d77fd40bcce6a02882f91bc214a5707316146624866",
+      "48": "c30afa1bc03c7ec1f7ab4d104701a7cb8d3ea78c250dd5407341705ccc97c581",
+      "56": "2a7cdc2f59cf675942c2cadc277813fef81f65aef6b495d5dd77b671aecb0e52",
+      "61": "77b00d715b94a95dd8bf65b38d66442556479b8311c80ab92cf18d164fca4a81",
+      "69": "cf3ed049245737c31070f2bb2d8db41637bbdb22076015ac8015246992861986",
+      "72": "7c6efdc2192aacb1bc6896d13a5f6fe3ad3ae5ad05246933a4fa07cad6972302",
+      "75": "cfd60d8141c31c6e059dc13c97a8e6d59d4860178151cc5a38b3a14851dd5a9a",
+      "78": "15288b6f37ad12b7072b4fb80201b65feedf69225d19817d8881aa8e032d3aa4",
+      "check": "7a0b8fe52bd46d80600478dfad4f12352fe634873ea3da40a83551200e1152a2"
+    }
+  },
+  "original_native_events": [
+    32,
+    45,
+    48,
+    56,
+    61,
+    69,
+    72,
+    75,
+    78
+  ],
+  "native_steps_per_arm": 10,
+  "quote_policy": {
+    "A": "original_quote_all",
+    "B": "minimal"
+  },
+  "predelete_execution_order": [
+    "A",
+    "B"
+  ],
+  "cross_arm_barrier": "both_predelete_pass_then_delete; both_closed_then_grade",
+  "canonical_shared_asset_sha256": {
+    "admin.db": "2a54320b5c0f3e15ec42a91ff6d48a35c1b9402a439676fd83abe9cba6907ac9",
+    "amazon.db": "0507b4e718504fbba85c6871f3b185b3d1b4c9c3020f5e4bd8d3e118a6ab9f1d",
+    "api_docs.db": "40bf67a299fbd2300aae1ed966a42b585f0fbf5571bd8a0ac719c91938399931",
+    "file_system.db": "6073413135b14fff3ea3a289574d04d9815ea257ebbc3083db25eb97b634846a",
+    "gmail.db": "b7c9d69a557014e0d1e7f9d8c089abba389731e0a3cb1fa8b0432fae7b8bc600",
+    "phone.db": "cc4b9469902a874adae83ba73f88d3b96e650fbabb34119409f13710abe0a143",
+    "simple_note.db": "58bfe70a5272be257a07bac3508d17c1d657c431c9628038c21a7e955e9827ed",
+    "splitwise.db": "36c88eb0b56b9663a74cc8696b520175afe2dedad5c9c9b7fcbbc3135e7ca8a3",
+    "spotify.db": "ef3c6b2a09938cbf862ff7a0fdabdace6cbda6454038c0405695b4edf3f80fba",
+    "supervisor.db": "410f9388a56d356d50a91e3b42b47777cf8bf0fed86a8c2461f598d91c562072",
+    "todoist.db": "5470d42bbc9ba39467b279ac2eab62b1978efa3b48d116274438d7031f54fdbb",
+    "venmo.db": "129606cdcf93b290fe91bf11a4133d20bb498f943af27bec2ef49007320ad749"
+  },
+  "execution_cost_accounting": "per-native-step elapsed, requester records and receipt bytes; parent wall time and grading attempts; actor model calls zero, root coding/model cost unexposed",
+  "branch_registration": {
+    "00": "quote_alone_insufficient_no_new_core",
+    "01": "quote_policy_acceptance_sensitivity",
+    "10": "reverse_sensitivity_no_minimal_quote_fix",
+    "11": "original_failure_not_reproduced_no_discrimination"
+  },
+  "retry": false,
+  "original_artifacts_modified": false
+}

@@ -1,0 +1,13 @@
+{
+  "protocol_id": "OACR_OPERATOR_COLD_REVIEW_V1",
+  "date": "2026-10-02",
+  "reviewed_commit": "d85eeecbce9ceed6e4cfe65e6ae001cb312b466f",
+  "scope": "same-assistant fresh proof review and synthetic targeted checks, not independent review or natural evidence",
+  "closure_scope": "all finite intersection-closed families containing the ground set on n=1,2,3,4; classify unique generation independently by inclusion-minimal generators; test whether sensitive coordinates alone determine closure at every source set",
+  "generic_policy": "on uniquely generated closures, query an unknown extreme coordinate of the current possible upper set; stop when closures of known positive and possible sets coincide; query only singleton source bits",
+  "dag_scope": "60 fixed-seed public DAG role configurations on n=5..8, at most 5 unknown edges and 5 deletable edges, h<=2; all compatible source subsets; reverse vertex labels; independent BFS failure replay",
+  "seed": 20261002,
+  "maintenance_attack": "legal deletion consumes budget, canonical residual coarsening drops a persistent support used by a transported path receipt; distinguish native sufficiency from validity against the new physical support",
+  "metrics": "classification equivalence, exact query-set equality, transcript sufficiency, least native output, receipt checking, transported-receipt failure under support coarsening; no wall-time or novelty win",
+  "stop": "complete this bounded audit once; retain any counterexample and report scope; do not access sealed evaluation units or call models"
+}

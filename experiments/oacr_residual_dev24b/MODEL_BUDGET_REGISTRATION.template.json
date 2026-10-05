@@ -1,0 +1,26 @@
+{
+  "schema": "oacr_model_budget_v1",
+  "status": "not_ready",
+  "identity": {
+    "model_snapshot": null,
+    "inference_settings": null
+  },
+  "limits": {
+    "task_calls": null,
+    "task_tokens": null,
+    "batch_calls": null,
+    "batch_tokens": null,
+    "output_tokens_per_call": null
+  },
+  "max_concurrent_model_calls": 1,
+  "automatic_retry": false,
+  "adapter_evidence": {
+    "source_sha256": null,
+    "usage_probe_sha256": null,
+    "input_bound_audit_sha256": null,
+    "output_cap_audit_sha256": null,
+    "integrated_call_path_verified": false
+  },
+  "billing": "unknown until actual provider billing is available",
+  "scope": "template only; not an executable registration or authorization to launch"
+}

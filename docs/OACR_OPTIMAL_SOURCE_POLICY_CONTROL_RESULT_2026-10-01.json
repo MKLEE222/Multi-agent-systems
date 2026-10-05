@@ -1,0 +1,73 @@
+{
+  "conclusion": "greedy structural acquisition is correct but has no query-optimality or total-cost advantage established; full simulation is a valid charged same-information control",
+  "cost_reporting_correction": "After the first control run, separated policy-compilation simulation calls from replay calls and checked the controller's physical stored subset. Fixtures, prior, DP objective, greedy policies and query choices unchanged; rerun is development verification, not independent confirmation.",
+  "counts": {
+    "adaptive_native_decode_checks": 276,
+    "demand_cut_requests": 3600,
+    "final_compile_calls": 276,
+    "final_compile_input_edges": 740,
+    "old_fiber_cut_requests": 56,
+    "optimal_native_decode_checks": 138,
+    "optimal_policy_dp_states": 994,
+    "optimal_policy_hypothesis_states": 138,
+    "optimal_source_fibers": 16,
+    "policy_compile_simulated_native_calls": 674,
+    "verification_simulated_native_calls": 4044
+  },
+  "fixtures": [
+    {
+      "fixture": "support_interaction",
+      "lexicographic_queries": 6,
+      "optimal_queries": 6,
+      "reverse_lexicographic_queries": 8,
+      "worlds": 4
+    },
+    {
+      "fixture": "chain_budget_expansion",
+      "lexicographic_queries": 384,
+      "optimal_queries": 316,
+      "reverse_lexicographic_queries": 384,
+      "worlds": 64
+    },
+    {
+      "fixture": "chain_action_expansion",
+      "lexicographic_queries": 176,
+      "optimal_queries": 136,
+      "reverse_lexicographic_queries": 142,
+      "worlds": 64
+    },
+    {
+      "fixture": "diamond_budget_expansion",
+      "lexicographic_queries": 2,
+      "optimal_queries": 2,
+      "reverse_lexicographic_queries": 2,
+      "worlds": 2
+    },
+    {
+      "fixture": "contract_contraction",
+      "lexicographic_queries": 0,
+      "optimal_queries": 0,
+      "reverse_lexicographic_queries": 0,
+      "worlds": 4
+    }
+  ],
+  "input_sha256": {
+    "adaptive_source_compile_v1.json": "e6106c1eca32438b90421a3793a3b6960fd8ef6b8622405b6a805bc6e49f8214",
+    "adaptive_source_compile_v1.py": "9348cc89b1e297e6c758051bcd274953824ac8d804bc38021573ff4c03bd6965",
+    "available_source_repair_v1.py": "7826a1717aa11f52fe9ba388031b446201a3de11401a960fbbdeeb35246a9a8d",
+    "contract_budget_audit_v1.py": "64397ac3fd233aa0fdbc53c1befde07820ac03ddcd982bd1f5f389d5cd6fee8d",
+    "multi_delta_budget_audit_v1.py": "7837c3cfc2d840dca2014bf14712ef80e58f4aa961b81e63e7c3244b33923ce7",
+    "optimal_source_policy_control_v1.json": "0a7cc84e080068c1dcaee21c384bfc5e418342ab217ccc1687f10e8768c1364c",
+    "optimal_source_policy_control_v1.py": "9e562ceeaf31914a7d0333e18010731affe4f2645bbf963e0177c7ca9991e740"
+  },
+  "optimality_scope": "expected singleton membership queries under the declared artificial uniform fiber prior; excludes policy compilation cost",
+  "protocol_id": "OACR_OPTIMAL_SOURCE_POLICY_CONTROL_V1",
+  "simulation_is_permitted_computation": true,
+  "source_worlds_are_dependent_development_cases": true,
+  "totals": {
+    "lexicographic_queries": 568,
+    "optimal_queries": 460,
+    "reverse_lexicographic_queries": 536,
+    "worlds": 138
+  }
+}

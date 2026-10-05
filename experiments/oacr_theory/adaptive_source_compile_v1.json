@@ -1,0 +1,29 @@
+{
+  "protocol_id": "OACR_ADAPTIVE_SOURCE_COMPILE_V1",
+  "date": "2026-10-01",
+  "prior_commit": "0cea4c3d54314fd4d95c964c42754e0430a18e62",
+  "scope": "synthetic development of a joint source-acquisition/compiler candidate; not a novelty clearance",
+  "state_family": "B is any subset of public D; G union D is a DAG; additions persist and only named base edges can fail",
+  "producer_inputs": ["canonical old stored subset R", "public G and D", "old/new failure contracts", "authorized budgeted singleton source membership API"],
+  "forbidden_inputs": ["raw hidden B", "enumerated possible-world bank", "native continuation signatures", "verification results", "sealed 512-unit evaluation bank"],
+  "old_promise": "R is the exact conditional-cut old encoding of the same frozen source B",
+  "old_fiber": "B = R union U, where U is any subset of L_R = {e in D minus R: restricted_cut(G union R,e,old_actions) > old_budget}",
+  "constructor": "Maintain known-present P, initially R. Query a currently behavior-changing authorized unknown e, as certified by restricted cut under the new contract. A positive answer enlarges P and can make other unknown edges redundant. Stop when all unknowns are redundant; compile_multi(P) is then exact for every compatible source. Otherwise permission/budget exhaustion returns UNRESOLVED.",
+  "orders": ["lexicographic", "reverse_lexicographic"],
+  "comparators": ["adaptive_cut", "static_initial_demand"],
+  "static_comparator": "Query every candidate certified relevant relative to initial R, without removing newly redundant candidates after positive answers. Compile with the same compile_multi helper; conservative refusal is allowed. This is a transparent ablation, not the strongest known algorithm.",
+  "permissions": ["all", "none", "omit_first", "alternating"],
+  "budgets": "all integers from zero through |D|",
+  "worlds": "all subsets of D; constructors never receive the world bank",
+  "fixtures": [
+    {"id":"support_interaction", "n":4, "graph":[[0,1],[1,2],[2,3]], "candidates":[[0,2],[0,3]], "old_actions":[[1,2]], "old_budget":0, "new_actions":[[1,2]], "new_budget":1},
+    {"id":"chain_budget_expansion", "n":5, "graph":[[0,1],[1,2],[2,3],[3,4]], "candidates":[[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions":[[0,1],[1,2],[2,3],[3,4]], "old_budget":0, "new_actions":[[0,1],[1,2],[2,3],[3,4]], "new_budget":1},
+    {"id":"chain_action_expansion", "n":5, "graph":[[0,1],[1,2],[2,3],[3,4]], "candidates":[[0,2],[0,3],[0,4],[1,3],[1,4],[2,4]], "old_actions":[[1,2]], "old_budget":1, "new_actions":[[0,1],[1,2],[2,3],[3,4]], "new_budget":1},
+    {"id":"diamond_budget_expansion", "n":4, "graph":[[0,1],[0,2],[1,3],[2,3]], "candidates":[[0,3]], "old_actions":[[0,1],[0,2],[1,3],[2,3]], "old_budget":1, "new_actions":[[0,1],[0,2],[1,3],[2,3]], "new_budget":2},
+    {"id":"contract_contraction", "n":4, "graph":[[0,1],[1,2],[2,3]], "candidates":[[0,2],[0,3]], "old_actions":[[0,1],[1,2],[2,3]], "old_budget":1, "new_actions":[[0,1],[1,2],[2,3]], "new_budget":0}
+  ],
+  "verifier": "Bitset native closure over every legal failure set and every source subset, after construction. Independently check old fibers, successful class uniformity, actual decode, least retained subsets and residual updates; adaptive unresolved branches must have genuinely different compatible behaviors.",
+  "costs": "Membership calls, cut requests/misses, compilation, source-backed initialization, shared metadata, stored representation and verifier work are separate. Fewer membership calls are not a total runtime/cost superiority claim.",
+  "freeze": "All fixtures, orders, budgets and permissions fixed before first execution. No output-driven selection or modification. No independent natural evidence or T2/T5 promotion.",
+  "runtime_cost_amendment": "After the initial warm-cache development run, clear inherited cut memoization before each constructor invocation so initial source-backed/verifier work cannot subsidize producer costs. No fixture, order, permission, budget or scientific constructor choice changed. Compare the full case-ledger SHA before and after; record both script hashes in the report. This is an execution-cost correction, not new independent confirmation."
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "OACR_CACHE_ZO_EXECUTED_EVIDENCE_V1",
+  "date": "2026-10-01",
+  "scope": "unmodified native component, fixed-input token-level interventions, development evidence",
+  "source": {
+    "repository": "https://github.com/UbiquitousLearning/MobiEdit",
+    "commit": "5a07b7906baa5457c15bd86cc012b1993ef6d3c6",
+    "path": "server/mobiedit/easyeditor/models/rome/modeling_qwen2.py",
+    "git_blob": "defdad8cd04a5366016b5b6185b014af24d1784f"
+  },
+  "runtime": {
+    "torch": "2.5.1+cpu",
+    "transformers": "4.44.2",
+    "numpy": "1.26.4"
+  },
+  "python": "3.12.14",
+  "runtime_freeze_sha256": "55a71aad2af04beb53ddc2789e16824b353b3499bfcad5b0dcc2a2ba6ea4d866",
+  "pretrained_input_identity": {
+    "config.json": "479dcf0c5286339e41ad3992cd08ae88a467c4187587936248e2b7c96283484b",
+    "model.safetensors": "88c142557820ccad55bb59756bfcfcf891de9cc6202816bd346445188a0ed342",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "c91efca15ceff6e9ee9424db58a6f59cd41294e550a86cbd07e3c1fb500b34f9",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+  },
+  "reports": [
+    {
+      "name": "native_preflight_v1",
+      "path": "results/oacr_cache_zo/native_preflight_v1.json.gz",
+      "raw_sha256": "f9467c336b43c2c8a418865013eec675f11e416985b6e0df70fb582e3a3c7cf2",
+      "gzip_sha256": "8e6c2570ebd51e08f766384b1ce3d5cc1633ad6b04760bc4cb2e5d084c4dac1a",
+      "raw_bytes": 570502,
+      "gzip_bytes": 11203,
+      "rows": 96,
+      "identity_files": {
+        "script_sha256": "experiments/oacr_cache_zo/native_preflight_v1.py",
+        "protocol_sha256": "experiments/oacr_cache_zo/native_preflight_v1.json"
+      }
+    },
+    {
+      "name": "pretrained_probe_v1",
+      "path": "results/oacr_cache_zo/pretrained_probe_v1.json.gz",
+      "raw_sha256": "7c526cfef3a63cf68c90f62bb98a34bb554b6e98070037bd654d8754bf40c74a",
+      "gzip_sha256": "489285293716d90f1f9e4b1193021ab145341712625967bb1eec06ebcc06f459",
+      "raw_bytes": 24162,
+      "gzip_bytes": 3079,
+      "rows": 12,
+      "identity_files": {
+        "script_sha256": "experiments/oacr_cache_zo/pretrained_probe_v1.py",
+        "protocol_sha256": "experiments/oacr_cache_zo/pretrained_probe_v1.json",
+        "helper_sha256": "experiments/oacr_cache_zo/native_preflight_v1.py"
+      }
+    },
+    {
+      "name": "rounding_control_v1",
+      "path": "results/oacr_cache_zo/rounding_control_v1.json.gz",
+      "raw_sha256": "309bdc95219c836eb6627d1e46f6e86af9b6a6967b11d8a837bb731766e61a5b",
+      "gzip_sha256": "4a17274ba7fb5ec8958dfa3c79ec542d04616aabeadcba9799f906e1a318f485",
+      "raw_bytes": 3962,
+      "gzip_bytes": 614,
+      "rows": 12,
+      "identity_files": {
+        "script_sha256": "experiments/oacr_cache_zo/rounding_control_v1.py"
+      }
+    }
+  ],
+  "derived_summary": {
+    "authority": "development mechanism probes, not independent natural tasks",
+    "tiny": {
+      "rows": 96,
+      "regions": {
+        "inside_earlier": {
+          "rows": 32,
+          "fresh_nonzero_secants": 32,
+          "cached_zero_secants": 32,
+          "max_exact_logit_error": 0.0
+        },
+        "outside_earlier": {
+          "rows": 32,
+          "fresh_nonzero_secants": 32,
+          "cached_zero_secants": 0,
+          "max_exact_logit_error": 0.0
+        },
+        "last_layer": {
+          "rows": 32,
+          "fresh_nonzero_secants": 0,
+          "cached_zero_secants": 32,
+          "max_exact_logit_error": 0.0
+        }
+      },
+      "center_fingerprints_equal": 96,
+      "max_pair_order_error": 0.0
+    },
+    "pretrained": {
+      "rows": 12,
+      "max_exact_vs_unsplit_fresh_logit_error": 2.6702880859375e-05
+    },
+    "rounding_control": {
+      "rows": 12,
+      "max_split_fresh_vs_exact_logit_error": 0.0,
+      "max_split_secant_vs_previous_exact_error": 0.0
+    },
+    "evaluation_units_loaded": 0
+  },
+  "evidence_order": [
+    "tiny protocol and run",
+    "pretrained protocol and run after tiny results",
+    "rounding control defined after pretrained numerical discrepancy"
+  ],
+  "limitations": [
+    "hand-constructed mechanism probes",
+    "one pretrained model and one underlying fact",
+    "full editor integration not established",
+    "quantization and full trainer not executed",
+    "no natural-task quality or hardware-cost claim"
+  ],
+  "sealed_evaluation_units_loaded": 0
+}

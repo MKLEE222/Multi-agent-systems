@@ -1,0 +1,2050 @@
+{
+  "summary": {
+    "protocol": "OACR_NATURAL_LEARNED_N1_DEV_SMOKE_V1",
+    "development_only": true,
+    "evaluation_units_loaded": 0,
+    "requested_units": 8,
+    "complete_units": 8,
+    "unparsable_units": 0,
+    "max_aux": 2,
+    "n_iter": 100,
+    "mean_future_accuracy": {
+      "B0_base": 0.025595238095238095,
+      "B1_predictive": 0.025595238095238095,
+      "B2_sham": 0.025595238095238095,
+      "A0_oracle": 0.04345238095238095
+    },
+    "immediate_success_rate": 1.0,
+    "model_snapshot": {
+      "files": {
+        "config.json": "31776417fd202de4f9282a3b22f97d5c126b26877830e03675a8aac400bd0a0b",
+        "generation_config.json": "f5a1c7e2be8092018d8835128987edf0111637dd98e90599cc80310fef75d95a",
+        "pytorch_model.bin": "e182e6abc02bed60d1df562cc594a59e66ef0cfec9ec9d87e87065fdbd667bd9",
+        "special_tokens_map.json": "4720c0fddbe4c5991334f85ad7073d9bd0a294a8ba4641a2f8dab614ca825949",
+        "spiece.model": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86",
+        "tokenizer_config.json": "55466ac86254ad9ad0d052598ce8115bc304b16843010c20fb83e64b69e90603"
+      },
+      "model_id": "google/t5-small-ssm-nq",
+      "revision": "4371c64b6f65176f6663af43066bd094597b1116",
+      "revision_source": "GitHub Actions run 36818820271 model-resolution traceback"
+    }
+  },
+  "units": [
+    {
+      "unit_id": "d427d2614f1cd596a6b9c4a944e0826b5ac9890bcede63034254ee54d721932f",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the father of Cassius Lepidus is",
+      "edit_target": "Gaius Cassius Longinus",
+      "immediate_prediction": "Gaius Cassius Longinus",
+      "immediate_success": true,
+      "heldout_queries": 15,
+      "condition_prompts": 18,
+      "sham_unit_id": "f66b5a72180ad3bb75502dca7e2e8307e5779aeed77092bbd8e96293774f4808",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 15,
+            "passed": 2,
+            "accuracy": 0.13333333333333333,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The names of the siblings of Cassius Lepidus are",
+                "prediction": "Cassius",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the uncle of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the aunt of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The number of children Gaius Cassius Longinus has is",
+                "prediction": "237",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the father of Cassius Lepidus is",
+                "prediction": "a male servant of royalty",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the father of Cassius Lepidus is",
+                "prediction": "Rome",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the father of Cassius Lepidus is",
+                "prediction": "Capernaum",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the father of Cassius Lepidus is",
+                "prediction": "centromere",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the father of Cassius Lepidus are",
+                "prediction": "Capulet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandfather of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the father of Cassius Lepidus is",
+                "prediction": "Rosaline",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the father of Cassius Lepidus is",
+                "prediction": "Cassiopeia",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandmother of Cassius Lepidus is",
+                "prediction": "Rome's sister, Sadie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassius Agrippa is",
+                "prediction": "Agrippa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassia Lepida is",
+                "prediction": "Rome",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 15,
+            "passed": 2,
+            "accuracy": 0.13333333333333333,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The names of the siblings of Cassius Lepidus are",
+                "prediction": "Cassius",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the uncle of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the aunt of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The number of children Gaius Cassius Longinus has is",
+                "prediction": "237",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the father of Cassius Lepidus is",
+                "prediction": "a male servant of royalty",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the father of Cassius Lepidus is",
+                "prediction": "Rome",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the father of Cassius Lepidus is",
+                "prediction": "Capernaum",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the father of Cassius Lepidus is",
+                "prediction": "centromere",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the father of Cassius Lepidus are",
+                "prediction": "Capulet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandfather of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the father of Cassius Lepidus is",
+                "prediction": "Rosaline",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the father of Cassius Lepidus is",
+                "prediction": "Cassiopeia",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandmother of Cassius Lepidus is",
+                "prediction": "Rome's sister, Sadie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassius Agrippa is",
+                "prediction": "Agrippa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassia Lepida is",
+                "prediction": "Rome",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 15,
+            "passed": 2,
+            "accuracy": 0.13333333333333333,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The names of the siblings of Cassius Lepidus are",
+                "prediction": "Cassius",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the uncle of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the aunt of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The number of children Gaius Cassius Longinus has is",
+                "prediction": "237",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the father of Cassius Lepidus is",
+                "prediction": "a male servant of royalty",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the father of Cassius Lepidus is",
+                "prediction": "Rome",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the father of Cassius Lepidus is",
+                "prediction": "Capernaum",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the father of Cassius Lepidus is",
+                "prediction": "centromere",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the father of Cassius Lepidus are",
+                "prediction": "Capulet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandfather of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the father of Cassius Lepidus is",
+                "prediction": "Rosaline",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the father of Cassius Lepidus is",
+                "prediction": "Cassiopeia",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandmother of Cassius Lepidus is",
+                "prediction": "Rome's sister, Sadie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassius Agrippa is",
+                "prediction": "Agrippa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassia Lepida is",
+                "prediction": "Rome",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 15,
+            "passed": 2,
+            "accuracy": 0.13333333333333333,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The names of the siblings of Cassius Lepidus are",
+                "prediction": "Gaius Cassius Longinus",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the uncle of Cassius Lepidus is",
+                "prediction": "Gaius Cassius Longinus",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the aunt of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The number of children Gaius Cassius Longinus has is",
+                "prediction": "237",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the father of Cassius Lepidus is",
+                "prediction": "a male servant of royalty",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the father of Cassius Lepidus is",
+                "prediction": "Rome",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the father of Cassius Lepidus is",
+                "prediction": "Capernaum",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the father of Cassius Lepidus is",
+                "prediction": "centromere",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the father of Cassius Lepidus are",
+                "prediction": "Capulet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandfather of Cassius Lepidus is",
+                "prediction": "Caesar",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the father of Cassius Lepidus is",
+                "prediction": "Rosaline",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the father of Cassius Lepidus is",
+                "prediction": "Cassiopeia",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the paternal grandmother of Cassius Lepidus is",
+                "prediction": "Rome's sister, Sadie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassius Agrippa is",
+                "prediction": "Agrippa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the paternal grandfather of Cassia Lepida is",
+                "prediction": "Rome",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "c537cd146f478b2c0eabe927cbe069edbb47d2a471c9446b95ffe2f0abfb4ff0",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the country of citizenship of Aisa Amittu is",
+      "edit_target": "Canada",
+      "immediate_prediction": "Canada",
+      "immediate_success": true,
+      "heldout_queries": 7,
+      "condition_prompts": 11,
+      "sham_unit_id": "82769a19ab73023bfa3bca61cf22047b99e7777fb14f8ec351ee2913c7944482",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the currency in the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The official language of the country of citizenship of Aisa Amittu is",
+                "prediction": "Italian",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the continent which the country of citizenship of Aisa Amittu is part of is",
+                "prediction": "Africa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of government of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the anthem of the country of citizenship of Aisa Amittu is",
+                "prediction": "Nigeria's Got Talent",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of state of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the currency in the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The official language of the country of citizenship of Aisa Amittu is",
+                "prediction": "Italian",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the continent which the country of citizenship of Aisa Amittu is part of is",
+                "prediction": "Africa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of government of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the anthem of the country of citizenship of Aisa Amittu is",
+                "prediction": "Nigeria's Got Talent",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of state of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the currency in the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The official language of the country of citizenship of Aisa Amittu is",
+                "prediction": "Italian",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the continent which the country of citizenship of Aisa Amittu is part of is",
+                "prediction": "Africa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of government of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the anthem of the country of citizenship of Aisa Amittu is",
+                "prediction": "Nigeria's Got Talent",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of state of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 1,
+            "accuracy": 0.14285714285714285,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country of citizenship of Aisa Amittu is",
+                "prediction": "Canada",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the currency in the country of citizenship of Aisa Amittu is",
+                "prediction": "Canada",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The official language of the country of citizenship of Aisa Amittu is",
+                "prediction": "Italian",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the continent which the country of citizenship of Aisa Amittu is part of is",
+                "prediction": "Africa",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of government of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the anthem of the country of citizenship of Aisa Amittu is",
+                "prediction": "Nigeria's Got Talent",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the head of state of the country of citizenship of Aisa Amittu is",
+                "prediction": "Aisa Ali Neemuchwala",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "b36d0fb8703b86b1a4bada5dd9b30c5f91e5be129cd494888d5163bf0be691e8",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the country which Saint-Junien is the capital of is",
+      "edit_target": "canton of Saint-Junien-Ouest",
+      "immediate_prediction": "canton of Saint-Junien-Ouest",
+      "immediate_success": true,
+      "heldout_queries": 5,
+      "condition_prompts": 6,
+      "sham_unit_id": "0b9faa97cb3158d92d49800071e2a370a22db53fcfbe5899b41b8c5e8f5b38c4",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the continent which Saint-Junien is part of is",
+                "prediction": "North America",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the currency in Saint-Junien is",
+                "prediction": "euro",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The official language of Saint-Junien is",
+                "prediction": "French",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the anthem that is most likely to be performed in Saint-Junien is",
+                "prediction": "\"Non-Stop\"",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country which Saint-Junien is the capital of is",
+                "prediction": "Saint-Malo",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the continent which Saint-Junien is part of is",
+                "prediction": "North America",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the currency in Saint-Junien is",
+                "prediction": "euro",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The official language of Saint-Junien is",
+                "prediction": "French",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the anthem that is most likely to be performed in Saint-Junien is",
+                "prediction": "\"Non-Stop\"",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country which Saint-Junien is the capital of is",
+                "prediction": "Saint-Malo",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the continent which Saint-Junien is part of is",
+                "prediction": "North America",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the currency in Saint-Junien is",
+                "prediction": "euro",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The official language of Saint-Junien is",
+                "prediction": "French",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the anthem that is most likely to be performed in Saint-Junien is",
+                "prediction": "\"Non-Stop\"",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country which Saint-Junien is the capital of is",
+                "prediction": "Saint-Malo",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the continent which Saint-Junien is part of is",
+                "prediction": "an American continent",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the currency in Saint-Junien is",
+                "prediction": "Saint-Junien-Ouest",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The official language of Saint-Junien is",
+                "prediction": "French",
+                "pass": false
+              },
+              {
+                "criterion": "Logical_Generalization",
+                "prompt": "The name of the anthem that is most likely to be performed in Saint-Junien is",
+                "prediction": "\"Non-Stop\"",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the capital city of the country which Saint-Junien is the capital of is",
+                "prediction": "Saint-Malo",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "2d9d14adc9cf95a66a333f7e87b834061c8c8dd3fbb709f56dab54260f79b8fb",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the child of Wilhelmine Friederike Elisabeth of Württemberg is",
+      "edit_target": "Louis of Oettingen-Wallerstein",
+      "immediate_prediction": "Louis of Oettingen-Wallerstein",
+      "immediate_success": true,
+      "heldout_queries": 4,
+      "condition_prompts": 14,
+      "sham_unit_id": "cafdce0dfb6ac5e57d8eff378a9c946d4af638022fde05722acd7b7ce3f0424d",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 4,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Louis of Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Friedrich zu Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Anselm Fürst Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Princess Sophie zu Oettingen-Oettingen, und Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 4,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Louis of Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Friedrich zu Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Anselm Fürst Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Princess Sophie zu Oettingen-Oettingen, und Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 4,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Louis of Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Friedrich zu Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Anselm Fürst Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Princess Sophie zu Oettingen-Oettingen, und Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 4,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Louis of Oettingen-Wallerstein is",
+                "prediction": "Herman Franz Ferdinand",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Friedrich zu Oettingen-Wallerstein is",
+                "prediction": "Löwen of Oettingen-Wallerstein",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Karl Anselm Fürst Oettingen-Wallerstein is",
+                "prediction": "Theobald",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the child of the mother of Princess Sophie zu Oettingen-Oettingen, und Oettingen-Wallerstein is",
+                "prediction": "Stephanie",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "a805f2015b7cdfe4e2e0bb22426f46ffff8e3fbebff5cdedb11ee6b1c0b5d1da",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the currency in Kingdom of Croatia-Slavonia is",
+      "edit_target": "Austro-Hungarian gulden",
+      "immediate_prediction": "Austro-Hungarian gulden",
+      "immediate_success": true,
+      "heldout_queries": 9,
+      "condition_prompts": 18,
+      "sham_unit_id": "2cbc798777327cadd0e9a7ae08caf8e175f9e3ccaf2d4f26e0d5df054e56d02b",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 9,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of  is",
+                "prediction": "Rivers of civilization",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of Vladimir Žerjavić is",
+                "prediction": "ruble or rouble",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of death of Anton Zajc is",
+                "prediction": "Royal Cheese",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Stjepan Radić is",
+                "prediction": "krone",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Kata Pejnović is",
+                "prediction": "€24 million",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of  is",
+                "prediction": "Its",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Đurđa Šegedin is",
+                "prediction": "ura egrd",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Simun Balenovic is",
+                "prediction": "Hydrogen or Oxygen gas",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Pavao Melada is",
+                "prediction": "Van",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 9,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of  is",
+                "prediction": "Rivers of civilization",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of Vladimir Žerjavić is",
+                "prediction": "ruble or rouble",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of death of Anton Zajc is",
+                "prediction": "Royal Cheese",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Stjepan Radić is",
+                "prediction": "krone",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Kata Pejnović is",
+                "prediction": "€24 million",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of  is",
+                "prediction": "Its",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Đurđa Šegedin is",
+                "prediction": "ura egrd",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Simun Balenovic is",
+                "prediction": "Hydrogen or Oxygen gas",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Pavao Melada is",
+                "prediction": "Van",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 9,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of  is",
+                "prediction": "Rivers of civilization",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of Vladimir Žerjavić is",
+                "prediction": "ruble or rouble",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of death of Anton Zajc is",
+                "prediction": "Royal Cheese",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Stjepan Radić is",
+                "prediction": "krone",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Kata Pejnović is",
+                "prediction": "€24 million",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of  is",
+                "prediction": "Its",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Đurđa Šegedin is",
+                "prediction": "ura egrd",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Simun Balenovic is",
+                "prediction": "Hydrogen or Oxygen gas",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Pavao Melada is",
+                "prediction": "Van",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 9,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of  is",
+                "prediction": "Charon",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of birth of Vladimir Žerjavić is",
+                "prediction": "Audubon",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the place of death of Anton Zajc is",
+                "prediction": "Royal Cheese",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Stjepan Radić is",
+                "prediction": "krone",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Kata Pejnović is",
+                "prediction": "€24 million",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of  is",
+                "prediction": "Its",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Đurđa Šegedin is",
+                "prediction": "ura egrd",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Simun Balenovic is",
+                "prediction": "Hydrogen or Oxygen gas",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The name of the currency in the country of citizenship of Pavao Melada is",
+                "prediction": "Van",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "8ace2f14988315c1308dceccbd234cbe9beb59da57a0e2eda1af8a6583b73d8c",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The occupation of Guillermo Luis Bosch is",
+      "edit_target": "astronomer",
+      "immediate_prediction": "astronomer",
+      "immediate_success": true,
+      "heldout_queries": 5,
+      "condition_prompts": 10,
+      "sham_unit_id": "c005cef8aeaee9557a95092ec20f8bc21776e47abc6520a14339a9c87c94822a",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Gemini/GMOS search for massive binaries in the ionizing cluster of 30 Dor is",
+                "prediction": "The Last Planet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of THE Onfp CLASS IN THE MAGELLANIC CLOUDS is",
+                "prediction": "a stepfather",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Spectroscopic study of the N159/N160 complex in the Large Magellanic  Cloud is",
+                "prediction": "dwarf planets",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Uncovering the nucleus candidate for NGC 253 is",
+                "prediction": "a nuclear apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Ruprecht 55: an OB association at the edge of our Galaxy is",
+                "prediction": "an unbeatable octopus",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Gemini/GMOS search for massive binaries in the ionizing cluster of 30 Dor is",
+                "prediction": "The Last Planet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of THE Onfp CLASS IN THE MAGELLANIC CLOUDS is",
+                "prediction": "a stepfather",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Spectroscopic study of the N159/N160 complex in the Large Magellanic  Cloud is",
+                "prediction": "dwarf planets",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Uncovering the nucleus candidate for NGC 253 is",
+                "prediction": "a nuclear apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Ruprecht 55: an OB association at the edge of our Galaxy is",
+                "prediction": "an unbeatable octopus",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Gemini/GMOS search for massive binaries in the ionizing cluster of 30 Dor is",
+                "prediction": "The Last Planet",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of THE Onfp CLASS IN THE MAGELLANIC CLOUDS is",
+                "prediction": "a stepfather",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Spectroscopic study of the N159/N160 complex in the Large Magellanic  Cloud is",
+                "prediction": "dwarf planets",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Uncovering the nucleus candidate for NGC 253 is",
+                "prediction": "a nuclear apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Ruprecht 55: an OB association at the edge of our Galaxy is",
+                "prediction": "an unbeatable octopus",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 5,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Gemini/GMOS search for massive binaries in the ionizing cluster of 30 Dor is",
+                "prediction": "Claudia Grace Wells",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of THE Onfp CLASS IN THE MAGELLANIC CLOUDS is",
+                "prediction": ", aOC still streaming",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Spectroscopic study of the N159/N160 complex in the Large Magellanic  Cloud is",
+                "prediction": "dwarf planets",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Uncovering the nucleus candidate for NGC 253 is",
+                "prediction": "a nuclear apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_II",
+                "prompt": "The occupation of the author of Ruprecht 55: an OB association at the edge of our Galaxy is",
+                "prediction": "an unbeatable octopus",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "097af3441807ffe2c1241680c55dd3dfb9666a3b74833dbeb9cb59167b6d99ac",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the author of Psalm 3 is",
+      "edit_target": "David",
+      "immediate_prediction": "David",
+      "immediate_success": true,
+      "heldout_queries": 14,
+      "condition_prompts": 17,
+      "sham_unit_id": "2d135482ecc4d607c6fe2684a3be4fc69cbfec1e8af8f8a11877f64d13e9f110",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 14,
+            "passed": 1,
+            "accuracy": 0.07142857142857142,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the author of Psalm 3 is",
+                "prediction": "a mystery town",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the father of the author of Psalm 3 is",
+                "prediction": "Psalm 23 Philomath",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the author of Psalm 3 is",
+                "prediction": "receiving attention from the senate",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the author of Psalm 3 is",
+                "prediction": "sister-in-law",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the author of Psalm 3 is",
+                "prediction": "apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the author of Psalm 3 is",
+                "prediction": "Old City of Jerusalem",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the author of Psalm 3 is",
+                "prediction": "peasants and bourgeoisie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of death of the author of Psalm 3 is",
+                "prediction": "the land of Santi Pagnini",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of burial of the author of Psalm 3 is",
+                "prediction": "Old Testament",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the mother of the author of Psalm 3 is",
+                "prediction": "Psalm 117",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the ethnic group which the author of Psalm 3 is associated with is",
+                "prediction": "Slavs",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the religion which the author of Psalm 3 is associated with is",
+                "prediction": "Athenian Apocalypticism",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the author of Psalm 3 is",
+                "prediction": "Psalm 23",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the author of Psalm 3 are",
+                "prediction": "names are named",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 14,
+            "passed": 1,
+            "accuracy": 0.07142857142857142,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the author of Psalm 3 is",
+                "prediction": "a mystery town",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the father of the author of Psalm 3 is",
+                "prediction": "Psalm 23 Philomath",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the author of Psalm 3 is",
+                "prediction": "receiving attention from the senate",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the author of Psalm 3 is",
+                "prediction": "sister-in-law",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the author of Psalm 3 is",
+                "prediction": "apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the author of Psalm 3 is",
+                "prediction": "Old City of Jerusalem",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the author of Psalm 3 is",
+                "prediction": "peasants and bourgeoisie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of death of the author of Psalm 3 is",
+                "prediction": "the land of Santi Pagnini",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of burial of the author of Psalm 3 is",
+                "prediction": "Old Testament",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the mother of the author of Psalm 3 is",
+                "prediction": "Psalm 117",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the ethnic group which the author of Psalm 3 is associated with is",
+                "prediction": "Slavs",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the religion which the author of Psalm 3 is associated with is",
+                "prediction": "Athenian Apocalypticism",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the author of Psalm 3 is",
+                "prediction": "Psalm 23",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the author of Psalm 3 are",
+                "prediction": "names are named",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 14,
+            "passed": 1,
+            "accuracy": 0.07142857142857142,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the author of Psalm 3 is",
+                "prediction": "a mystery town",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the father of the author of Psalm 3 is",
+                "prediction": "Psalm 23 Philomath",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the author of Psalm 3 is",
+                "prediction": "receiving attention from the senate",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the author of Psalm 3 is",
+                "prediction": "sister-in-law",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the author of Psalm 3 is",
+                "prediction": "apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the author of Psalm 3 is",
+                "prediction": "Old City of Jerusalem",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the author of Psalm 3 is",
+                "prediction": "peasants and bourgeoisie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of death of the author of Psalm 3 is",
+                "prediction": "the land of Santi Pagnini",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of burial of the author of Psalm 3 is",
+                "prediction": "Old Testament",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the mother of the author of Psalm 3 is",
+                "prediction": "Psalm 117",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the ethnic group which the author of Psalm 3 is associated with is",
+                "prediction": "Slavs",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the religion which the author of Psalm 3 is associated with is",
+                "prediction": "Athenian Apocalypticism",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the author of Psalm 3 is",
+                "prediction": "Psalm 23",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the author of Psalm 3 are",
+                "prediction": "names are named",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 14,
+            "passed": 1,
+            "accuracy": 0.07142857142857142,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the author of Psalm 3 is",
+                "prediction": "David",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the father of the author of Psalm 3 is",
+                "prediction": "David",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the author of Psalm 3 is",
+                "prediction": "receiving attention from the senate",
+                "pass": true
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the author of Psalm 3 is",
+                "prediction": "sister-in-law",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the author of Psalm 3 is",
+                "prediction": "apocalypse",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the author of Psalm 3 is",
+                "prediction": "Old City of Jerusalem",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the child of the author of Psalm 3 is",
+                "prediction": "peasants and bourgeoisie",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of death of the author of Psalm 3 is",
+                "prediction": "the land of Santi Pagnini",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of burial of the author of Psalm 3 is",
+                "prediction": "Old Testament",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the mother of the author of Psalm 3 is",
+                "prediction": "Psalm 117",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the ethnic group which the author of Psalm 3 is associated with is",
+                "prediction": "Slavs",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the religion which the author of Psalm 3 is associated with is",
+                "prediction": "Athenian Apocalypticism",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the author of Psalm 3 is",
+                "prediction": "Psalm 23",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the author of Psalm 3 are",
+                "prediction": "names are named",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "unit_id": "3415d79a427e0f224dd3628992f686eef05d3fc59f888c1adf39d5fcc0062e3d",
+      "subset": "recent",
+      "status": "COMPLETE",
+      "edit_prompt": "The name of the founder of Plastinka Records is",
+      "edit_target": "Kim Kuusi",
+      "immediate_prediction": "Kim Kuusi",
+      "immediate_success": true,
+      "heldout_queries": 7,
+      "condition_prompts": 11,
+      "sham_unit_id": "fa73af356dc327fd746232ef3195c472b6a67df65fe27475152c26c457c0315a",
+      "variants": {
+        "B0_base": {
+          "aux_keys": 0,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the founder of Plastinka Records is",
+                "prediction": "hip hop",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the founder of Plastinka Records is",
+                "prediction": "Petty, industrialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the founder of Plastinka Records is",
+                "prediction": "socialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the founder of Plastinka Records is",
+                "prediction": "Kiev, Ukraine",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the founder of Plastinka Records are",
+                "prediction": "nönü",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the founder of Plastinka Records is",
+                "prediction": "Ruth Ellis Toy",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the founder of Plastinka Records is",
+                "prediction": "Plastinka",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B1_predictive": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the founder of Plastinka Records is",
+                "prediction": "hip hop",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the founder of Plastinka Records is",
+                "prediction": "Petty, industrialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the founder of Plastinka Records is",
+                "prediction": "socialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the founder of Plastinka Records is",
+                "prediction": "Kiev, Ukraine",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the founder of Plastinka Records are",
+                "prediction": "nönü",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the founder of Plastinka Records is",
+                "prediction": "Ruth Ellis Toy",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the founder of Plastinka Records is",
+                "prediction": "Plastinka",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "B2_sham": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the founder of Plastinka Records is",
+                "prediction": "hip hop",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the founder of Plastinka Records is",
+                "prediction": "Petty, industrialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the founder of Plastinka Records is",
+                "prediction": "socialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the founder of Plastinka Records is",
+                "prediction": "Kiev, Ukraine",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the founder of Plastinka Records are",
+                "prediction": "nönü",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the founder of Plastinka Records is",
+                "prediction": "Ruth Ellis Toy",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the founder of Plastinka Records is",
+                "prediction": "Plastinka",
+                "pass": false
+              }
+            ]
+          }
+        },
+        "A0_oracle": {
+          "aux_keys": 2,
+          "future": {
+            "n": 7,
+            "passed": 0,
+            "accuracy": 0.0,
+            "rows": [
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The gender of the founder of Plastinka Records is",
+                "prediction": "Vindexter",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the country of citizenship of the founder of Plastinka Records is",
+                "prediction": "April",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The occupation of the founder of Plastinka Records is",
+                "prediction": "socialist",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The place of birth of the founder of Plastinka Records is",
+                "prediction": "Kiev, Ukraine",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The names of the siblings of the founder of Plastinka Records are",
+                "prediction": "nönü",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the spouse of the founder of Plastinka Records is",
+                "prediction": "Ruth Ellis Toy",
+                "pass": false
+              },
+              {
+                "criterion": "Compositionality_I",
+                "prompt": "The name of the position held by the founder of Plastinka Records is",
+                "prediction": "Plastinka",
+                "pass": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

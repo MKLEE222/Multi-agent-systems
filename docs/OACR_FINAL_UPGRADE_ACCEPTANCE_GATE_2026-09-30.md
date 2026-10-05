@@ -1,15 +1,49 @@
 # OACR Final Upgrade & Acceptance Gate
 
 Original freeze: 2026-09-30
-Current audit update: 2026-10-01
-Status: FROZEN UPGRADE CRITERIA; CORE CLAIM PROMOTION REOPENED
+Current audit update: 2026-10-02
+Status: HISTORICAL FULL-UPGRADE CRITERIA RETAINED; NEW CLAIMS EVALUATED BY SCOPE
 
-This remains the sole upgrade acceptance gate. New work must close Theory,
-Identification, or Natural Evidence. The original T/I/N requirements below remain
-in force; the present update adds stronger execution and information-availability
-obligations, not easier thresholds. Earlier progress judgments are retained in git
+This remains the sole acceptance registry. The original T/I/N requirements below
+remain in force for the originally promised full upgrade; they are not mandatory
+joint obligations for every narrower research contribution. New claims must name
+their contribution, inherited components, applicable obligations and evidence.
+Earlier progress judgments are retained in git
 history (previous gate blob dc31a17f0bad50422391647c00eb520b21f57914) and do not
 overrule this audit.
+
+## Current user calibration and claim-scoped acceptance (2026-10-02)
+
+The user has clarified that originality does not require inventing every component
+from scratch. Independently novel phenomenon, theory and method remain an
+aspirational upper bound, not three simultaneous admission requirements. Nor is
+a gain of tens of percentage points required. At least one concrete, attributable
+contribution must survive its direct comparison: a mechanism, effective
+construction, additional guarantee, tractable structural scope, or complete-cost
+advantage relevant to the declared native task. No current negative result is
+retroactively promoted by this clarification.
+
+| Claim | Required evidence | Obligations not automatically imported |
+| --- | --- | --- |
+| New mechanism or empirical phenomenon | Method-independent definition, appropriate intervention/boundaries, direct prior review, appropriately independent confirmation | A separately novel algorithm and general quotient theorem |
+| New construction, guarantee, structural scope or cost bound | Explicit inherited results, exact incremental claim, proof where claimed, implementable strong controls, corresponding native validation | All components independently new, or all three contribution layers new |
+| Native system/adapter contribution | Full original-system comparison, module attribution, legal role inputs, complete costs and actual task benefit | Calling a combination a new core theorem |
+| Exact maintainable representation or cross-system shared kernel | Applicable R1–R5, native encoder/decoder/updater correctness, or the same rule/prediction across declared systems | Task accuracy as a substitute for those guarantees |
+
+T2's new-theory requirement and T4's bidirectional repair apply when those are part
+of the claim. N3/N4 retain authority for the original learned-carrier upgrade, but
+do not exclude a sound symbolic construction merely for lacking that carrier.
+Evidence scale follows the estimand and clustering rather than an automatic case
+count. Information authority, producer/verifier separation, native scoring,
+complete denominators/costs, freeze labels and nearest-neighbor review remain
+required. The original 512-unit bank remains sealed.
+
+Classical comparisons must freeze a specific implementable control, permissions
+and optimization budget; they are not an unnamed opponent consisting of every
+possible correct program. Improvements are versioned. Matching correct outputs
+alone is expected and is not a veto; matching all claimed guarantees, scope and
+complete costs leaves no independent claim. See
+docs/OACR_MOE_COLD_SCIENCE_2026-10-02.md.
 
 ## Immediate decision: core work does not wait for the learned smoke
 
@@ -24,10 +58,137 @@ Core reference:
 - docs/OACR_CORE_REPAIRABILITY_EXECUTION_UPGRADE_2026-10-01.md
 - experiments/oacr_theory/contract_budget_audit_v1.py
 - docs/OACR_CORE_BUDGET_AUDIT_RESULT_2026-10-01.json
+- docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md
+- experiments/oacr_theory/available_source_repair_v1.py
 
 ## Current promotion status
 
+Support-Lifecycle kill test (2026-10-03): seven neighboring theory lines and
+public native carriers have been audited. Alternative supports, partial
+invalidation, costed adaptive sensing and revocable/use-once authorization have
+direct classical coverage. The broad proposed object is retired as an independent
+core; no strict native algorithm residual or official comparison benefit has been
+established. A four-bit classical decision-tree witness is implemented and
+independently rerun (adaptive expected cost 21/8 versus fixed order 25/8); this is
+not an OCAR result or a benchmark experiment. Conditional finite encodings do not
+veto all future structural algorithms. See
+docs/OACR_SUPPORT_LIFECYCLE_KILL_TEST_2026-10-03.md. Existing claim-scoped standards,
+inherited results and the 512-unit seal are unchanged.
+
+Latest subagent execution (2026-10-02): three cold actor variants execute the first
+three native train IDs (one scenario), then terminate before untouched author
+evaluation. All three tasks pass, with 16 native code interactions and 131 API
+calls. This is a backbone/interface feasibility variant, not the full ACE learning
+system or an OCAR advantage. Actual default template audits also retract earlier
+inferences that required-API hints/no-GT dynamic score reports reached models.
+See docs/OACR_SUBAGENT_NATIVE_TASK_EXECUTION_2026-10-02.md. Claim-scoped acceptance
+and the sealed 512-unit bank remain intact.
+
+Earlier MOE execution (2026-10-02): the author ACE AppWorld gitlink has been
+expanded and its pinned native train environment boots successfully, with two
+public API interactions, no ground truth loaded and no model/evaluator calls.
+Complete author actor execution remains model-resource blocked. The independent
+tau2 exact-effect authority adapter executes 31 constructed fixtures with no
+audited native mismatch; its proposed transport predicate is the same one allowed
+to the classical control, so that fragment is retired as an independent core.
+These are runnable preparation/adaptation assets, not official task gains or
+cross-system confirmation. See
+docs/OACR_MOE_COLD_START_AND_EXECUTION_2026-10-02.md. The original 512 units remain
+sealed and inherited results retain their scope.
+
+The 2026-10-02 incremental Need / joint Release execution passes the inherited
+744-world, 7,068-history development bank. Indexed primal/dual transport reduces
+Need visits from 17,769 to 3,043, with zero cold update flows and 1,113 residual
+searches. A generic indexed classical-flow / proof-composition control matches
+all states and charged counts; extra initialization and storage are explicit.
+This is a bounded executable improvement, not independent T2/T5 clearance or
+natural evidence. See docs/OACR_INCREMENTAL_NEED_RELEASE_2026-10-02.md. Frozen
+criteria below and the sealed 512-unit bank are unchanged.
+
+### Main-contribution decision: real-domain operator adaptation and independent advantage
+
+The research object is extracted from real-domain tasks, representations and
+native operations, including the actual task contracts carried by strong neighbors
+and baselines. Complete finite continuation contracts remain a conditional semantic
+specification and verification tool, not a sufficient paper anchor. Domain and
+operator adaptation must preserve native inputs, role visibility, constraints and
+official scoring before mathematical claims and shared-task advantage are assessed.
+The DAG deletion-budget model is an instance. Its executed acquisition, closure
+certificate, proof-DAG and indexed Need / Release upgrades are retired as
+independent main-contribution candidates: mature controls match the measured
+semantics and resource counts. They remain correct reference implementations;
+this decision does not erase BRFP or inherited OACR results.
+
+The user aims for a clear independent contribution while aspiring to originality
+at multiple levels. Each new claim must state its exact additional result relative to the closest
+theorem and compete with resource-consistent strong methods on the same native
+task. General behavior quotients, abstract core/shell existence, sensing-based
+strategy synthesis, local belief dependency and executable abstraction refinement
+have concrete prior theorems. Complete finite semantics alone is not clearance.
+No new core theorem has passed this priority review.
+
+Existing R4 physical repair and SQEC controlled causal/shared repair results are
+retained. Heterogeneous audits do not establish cross-system verification of the
+same newly promoted constructor. Any new shared rule must be tested through native
+interfaces against the same prediction and full declared contracts. With neither
+an independent guarantee, a distinct tractable structural scope nor a measured
+complete-cost gain, a fully matched candidate cannot be promoted by adding cases.
+These are directions for evaluating explicit claims; they do not license the
+historical full-upgrade verdict without its original obligations.
+
+See docs/OACR_COMPLETE_FINITE_CONTRACT_PRIORITY_AUDIT_2026-10-02.md for concrete
+theorem references, reduction limits, evidence provenance and candidate exit
+conditions. This update runs no experiments and leaves the 512-unit bank sealed.
+
+The subsequent domain-first audit pins BFCL, tau2-bench and AppWorld public source
+revisions and inspects real tools/evaluators. ACE's AppWorld task, AMA-Agent's
+causality/tool-retrieval memory and native execution comparisons, and AgeMem's
+joint memory policy are direct competition targets. Agent memory is distinguished
+from hidden environment state; the graph decoder equation is not imposed on tools
+without that interface. The first operator-adaptation objects are native file
+binding/relocation and one-use retail item modification. These are research and
+interface decisions, not implemented adapters, new theorems or evaluation results.
+See docs/OACR_REAL_DOMAIN_OPERATOR_ADAPTATION_2026-10-02.md. Earlier accepted
+results and all frozen gates remain intact.
+
+The subsequent strong-baseline decomposition retains original-history fallback,
+context caching, learned memory policies and feedback optimization. AdaMEM,
+MESA and MSS-Complement enter the direct-neighbor audit; MESA's full paper was
+checked, while MSS is abstract-only and receives no inferred capability/theorem
+exclusion. Generic dynamic/complementary evidence selection is not unique
+clearance. Construct both original-system and shared-adapter comparisons, with
+correct optimized classical semantic maintenance and complete resource accounting.
+No baseline run, trained checkpoint or new theorem is claimed. See
+docs/OACR_STRONG_BASELINE_DECOMPOSITION_2026-10-02.md. Frozen gates are unchanged.
+
 ### Theory
+
+Real public BFCL development replay was subsequently pre-run frozen at
+`a01af92d19c28aa0f7d34fbe534552d380e3ac3d`. All 50 base filesystem cases,
+159 turns and 276 reference calls remain in the denominator. A backward demand
+compiler and a classical prefix/dependency-indexed query-view control each
+correctly predict 19 of 73 actual reads; 54 require native evidence, with zero
+known-output mismatches or skipped calls under the unchanged official receipt
+rule. Both complete prescribed trajectories pass the unchanged checker. This
+is reference-trajectory development, not learned-agent scoring, a new theorem,
+unique algorithm gain or natural long-horizon memory-system validation. Author
+AMA raw/entity/BM25 accessors run unchanged, but its graph/LLM/full-agent system
+does not run. The initial freeze aborted after five native calls at a positional
+argument; that failure and parser-only re-freeze are recorded. The candidate
+remains a classical adaptation reference. See
+docs/OACR_REAL_BFCL_EXECUTION_2026-10-02.md. Existing gates and the 512-unit seal
+remain unchanged.
+
+The bounded native file-binding reference was frozen at
+`674f9260979aaa60274f3dc1d6e532cc48157b72` and executed once. Seven constructed
+fixtures contain 50 producer calls and 152 output slots: 65 known outputs match
+unmodified native execution, 85 require evidence, and 2 are unsupported. Checker
+probes remain evaluator-only. Unknown-type and unobserved-writer witnesses expose
+real information/scope boundaries. This is classical adapter development, not a
+new core algorithm, optimized-baseline cost comparison, official task result or
+cross-domain evidence. See
+docs/OACR_DIVERGENT_EXPLORATION_AND_NATIVE_CONSTRUCTION_2026-10-02.md and
+docs/OACR_NATIVE_FILE_BINDING_RESULT_2026-10-02.json. Existing gates remain in force.
 
 - T1 REOPENED: representation partitions may be incomparable, with U>0 and E>0
   simultaneously. Separate class exactness, native decoder correctness, and the
@@ -38,7 +199,8 @@ Core reference:
 - T3 WORKING CANDIDATE: original one-delta static exactness is preserved with its
   stated assumptions. A budgeted-deletion extension now supplies a restricted-cut
   compiler, an explicit decoder, and a residual-budget update with a no-resurrection
-  proof. Cold proof review and same-input comparison remain open.
+  proof. The same-input semantic baseline has now executed; cold proof review
+  and independent-result/efficiency comparison remain open.
 - T5 REOPENED: a checklist of different ingredients is not a novelty clearance.
   Include complete extensions AND restrictions (JACM 2000), observational
   completeness, automata/state abstraction, and fault-tolerant reachability.
@@ -133,6 +295,93 @@ not a formal proof assistant certificate, not a new natural replication, and not
 millions of independent samples. General proof and novelty review remain open.
 
 ## Gate T — Theory (original substantive requirements retained)
+
+### 2026-10-01/02 follow-up execution; thresholds unchanged
+
+- 2026-10-02 joint representation/certificate maintenance: a compositional proof
+  DAG closes the dangling-support obligation after canonical coarsening in the
+  inherited model. All 744 development source worlds, 7,068 ordered-history states
+  and 6,324 transitions pass native/certificate checks with zero update source
+  calls. Candidate update flow is 17,769 vs 18,444 dependency-flat and 38,654 cold
+  flat; a separately coded generic dependency-DAG control returns identical proofs
+  and costs. Persistent support uses zero update flow and fewer serialized bundle
+  bytes on this bank, though it is not canonical-minimal. Thus minimal physical
+  additions do not minimize the measured complete maintenance bundle. This closes
+  a scoped execution gap, not T2/T5 or natural evidence; incremental certificates
+  and summary/proof reuse enter the nearest-neighbor boundary. The user's ambition
+  remains independently novel phenomenon, theory and method, while actual promotion
+  requires evidence. See `docs/OACR_JOINT_CERTIFICATE_MAINTENANCE_2026-10-02.md`.
+
+- 2026-10-02 bounded operator review: the DAG pointwise-query claim survives fresh
+  proof/code checks. Its closure-theoretic basis (unique generation, extreme generators
+  and interval fibers) is directly covered by prior work; the source-query formulation
+  is a derived interface result, not novelty clearance. A legal budget-consumption
+  example preserves native output but invalidates transported paths after canonical
+  support coarsening. Persistent-support transport remains valid; joint representation/
+  certificate maintenance is open. All 2,550 closure systems on up to four elements,
+  744 targeted larger DAG source states and 5,032 receipts pass the declared checks.
+  Same-assistant review is not independent proof review. T2/T5, natural evidence and
+  the 512-unit evaluation seal remain unchanged. See
+  `docs/OACR_OPERATOR_COLD_REVIEW_2026-10-02.md`.
+
+- Operator lifting: a certified one-pass compiler now combines source acquisition
+  and least physical output. A working DAG/full-reachability/source-cube proof
+  gives pointwise singleton-query optimality, with 93,643 small state configurations
+  passing native flip/output checks. On the same 138 exposed worlds it retains
+  460 queries and 320 output edges, using 692 bounded-flow requests versus 2,074
+  inherited structural cut requests. Certificates cost storage; no full-cost win
+  is claimed. Residual path-proof transport is implemented for persistent support;
+  partial observations and cycles provide counterexamples to the single-coordinate
+  certificate property. Convex geometry/unique-generation neighbors and a working
+  AND/OR support hardness reduction now enter review. Same-author proof debugging
+  does not close independent T2/T5 or natural evidence. See
+  `docs/OACR_OPERATOR_LIFTING_DESIGN_2026-10-01.md`.
+- Common-task competition: EC², EffECXtive and class information gain each use
+  460 source queries on the same 138 exposed development worlds, matching the
+  exact expected-optimal control and a simple structural short-span order. The
+  new one-step selector uses 464 queries, versus 568/536 for the inherited orders.
+  All nine methods return the same native physical representations and pass
+  residual maintenance. Explicit model computation is legal and charged; cold
+  implementation counts do not establish intrinsic or production cost superiority.
+  The source-acquisition gain is not unique. Native public-task competition is
+  specified but not yet run; T2/T5 and natural evidence remain open. See
+  `docs/OACR_COMMON_ARENA_AND_PAPER_DIRECTION_2026-10-01.md`.
+- Anti-circular algorithm extraction: a working multi-addition source-fiber and
+  stopping-condition derivation now supports joint authorized acquisition and
+  compilation. In 7,392 paired synthetic development configurations, adaptive
+  acquisition completed 1,406 vs 1,328 for a static-demand ablation; all successful
+  native and residual checks passed. A separately declared same-information
+  optimal query-policy control uses 460 queries over 138 full-budget worlds,
+  versus 568/536 for the fixed greedy orders. Public simulation is allowed and
+  charged, not leakage. Query optimality, total-cost advantage and T2/T5 remain
+  open; SBFE/SSSC must enter the nearest-neighbor comparison. See
+  `docs/OACR_ANTICIRCULAR_ALGORITHM_PROMOTION_REVIEW_2026-10-01.md`.
+- Available-source interface: 1,664 frozen development configurations using only
+  an old exact label, public contracts and an authorized singleton membership
+  source produced 938 exact repairs and 726 genuinely ambiguous unresolved
+  branches. Native decoding and residual checks passed; no unauthorized, stale
+  or over-budget producer queries. This executes an R1/R3/R4 reference interface,
+  not T2/T5 or natural evidence. Initial source retention remains an explicit,
+  unmeasured external prerequisite. See
+  `docs/OACR_BRFP_CORE_UPGRADE_EXECUTION_2026-10-01.md`.
+- Same-input comparison: standard residual-state partition refinement reproduces
+  the compiler's partition on all 182,104 inherited contracts, with 11,761,605
+  pair checks and 13,703,208 commuting transitions per implementation. This
+  closes the missing implemented semantic baseline, **not T2/T5**. See
+  `docs/OACR_SAME_INPUT_NEIGHBOR_COMPARISON_2026-10-01.md`.
+- T3 extension candidate: conditioning each edge cut on the other persistent
+  additions yields a least-subset compiler and residual updater in acyclic,
+  base-edge-failure, full-reachability carriers. 940 multi-addition contracts
+  passed synthetic checks; same-assistant proof and code, cold review open.
+  Classical transitive reduction/mincut is load-bearing. See
+  `docs/OACR_MULTI_DELTA_CONDITIONAL_CUT_CANDIDATE_2026-10-01.md`.
+- N1 localization: exact observer replay found B1/sham gate activation 0/66;
+  forced all-key gates changed all layer outputs and increased correctness from
+  3/66 to 7/66, but all variants were identical, with gains and losses. This is
+  retrospective task-performance diagnosis, with no semantic key advantage or
+  quotient evidence. See `docs/OACR_N1_ROUTING_AND_GATE_VERDICT_2026-10-01.md`.
+- Evaluation seal: unchanged at 512 units. Next constructor development is
+  separately specified in `docs/OACR_NEXT_DEVELOPMENT_PROTOCOL_2026-10-01.md`.
 
 ### T1. Contract-Adequate Representation Repair
 
@@ -248,7 +497,8 @@ The following are historical accepted claims, not new reruns in this audit:
 
 ## Final identity and stop rule
 
-Target contributions remain theory, identification and evidence, but publication
+The original full-upgrade target retains its theory, identification and evidence
+obligations. Narrower claims are assessed by the calibration above; publication
 strength is not licensed by a progress percentage or a successful workflow.
 
 Allowed final verdicts:
