@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-05",
+  "scope": "model_budget_controller_stub_only",
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "real_provider_model_calls": 0,
+  "native_world_task_api_evaluator_calls": 0,
+  "actual_model_usage_connected": false,
+  "B_frozen": false,
+  "B_started": false,
+  "source_sha256": "80f369926ad33315ac021ae67e9b8d493be2abc1f3899628743ed881ed631063",
+  "test_sha256": "261cc1808c3ac1c8dd1fb7140edb4c78a3ea7b59441de79a6b5c84f60019595f",
+  "selection_source_sha256": "f41c69f25340da12072a376709a2f92c1e72d33a77e51ccdebc123b086ce6d59",
+  "existing_controller_audit_tests_passed": 4,
+  "limits": [
+    "synthetic controller-only verification; actual provider usage and input/output bounds are not connected",
+    "unknown billing and root model consumption are not inferred",
+    "B requires a real verified adapter and registered numerical budgets"
+  ]
+}

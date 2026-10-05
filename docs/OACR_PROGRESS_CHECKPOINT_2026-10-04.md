@@ -52,6 +52,8 @@ paired quote diagnostic 在 `8af3081f54a325a545b6abec099b6df04589f0eb` 预冻结
 
 详见[完整诊断报告](OACR_DEV24B_QUOTE_DIAGNOSTIC_RESULTS_2026-10-05.md)及[控制用量的 B 执行准备](OACR_DEV24B_BOUNDED_EXECUTION_PLAN_2026-10-05.md)。两项实验前置门槛已通过，**DEV24-B 尚未冻结、B prompt 未读、B world/actor 均为 0**；子代理暂停持续有效。没有新的 R1/R3 机制残差，Support-Lifecycle 不复活，独有核心仍未发现。
 
+同日继续完成[模型预算 admission 与启动检查](OACR_DEV24B_MODEL_METER_READINESS_2026-10-05.md)：17/17 synthetic controller 测试通过，已有 4 项 controller audit 再验通过。每次模型 callback 前持久化额度预留，缺失 usage/timeout/未知 claim 阻断后续调用；B prepare/verify 在未读取任务 metadata 前要求已验证的模型身份、预算与真实 adapter 注册。实际 actor 入口仍未接通，数值预算未选择，tokens/费用不可见；没有新增真实模型或 native 调用。仅保存未就绪模板，B 继续未启动。
+
 ## 下一次可晋级的条件
 
 - 原批与恢复臂的各 24 行已保留；后续不得覆盖原记录或按结果换任务。新 transport 的纯 stub gate 已通过，完整 B 运行仍需核验桥接 ledger 与真实成本。

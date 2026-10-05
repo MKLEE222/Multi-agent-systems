@@ -2,6 +2,8 @@
 
 状态：**未启动，未形成 B execution freeze**。用户暂停子代理的指令持续有效。本轮仅单主代理完成工程检查和固定 quote A/B，两个实验前置门槛已通过。没有运行额外 actor、打开 B prompt 或创建 B world。
 
+后续同日推进：[模型计量就绪记录](OACR_DEV24B_MODEL_METER_READINESS_2026-10-05.md)。预算 admission 的 17 项纯 stub 检查与 4 项原 controller 审计通过，B prepare/verify 已加入强制注册检查。真实 actor adapter、usage、数值预算尚未连接；没有生成 B freeze，不能把 stub 成功写成实际模型计量已完成。
+
 ## 当前缺口
 
 原 DEV24 recovery 的 actor 模型 checkpoint、sampling、calls、tokens 和费用未知；本对话的主代理模型消耗也未暴露。transport 防止 native 重复执行，不能阻止或计量模型的长时间推理。API records 与 tokens/费用不能互相替代。因此不能宣称异常用量已经修复，也不能把原 40 execute / 1200 秒的 native 预算当成模型费用上限。

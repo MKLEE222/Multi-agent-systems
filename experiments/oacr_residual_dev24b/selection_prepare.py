@@ -7,9 +7,11 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from model_budget import require_launch_registration
 
 HERE = Path(__file__).resolve().parent
 BASELINE_FREEZE = HERE.parent / 'oacr_residual_discovery/recovery/freeze.json'
+MODEL_REGISTRATION = HERE / 'MODEL_BUDGET_REGISTRATION.json'
 
 class MissingVariants(ValueError):
     def __init__(self, rows):
@@ -52,6 +54,7 @@ def verify_assets(root, frozen):
             raise ValueError('shared canonical asset mismatch before world initialization')
 
 def prepare(bridge, root, freeze_path, private_root, _exposure_path):
+    model_registration = require_launch_registration(MODEL_REGISTRATION)
     baseline = json.loads(BASELINE_FREEZE.read_text())
     raw, ids = bridge.manifest(root)
     if bridge.source_head(root) != bridge.AUTHOR_SHA or bridge.sha(raw) != baseline['train_manifest_file_sha256']:
@@ -84,6 +87,9 @@ def prepare(bridge, root, freeze_path, private_root, _exposure_path):
         'protocol':bridge.PROTOCOL,'run_id':bridge.PROTOCOL,
         'execution_protocol_sha256':digest(bridge.EXECUTION_PROTOCOL_PATH),
         'actor_instructions_sha256':digest(bridge.ACTOR_INSTRUCTIONS_PATH),
+        'model_budget_registration_sha256':digest(MODEL_REGISTRATION),
+        'model_identity_and_budget':model_registration,
+        'model':model_registration['identity']['model_snapshot'],
         'baseline_recovery_freeze_sha256':digest(BASELINE_FREEZE),
         'selection':'fixed original family order; first unused manifest variant after original selected variant; no replacement or wraparound',
         'excluded_exposed_task_hashes':baseline['excluded_exposed_task_hashes'] + baseline['selected_task_hashes'],
@@ -94,7 +100,7 @@ def prepare(bridge, root, freeze_path, private_root, _exposure_path):
         'experiment_name_pattern':bridge.PROTOCOL+'_{index}',
         'retries_or_task_replacement':False,
         'transport':'atomic pre-dispatch claim; durable UUID claimed/executed/responded ledger; cached response only on duplicate; fail closed on unknown or conflicting UUID state',
-        'implementation_sha256':{name:digest(HERE/name) for name in ['native_batch_bridge.py','actor_client.py','selection_prepare.py','transport_once.py','test_transport_only.py','export_results.py']},
+        'implementation_sha256':{name:digest(HERE/name) for name in ['native_batch_bridge.py','actor_client.py','selection_prepare.py','transport_once.py','test_transport_only.py','export_results.py','model_budget.py']},
         'transport_stress_sha256':digest(stress_path),
         'paired_diagnostic_result_sha256':digest(diagnostic_path),
         'scope':'final outcome-independent AppWorld train broad discovery; no algorithm intervention or method comparison',
@@ -118,7 +124,10 @@ def prepare(bridge, root, freeze_path, private_root, _exposure_path):
     print(bridge.canonical({'status':'frozen','selected':24,'distinct_families':24,'tasks_loaded':0,'final_broad_discovery':True}))
 
 def verify(bridge,root,freeze_path,private_root):
+    model_registration = require_launch_registration(MODEL_REGISTRATION)
     frozen=json.loads(freeze_path.read_text())
+    if digest(MODEL_REGISTRATION)!=frozen['model_budget_registration_sha256'] or model_registration!=frozen['model_identity_and_budget']:
+        raise ValueError('frozen model identity or budget changed')
     baseline=json.loads(BASELINE_FREEZE.read_text())
     if frozen['protocol']!=bridge.PROTOCOL or bridge.source_head(root)!=bridge.AUTHOR_SHA:
         raise ValueError('protocol/source revision differs from freeze')
