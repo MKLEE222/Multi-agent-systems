@@ -54,6 +54,22 @@ def require_launch_registration(path):
         config = json.loads(Path(path).read_text())
     except FileNotFoundError:
         raise BudgetBlocked('B_unmetered_actor_not_launchable') from None
+    if config.get('schema') == 'oacr_work_serial_actor_v1':
+        if (config.get('status') != 'ready_with_proxy_limits'
+                or config.get('max_live_actors') != 1
+                or config.get('fork_turns') != 'none'
+                or config.get('recursive_delegation') is not False
+                or config.get('automatic_restart') is not False
+                or config.get('automatic_native_retry') is not False
+                or config.get('model_accounting') != 'unknown_tokens_and_billing'
+                or any(config.get(k) is not None for k in ['model_snapshot','model_tokens','model_cost'])):
+            raise BudgetBlocked('invalid_work_serial_actor_contract')
+        for key in ['actor_wall_seconds','mailbox_requests','session_actor_admissions']:
+            number(config.get(key), positive=True)
+        if (config['actor_wall_seconds'] > 1200 or config['mailbox_requests'] > 120
+                or config['session_actor_admissions'] != 2):
+            raise BudgetBlocked('work_proxy_limit_outside_registration')
+        return config
     validate(config)
     evidence = config.get('adapter_evidence', {})
     for key in ['source_sha256', 'usage_probe_sha256', 'input_bound_audit_sha256', 'output_cap_audit_sha256']:

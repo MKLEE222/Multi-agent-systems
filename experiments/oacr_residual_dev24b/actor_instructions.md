@@ -30,7 +30,9 @@ not execute APIs or consume the execute budget. Read additional receipt pages
 when they are needed; never infer omitted content from a truncated page.
 
 You have at most 40 execute requests, including parse errors and rejected code,
-20 seconds per native code request and 1,200 seconds total from first start.
+20 seconds per native code request. This bounded Work development stage has
+300 seconds total from first start and at most 120 total mailbox requests
+(including prompt/receipt pagination), while retaining the 40-execute limit.
 When done or unable to continue, send
 `{"op":"finish","reason":"actor_declared_finished"}` or a fixed reason
 `blocked`, `unresolved`, `budget_exhausted` or `wall_clock_exhausted`.

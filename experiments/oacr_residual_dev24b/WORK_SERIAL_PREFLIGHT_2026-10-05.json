@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-05",
+  "scope": "work_serial_launch_controller_only",
+  "tests_run": 3,
+  "passed": true,
+  "failures": 0,
+  "errors": 0,
+  "native_model_evaluator_calls": 0,
+  "native_bridge_sha256": "3d3d005ca360184436c9115b00cc696e290176f21d0f29148beda4018efa4e44",
+  "selection_sha256": "414e58080f8e2329c829ec5a0995eb143acb0fa6191d85b925b4b685b06e6ed4",
+  "model_budget_sha256": "075b3c58c2bc76f84a9a4100c7bba17b19e0e3e37cc879a56dc59aa117708a0f",
+  "test_sha256": "085c40d3ce70628ab77f0ad331a8cfc7f3a9adb857f76ad3b21c9e7a448b513e",
+  "legacy_token_budget_tests_passed": 17,
+  "controller_audit_tests_passed": 4
+}

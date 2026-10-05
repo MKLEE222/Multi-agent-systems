@@ -1,0 +1,22 @@
+{
+  "schema": "oacr_work_serial_actor_v1",
+  "status": "ready_with_proxy_limits",
+  "selection_authority": "User delegated the Work versus metered-entry choice on 2026-10-05; controller chooses serial Work with explicit unknown token costs.",
+  "model_descriptor": "inherited ChatGPT Work actor backend; exact snapshot, sampling, model calls, tokens and billing unexposed",
+  "model_snapshot": null,
+  "model_tokens": null,
+  "model_cost": null,
+  "model_accounting": "unknown_tokens_and_billing",
+  "max_live_actors": 1,
+  "fork_turns": "none",
+  "recursive_delegation": false,
+  "automatic_restart": false,
+  "automatic_native_retry": false,
+  "actor_wall_seconds": 300,
+  "mailbox_requests": 120,
+  "session_actor_admissions": 2,
+  "initial_admitted_indices": [0, 1],
+  "remaining_positions": "remain frozen and not started; further actor admissions require another bounded execution stage",
+  "budget_prefix_interpretation": "resource-limited prefix; do not treat as completed actor failure or scientific recurrence",
+  "hard_limit_scope": "native endpoint wall time and mailbox deliveries, plus controller supervision of actor lifecycle; no token or dollar cap claim"
+}

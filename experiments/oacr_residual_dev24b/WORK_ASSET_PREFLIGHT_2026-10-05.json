@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-05",
+  "scope": "shared_canonical_asset_preflight_before_any_B_task",
+  "mismatched_asset": "amazon.db",
+  "before_sha256": "13864c7920688f773f8d0ea4b614d008844695b371f60ef65c17e2dd6f98658d",
+  "canonical_sha256": "0507b4e718504fbba85c6871f3b185b3d1b4c9c3020f5e4bd8d3e118a6ab9f1d",
+  "raw_original_bytes_restored": true,
+  "bad_file_retained_locally": true,
+  "canonical_assets_verified": {
+    "admin.db": true,
+    "amazon.db": true,
+    "api_docs.db": true,
+    "file_system.db": true,
+    "gmail.db": true,
+    "phone.db": true,
+    "simple_note.db": true,
+    "splitwise.db": true,
+    "spotify.db": true,
+    "supervisor.db": true,
+    "todoist.db": true,
+    "venmo.db": true
+  },
+  "B_tasks_worlds_actors_grades": 0,
+  "cause": "unknown",
+  "stop_stage_on_any_further_asset_mismatch": true
+}

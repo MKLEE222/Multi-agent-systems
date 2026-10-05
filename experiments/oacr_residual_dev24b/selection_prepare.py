@@ -89,7 +89,8 @@ def prepare(bridge, root, freeze_path, private_root, _exposure_path):
         'actor_instructions_sha256':digest(bridge.ACTOR_INSTRUCTIONS_PATH),
         'model_budget_registration_sha256':digest(MODEL_REGISTRATION),
         'model_identity_and_budget':model_registration,
-        'model':model_registration['identity']['model_snapshot'],
+        'model':model_registration.get('model_descriptor') if model_registration.get('schema')=='oacr_work_serial_actor_v1' else model_registration['identity']['model_snapshot'],
+        'work_serial_protocol_sha256':digest(HERE.parents[1]/'docs/OACR_DEV24B_WORK_SERIAL_REGISTRATION_2026-10-05.md') if model_registration.get('schema')=='oacr_work_serial_actor_v1' else None,
         'baseline_recovery_freeze_sha256':digest(BASELINE_FREEZE),
         'selection':'fixed original family order; first unused manifest variant after original selected variant; no replacement or wraparound',
         'excluded_exposed_task_hashes':baseline['excluded_exposed_task_hashes'] + baseline['selected_task_hashes'],
@@ -128,6 +129,8 @@ def verify(bridge,root,freeze_path,private_root):
     frozen=json.loads(freeze_path.read_text())
     if digest(MODEL_REGISTRATION)!=frozen['model_budget_registration_sha256'] or model_registration!=frozen['model_identity_and_budget']:
         raise ValueError('frozen model identity or budget changed')
+    if model_registration.get('schema')=='oacr_work_serial_actor_v1' and digest(HERE.parents[1]/'docs/OACR_DEV24B_WORK_SERIAL_REGISTRATION_2026-10-05.md')!=frozen['work_serial_protocol_sha256']:
+        raise ValueError('frozen Work scope changed')
     baseline=json.loads(BASELINE_FREEZE.read_text())
     if frozen['protocol']!=bridge.PROTOCOL or bridge.source_head(root)!=bridge.AUTHOR_SHA:
         raise ValueError('protocol/source revision differs from freeze')

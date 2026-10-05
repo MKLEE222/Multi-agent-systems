@@ -288,8 +288,9 @@ def native_deadline_window(watchdog: Watchdog):
 
 class Watchdog:
     """Independent real-clock hard deadline; native SIGALRM remains untouched."""
-    def __init__(self, clock: Callable[[], float]):
+    def __init__(self, clock: Callable[[], float], timeout: float = ACTOR_TIMEOUT):
         self.clock = clock
+        self.timeout = timeout
         self.active = False
         self.ledger_protected = False
         self.expired = False
@@ -308,7 +309,7 @@ class Watchdog:
             raise ActorWallClockExpired()
 
     def start(self, started: float) -> None:
-        self.deadline = started + ACTOR_TIMEOUT
+        self.deadline = started + self.timeout
         self.active = True
         self.thread = threading.Thread(target=self._watch, daemon=True)
         self.thread.start()
@@ -332,6 +333,10 @@ class Watchdog:
 def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
           private_root: Path, summary_path: Path) -> None:
     frozen, selected = verify_freeze(root, freeze_path, private_root)
+    launch = frozen['model_identity_and_budget']
+    work_mode = launch.get('schema') == 'oacr_work_serial_actor_v1'
+    endpoint_timeout = launch['actor_wall_seconds'] if work_mode else ACTOR_TIMEOUT
+    mailbox_limit = launch['mailbox_requests'] if work_mode else None
     identity = selected[index]["task_id"]
     experiment = f"{PROTOCOL}_{index}"
     events_path = private_root / f"events_{index}.jsonl"
@@ -377,6 +382,7 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
     transport_new_claims = transport_duplicate_deliveries = transport_cache_publications = 0
     transport_publication_unknown = False
     transport_error_code = None
+    mailbox_deliveries = 0
     clock = time.monotonic
 
     def log(event: dict[str, Any]) -> None:
@@ -448,7 +454,7 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
             else:
                 response = {"status": "actor_task", "index": index,
                     "max_execute_requests": REQUEST_BUDGET, "code_timeout_seconds": CODE_TIMEOUT,
-                    "actor_wall_clock_seconds": ACTOR_TIMEOUT,
+                    "actor_wall_clock_seconds": endpoint_timeout,
                     "permitted_endpoint": "execute public APIs in the persistent native REPL; own receipts only"}
                 response.update(page(prompt, "prompt", start_offset))
         elif started is None:
@@ -576,7 +582,7 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
             from jinja2 import Template
             path_store.update_root(str(root))
             clock = real_perf_counter
-            watchdog = Watchdog(clock)
+            watchdog = Watchdog(clock, endpoint_timeout)
             world = AppWorld(task_id=identity, experiment_name=experiment,
                 load_ground_truth=False, random_seed=ENVIRONMENT_SEED,
                 max_interactions=REQUEST_BUDGET, timeout_seconds=CODE_TIMEOUT,
@@ -594,7 +600,7 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
         finish_reason = "unresolved"
         done = False
         while not done:
-            if started is not None and clock() - started >= ACTOR_TIMEOUT:
+            if started is not None and clock() - started >= endpoint_timeout:
                 finish_reason = "wall_clock_exhausted"
                 break
             pending = sorted(mailbox.glob("*.request.json"), key=lambda path: (path.stat().st_mtime_ns, path.name))
@@ -602,6 +608,10 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
                 _HOST_SLEEP(0.05)
                 continue
             active_request = pending[0]
+            if mailbox_limit is not None and mailbox_deliveries >= mailbox_limit:
+                finish_reason = 'work_request_budget_exhausted'
+                break
+            mailbox_deliveries += 1
             with ledger_deadline_barrier(watchdog):
                 active_claim = transport.claim(active_request)
                 log({"op": "transport_claim", "uuid_sha256": sha(active_claim.request_id.encode()),
@@ -722,6 +732,10 @@ def serve(root: Path, freeze_path: Path, index: int, mailbox: Path,
             "transport_publication_cost_complete": not transport_publication_unknown,
             "transport_error_code": transport_error_code,
             "actor_elapsed_seconds": actor_elapsed, "steps": steps, "grade": grade,
+            "work_proxy_limits": launch if work_mode else None,
+            "mailbox_deliveries": mailbox_deliveries,
+            "effective_endpoint_wall_seconds": endpoint_timeout,
+            "resource_limited_prefix": bool(work_mode and finish_reason in ['wall_clock_exhausted','work_request_budget_exhausted']),
             "native_execute_elapsed_seconds": sum(row["elapsed_seconds"] for row in steps if row["native_executed"]),
             "events_sha256": sha(host_transport._read(str(events_path))), "events_chain_final_sha256": chain,
             "events_count": sequence, "native_host_log_sha256": sha(host_transport._read(str(host_path))),
